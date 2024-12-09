@@ -12,6 +12,8 @@ import declarations from './declarations.js';
 // $D to Node.js Transpiler
 let app = {
     importStatements: [], // Array with import statements which are used in onServerStartup.js
+    databaseMethodsFolderPath: '',
+    projectRoot: '',
 };
 
 // Clean output dir
@@ -31,35 +33,39 @@ for await (const entry of glob("output_template/**/*")){
     });
 }
 
-// Copy template files to output dir (package.json, nodules_modules, etc.)
-console.log('Copying $Dcommands...');
-for await (const entry of glob("$Dcommands/**/*")){
-    fs.copyFile(entry, entry.replace('./','./output/Project/Sources/Databasemethods/'), (err) => {
-        if (err) throw err;
-
-    });
-}
-
 // Copy all input files to output dir except 4dm files
 console.log("Copying input/**/*...");
 for await (const entry of glob("input/**/*")){
 
-    console.log("Copying " + entry);
+    // console.log("Copying " + entry);
     const stat = lstatSync(entry);
 
     let newEntry = entry.replace('input/','output/');
 
-    if ( stat.isDirectory() && !fs.existsSync(newEntry)){
+    if ( stat.isDirectory() && !fs.existsSync(newEntry) ){
+        if ( entry.endsWith('/Project/Sources/Databasemethods/') ) {
+            console.log('databaseMethodsFolderPath: ' + newEntry);
+            app.databaseMethodsFolderPath = newEntry;
+            app.projectRoot = newEntry.replace('/Sources/Databasemethods/','');
+        }
         fs.mkdirSync(newEntry);
     } else if (!entry.endsWith('.4dm')) {
 
         fs.copyFile(entry, newEntry, (err) => {
             if (err) throw err;
-            console.log(entry + ' was copied');
-
+            console.log('Copied ' + entry);
         });
 
     }
+}
+
+// Copy template files to output dir (package.json, nodules_modules, etc.)
+console.log('Copying $Dcommands...');
+for await (const entry of glob("$Dcommands/**/*")){
+    // console.log("Copying " + entry);
+    fs.copyFile(entry, entry.replace('./',app.databaseMethodsFolderPath), (err) => {
+        if (err) throw err;
+    });
 }
 
 // // Transpile all 4dm files to JavaScript
@@ -70,17 +76,22 @@ for await (const entry of glob("input/**/*.4dm")){
     let code = fs.readFileSync(entry, 'utf8');
     let transpiledCode = transpileFile(code,entry);
     // Write to js file in output dir
-    fs.writeFileSync('./output/' + entry + '.js', transpiledCode);
-
-    // Add import statements to onServerStartup.js
-    let startjs = fs.readFileSync('./output/Project/Sources/DatabaseMethods/onServerStartup.js');
-    startjs = app.importStatements.join('\n\n') + startjs;
+    let newFileName = entry.replace('input','output').replace('.4dm','.js');
+    // console.log("Write ", newFileName,transpiledCode);
+    fs.appendFileSync( newFileName, transpiledCode, {encoding: "utf8"});
+    console.log("app.projectRoot ", app.projectRoot);
 
 }
 
+console.log("Start adding import statements to onServerStartup.js " + app.projectRoot);
+// Add import statements to onServerStartup.js
+let startjs = fs.readFileSync(app.projectRoot + '/Sources/Databasemethods/onServerStartup.js', {encoding: "utf8"});
+startjs = app.importStatements.join('\n\n') + startjs;
+fs.appendFileSync(app.projectRoot + '/Sources/Databasemethods/onServerStartup.js', transpiledCode, {encoding: "utf8"});
 
 /**
- * Transpile a 4dm file to JavaScript and keep track of used fourDCommands.js, so they can be to be imported later on app.importStatements
+ * Transpile a 4dm file to JavaScript and keep track of used fourDCommands.js, 
+ * so they can be imported later on using app.importStatements.
  * @param {string} code - content of the 4dm file
  * @param {string} filename - filename of the 4dm file
  * @returns {string} - file content transpiled to JS
@@ -96,12 +107,14 @@ function transpileFile (code, filename) {
         code = code.replaceAll(prop, simpleReplacements[prop]);
     }
 
-    // Replace 4D declarations that can directly be replaced by JS commands
+    // Replace $D declarations that can directly be replaced by JS commands
     for ( let prop in declarations.oldDeclarations ) {
         code = code.replaceAll(prop, simpleReplacements[prop]);
     }
 
-    let arrayOfLines = code.split('\n').forEach((line) => {
+    let arrayOfLines = code.split('\n');
+    
+    arrayOfLines.forEach((line) => {
 
         // Transpile declarations like:
         //  C_TEXT:C284(x1;x2;x3) to let x1,x2,x3 = "";
@@ -150,7 +163,7 @@ function transpileFile (code, filename) {
         const regex3 = /var (\$\w+) : (\w+)/;
         const match3 = line.match(regex3);
 
-        if (match3) {
+        if ( match3 ) {
             const variableNamesStr = match3[1];
             const dataType = match3[2];
 
@@ -170,15 +183,13 @@ function transpileFile (code, filename) {
 
     });
 
-    debugger;
-
     code = arrayOfLines.join('\n');
 
-    // FIXME varname can not start with a number or <>
+    // FIXME varname can't start with a number or <>
 
-    // Replace $D commands with JS commands
+    // Replace $D commands with JS functions
     // Example "ALERT:C41(msg)" -> "alert(msg)"
-    console.log("Replace 4D commands...");
+    console.log("Replace $D commands...");
     fourDCommands.forEach((sourceCmdWithNumber)=>{
 
         // Get commandname name from sourceCmdWithNumber

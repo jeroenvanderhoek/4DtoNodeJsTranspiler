@@ -1,9 +1,10 @@
 # Introduction  
-Basic example of how a $D to free NodeJS transpiler could work. 
+Basic example of how a $D to NodeJS transpiler could work. 
 
-It's hard to oversee all the use cases, and if it will perform well. Also I dont have experience working on compilers/transpiler, so this could probably be improved (parse to Abstract Syntax Tree first?). 
-I got experience with node.js, but not much with SQL databases, I'll leave that implemantation to someone else. 
-It could work for $D project which dont use $D clients ($D clients probably would need to be replaced with webapps which is very complex).
+It's hard to oversee all the use cases, and if it will perform well, also I dont have much experience 
+working on compilers/transpilers, so this could probably be improved (parse to Abstract Syntax Tree first?). 
+An SQL database still needs to be implemented. It could work for $D projects which dont use $D 
+clients ($D clients probably would need to be replaced with webapps which is very complex).
 
 This approach uses Node.JS this has some advantages to $D, because you can:
 - use a Javascript IDE
@@ -41,20 +42,24 @@ FIXME
 - basic webserver
 - Start new processes with cluster.fork() Get current process name etc? Process ID? process.ppid / worker.id
 - How does this perform with 30.000 $D methods imported in each process?
-- implement SQL. SQL 92 like $D? Or MySQL? 
+- implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? 
 - how to support different versions of $D?
 - simple example with webserver, database SQL engine? MySQL / SQL92?, website, http-server in nodejs
 
 
 General idea of transpiling:
 1. Lexical Analysis
-Tokenization: Break down the 4D source code into tokens. Tokens are the smallest units of meaning, such as keywords, operators, identifiers, and literals.
+Tokenization: Break down the 4D source code into tokens. Tokens are the smallest units of meaning, such as 
+keywords, operators, identifiers, and literals.
 2. Parsing
-Abstract Syntax Tree (AST): Convert the tokens into an AST, which represents the hierarchical structure of the source code. This step involves defining the grammar of 4D and using a parser generator to create the AST.
+Abstract Syntax Tree (AST): Convert the tokens into an AST, which represents the hierarchical structure of 
+the source code. This step involves defining the grammar of 4D and using a parser generator to create the AST.
 3. Transformation
-AST Transformation: Traverse and transform the AST from 4D syntax to Node.js syntax. This involves mapping 4D constructs to their equivalent in Node.js.
+AST Transformation: Traverse and transform the AST from 4D syntax to Node.js syntax. This involves mapping 
+4D constructs to their equivalent in Node.js.
 4. Code Generation
-Generate Node.js Code: Convert the transformed AST into Node.js code. This step involves walking through the AST and generating the corresponding Node.js code.
+Generate Node.js Code: Convert the transformed AST into Node.js code. This step involves walking through 
+the AST and generating the corresponding Node.js code.
 
 This project is for educational purposes only. No warranties, expressed or implied, are provided. Use at your own risk.
 
