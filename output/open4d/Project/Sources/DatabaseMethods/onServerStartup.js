@@ -1,12 +1,13 @@
-import Arctan from "../$Dcommands/Arctan.js";
+import ALERT from "../../$Dcommands/ALERT.js";
+import LOG EVENT from "../../$Dcommands/LOG EVENT.js";
 
-C_LONGINT:CAbs:C==:=Math.abs(x,y)
-C_REAL:CAbs:C==:=Math.atan(z)
+C_LONGINT:C283(x,y)
+C_REAL:C285(z)
 
-x:=true
-y:=Math.abs
-z:=Arctan:CAbs:C==True:CAbs:C==trueArctan:C20(x/y)
+x=1
+y=3
+z=Math.atan(x/y)
 
-LOG EVENT:CTan:C1=Tan:C1=Math.tan(Into Windows log events:KMath.abs:=:Arctan:C20; "Arctan calculated: "+z)
+LOG EVENT:C667(Into Windows log events:K38:4; "Arctan calculated: "+z)
 
-ALERT:CArctan:C20true("Hello World!")
+ALERT:C41("Hello World!")

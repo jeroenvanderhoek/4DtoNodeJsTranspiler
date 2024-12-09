@@ -1,9 +1,9 @@
 import simpleReplacements from './simple4dCommandReplacements.js';
-import fourDCommands from './$Dcommands.js';
+import $Dcommands from './$Dcommands.js';
 import declarations from './declarations.js';
 
 /**
- * Transpile a 4dm file to JavaScript and keep track of used fourDCommands.js, 
+ * Transpile a 4dm file to JavaScript and keep track of used $Dcommands.js, 
  * so they can be imported later on using importStatements.
  * @param {object} app - app object
  * @param {string} code - content of the 4dm file
@@ -15,19 +15,17 @@ function transpile (app, code, filename) {
     console.log("Transpiling " + filename);
     // FIXME this should not be replaced in strings / php / sql statements / comments
 
+    let result = '';
+
     console.log("simpleReplacements...");
     // Replace $D commands that can directly be replaced by JS commands
     for ( let prop in simpleReplacements ) {
-        code = code.replaceAll(prop, simpleReplacements[prop]);
-    }
-
-    // Replace $D declarations that can directly be replaced by JS commands
-    for ( let prop in declarations.oldDeclarations ) {
-        code = code.replaceAll(prop, simpleReplacements[prop]);
+        console.log("replace " + prop + " with " + simpleReplacements[prop]);
+        code = code.replace(new RegExp(`${ prop }`, "g"), simpleReplacements[prop]);
     }
 
     let arrayOfLines = code.split('\n');
-    
+debugger;
     arrayOfLines.forEach((line) => {
 
         // Transpile declarations like:
@@ -76,7 +74,7 @@ function transpile (app, code, filename) {
 
             if ( dataType in declarations.newDeclarations ) {
                 const defaultValue = declarations.newDeclarations[dataType];
-                const variableNames = variableNamesStr.replaceAll(';',', ');
+                const variableNames = variableNamesStr.replace(new RegExp(`;`, "g"),', ');
                 return `let ${variableNames} = ${defaultValue};`;
             } else {
                 console.log(`Unsupported data type: ${dataType} ${filename}`);
@@ -96,34 +94,36 @@ function transpile (app, code, filename) {
 
     let importStatements = [];
 
+    result = code;
+
     // Replace $D commands with JS functions
     // Example "ALERT:C41(msg)" -> "alert(msg)"
     console.log("Replace $D commands...");
-    fourDCommands.forEach((sourceCmdWithNumber)=>{
+    $Dcommands.forEach((sourceCmdWithNumber)=>{
 
         // Get commandname name from sourceCmdWithNumber
         let cmdName = sourceCmdWithNumber.split(':')[0];
 
-        let occurencesInFile = code.split(sourceCmdWithNumber).length - 1;
+        let occurencesInFile = result.split(sourceCmdWithNumber).length - 1;
 
         for ( let i = 0; i < occurencesInFile; i++ ) {
 
             // Get the index of the next occurence of the $D command in the code
-            let index = code.indexOf(sourceCmdWithNumber);
+            let index = result.indexOf(sourceCmdWithNumber);
 
             // Check if the $D command has parameters
-            if ( code[index + sourceCmdWithNumber.length] === '(' ) {
+            if ( result[index + sourceCmdWithNumber.length] === '(' ) {
 
-                let paramsStr = code.substring(index + sourceCmdWithNumber.length + 1, code.indexOf(')', index));
+                let paramsStr = result.substring(index + sourceCmdWithNumber.length + 1, result.indexOf(')', index));
                 let params = paramsStr.split(';').map(param => param.trim()); // FIXME dont split on ';' inside strings
 
                 // Replace the $D command with the JS command and its parameters
-                code.replace(sourceCmdWithNumber + paramsStr, cmdName + '(' + params.join(',') + ')');
+                result = result.replace(sourceCmdWithNumber + paramsStr, cmdName + '(' + params.join(',') + ')');
 
             } else {
 
                 // Replace the $D command with the JS command
-                code.replace(sourceCmdWithNumber,cmdName);
+                result = result.replace(sourceCmdWithNumber,cmdName);
 
             }
 
@@ -134,6 +134,7 @@ function transpile (app, code, filename) {
 
             // Get the JS translation of the $D command
             let importStatement = 'import ' + cmdName + ' from \"../../$Dcommands/' + cmdName + '.js\";';
+
             if ( !importStatements.includes(importStatement) ) {
                 importStatements.push(importStatement);
             }
@@ -143,11 +144,11 @@ function transpile (app, code, filename) {
     });
 
     // Prepend import statements to file
-    code = importStatements.join('\n') + '\n\n' + code;
+    result = importStatements.join('\n') + '\n\n' + result;
 
     console.log("Replace project methods... TODO"); 
 
-    return code;
+    return result;
 
 }
 
