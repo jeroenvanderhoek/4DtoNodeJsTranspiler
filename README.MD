@@ -82,7 +82,7 @@ $D commands
 | ADJUST INDEX CACHE PRIORITY                  |         |                     |            |
 | ADJUST TABLE CACHE PRIORITY                  |         |                     |            |
 | After                                        |         |                     |            |
-| ALERT                                        |         |                     |            |
+| ALERT                                        |         |          X          |            |
 | ALL RECORDS                                  |         |                     |            |
 | APPEND DATA TO PASTEBOARD                    |         |                     |            |
 | Append document                              |         |                     |            |
