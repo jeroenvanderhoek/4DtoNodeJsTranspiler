@@ -11,4 +11,6 @@ export default {
     "Is Windows:C1573":"(process.platform === 'win32')",
     "Is macOS:C1572":"(process.platform === 'darwin')",
     "TRACE:C157":"debugger",
+    "New collection:C1472":"[]",
+    "New shared collection:C1527":"[]"
 }
