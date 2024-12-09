@@ -1,0 +1,1 @@
+// $D command: OBJECT GET RGB COLORS

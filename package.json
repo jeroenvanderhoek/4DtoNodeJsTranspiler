@@ -1,0 +1,17 @@
+{
+  "name": "open4d-compiler",
+  "version": "1.0.0",
+  "description": "Transpiles $D source in /input/ to a NodeJS project in /output/",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "4D community",
+  "license": "MIT",
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=22.0.0"
+  }
+}

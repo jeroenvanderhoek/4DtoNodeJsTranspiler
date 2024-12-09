@@ -1,0 +1,1 @@
+// $D command: LISTBOX SET COLUMN FORMULA

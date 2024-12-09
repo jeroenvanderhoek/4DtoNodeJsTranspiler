@@ -1,0 +1,1 @@
+// $D command: FORM GET VERTICAL RESIZING

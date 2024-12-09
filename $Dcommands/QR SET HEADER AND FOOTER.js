@@ -1,0 +1,1 @@
+// $D command: QR SET HEADER AND FOOTER

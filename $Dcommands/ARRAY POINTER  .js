@@ -1,0 +1,1 @@
+// $D command: ARRAY POINTER  

@@ -1,0 +1,1 @@
+// $D command: GET PROCESS VARIABLE

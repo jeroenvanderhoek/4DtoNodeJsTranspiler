@@ -1,0 +1,15 @@
+{
+	"editors": [
+		{
+			"type": "method",
+			"id": 2147483644,
+			"codeDescriptor": {
+				"type": 5,
+				"databaseMethod": 2
+			}
+		},
+		{
+			"type": "explorer"
+		}
+	]
+}

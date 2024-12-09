@@ -1,0 +1,1 @@
+// $D command: STOP MONITORING ACTIVITY

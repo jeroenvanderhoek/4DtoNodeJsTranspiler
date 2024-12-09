@@ -1,0 +1,1 @@
+// $D command: SOAP REJECT NEW REQUESTS

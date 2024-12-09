@@ -1,0 +1,1 @@
+// $D command: SAX SET XML DECLARATION
