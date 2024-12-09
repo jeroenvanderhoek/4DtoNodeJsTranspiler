@@ -1,4 +1,4 @@
-C_LONGINT:C283(x,y)
+C_LONGINT:C283(x;y)
 C_REAL:C285(z)
 
 x:=1

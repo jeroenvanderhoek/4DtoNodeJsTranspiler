@@ -1,6 +1,7 @@
 import simpleReplacements from './simple4dCommandReplacements.js';
 import $Dcommands from './$Dcommands.js';
 import declarations from './declarations.js';
+import constants from './constants.js';
 
 /**
  * Transpile a 4dm file to JavaScript and keep track of used $Dcommands.js, 
@@ -24,27 +25,31 @@ function transpile (app, code, filename) {
         code = code.replace(new RegExp(`${ prop }`, "g"), simpleReplacements[prop]);
     }
 
-    let arrayOfLines = code.split('\n');
-debugger;
-    arrayOfLines.forEach((line) => {
+    let arrayOfLines = [];
+ 
+    code.split('\n').forEach((line) => {
 
         // Transpile declarations like:
         //  C_TEXT:C284(x1;x2;x3) to let x1,x2,x3 = "";
-        const regexOld = /(\$\w+)\((\w+)\);/
+        //  C_REAL:C284(x1;x2;x3) to let x1,x2,x3 = 0;
+        const regexOld = /C_\w+:\w{4}\([^\)]+\)/; ///(\$\w+)\((\w+)\);/
         const matchOld = line.match(regexOld);
 
         if (matchOld) {
 
-            const dataType = matchOld[1];
-            const variableNamesStr = matchOld[2];
+            let dataType = matchOld[0].split("(")[0];
+            let variableNamesStr = matchOld[0].split("(")[1].split(")")[0];
+            let tp = declarations.oldDeclarations.find(obj => (obj.name === dataType));
 
-            if ( dataType in declarations.oldDeclarations ) {
-                const defaultValue = declarations.oldDeclarations[dataType];
+            if ( tp ) {
+                const defaultValue = tp.value;
                 let variableNames = variableNamesStr.split(';').map(param => param.trim());
-                return `let ${variableNames.join(",")} = ${defaultValue};`;
+                arrayOfLines.push(`let ${variableNames.join(",")} = ${defaultValue};`);
+                return;
             } else {
                 console.log(`Unsupported data type: ${dataType} ${filename}`);
-                return line;
+                arrayOfLines.push(line);
+                return;
             }
 
         }
@@ -59,7 +64,8 @@ debugger;
             const variableName = matchNew[1];
             const dataType = matchNew[2];
             const value = matchNew[3];
-            return `let ${variableName} = ${value};`;
+            arrayOfLines.push(`let ${variableName} = ${value};`);
+            return;
         }
 
         // Transpile declarations with default values like:
@@ -75,26 +81,29 @@ debugger;
             if ( dataType in declarations.newDeclarations ) {
                 const defaultValue = declarations.newDeclarations[dataType];
                 const variableNames = variableNamesStr.replace(new RegExp(`;`, "g"),', ');
-                return `let ${variableNames} = ${defaultValue};`;
+                arrayOfLines.push(`let ${variableNames} = ${defaultValue};`);
+                return;
             } else {
                 console.log(`Unsupported data type: ${dataType} ${filename}`);
-                return line;
+                arrayOfLines.push(line);
+                return;
             }
 
         } else {
             // Handle other 4D constructs or return the original line
-            return line;
+            arrayOfLines.push(line);
+            return;
         }
 
     });
 
-    code = arrayOfLines.join('\n');
+    result = arrayOfLines.join('\n');
 
     // FIXME varname can't start with a number or <>
 
     let importStatements = [];
 
-    result = code;
+    debugger
 
     // Replace $D commands with JS functions
     // Example "ALERT:C41(msg)" -> "alert(msg)"
@@ -108,6 +117,8 @@ debugger;
 
         for ( let i = 0; i < occurencesInFile; i++ ) {
 
+            debugger;
+
             // Get the index of the next occurence of the $D command in the code
             let index = result.indexOf(sourceCmdWithNumber);
 
@@ -118,12 +129,14 @@ debugger;
                 let params = paramsStr.split(';').map(param => param.trim()); // FIXME dont split on ';' inside strings
 
                 // Replace the $D command with the JS command and its parameters
-                result = result.replace(sourceCmdWithNumber + paramsStr, cmdName + '(' + params.join(',') + ')');
+                // Replace spaces in command names with underscores for javascript
+                result = result.replace(sourceCmdWithNumber + "(" + paramsStr + ")", cmdName.replace(/ /g,"_") + "(" + params.join(",") + ")");
 
             } else {
 
                 // Replace the $D command with the JS command
-                result = result.replace(sourceCmdWithNumber,cmdName);
+                // Replace spaces in command names with underscores for javascript
+                result = result.replace(sourceCmdWithNumber,cmdName.replace(/ /g,"_"));
 
             }
 
@@ -133,7 +146,8 @@ debugger;
         if ( occurencesInFile > 0 ) {
 
             // Get the JS translation of the $D command
-            let importStatement = 'import ' + cmdName + ' from \"../../$Dcommands/' + cmdName + '.js\";';
+            // Replace spaces in command names with underscores for javascript
+            let importStatement = 'import ' + (cmdName).replace(/ /g,"_") + ' from \"../../$Dcommands/' + cmdName + '.js\";';
 
             if ( !importStatements.includes(importStatement) ) {
                 importStatements.push(importStatement);
@@ -142,6 +156,12 @@ debugger;
         }
 
     });
+
+    // Replace constants with their values
+    console.log("Replace constants with their values..."); // FIXME import constants in javascript source  
+    for ( let prop in constants ) {
+        result = result.replace(new RegExp(`${ prop }`, "g"), constants[prop]);
+    }
 
     // Prepend import statements to file
     result = importStatements.join('\n') + '\n\n' + result;

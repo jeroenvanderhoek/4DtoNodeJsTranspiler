@@ -38,6 +38,7 @@ Feel free to contribute / fork / take it away!
 FIXME 
 - fix a few hundred more /$Dcommand/-modules ( skip the $D client / UI stuff in the beginning / skip QR )
 - replace interproces variable-names starting with <>
+- import constants all constants in constants.js (optionnally insert constantsnames in js source)
 - $D objects 
 - basic webserver
 - Start new processes with cluster.fork() Get current process name etc? Process ID? process.ppid / worker.id
@@ -45,7 +46,6 @@ FIXME
 - implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? 
 - how to support different versions of $D?
 - simple example with webserver, database SQL engine? MySQL / SQL92?, website, http-server in nodejs
-
 
 General idea of transpiling:
 1. Lexical Analysis
