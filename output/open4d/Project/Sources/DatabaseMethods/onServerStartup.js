@@ -1,10 +1,12 @@
-C_LONGINT:CFalse:C21Math.absTan:C1Math.tanfalse(x,y)
-C_REAL:CFalse:C21Math.absTan:C1Math.tanMath.abs(z)
+import Arctan from "../$Dcommands/Arctan.js";
+
+C_LONGINT:CAbs:C==:=Math.abs(x,y)
+C_REAL:CAbs:C==:=Math.atan(z)
 
 x:=true
-y:=false
-z:=Arctan:CFalse:C21Math.absTrue:CFalse:C21Math.abstrueAbs:CMath.tanMath.tan(x/y)
+y:=Math.abs
+z:=Arctan:CAbs:C==True:CAbs:C==trueArctan:C20(x/y)
 
-LOG EVENT:CArctan:C20Arctan:C20Math.atan(Into Windows log events:KfalseTan:C1Math.tan:Abs:CMath.tanMath.tan; "Arctan calculated: "+z)
+LOG EVENT:CTan:C1=Tan:C1=Math.tan(Into Windows log events:KMath.abs:=:Arctan:C20; "Arctan calculated: "+z)
 
-ALERT:CAbs:CMath.tanMath.tantrue("Hello World!")
+ALERT:CArctan:C20true("Hello World!")

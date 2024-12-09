@@ -1,3 +1,6 @@
+# Custom
+output/
+
 # Logs
 logs
 *.log

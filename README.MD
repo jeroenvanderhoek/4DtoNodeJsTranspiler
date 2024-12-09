@@ -1,8 +1,8 @@
 # Introduction  
 Basic example of how a $D to NodeJS transpiler could work. 
 
-It's hard to oversee all the use cases, and if it will perform well, also I dont have much experience 
-working on compilers/transpilers, so this could probably be improved (parse to Abstract Syntax Tree first?). 
+It's hard to oversee all the use cases, and if it will perform well, also could maybe be 
+improved by parsing to an Abstract Syntax Tree. 
 An SQL database still needs to be implemented. It could work for $D projects which dont use $D 
 clients ($D clients probably would need to be replaced with webapps which is very complex).
 
@@ -170,7 +170,7 @@ $D commands
 | Command name                                 |         |                     |            |
 | Compact data file                            |         |                     |            |
 | Compare strings                              |         |                     |            |
-| Compile project                              |         |                     |            |
+| Compile project                              |         |         X           |            |
 | COMPONENT LIST                               |         |                     |            |
 | COMPRESS BLOB                                |         |                     |            |
 | CONFIRM                                      |         |                     |            |

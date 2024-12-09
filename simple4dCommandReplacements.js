@@ -3,7 +3,7 @@
 
 export default [
     "True:C214","true",
-    "False:C215","false",
+    // "False:C215","false",// not so simple
     "Abs:C99","Math.abs",
     "Arctan:C20","Math.atan",
     "Tan:C19","Math.tan",
