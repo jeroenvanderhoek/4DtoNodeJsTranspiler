@@ -157,7 +157,8 @@ function transpile (app, code, filename) {
 
     });
 
-    // Replace constants with their values
+    // Replace constants with their values 
+    // OPTIMIZE: replace with constant names (remove spaces from constantnames) and import constants in javascript source)
     console.log("Replace constants with their values..."); // FIXME import constants in javascript source  
     for ( let prop in constants ) {
         result = result.replace(new RegExp(`${ prop }`, "g"), constants[prop]);

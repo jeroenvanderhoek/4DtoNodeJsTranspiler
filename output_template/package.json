@@ -5,7 +5,7 @@
   "main": "./Project/Sources/DatabaseMethods/onServerStartup.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd * && node ./Project/Sources/DatabaseMethods/onServerStartup.js"
+    "start": "node ./Project/Sources/DatabaseMethods/onServerStartup.js"
   },
   "author": "",
   "license": "ISC"

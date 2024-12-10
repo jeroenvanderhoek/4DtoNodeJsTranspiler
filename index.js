@@ -1,7 +1,8 @@
 // Import Node.js modules
-import fs from 'fs';
+import fs, { copyFile } from 'fs';
 import {lstatSync} from 'fs';
 import { glob } from 'node:fs/promises'; console.log('Requires node 22.0.0 or higher');
+import path from 'path';
 
 // Import our custom modules
 import fourDCommands from './$Dcommands.js';
@@ -11,7 +12,7 @@ import transpile from './transpile.js';
 let app = {
     databaseMethodsFolderPath: '',
     projectRoot: '',
-    DATABASEMETHODFOLDERPATH: "/Sources/DatabaseMethods/"
+    DATABASEMETHODFOLDERPATH: path.sep + "Sources" + path.sep + "DatabaseMethods" + path.sep
 };
 
 // Clean output dir
@@ -26,7 +27,7 @@ console.log('Copying output_template...');
 for await (const entry of glob("output_template/**/*")){
     fs.copyFile(entry, entry.replace('output_template','output'), (err) => {
         if (err) throw err;
-        console.log(entry + 'was copied');
+        console.log(entry + ' was copied');
     });
 }
 
@@ -37,7 +38,7 @@ for await (const entry of glob("input/**/*")){
     console.log("Copying " + entry);
     const stat = lstatSync(entry);
 
-    let newEntry = entry.replace('input/','output/');
+    let newEntry = entry.replace('input' + path.sep,'output' + path.sep);
 
     if ( newEntry.indexOf(app.DATABASEMETHODFOLDERPATH) > 0 ) {
         app.projectRoot = newEntry.split(app.DATABASEMETHODFOLDERPATH,1)[0];
@@ -55,6 +56,7 @@ for await (const entry of glob("input/**/*")){
         fs.mkdirSync(newEntry);
     } else if ( !entry.endsWith('.4dm') ) {
 
+        console.log('Copying ' + entry + ' to ' + newEntry);
         fs.copyFile(entry, newEntry, (err) => {
             if (err) throw err;
             console.log('Copied ' + entry);
@@ -65,7 +67,7 @@ for await (const entry of glob("input/**/*")){
 
 // Copy template files to output dir (package.json, nodules_modules, etc.)
 console.log('Copying $Dcommands...');
-fs.mkdirSync(app.projectRoot+"/$Dcommands");
+fs.mkdirSync(app.projectRoot + path.sep+"$Dcommands");
 for await (const entry of glob("\$Dcommands/**/*")){
     console.log("Copying " + entry);
     fs.copyFile(entry, app.projectRoot + "/" + entry, (err) => {

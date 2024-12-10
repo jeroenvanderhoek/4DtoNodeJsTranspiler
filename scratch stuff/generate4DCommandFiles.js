@@ -18,4 +18,4 @@ commandNames.forEach((item) => {
     txt += '"'+ item + '",\n'
 });
 txt += "]";
-fs.writeFileSync("./$Dcommands.js", "export default [" + txt);
+fs.writeFileSync("./getConstantsNamesAndValues.4dm", "export default [" + txt);

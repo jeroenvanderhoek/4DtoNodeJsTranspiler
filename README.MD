@@ -49,14 +49,14 @@ FIXME
 
 General idea of transpiling:
 1. Lexical Analysis
-Tokenization: Break down the 4D source code into tokens. Tokens are the smallest units of meaning, such as 
+Tokenization: Break down the $D source code into tokens. Tokens are the smallest units of meaning, such as 
 keywords, operators, identifiers, and literals.
 2. Parsing
 Abstract Syntax Tree (AST): Convert the tokens into an AST, which represents the hierarchical structure of 
-the source code. This step involves defining the grammar of 4D and using a parser generator to create the AST.
+the source code. This step involves defining the grammar of $D and using a parser generator to create the AST.
 3. Transformation
-AST Transformation: Traverse and transform the AST from 4D syntax to Node.js syntax. This involves mapping 
-4D constructs to their equivalent in Node.js.
+AST Transformation: Traverse and transform the AST from $D syntax to Node.js syntax. This involves mapping 
+$D constructs to their equivalent in Node.js.
 4. Code Generation
 Generate Node.js Code: Convert the transformed AST into Node.js code. This step involves walking through 
 the AST and generating the corresponding Node.js code.
@@ -64,7 +64,7 @@ the AST and generating the corresponding Node.js code.
 This project is for educational purposes only. No warranties, expressed or implied, are provided. Use at your own risk.
 
 $D commands 
-| 4DCommand                                    | Done    | Skip (4D client etc)|            |
+| $DCommand                                    | Done    | Skip ($D client etc)|            |
 | -------------------------------------------- | ------- | ------------------- | ---------- |
 | ABORT                                        |         |                     |            |
 | ABORT PROCESS BY ID                          |         |                     |            |
@@ -388,8 +388,8 @@ $D commands
 | GENERATE ENCRYPTION KEYPAIR                  |         |                     |            |
 | Generate password hash                       |         |                     |            |
 | Generate UUID                                |         |                     |            |
-| Get 4D file                                  |         |                     |            |
-| Get 4D folder                                |         |                     |            |
+| Get $D file                                  |         |                     |            |
+| Get $D folder                                |         |                     |            |
 | Get adjusted blobs cache priority            |         |                     |            |
 | Get adjusted index cache priority            |         |                     |            |
 | Get adjusted table cache priority            |         |                     |            |
@@ -632,7 +632,7 @@ $D commands
 | LISTBOX SET STATIC COLUMNS                   |         |                     |            |
 | LISTBOX SET TABLE SOURCE                     |         |                     |            |
 | LISTBOX SORT COLUMNS                         |         |                     |            |
-| Load 4D View document                        |         |                     |            |
+| Load $D View document                        |         |                     |            |
 | Load list                                    |         |                     |            |
 | LOAD RECORD                                  |         |                     |            |
 | LOAD SET                                     |         |                     |            |
@@ -903,10 +903,10 @@ $D commands
 | Print settings to BLOB                       |         |                     |            |
 | PRINTERS LIST                                |         |                     |            |
 | Printing page                                |         |                     |            |
-| PROCESS 4D TAGS                              |         |                     |            |
+| PROCESS $D TAGS                              |         |                     |            |
 | Process aborted                              |         |                     |            |
-| Process activity-modified 4D 20 R7           |         |                     |            |
-| Process info-new 4D 20 R7                    |         |                     |            |
+| Process activity-modified $D 20 R7           |         |                     |            |
+| Process info-new $D 20 R7                    |         |                     |            |
 | Process number                               |         |                     |            |
 | Process state                                |         |                     |            |
 | PUSH RECORD                                  |         |                     |            |
@@ -966,7 +966,7 @@ $D commands
 | QUERY SELECTION BY FORMULA                   |         |                     |            |
 | QUERY SELECTION WITH ARRAY                   |         |                     |            |
 | QUERY WITH ARRAY                             |         |                     |            |
-| QUIT 4D                                      |         |                     |            |
+| QUIT $D                                      |         |                     |            |
 | Random                                       |         |                     |            |
 | READ ONLY                                    |         |                     |            |
 | Read only state                              |         |                     |            |
@@ -1007,7 +1007,7 @@ $D commands
 | RESOLVE POINTER                              |         |                     |            |
 | RESOURCE LIST                                |         |                     |            |
 | RESOURCE TYPE LIST                           |         |                     |            |
-| RESTART 4D                                   |         |                     |            |
+| RESTART $D                                   |         |                     |            |
 | RESTORE                                      |         |                     |            |
 | RESTORE INFO                                 |         |                     |            |
 | RESUME INDEXES                               |         |                     |            |
@@ -1061,7 +1061,7 @@ $D commands
 | SEND VARIABLE                                |         |                     |            |
 | Sequence number                              |         |                     |            |
 | Session                                      |         |                     |            |
-| Session info-new 4D 20 R7                    |         |                     |            |
+| Session info-new $D 20 R7                    |         |                     |            |
 | Session storage                              |         |                     |            |
 | SET ABOUT                                    |         |                     |            |
 | SET ALLOWED METHODS                          |         |                     |            |
@@ -1131,7 +1131,7 @@ $D commands
 | SET UPDATE FOLDER                            |         |                     |            |
 | SET USER ALIAS                               |         |                     |            |
 | Set user properties                          |         |                     |            |
-| SET WINDOW DOCUMENT ICON-new 4D 20 R7        |         |                     |            |
+| SET WINDOW DOCUMENT ICON-new $D 20 R7        |         |                     |            |
 | SET WINDOW RECT                              |         |                     |            |
 | SET WINDOW TITLE                             |         |                     |            |
 | Shift down                                   |         |                     |            |
