@@ -1,8 +1,7 @@
 # Introduction  
 Basic example of how a $D to NodeJS transpiler could work. 
 
-It's hard to oversee all the use cases, and if it will perform well, also it could maybe be 
-improved by parsing to an Abstract Syntax Tree. 
+It's hard to oversee all the use cases, and if it will perform well. 
 It could work for $D projects which dont use $D clients ($D clients probably would need to 
 be replaced with webapps which is very complex and different).
 
