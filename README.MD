@@ -1,34 +1,41 @@
 # Introduction  
 Basic example of how a $D to NodeJS transpiler could work. 
 
-It's hard to oversee all the use cases, and if it will perform well, also could maybe be 
+It's hard to oversee all the use cases, and if it will perform well, also it could maybe be 
 improved by parsing to an Abstract Syntax Tree. 
-An SQL database still needs to be implemented. It could work for $D projects which dont use $D 
-clients ($D clients probably would need to be replaced with webapps which is very complex).
+It could work for $D projects which dont use $D clients ($D clients probably would need to 
+be replaced with webapps which is very complex and different).
+
+This still needs a lot of work on $Dcommands, like webserver and SQL database integration.
+
+Basic operation:
+- get $D project from /input/-folder
+- transpile methods and commands (*.$dm files)
+    - convert variable declarations to JS
+    - replace constants with constants.js
+    - read all *.$dm files and replace some basic things with using simpleReplacements.js
+    - import more complex $Dcommands from their javascript-modules in /$Dcommands/
+    - the entrypoint is: ./Project/Sources/DatabaseMethods/onServerStartup.js
+    - import Project Methods when used
+    - wrap all methods, so they can be exported
+- result in /outpot/-folder
 
 This approach uses Node.JS this has some advantages to $D, because you can:
 - use a JavaScript IDE
-- also contribute if you dont have a $D developer license
+- contribute if you dont have a $D developer license
 - use a lot of shared packages, see: https://www.npmjs.com/
-- JavaScript is better supported by Gemini / Copilot
-
-Basic operation:
-- read all *.$dm files and replace some basic things with using simpleReplacements.js
-- then find all $Dcommands (with $Dcommands.js) to replace the more complex commands with their javascript-modules in /$Dcommands/
-
-/$Dcommands/ contains folder with javascript definitions of the $D commands, if used they will be included in compilation.   
+- JavaScript has better supported from Gemini / Copilot
 
 # Getting Started 
 Usage:
-- put your $D project in /input/ folder
-- in CMD run: npm start (this runs: node index.js)
-- result: /output/
-    - install node packages run: /output/npm install 
-    - run with: npm start // this runs: node ./Project/Sources/DatabaseMethods/onServerStartup.js
+- put your $D project in the /input/-folder (there is allready an example project in there)
+- To transpile start: npm start 
+- result goes to /output/
+- To run the result: npm test
 
 Prerequisites
 - this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.
-- install Node v22
+- install Node v22 https://nodejs.org/en/download/package-manager
 - $D project must be in project mode
 - $D 20v7 BETA commands used
 - skip $D client, $dmobile, QR, PASTE TO CLIPBOARD
