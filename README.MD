@@ -6,7 +6,8 @@ improved by parsing to an Abstract Syntax Tree.
 It could work for $D projects which dont use $D clients ($D clients probably would need to 
 be replaced with webapps which is very complex and different).
 
-This still needs a lot of work on $Dcommands, like webserver and SQL database integration.
+The basic included project is working in NodeJS. This still needs a lot of work on $Dcommands, 
+such as a webserver and SQL database integration.
 
 Basic operation:
 - get $D project from /input/-folder
@@ -24,7 +25,7 @@ This approach uses Node.JS this has some advantages to $D, because you can:
 - use a JavaScript IDE
 - contribute if you dont have a $D developer license
 - use a lot of shared packages, see: https://www.npmjs.com/
-- JavaScript has better supported from Gemini / Copilot
+- JavaScript has better support from Gemini / Copilot
 
 # Getting Started 
 Usage:
