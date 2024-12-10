@@ -81,11 +81,14 @@ console.log("Transpiling 4dm files...");
 for await (const entry of glob("input/**/*.4dm")){
 
     let code = fs.readFileSync(entry, 'utf8');
-    let transpiledCode = transpile(app,code,entry);
     
-    // Write to js file in output dir
-    let newFileName = entry.replace('input','output').replace('.4dm','.js');
-    // console.log("Write ", newFileName,transpiledCode);
-    fs.appendFileSync( newFileName, transpiledCode, {encoding: "utf8"});
+    transpile(app,code,entry).then((transpiledCode)=>{
+
+        // Write to js file in output dir
+        let newFileName = entry.replace('input','output').replace('.4dm','.js');
+        // console.log("Write ", newFileName,transpiledCode);
+        fs.appendFileSync( newFileName, transpiledCode, {encoding: "utf8"});
+
+    });
 
 }

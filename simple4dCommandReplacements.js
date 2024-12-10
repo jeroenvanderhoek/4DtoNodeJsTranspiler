@@ -6,6 +6,7 @@ export default {
     "False:C215":"false",// not so simple
     "Abs:C99":"Math.abs",
     "Arctan:C20":"Math.atan",
+    "Sin:C17":"Math.sin",
     "Tan:C19":"Math.tan",
     ":=":"=",
     "Is Windows:C1573":"(process.platform === 'win32')",

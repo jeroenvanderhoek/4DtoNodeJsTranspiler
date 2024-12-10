@@ -2,6 +2,8 @@ import simpleReplacements from './simple4dCommandReplacements.js';
 import $Dcommands from './$Dcommands.js';
 import declarations from './declarations.js';
 import constants from './constants.js';
+import { glob } from 'node:fs/promises';
+import path from 'path';
 
 /**
  * Transpile a 4dm file to JavaScript and keep track of used $Dcommands.js, 
@@ -11,7 +13,7 @@ import constants from './constants.js';
  * @param {string} filename - filename of the 4dm file
  * @returns {string} - file content transpiled to JS
  */
-function transpile (app, code, filename) {
+async function transpile (app, code, filename) {
 
     console.log("Transpiling " + filename);
     // FIXME this should not be replaced in strings / php / sql statements / comments
@@ -21,7 +23,7 @@ function transpile (app, code, filename) {
     console.log("simpleReplacements...");
     // Replace $D commands that can directly be replaced by JS commands
     for ( let prop in simpleReplacements ) {
-        console.log("replace " + prop + " with " + simpleReplacements[prop]);
+        console.log("- " + prop + " with " + simpleReplacements[prop]);
         code = code.replace(new RegExp(`${ prop }`, "g"), simpleReplacements[prop]);
     }
 
@@ -103,8 +105,6 @@ function transpile (app, code, filename) {
 
     let importStatements = [];
 
-    debugger
-
     // Replace $D commands with JS functions
     // Example "ALERT:C41(msg)" -> "alert(msg)"
     console.log("Replace $D commands...");
@@ -116,8 +116,6 @@ function transpile (app, code, filename) {
         let occurencesInFile = result.split(sourceCmdWithNumber).length - 1;
 
         for ( let i = 0; i < occurencesInFile; i++ ) {
-
-            debugger;
 
             // Get the index of the next occurence of the $D command in the code
             let index = result.indexOf(sourceCmdWithNumber);
@@ -158,16 +156,77 @@ function transpile (app, code, filename) {
     });
 
     // Replace constants with their values 
-    // OPTIMIZE: replace with constant names (remove spaces from constantnames) and import constants in javascript source)
-    console.log("Replace constants with their values..."); // FIXME import constants in javascript source  
+    // OPTIMIZE: replace with actual constant names instead of just the values (remove spaces from constantnames and add import statements)
+    console.log("Replace constants with their values..."); 
     for ( let prop in constants ) {
         result = result.replace(new RegExp(`${ prop }`, "g"), constants[prop]);
     }
 
-    // Prepend import statements to file
-    result = importStatements.join('\n') + '\n\n' + result;
+    // Replace project methods-name with JS-compatible names and add import statements in all 4dm files which use them
+    console.log("Replace project methods..."); 
+    for await (const entry of glob("input/**/Methods/*.4dm")) { // FIXME async function is more complicated to debug
 
-    console.log("Replace project methods... TODO"); 
+        let methodName = entry.split(path.sep).pop().replace('.4dm','');
+        
+        // New JS methodname without spaces
+        let jsMethodName = methodName.replace(/ /g,"_");
+
+        let occurencesInFile = result.split(methodName).length - 1; // FIXME dont match in string / php / sql / comments (Or rename project methods in your project to avoid this)
+
+        for ( let i = 0; i < occurencesInFile; i++ ) {
+
+            // Get the index of the next occurence of the Project Method in the code
+            let index = result.indexOf(methodName);
+
+            // Check if the Project Method has parameters
+            if ( result[index + methodName.length] === '(' ) {
+
+                let paramsStr = result.substring(index + methodName.length + 1, result.indexOf(')', index));
+                let params = paramsStr.split(';').map(param => param.trim()); // FIXME dont split on ';' inside strings
+
+                // Replace the Project Method with the JS command and its parameters
+                // Replace spaces in command names with underscores for javascript
+                result = result.replace(methodName + "(" + paramsStr + ")", jsMethodName.replace(/ /g,"_") + "(" + params.join(",") + ")");
+
+            } else {
+
+                // Replace the Project Method with the JS command
+                // Replace spaces in command names with underscores for javascript
+                result = result.replace(methodName,jsMethodName.replace(/ /g,"_"));
+
+            }
+
+        }
+
+        // Transpile 4Dproject methods and let them export default
+
+        // if command was found add an import statement once to importStatements
+        if ( occurencesInFile > 0 ) {
+            let importStatement = 'import ' + jsMethodName + ' from \"../Methods/' + methodName + '.js\";';
+
+            if ( !importStatements.includes(importStatement) ) {
+                importStatements.push(importStatement);
+            }
+        }
+
+    }
+
+
+    // onServerStartup is the base of the project, the rest needs to be imported
+    // Wrap the other methods in a function and export them
+    // Add parameters to these functions calle $1, $2, $3, untill $15   
+    if ( filename.indexOf('onServerStartup') === -1 ) {
+
+        // OPTIMIZE randomize function name to avoid conflicts
+        let functionName = filename.split(path.sep).pop().replace('.4dm','').replace(/ /g,"_"); 
+
+        result = `export default function ${functionName}($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n${result}\n}`;
+    
+    }
+
+    // Prepend import statements to file
+    console.log("Importing: \n-" + importStatements.join('\n-'));
+    result = importStatements.join('\n') + '\n\n' + result;
 
     return result;
 

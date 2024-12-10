@@ -39,14 +39,14 @@ Feel free to contribute / fork / take it away!
 FIXME 
 - fix a few hundred more /$Dcommand/-modules ( skip the $D client / UI stuff in the beginning / skip QR )
 - replace interproces variable-names starting with <>
-- import constants all constants in constants.js (optionnally insert constantsnames in js source)
-- $D objects 
+- implement $D objects 
 - basic webserver
 - Start new processes with cluster.fork() Get current process name etc? Process ID? process.ppid / worker.id
 - How does this perform with 30.000 $D methods imported in each process?
 - implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? 
 - how to support different versions of $D?
-- simple example with webserver, database SQL engine? MySQL / SQL92?, website, http-server in nodejs
+- simple example with webserver, database, website, http-server in nodejs
+- improve constants.js
 
 General idea of transpiling:
 1. Lexical Analysis
@@ -1141,7 +1141,7 @@ $D commands
 | SHOW PROCESS                                 |         |                     |            |
 | SHOW TOOL BAR                                |         |                     |            |
 | SHOW WINDOW                                  |         |                     |            |
-| Sin                                          |         |                     |            |
+| Sin                                          |    X    |                     |            |
 | Size of array                                |         |                     |            |
 | SMTP New transporter                         |         |                     |            |
 | SOAP DECLARATION                             |         |                     |            |
@@ -1196,7 +1196,7 @@ $D commands
 | STOP MONITORING ACTIVITY                     |         |                     |            |
 | STOP SQL SERVER                              |         |                     |            |
 | Storage                                      |         |                     |            |
-| String                                       |         |                     |            |
+| String                                       |    X    |                     |            |
 | STRING LIST TO ARRAY                         |         |                     |            |
 | Structure file                               |         |                     |            |
 | Substring                                    |         |                     |            |
