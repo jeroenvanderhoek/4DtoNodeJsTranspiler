@@ -220,7 +220,6 @@ async function transpile (app, code, filename) {
         }
 
         // Transpile 4Dproject methods and let them export default
-
         // if command was found add an import statement once to importStatements
         if ( occurencesInFile > 0 ) {
             let importStatement = 'import ' + jsMethodName + ' from \"../Methods/' + methodName + '.js\";';
@@ -232,13 +231,12 @@ async function transpile (app, code, filename) {
 
     }
 
-
-    // onServerStartup is the base of the project, the rest needs to be imported
+    // Import statements
+    // onServerStartup is the entrypoint of the project, the rest needs to be imported
     // Wrap the other methods in a function and export them
     // Add parameters to these functions calle $1, $2, $3, untill $15   
     if ( filename.indexOf('onServerStartup') === -1 ) {
 
-        // OPTIMIZE randomize function name to avoid conflicts
         let functionName = filename.split(path.sep).pop().replace('.4dm','').replace(/ /g,"_"); 
 
         result = `export default function ${functionName}($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n${result}\n}`;

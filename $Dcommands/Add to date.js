@@ -9,4 +9,4 @@ function addToDate(date, years, months, days) {
     result.setDate(result.getDate() + days);
     return result;
 }
-module.exports = addToDate;
+export default addToDate;

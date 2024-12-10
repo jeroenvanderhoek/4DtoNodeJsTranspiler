@@ -8,4 +8,4 @@ function (array, value) {
 
 }
 
-module.exports = apppendToArray;
+export default apppendToArray;

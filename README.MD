@@ -1205,7 +1205,7 @@ $D commands
 | STOP MONITORING ACTIVITY                     |         |                     |            |
 | STOP SQL SERVER                              |         |                     |            |
 | Storage                                      |         |                     |            |
-| String                                       |    X    |                     |            |
+| String                                       |         |                     |            |
 | STRING LIST TO ARRAY                         |         |                     |            |
 | Structure file                               |         |                     |            |
 | Substring                                    |         |                     |            |

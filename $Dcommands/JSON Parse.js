@@ -1,5 +1,6 @@
 // $D command: JSON Parse
-module.exports = function jsonParse(jsonString) {
+export default function (jsonString) { // FIXME
 
     return JSON.parse(jsonString);
+
 }

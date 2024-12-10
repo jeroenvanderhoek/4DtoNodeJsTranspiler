@@ -7,6 +7,7 @@ import path from 'path';
 // Import our custom modules
 import fourDCommands from './$Dcommands.js';
 import transpile from './transpile.js';
+import reservedWordsInJs from './reservedWordsInJs.js';
 
 // $D to Node.js Transpiler
 let app = {
@@ -63,7 +64,15 @@ for await (const entry of glob("input/**/*")){
         });
 
     }
+
 }
+
+// Replace reserved words in JavaScript
+console.log('Replacing reserved words in JavaScript... FIXME');
+reservedWordsInJs.forEach((word) => {
+   // console.log('Replacing ' + word);
+   // Replace in all method-name & /$Dcommands/
+});
 
 // Copy template files to output dir (package.json, nodules_modules, etc.)
 console.log('Copying $Dcommands...');
