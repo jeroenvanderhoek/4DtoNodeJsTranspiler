@@ -38,6 +38,7 @@ Feel free to contribute / fork / take it away!
 
 FIXME 
 - fix a few hundred more /$Dcommand/-modules ( skip the $D client / UI stuff in the beginning / skip QR )
+- rename reserverd words in javascript https://www.w3schools.com/js/js_reserved.asp
 - replace interproces variable-names starting with <>
 - implement $D objects 
 - basic webserver

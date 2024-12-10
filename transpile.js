@@ -45,8 +45,13 @@ async function transpile (app, code, filename) {
 
             if ( tp ) {
                 const defaultValue = tp.value;
-                let variableNames = variableNamesStr.split(';').map(param => param.trim());
-                arrayOfLines.push(`let ${variableNames.join(",")} = ${defaultValue};`);
+                let arrayOfVariableNames = variableNamesStr.split(';');
+                arrayOfVariableNames = arrayOfVariableNames
+                                        .filter(str => { return !str.match( new RegExp(/^\$[1-9]+/)) }) // dont declare parameters: starting with $### (e.g. $1, $2, $3)
+                                        .map(param => param.trim()); // remove whitespace
+                if ( arrayOfVariableNames.length > 0) {
+                    arrayOfLines.push(`let ${arrayOfVariableNames.join(",")} = ${defaultValue};`);
+                }
                 return;
             } else {
                 console.log(`Unsupported data type: ${dataType} ${filename}`);
@@ -58,25 +63,41 @@ async function transpile (app, code, filename) {
 
         // Transpile declarations with assigned values like:
         // var $vl_start : Integer:=4; to let $vl_start = 4;
-        // var $vl_start, $vl_end: Integer = 5; to let $vl_start, $vl_end = 5;
-        const regexNew = /var (\$\w+) : (\w+):=(\w+)/;
+        // var $1, $vl_start, $vl_end : Integer = 5; to let $vl_start, $vl_end = 5;
+        const regexNew = /var (\$\w+) : (\w+):=(\w+)/; // FIXME this regex is not correct
         const matchNew = line.match(regexNew);
 
         if (matchNew) {
-            const variableName = matchNew[1];
-            const dataType = matchNew[2];
-            const value = matchNew[3];
-            arrayOfLines.push(`let ${variableName} = ${value};`);
+
+            let variableNames = matchNew[1];
+            let arrayOfVariableNames = variableNames.split(',');
+            
+            // Dont declare parameters: starting with $### (e.g. $1, $2, $3)
+            variableNames = arrayOfVariableNames 
+                .filter(str => { return !str.match( new RegExp(/^\$[1-9]+/)) }) 
+
+            if ( variableNames > 0  ) {
+
+                const dataType = matchNew[2];
+                const value = matchNew[3];
+                arrayOfLines.push(`let ${variableNames} = ${value};`);
+
+            } else {
+                // Skip type-casting parameters
+            }
             return;
+
         }
 
+        
         // Transpile declarations with default values like:
         // var $vl_start : Integer; to let $vl_start = 0;
         // var $vl_start, $vl_end: Integer; to let $vl_start, $vl_end = 0;
-        const regex3 = /var (\$\w+) : (\w+)/;
+        const regex3 = /var (\$\w+) : (\w+)/; 
         const match3 = line.match(regex3);
 
         if ( match3 ) {
+
             const variableNamesStr = match3[1];
             const dataType = match3[2];
 
