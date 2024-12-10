@@ -6,12 +6,13 @@ improved by parsing to an Abstract Syntax Tree.
 It could work for $D projects which dont use $D clients ($D clients probably would need to 
 be replaced with webapps which is very complex and different).
 
-The basic included project is working in NodeJS. This still needs a lot of work on $Dcommands, 
-such as a webserver and SQL database integration.
+The basic included $D project is succesfully transpiled to NodeJS. It contains basic math 
+and "hello world"-functionality. For other functionality a lot of work needs to be done on
+$Dcommands, such as a running a webserver and integrating an SQL database.
 
 Basic operation:
 - get $D project from /input/-folder
-- transpile methods and commands (*.$dm files)
+- transpile methods (*.$dm files) 
     - convert variable declarations to JS
     - replace constants with constants.js
     - read all *.$dm files and replace some basic things with using simpleReplacements.js
