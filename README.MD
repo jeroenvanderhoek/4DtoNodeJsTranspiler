@@ -7,9 +7,10 @@ An SQL database still needs to be implemented. It could work for $D projects whi
 clients ($D clients probably would need to be replaced with webapps which is very complex).
 
 This approach uses Node.JS this has some advantages to $D, because you can:
-- use a Javascript IDE
+- use a JavaScript IDE
 - also contribute if you dont have a $D developer license
 - use a lot of shared packages, see: https://www.npmjs.com/
+- JavaScript is better supported by Gemini / Copilot
 
 Basic operation:
 - read all *.$dm files and replace some basic things with using simpleReplacements.js

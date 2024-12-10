@@ -1,4 +1,5 @@
 //%attributes = {}
+// All constants from 4D v20 R6    
 
 // 4D Environment
 _o_4D First:K5:7
