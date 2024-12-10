@@ -44,16 +44,14 @@ Prerequisites
 # Contribute 
 Feel free to contribute / fork / take it away! 
 
-FIXME 
+TODO 
 - fix a few hundred more /$Dcommand/-modules ( skip the $D client / UI stuff in the beginning / skip QR )
-- rename reserverd words in javascript https://www.w3schools.com/js/js_reserved.asp
-- replace interproces variable-names starting with <>
-- implement $D objects 
-- basic webserver
+- rename reserverd words, see reservedWordsInJs.js
+- rename interproces variable-names starting with <>
+- implement ORDA 
 - Start new processes with cluster.fork() Get current process name etc? Process ID? process.ppid / worker.id
 - How does this perform with 30.000 $D methods imported in each process?
 - implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? 
-- how to support different versions of $D?
 - simple example with webserver, database, website, http-server in nodejs
 - improve constants.js
 
