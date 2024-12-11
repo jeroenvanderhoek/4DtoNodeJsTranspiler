@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "cd output && npm install && npm start"
+    "test": "cd output && npm start"
   },
   "author": "4D community",
   "license": "MIT",
