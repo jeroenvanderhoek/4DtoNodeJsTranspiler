@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<xliff version="1.0" xmlns:d4="http://www.4d.com/d4-ns">
+	<group id="1" restype="x-4DK#">
+		<trans-unit id="1">
+			<source>custom constant example 1</source>
+		</trans-unit>
+		<trans-unit d4:value="0:L" id="2">
+			<source>custom constant example 2</source>
+		</trans-unit>
+		<trans-unit d4:value="1:L" id="3">
+			<source>custom constant example 3</source>
+		</trans-unit>
+	</group>
+	<group id="2" restype="x-4DK#">
+		<trans-unit id="4">
+			<source>custom constant example 4</source>
+		</trans-unit>
+	</group>
+</xliff>
