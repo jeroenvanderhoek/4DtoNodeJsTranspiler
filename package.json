@@ -1,5 +1,5 @@
 {
-  "name": "open4d-compiler",
+  "name": "4DtoNodeJsTranspiler",
   "version": "1.0.0",
   "description": "Transpiles $D source in /input/ to a NodeJS project in /output/",
   "main": "index.js",
