@@ -21,18 +21,21 @@ Basic operation:
     - wrap all methods, so they can be exported
 - result in /outpot/-folder
 
-This approach uses Node.JS this has some advantages to $D, because you can:
-- use a JavaScript IDE
+This transpiler uses Node.JS instead of $D, because you can:
+- use a JavaScript IDE (for instance Visual Code which also has $D syntax support)
 - contribute if you dont have a $D developer license
 - use a lot of shared packages, see: https://www.npmjs.com/
 - JavaScript has better support from Gemini / Copilot
 
 # Getting Started 
 Usage:
+- run: npm install
 - put your $D project in the /input/-folder (there is allready an example project in there)
 - To transpile start: npm start 
+    - this will start the transpiled project when ready
 - result goes to /output/
 - To run the result: npm test
+(or run "npm run starttest" to transpile and test the transpiled code)
 
 Prerequisites
 - this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.

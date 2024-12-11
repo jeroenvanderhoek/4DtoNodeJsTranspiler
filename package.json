@@ -6,12 +6,16 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "cd output && npm start"
+    "test": "cd output && npm start",
+    "starttest": "node index.js && cd output && npm start"
   },
   "author": "4D community",
   "license": "MIT",
   "engines": {
     "npm": ">=8.0.0",
     "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
   }
 }

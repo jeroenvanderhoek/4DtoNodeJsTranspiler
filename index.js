@@ -1,19 +1,16 @@
 // Import Node.js modules
-import fs, { copyFile } from 'fs';
-import {lstatSync} from 'fs';
+import fs from 'fs';
 import { glob } from 'node:fs/promises'; console.log('Requires node 22.0.0 or higher');
 import path from 'path';
 
+import fse from 'fs-extra';
+
 // Import our custom modules
-import fourDCommands from './$Dcommands.js';
 import transpile from './transpile.js';
 import reservedWordsInJs from './reservedWordsInJs.js';
 
-// $D to Node.js Transpiler
 let app = {
-    databaseMethodsFolderPath: '',
-    projectRoot: '',
-    DATABASEMETHODFOLDERPATH: path.sep + "Sources" + path.sep + "DatabaseMethods" + path.sep
+    projectRoot: "output" + path.sep + "Project",
 };
 
 // Clean output dir
@@ -21,68 +18,29 @@ console.log("Cleaning output dir...");
 if (fs.existsSync("./output")) {
     fs.rmSync("./output", { recursive: true });
 }
-fs.mkdirSync("./output");
 
 // Copy template files to output dir (package.json, nodules_modules, etc.)
 console.log('Copying output_template...');
-for await (const entry of glob("output_template/**/*")){
-    fs.copyFile(entry, entry.replace('output_template','output'), (err) => {
-        if (err) throw err;
-        console.log(entry + ' was copied');
-    });
+fse.copySync("output_template", "output", { overwrite: true });
+
+// Copy all input files to output dir except .$dm files
+const filter = file => {
+    const ext = path.extname(file)
+    return ext !== '.4dm'; // return true if the file is not a .$dm file
 }
-
-// Copy all input files to output dir except 4dm files
-console.log("Copying input/**/*...");
-for await (const entry of glob("input/**/*")){
-
-    console.log("Copying " + entry);
-    const stat = lstatSync(entry);
-
-    let newEntry = entry.replace('input' + path.sep,'output' + path.sep);
-
-    if ( newEntry.indexOf(app.DATABASEMETHODFOLDERPATH) > 0 ) {
-        app.projectRoot = newEntry.split(app.DATABASEMETHODFOLDERPATH,1)[0];
-        console.log('projectRoot set ' + app.projectRoot);
-    }
-
-    if ( 
-        stat.isDirectory() 
-        && !fs.existsSync(newEntry) 
-    ) {
-        if ( entry.endsWith(app.DATABASEMETHODFOLDERPATH) ) {
-            console.log('databaseMethodsFolderPath: ' + newEntry);
-            app.databaseMethodsFolderPath = newEntry;
-        }
-        fs.mkdirSync(newEntry);
-    } else if ( !entry.endsWith('.4dm') ) {
-
-        console.log('Copying ' + entry + ' to ' + newEntry);
-        fs.copyFile(entry, newEntry, (err) => {
-            if (err) throw err;
-            console.log('Copied ' + entry);
-        });
-
-    }
-
-}
+fse.copySync("input", "output", { filter });
 
 // Replace reserved words in JavaScript
 console.log('Replacing reserved words in JavaScript... FIXME');
 reservedWordsInJs.forEach((word) => {
    // console.log('Replacing ' + word);
-   // Replace in all method-name & /$Dcommands/
+   // Replace in all method-name & /$Dcommands/ & /$Dcommands/ filenames
+   // FIXME
 });
 
 // Copy template files to output dir (package.json, nodules_modules, etc.)
 console.log('Copying $Dcommands...');
-fs.mkdirSync(app.projectRoot + path.sep+"$Dcommands");
-for await (const entry of glob("\$Dcommands/**/*")){
-    console.log("Copying " + entry);
-    fs.copyFile(entry, app.projectRoot + "/" + entry, (err) => {
-        if (err) throw err;
-    });
-}
+fse.copySync("$Dcommands", app.projectRoot + path.sep + "$Dcommands", { overwrite: true });
 
 // // Transpile all 4dm files to JavaScript
 // Copy all input files to output dir except 4dm files (should copy directory structure)

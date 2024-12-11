@@ -232,15 +232,21 @@ async function transpile (app, code, filename) {
     }
 
     // Import statements
-    // onServerStartup is the entrypoint of the project, the rest needs to be imported
-    // Wrap the other methods in a function and export them
-    // Add parameters to these functions calle $1, $2, $3, untill $15   
-    if ( filename.indexOf('onServerStartup') === -1 ) {
+    // onServerStartup is the entrypoint of the project
+    if ( filename.indexOf('onServerStartup') > 0 ) {
 
+        // Prepend startup message to entrypoint onServerStartup.$dm
+        result = `console.log("RUNNING TRANSPILED PROJECT:");console.log("");\n` + result;
+
+    } else {
+
+        // Wrap the other methods in a function and export them by prepending export defualt  
+        // For clarity the filename is used as the function name, spaces are replaced by underscores
         let functionName = filename.split(path.sep).pop().replace('.4dm','').replace(/ /g,"_"); 
 
-        result = `export default function ${functionName}($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n${result}\n}`;
-    
+        // Add parameters to these functions calle $1, $2, $3, untill $15 
+        result = `export default function ${functionName}($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n\n${ result }\n\n}`;
+
     }
 
     // Prepend import statements to file
