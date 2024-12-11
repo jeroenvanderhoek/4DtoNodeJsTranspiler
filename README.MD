@@ -38,11 +38,12 @@ Prerequisites
 - this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.
 - install Node v22 https://nodejs.org/en/download/package-manager
 - $D project must be in project mode
-- $D 20v7 BETA commands used
-- skip $D client, $dmobile, QR, PASTE TO CLIPBOARD
+- tested with 4D 20v6
+- $D 20v7 BETA commands imported + 20.6 constants
 
 # Contribute 
-Feel free to contribute / fork / take it away! 
+Feel free to contribute / fork! 
+Contact @ jeroenvanderhoek97@gmail.com
 
 TODO 
 - fix a few hundred more /$Dcommand/-modules ( skip the $D client / UI stuff in the beginning / skip QR )
@@ -54,6 +55,7 @@ TODO
 - implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? 
 - simple example with webserver, database, website, http-server in nodejs
 - improve constants.js
+- import /resources/constants.xlf if present
 
 General idea of transpiling:
 1. Lexical Analysis
