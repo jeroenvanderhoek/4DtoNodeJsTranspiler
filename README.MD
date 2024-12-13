@@ -6,7 +6,8 @@ It could work for $D projects which dont use $D clients ($D clients probably wou
 be replaced with webapps which is very complex and different).
 
 The basic included $D project is succesfully transpiled to NodeJS. It contains basic math 
-and "hello world"-functionality. For other functionality a lot of work needs to be done on
+and "hello world"-functionality, ALERT, project method call and WEB START SERVER. 
+For other functionality a lot of work needs to be done on
 $Dcommands, such as a running a webserver and integrating an SQL database.
 
 Basic operation:
@@ -23,13 +24,14 @@ Basic operation:
 
 This transpiler uses Node.JS instead of $D, because you can:
 - use a JavaScript IDE (for instance Visual Code which also has $D syntax support)
-- contribute if you dont have a $D developer license
+- contribute if you dont have a $D developer license and dont know $D language
 - use a lot of shared packages, see: https://www.npmjs.com/
 - JavaScript has better support from Gemini / Copilot
 
 # Getting Started 
 Usage:
 - run: npm install
+- run: cd output_template | npm install 
 - put your $D project in the /input/-folder (there is allready an example project in there)
 - To transpile start: npm start 
     - this will start the transpiled project when ready
@@ -40,7 +42,7 @@ Usage:
 Prerequisites
 - this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.
 - install Node v22 https://nodejs.org/en/download/package-manager
-- $D project must be in project mode
+- $D project must be as "Project Mode"
 - tested with 4D 20v6
 - $D 20v7 BETA commands imported + 20.6 constants
 
@@ -49,16 +51,35 @@ Feel free to contribute / fork!
 Contact @ jeroenvanderhoek97@gmail.com
 
 TODO 
-- fix a few hundred more /$Dcommand/-modules ( skip the $D client / UI stuff in the beginning / skip QR )
+- How to make ARRAYS work? Make a new type of Array class that replaces 4D arrays, because 4D arrays have the last selected element active
+    - replace brackets in $aiValues{$vlElem}:=$vlElem
+    - 4D arrays start at 1 instead of 0...
+    + For Loops are replaced by Javascript
+- Fix CASE
+- Pass processObject to each function. In front or behind or as parent? ( Or how else to pass res from On web connetion to WEB SEND TEXT, and how will this work for multiple webrequests?)
+- Start new processes and Get current process name etc? Process ID? process.ppid / worker.id 
+    - cluster.fork() 
+    - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
+- implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? How to store active table & selection.
+- implement ORDA, php, database, pointers, [table]field 
+- create an example with database
+- fix a few more /$Dcommand/-modules, or generate starting points with AI 
+- how to work in javascript: async / synchronous / callbacks
 - rename reserverd words, see reservedWordsInJs.js
-- rename interproces variable-names starting with <>
-- implement ORDA 
-- Start new processes with cluster.fork() Get current process name etc? Process ID? process.ppid / worker.id
-- How does this perform with 30.000 $D methods imported in each process?
-- implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? 
-- simple example with webserver, database, website, http-server in nodejs
+- How does this perform with 10.000 $D methods imported in each process?
 - improve constants.js
 - import /resources/constants.xlf if present
+- replace cases like
+    Case of
+        :(vResult=1) ` Test if the number is 1
+        ALERT("One.") ` If it is 1, display an alert
+        :(vResult=2) ` Test if the number is 2
+        ALERT("Two.") ` If it is 2, display an alert
+        :(vResult=3) ` Test if the number is 3
+        ALERT("Three.") ` If it is 3, display an alert
+        Else ` If it is not 1, 2, or 3, display an alert
+        ALERT("It was not one, two, or three.")
+    End case
 
 General idea of transpiling:
 1. Lexical Analysis
@@ -77,15 +98,15 @@ the AST and generating the corresponding Node.js code.
 This project is for educational purposes only. No warranties, expressed or implied, are provided. Use at your own risk.
 
 $D commands 
-| $DCommand                                    | Done    | Skip ($D client etc)|            |
+| $DCommand                                    | Workable| Skip ($D client etc)|  Accepted  |
 | -------------------------------------------- | ------- | ------------------- | ---------- |
 | ABORT                                        |         |                     |            |
 | ABORT PROCESS BY ID                          |         |                     |            |
-| Abs                                          |    X    |                     |            |
+| Abs                                          |    X    |                     |     X      |
 | ACCEPT                                       |         |          X          |            |
 | ACCUMULATE                                   |         |                     |            |
 | Action info                                  |         |                     |            |
-| Activated                                    |         |                     |            |
+| Activated                                    |         |          X          |            |
 | Active transaction                           |         |                     |            |
 | ACTIVITY SNAPSHOT                            |         |                     |            |
 | ADD RECORD                                   |         |                     |            |
@@ -97,28 +118,28 @@ $D commands
 | After                                        |         |                     |            |
 | ALERT                                        |         |          X          |            |
 | ALL RECORDS                                  |         |                     |            |
-| APPEND DATA TO PASTEBOARD                    |         |                     |            |
+| APPEND DATA TO PASTEBOARD                    |         |          X          |            |
 | Append document                              |         |                     |            |
 | APPEND MENU ITEM                             |         |                     |            |
-| APPEND TO ARRAY                              |    X    |                     |            |
+| APPEND TO ARRAY                              |    X    |                     |     X      |
 | APPEND TO LIST                               |         |                     |            |
 | Application file                             |         |                     |            |
 | Application info                             |         |                     |            |
 | Application type                             |         |                     |            |
 | Application version                          |         |                     |            |
 | APPLY TO SELECTION                           |         |                     |            |
-| Arctan                                       |    X    |                     |            |
-| ARRAY BLOB                                   |         |                     |            |
-| ARRAY BOOLEAN                                |         |                     |            |
-| ARRAY DATE                                   |         |                     |            |
-| ARRAY INTEGER                                |         |                     |            |
-| ARRAY LONGINT                                |         |                     |            |
-| ARRAY OBJECT                                 |         |                     |            |
-| ARRAY PICTURE                                |         |                     |            |
-| ARRAY POINTER                                |         |                     |            |
-| ARRAY REAL                                   |         |                     |            |
-| ARRAY TEXT                                   |         |                     |            |
-| ARRAY TIME                                   |         |                     |            |
+| Arctan                                       |    X    |                     |     X      |
+| ARRAY BLOB                                   |    X    |                     |            |
+| ARRAY BOOLEAN                                |    X    |                     |            |
+| ARRAY DATE                                   |    X    |                     |            |
+| ARRAY INTEGER                                |    X    |                     |            |
+| ARRAY LONGINT                                |    X    |                     |            |
+| ARRAY OBJECT                                 |    X    |                     |            |
+| ARRAY PICTURE                                |    X    |                     |            |
+| ARRAY POINTER                                |    X    |                     |            |
+| ARRAY REAL                                   |    X    |                     |            |
+| ARRAY TEXT                                   |    X    |                     |            |
+| ARRAY TIME                                   |    X    |                     |            |
 | ARRAY TO COLLECTION                          |         |                     |            |
 | ARRAY TO LIST                                |         |                     |            |
 | ARRAY TO SELECTION                           |         |                     |            |
@@ -129,7 +150,7 @@ $D commands
 | BACKUP INFO                                  |         |                     |            |
 | BASE64 DECODE                                |         |                     |            |
 | BASE64 ENCODE                                |         |                     |            |
-| BEEP                                         |         |                     |            |
+| BEEP                                         |         |          X          |            |
 | Before                                       |         |                     |            |
 | Before selection                             |         |                     |            |
 | Begin SQL                                    |         |                     |            |
@@ -138,7 +159,7 @@ $D commands
 | BLOB size                                    |         |                     |            |
 | BLOB TO DOCUMENT                             |         |                     |            |
 | BLOB to integer                              |         |                     |            |
-| BLOB to list                                 |         |                     |            |
+| BLOB to list                                 |         |          X          |            |
 | BLOB to longint                              |         |                     |            |
 | BLOB TO PICTURE                              |         |                     |            |
 | BLOB to print settings                       |         |                     |            |
@@ -153,10 +174,10 @@ $D commands
 | BUILD APPLICATION                            |         |                     |            |
 | Cache info                                   |         |                     |            |
 | Call chain                                   |         |                     |            |
-| CALL FORM                                    |         |                     |            |
-| CALL SUBFORM CONTAINER                       |         |                     |            |
+| CALL FORM                                    |         |          X          |            |
+| CALL SUBFORM CONTAINER                       |         |          X          |            |
 | CALL WORKER                                  |         |                     |            |
-| CANCEL                                       |         |                     |            |
+| CANCEL                                       |         |          X          |            |
 | CANCEL TRANSACTION                           |         |                     |            |
 | Caps lock down                               |         |                     |            |
 | CHANGE CURRENT USER                          |         |                     |            |
@@ -167,9 +188,9 @@ $D commands
 | Character code                               |         |                     |            |
 | CHECK LOG FILE                               |         |                     |            |
 | Choose                                       |         |                     |            |
-| CLEAR LIST                                   |         |                     |            |
+| CLEAR LIST                                   |         |          X          |            |
 | CLEAR NAMED SELECTION                        |         |                     |            |
-| CLEAR PASTEBOARD                             |         |                     |            |
+| CLEAR PASTEBOARD                             |         |          X          |            |
 | CLEAR SEMAPHORE                              |         |                     |            |
 | CLEAR SET                                    |         |                     |            |
 | CLEAR VARIABLE                               |         |                     |            |
@@ -177,16 +198,16 @@ $D commands
 | CLOSE DOCUMENT                               |         |                     |            |
 | CLOSE PRINTING JOB                           |         |                     |            |
 | CLOSE RESOURCE FILE                          |         |                     |            |
-| CLOSE WINDOW                                 |         |                     |            |
+| CLOSE WINDOW                                 |         |          X          |            |
 | COLLECTION TO ARRAY                          |         |                     |            |
 | COMBINE PICTURES                             |         |                     |            |
 | Command name                                 |         |                     |            |
 | Compact data file                            |         |                     |            |
 | Compare strings                              |         |                     |            |
-| Compile project                              |         |         X           |            |
+| Compile project                              |         |          X          |            |
 | COMPONENT LIST                               |         |                     |            |
 | COMPRESS BLOB                                |         |                     |            |
-| CONFIRM                                      |         |                     |            |
+| CONFIRM                                      |         |          X          |            |
 | Contextual click                             |         |                     |            |
 | CONVERT COORDINATES                          |         |                     |            |
 | CONVERT FROM TEXT                            |         |                     |            |
@@ -197,17 +218,17 @@ $D commands
 | COPY ARRAY                                   |         |                     |            |
 | COPY BLOB                                    |         |                     |            |
 | COPY DOCUMENT                                |         |                     |            |
-| Copy list                                    |         |                     |            |
+| Copy list                                    |         |          X          |            |
 | COPY NAMED SELECTION                         |         |                     |            |
 | Copy parameters                              |         |                     |            |
 | COPY SET                                     |         |                     |            |
-| Cos                                          |         |                     |            |
+| Cos                                          |    X    |                     |            |
 | Count in array                               |         |                     |            |
-| Count list items                             |         |                     |            |
-| Count menu items                             |         |                     |            |
-| Count menus                                  |         |                     |            |
+| Count list items                             |         |          X          |            |
+| Count menu items                             |         |          X          |            |
+| Count menus                                  |         |          X          |            |
 | Count parameters                             |         |                     |            |
-| Count screens                                |         |                     |            |
+| Count screens                                |         |          X          |            |
 | Count tasks                                  |         |                     |            |
 | Count user processes                         |         |                     |            |
 | Count users                                  |         |                     |            |
@@ -219,7 +240,7 @@ $D commands
 | Create entity selection                      |         |                     |            |
 | CREATE FOLDER                                |         |                     |            |
 | CREATE INDEX                                 |         |                     |            |
-| Create menu                                  |         |                     |            |
+| Create menu                                  |         |          X          |            |
 | CREATE RECORD                                |         |                     |            |
 | CREATE RELATED ONE                           |         |                     |            |
 | CREATE SELECTION FROM ARRAY                  |         |                     |            |
@@ -230,9 +251,9 @@ $D commands
 | Current client authentication                |         |                     |            |
 | Current date                                 |         |                     |            |
 | Current default table                        |         |                     |            |
-| Current form name                            |         |                     |            |
-| Current form table                           |         |                     |            |
-| Current form window                          |         |                     |            |
+| Current form name                            |         |          X          |            |
+| Current form table                           |         |          X          |            |
+| Current form window                          |         |          X          |            |
 | Current machine                              |         |                     |            |
 | Current method name                          |         |                     |            |
 | Current method path                          |         |                     |            |
@@ -260,7 +281,7 @@ $D commands
 | DELETE FROM BLOB                             |         |                     |            |
 | DELETE FROM LIST                             |         |                     |            |
 | DELETE INDEX                                 |         |                     |            |
-| DELETE MENU ITEM                             |         |                     |            |
+| DELETE MENU ITEM                             |         |          X          |            |
 | DELETE RECORD                                |         |                     |            |
 | DELETE SELECTION                             |         |                     |            |
 | Delete string                                |         |                     |            |
@@ -268,11 +289,11 @@ $D commands
 | DESCRIBE QUERY EXECUTION                     |         |                     |            |
 | DIALOG                                       |         |                     |            |
 | DIFFERENCE                                   |         |                     |            |
-| DISABLE MENU ITEM                            |         |                     |            |
+| DISABLE MENU ITEM                            |         |          X          |            |
 | Discover data key                            |         |                     |            |
-| DISPLAY NOTIFICATION                         |         |                     |            |
-| DISPLAY RECORD                               |         |                     |            |
-| DISPLAY SELECTION                            |         |                     |            |
+| DISPLAY NOTIFICATION                         |         |          X          |            |
+| DISPLAY RECORD                               |         |          X          |            |
+| DISPLAY SELECTION                            |         |          X          |            |
 | Displayed line number                        |         |                     |            |
 | DISTINCT ATTRIBUTE PATHS                     |         |                     |            |
 | DISTINCT ATTRIBUTE VALUES                    |         |                     |            |
@@ -315,8 +336,8 @@ $D commands
 | DOM SET XML DECLARATION                      |         |                     |            |
 | DOM SET XML ELEMENT NAME                     |         |                     |            |
 | DOM SET XML ELEMENT VALUE                    |         |                     |            |
-| DRAG WINDOW                                  |         |                     |            |
-| Drop position                                |         |                     |            |
+| DRAG WINDOW                                  |         |          X          |            |
+| Drop position                                |         |          X          |            |
 | DROP REMOTE USER                             |         |                     |            |
 | ds                                           |         |                     |            |
 | DUPLICATE RECORD                             |         |                     |            |
@@ -324,14 +345,14 @@ $D commands
 | EDIT ACCESS                                  |         |                     |            |
 | EDIT FORMULA                                 |         |                     |            |
 | EDIT ITEM                                    |         |                     |            |
-| ENABLE MENU ITEM                             |         |                     |            |
+| ENABLE MENU ITEM                             |         |          X          |            |
 | ENCRYPT BLOB                                 |         |                     |            |
 | Encrypt data BLOB                            |         |                     |            |
 | Encrypt data file                            |         |                     |            |
 | End selection                                |         |                     |            |
 | End SQL                                      |         |                     |            |
 | Equal pictures                               |         |                     |            |
-| ERASE WINDOW                                 |         |                     |            |
+| ERASE WINDOW                                 |         |          X          |            |
 | Euro converter                               |         |                     |            |
 | EXECUTE FORMULA                              |         |                     |            |
 | EXECUTE METHOD                               |         |                     |            |
@@ -346,56 +367,56 @@ $D commands
 | Export structure file                        |         |                     |            |
 | EXPORT SYLK                                  |         |                     |            |
 | EXPORT TEXT                                  |         |                     |            |
-| False                                        |    X    |                     |            |
+| False                                        |    X    |                     |     X      |
 | Field                                        |         |                     |            |
 | Field name                                   |         |                     |            |
 | File                                         |         |                     |            |
-| FILTER EVENT                                 |         |                     |            |
-| FILTER KEYSTROKE                             |         |                     |            |
+| FILTER EVENT                                 |         |          ?          |            |
+| FILTER KEYSTROKE                             |         |          X          |            |
 | Find in array                                |         |                     |            |
-| Find in field                                |         |                     |            |
-| Find in list                                 |         |                     |            |
+| Find in field                                |         |          ?          |            |
+| Find in list                                 |         |          X          |            |
 | Find in sorted array                         |         |                     |            |
-| Find window                                  |         |                     |            |
+| Find window                                  |         |          X          |            |
 | FIRST RECORD                                 |         |                     |            |
 | FLUSH CACHE                                  |         |                     |            |
-| Focus object                                 |         |                     |            |
+| Focus object                                 |         |          X          |            |
 | Folder                                       |         |                     |            |
 | FOLDER LIST                                  |         |                     |            |
 | Font file                                    |         |                     |            |
 | FONT LIST                                    |         |                     |            |
 | FONT STYLE LIST                              |         |                     |            |
-| Form                                         |         |                     |            |
-| FORM Convert to dynamic                      |         |                     |            |
-| FORM EDIT                                    |         |                     |            |
-| FORM Event                                   |         |                     |            |
-| Form event code                              |         |                     |            |
-| FORM FIRST PAGE                              |         |                     |            |
-| FORM Get color scheme                        |         |                     |            |
-| FORM Get current page                        |         |                     |            |
-| FORM GET ENTRY ORDER                         |         |                     |            |
-| FORM GET HORIZONTAL RESIZING                 |         |                     |            |
-| FORM GET NAMES                               |         |                     |            |
-| FORM GET OBJECTS                             |         |                     |            |
-| FORM GET PROPERTIES                          |         |                     |            |
-| FORM GET VERTICAL RESIZING                   |         |                     |            |
-| FORM GOTO PAGE                               |         |                     |            |
-| FORM LAST PAGE                               |         |                     |            |
-| FORM LOAD                                    |         |                     |            |
-| FORM NEXT PAGE                               |         |                     |            |
-| FORM PREVIOUS PAGE                           |         |                     |            |
-| FORM SCREENSHOT                              |         |                     |            |
-| FORM SET ENTRY ORDER                         |         |                     |            |
-| FORM SET HORIZONTAL RESIZING                 |         |                     |            |
-| FORM SET INPUT                               |         |                     |            |
-| FORM SET OUTPUT                              |         |                     |            |
-| FORM SET SIZE                                |         |                     |            |
-| FORM SET VERTICAL RESIZING                   |         |                     |            |
-| FORM UNLOAD                                  |         |                     |            |
+| Form                                         |         |          X          |            |
+| FORM Convert to dynamic                      |         |          X          |            |
+| FORM EDIT                                    |         |          X          |            |
+| FORM Event                                   |         |          X          |            |
+| Form event code                              |         |          X          |            |
+| FORM FIRST PAGE                              |         |          X          |            |
+| FORM Get color scheme                        |         |          X          |            |
+| FORM Get current page                        |         |          X          |            |
+| FORM GET ENTRY ORDER                         |         |          X          |            |
+| FORM GET HORIZONTAL RESIZING                 |         |          X          |            |
+| FORM GET NAMES                               |         |          X          |            |
+| FORM GET OBJECTS                             |         |          X          |            |
+| FORM GET PROPERTIES                          |         |          X          |            |
+| FORM GET VERTICAL RESIZING                   |         |          X          |            |
+| FORM GOTO PAGE                               |         |          X          |            |
+| FORM LAST PAGE                               |         |          X          |            |
+| FORM LOAD                                    |         |          X          |            |
+| FORM NEXT PAGE                               |         |          X          |            |
+| FORM PREVIOUS PAGE                           |         |          X          |            |
+| FORM SCREENSHOT                              |         |          X          |            |
+| FORM SET ENTRY ORDER                         |         |          X          |            |
+| FORM SET HORIZONTAL RESIZING                 |         |          X          |            |
+| FORM SET INPUT                               |         |          X          |            |
+| FORM SET OUTPUT                              |         |          X          |            |
+| FORM SET SIZE                                |         |          X          |            |
+| FORM SET VERTICAL RESIZING                   |         |          X          |            |
+| FORM UNLOAD                                  |         |          X          |            |
 | Formula                                      |         |                     |            |
 | Formula from string                          |         |                     |            |
-| Frontmost process                            |         |                     |            |
-| Frontmost window                             |         |                     |            |
+| Frontmost process                            |         |          X          |            |
+| Frontmost window                             |         |          X          |            |
 | GENERATE CERTIFICATE REQUEST                 |         |                     |            |
 | Generate digest                              |         |                     |            |
 | GENERATE ENCRYPTION KEYPAIR                  |         |                     |            |
@@ -416,7 +437,7 @@ $D commands
 | Get database parameter                       |         |                     |            |
 | Get default user                             |         |                     |            |
 | GET DOCUMENT ICON                            |         |                     |            |
-| Get document position                        |         |                     |            |
+| Get document position                        |         |          X          |            |
 | GET DOCUMENT PROPERTIES                      |         |                     |            |
 | Get document size                            |         |                     |            |
 | Get edited text                              |         |                     |            |
@@ -427,35 +448,35 @@ $D commands
 | GET FIELD TITLES                             |         |                     |            |
 | Get file from pasteboard                     |         |                     |            |
 | Get group access                             |         |                     |            |
-| GET GROUP LIST                               |         |                     |            |
-| GET GROUP PROPERTIES                         |         |                     |            |
-| GET HIGHLIGHT                                |         |                     |            |
-| GET HIGHLIGHTED RECORDS                      |         |                     |            |
+| GET GROUP LIST                               |         |          X          |            |
+| GET GROUP PROPERTIES                         |         |          X          |            |
+| GET HIGHLIGHT                                |         |          X          |            |
+| GET HIGHLIGHTED RECORDS                      |         |          X          |            |
 | Get indexed string                           |         |                     |            |
 | Get last update log path                     |         |                     |            |
-| GET LIST ITEM                                |         |                     |            |
-| Get list item font                           |         |                     |            |
-| GET LIST ITEM ICON                           |         |                     |            |
-| GET LIST ITEM PARAMETER                      |         |                     |            |
-| GET LIST ITEM PARAMETER ARRAYS               |         |                     |            |
-| GET LIST ITEM PROPERTIES                     |         |                     |            |
-| GET LIST PROPERTIES                          |         |                     |            |
+| GET LIST ITEM                                |         |          X          |            |
+| Get list item font                           |         |          X          |            |
+| GET LIST ITEM ICON                           |         |          X          |            |
+| GET LIST ITEM PARAMETER                      |         |          X          |            |
+| GET LIST ITEM PARAMETER ARRAYS               |         |          X          |            |
+| GET LIST ITEM PROPERTIES                     |         |          X          |            |
+| GET LIST PROPERTIES                          |         |          X          |            |
 | GET MACRO PARAMETER                          |         |                     |            |
-| Get menu bar reference                       |         |                     |            |
-| Get menu item                                |         |                     |            |
-| GET MENU ITEM ICON                           |         |                     |            |
-| Get menu item key                            |         |                     |            |
-| Get menu item mark                           |         |                     |            |
-| Get menu item method                         |         |                     |            |
-| Get menu item modifiers                      |         |                     |            |
-| Get menu item parameter                      |         |                     |            |
-| GET MENU ITEM PROPERTY                       |         |                     |            |
-| Get menu item style                          |         |                     |            |
-| GET MENU ITEMS                               |         |                     |            |
-| Get menu title                               |         |                     |            |
+| Get menu bar reference                       |         |          X          |            |
+| Get menu item                                |         |          X          |            |
+| GET MENU ITEM ICON                           |         |          X          |            |
+| Get menu item key                            |         |          X          |            |
+| Get menu item mark                           |         |          X          |            |
+| Get menu item method                         |         |          X          |            |
+| Get menu item modifiers                      |         |          X          |            |
+| Get menu item parameter                      |         |          X          |            |
+| GET MENU ITEM PROPERTY                       |         |          X          |            |
+| Get menu item style                          |         |          X          |            |
+| GET MENU ITEMS                               |         |          X          |            |
+| Get menu title                               |         |          X          |            |
 | GET MISSING TABLE NAMES                      |         |                     |            |
-| GET PASTEBOARD DATA                          |         |                     |            |
-| GET PASTEBOARD DATA TYPE                     |         |                     |            |
+| GET PASTEBOARD DATA                          |         |          X          |            |
+| GET PASTEBOARD DATA TYPE                     |         |          X          |            |
 | Get picture file name                        |         |                     |            |
 | GET PICTURE FORMATS                          |         |                     |            |
 | GET PICTURE FROM LIBRARY                     |         |                     |            |
@@ -479,7 +500,7 @@ $D commands
 | GET RESOURCE                                 |         |                     |            |
 | Get resource name                            |         |                     |            |
 | Get resource properties                      |         |                     |            |
-| Get selected menu item parameter             |         |                     |            |
+| Get selected menu item parameter             |         |          X          |            |
 | GET SERIAL PORT MAPPING                      |         |                     |            |
 | Get string resource                          |         |                     |            |
 | GET STYLE SHEET INFO                         |         |                     |            |
@@ -487,23 +508,23 @@ $D commands
 | GET SYSTEM FORMAT                            |         |                     |            |
 | GET TABLE PROPERTIES                         |         |                     |            |
 | GET TABLE TITLES                             |         |                     |            |
-| Get text from pasteboard                     |         |                     |            |
+| Get text from pasteboard                     |         |          X          |            |
 | GET TEXT KEYWORDS                            |         |                     |            |
 | Get text resource                            |         |                     |            |
 | GET USER LIST                                |         |                     |            |
 | GET USER PROPERTIES                          |         |                     |            |
-| GET WINDOW RECT                              |         |                     |            |
-| Get window title                             |         |                     |            |
+| GET WINDOW RECT                              |         |          X          |            |
+| Get window title                             |         |          X          |            |
 | GOTO OBJECT                                  |         |                     |            |
 | GOTO RECORD                                  |         |                     |            |
 | GOTO SELECTED RECORD                         |         |                     |            |
-| GOTO XY                                      |         |                     |            |
-| GRAPH                                        |         |                     |            |
-| GRAPH SETTINGS                               |         |                     |            |
-| HIDE MENU BAR                                |         |                     |            |
-| HIDE PROCESS                                 |         |                     |            |
-| HIDE TOOL BAR                                |         |                     |            |
-| HIDE WINDOW                                  |         |                     |            |
+| GOTO XY                                      |         |          X          |            |
+| GRAPH                                        |         |          X          |            |
+| GRAPH SETTINGS                               |         |          X          |            |
+| HIDE MENU BAR                                |         |          X          |            |
+| HIDE PROCESS                                 |         |          X          |            |
+| HIDE TOOL BAR                                |         |          X          |            |
+| HIDE WINDOW                                  |         |          X          |            |
 | HIGHLIGHT RECORDS                            |         |                     |            |
 | HIGHLIGHT TEXT                               |         |                     |            |
 | HTTP AUTHENTICATE                            |         |                     |            |
@@ -527,7 +548,7 @@ $D commands
 | In transaction                               |         |                     |            |
 | INSERT IN ARRAY                              |         |                     |            |
 | INSERT IN BLOB                               |         |                     |            |
-| INSERT IN LIST                               |         |                     |            |
+| INSERT IN LIST                               |         |          X          |            |
 | INSERT MENU ITEM                             |         |                     |            |
 | Insert string                                |         |                     |            |
 | Int                                          |         |                     |            |
@@ -545,17 +566,17 @@ $D commands
 | Is in print preview                          |         |                     |            |
 | Is in set                                    |         |                     |            |
 | Is license available                         |         |                     |            |
-| Is macOS                                     |    X    |                     |            |
+| Is macOS                                     |    X    |                     |     X      |
 | Is new record                                |         |                     |            |
 | Is nil pointer                               |         |                     |            |
 | Is picture file                              |         |                     |            |
 | Is record loaded                             |         |                     |            |
 | Is table number valid                        |         |                     |            |
 | Is user deleted                              |         |                     |            |
-| Is waiting mouse up                          |         |                     |            |
-| Is window maximized                          |         |                     |            |
-| Is window reduced                            |         |                     |            |
-| Is Windows                                   |    X    |                     |            |
+| Is waiting mouse up                          |         |          X          |            |
+| Is window maximized                          |         |          X          |            |
+| Is window reduced                            |         |          X          |            |
+| Is Windows                                   |    X    |                     |     X      |
 | JSON Parse                                   |         |                     |            |
 | JSON PARSE ARRAY                             |         |                     |            |
 | JSON Resolve pointers                        |         |                     |            |
@@ -586,65 +607,65 @@ $D commands
 | LIST OF STYLE SHEETS                         |         |                     |            |
 | LIST TO ARRAY                                |         |                     |            |
 | LIST TO BLOB                                 |         |                     |            |
-| LISTBOX COLLAPSE                             |         |                     |            |
-| LISTBOX DELETE COLUMN                        |         |                     |            |
-| LISTBOX DELETE ROWS                          |         |                     |            |
-| LISTBOX DUPLICATE COLUMN                     |         |                     |            |
-| LISTBOX EXPAND                               |         |                     |            |
-| LISTBOX Get array                            |         |                     |            |
-| LISTBOX GET ARRAYS                           |         |                     |            |
-| LISTBOX Get auto row height                  |         |                     |            |
-| LISTBOX GET CELL COORDINATES                 |         |                     |            |
-| LISTBOX GET CELL POSITION                    |         |                     |            |
-| LISTBOX Get column formula                   |         |                     |            |
-| LISTBOX Get column width                     |         |                     |            |
-| LISTBOX Get footer calculation               |         |                     |            |
-| LISTBOX Get footers height                   |         |                     |            |
-| LISTBOX GET GRID                             |         |                     |            |
-| LISTBOX GET GRID COLORS                      |         |                     |            |
-| LISTBOX Get headers height                   |         |                     |            |
-| LISTBOX GET HIERARCHY                        |         |                     |            |
-| LISTBOX Get locked columns                   |         |                     |            |
-| LISTBOX Get number of columns                |         |                     |            |
-| LISTBOX Get number of rows                   |         |                     |            |
-| LISTBOX GET OBJECTS                          |         |                     |            |
-| LISTBOX GET PRINT INFORMATION                |         |                     |            |
-| LISTBOX Get property                         |         |                     |            |
-| LISTBOX Get row color                        |         |                     |            |
-| LISTBOX Get row color as number              |         |                     |            |
-| LISTBOX Get row font style                   |         |                     |            |
-| LISTBOX Get row height                       |         |                     |            |
-| LISTBOX Get rows height                      |         |                     |            |
-| LISTBOX Get static columns                   |         |                     |            |
-| LISTBOX GET TABLE SOURCE                     |         |                     |            |
-| LISTBOX INSERT COLUMN                        |         |                     |            |
-| LISTBOX INSERT COLUMN FORMULA                |         |                     |            |
-| LISTBOX INSERT ROWS                          |         |                     |            |
-| LISTBOX MOVE COLUMN                          |         |                     |            |
-| LISTBOX MOVED COLUMN NUMBER                  |         |                     |            |
-| LISTBOX MOVED ROW NUMBER                     |         |                     |            |
-| LISTBOX SELECT BREAK                         |         |                     |            |
-| LISTBOX SELECT ROW                           |         |                     |            |
-| LISTBOX SELECT ROWS                          |         |                     |            |
-| LISTBOX SET ARRAY                            |         |                     |            |
-| LISTBOX SET AUTO ROW HEIGHT                  |         |                     |            |
-| LISTBOX SET COLUMN FORMULA                   |         |                     |            |
-| LISTBOX SET COLUMN WIDTH                     |         |                     |            |
-| LISTBOX SET FOOTER CALCULATION               |         |                     |            |
-| LISTBOX SET FOOTERS HEIGHT                   |         |                     |            |
-| LISTBOX SET GRID                             |         |                     |            |
-| LISTBOX SET GRID COLOR                       |         |                     |            |
-| LISTBOX SET HEADERS HEIGHT                   |         |                     |            |
-| LISTBOX SET HIERARCHY                        |         |                     |            |
-| LISTBOX SET LOCKED COLUMNS                   |         |                     |            |
-| LISTBOX SET PROPERTY                         |         |                     |            |
-| LISTBOX SET ROW COLOR                        |         |                     |            |
-| LISTBOX SET ROW FONT STYLE                   |         |                     |            |
-| LISTBOX SET ROW HEIGHT                       |         |                     |            |
-| LISTBOX SET ROWS HEIGHT                      |         |                     |            |
-| LISTBOX SET STATIC COLUMNS                   |         |                     |            |
-| LISTBOX SET TABLE SOURCE                     |         |                     |            |
-| LISTBOX SORT COLUMNS                         |         |                     |            |
+| LISTBOX COLLAPSE                             |         |          X          |            |
+| LISTBOX DELETE COLUMN                        |         |          X          |            |
+| LISTBOX DELETE ROWS                          |         |          X          |            |
+| LISTBOX DUPLICATE COLUMN                     |         |          X          |            |
+| LISTBOX EXPAND                               |         |          X          |            |
+| LISTBOX Get array                            |         |          X          |            |
+| LISTBOX GET ARRAYS                           |         |          X          |            |
+| LISTBOX Get auto row height                  |         |          X          |            |
+| LISTBOX GET CELL COORDINATES                 |         |          X          |            |
+| LISTBOX GET CELL POSITION                    |         |          X          |            |
+| LISTBOX Get column formula                   |         |          X          |            |
+| LISTBOX Get column width                     |         |          X          |            |
+| LISTBOX Get footer calculation               |         |          X          |            |
+| LISTBOX Get footers height                   |         |          X          |            |
+| LISTBOX GET GRID                             |         |          X          |            |
+| LISTBOX GET GRID COLORS                      |         |          X          |            |
+| LISTBOX Get headers height                   |         |          X          |            |
+| LISTBOX GET HIERARCHY                        |         |          X          |            |
+| LISTBOX Get locked columns                   |         |          X          |            |
+| LISTBOX Get number of columns                |         |          X          |            |
+| LISTBOX Get number of rows                   |         |          X          |            |
+| LISTBOX GET OBJECTS                          |         |          X          |            |
+| LISTBOX GET PRINT INFORMATION                |         |          X          |            |
+| LISTBOX Get property                         |         |          X          |            |
+| LISTBOX Get row color                        |         |          X          |            |
+| LISTBOX Get row color as number              |         |          X          |            |
+| LISTBOX Get row font style                   |         |          X          |            |
+| LISTBOX Get row height                       |         |          X          |            |
+| LISTBOX Get rows height                      |         |          X          |            |
+| LISTBOX Get static columns                   |         |          X          |            |
+| LISTBOX GET TABLE SOURCE                     |         |          X          |            |
+| LISTBOX INSERT COLUMN                        |         |          X          |            |
+| LISTBOX INSERT COLUMN FORMULA                |         |          X          |            |
+| LISTBOX INSERT ROWS                          |         |          X          |            |
+| LISTBOX MOVE COLUMN                          |         |          X          |            |
+| LISTBOX MOVED COLUMN NUMBER                  |         |          X          |            |
+| LISTBOX MOVED ROW NUMBER                     |         |          X          |            |
+| LISTBOX SELECT BREAK                         |         |          X          |            |
+| LISTBOX SELECT ROW                           |         |          X          |            |
+| LISTBOX SELECT ROWS                          |         |          X          |            |
+| LISTBOX SET ARRAY                            |         |          X          |            |
+| LISTBOX SET AUTO ROW HEIGHT                  |         |          X          |            |
+| LISTBOX SET COLUMN FORMULA                   |         |          X          |            |
+| LISTBOX SET COLUMN WIDTH                     |         |          X          |            |
+| LISTBOX SET FOOTER CALCULATION               |         |          X          |            |
+| LISTBOX SET FOOTERS HEIGHT                   |         |          X          |            |
+| LISTBOX SET GRID                             |         |          X          |            |
+| LISTBOX SET GRID COLOR                       |         |          X          |            |
+| LISTBOX SET HEADERS HEIGHT                   |         |          X          |            |
+| LISTBOX SET HIERARCHY                        |         |          X          |            |
+| LISTBOX SET LOCKED COLUMNS                   |         |          X          |            |
+| LISTBOX SET PROPERTY                         |         |          X          |            |
+| LISTBOX SET ROW COLOR                        |         |          X          |            |
+| LISTBOX SET ROW FONT STYLE                   |         |          X          |            |
+| LISTBOX SET ROW HEIGHT                       |         |          X          |            |
+| LISTBOX SET ROWS HEIGHT                      |         |          X          |            |
+| LISTBOX SET STATIC COLUMNS                   |         |          X          |            |
+| LISTBOX SET TABLE SOURCE                     |         |          X          |            |
+| LISTBOX SORT COLUMNS                         |         |          X          |            |
 | Load $D View document                        |         |                     |            |
 | Load list                                    |         |                     |            |
 | LOAD RECORD                                  |         |                     |            |
@@ -662,19 +683,19 @@ $D commands
 | LONGINT ARRAY FROM SELECTION                 |         |                     |            |
 | LONGINT TO BLOB                              |         |                     |            |
 | Lowercase                                    |         |                     |            |
-| Macintosh command down                       |         |                     |            |
-| Macintosh control down                       |         |                     |            |
-| Macintosh option down                        |         |                     |            |
+| Macintosh command down                       |         |          X          |            |
+| Macintosh control down                       |         |          X          |            |
+| Macintosh option down                        |         |          X          |            |
 | MAIL Convert from MIME                       |         |                     |            |
 | MAIL Convert to MIME                         |         |                     |            |
 | MAIL New attachment                          |         |                     |            |
 | Match regex                                  |         |                     |            |
 | Max                                          |         |                     |            |
-| MAXIMIZE WINDOW                              |         |                     |            |
+| MAXIMIZE WINDOW                              |         |          X          |            |
 | MEMORY STATISTICS                            |         |                     |            |
-| Menu bar height                              |         |                     |            |
-| Menu bar screen                              |         |                     |            |
-| Menu selected                                |         |                     |            |
+| Menu bar height                              |         |          X          |            |
+| Menu bar screen                              |         |          X          |            |
+| Menu selected                                |         |          X          |            |
 | MESSAGE                                      |         |                     |            |
 | MESSAGES OFF                                 |         |                     |            |
 | MESSAGES ON                                  |         |                     |            |
@@ -699,7 +720,7 @@ $D commands
 | METHOD SET COMMENTS                          |         |                     |            |
 | Milliseconds                                 |         |                     |            |
 | Min                                          |         |                     |            |
-| MINIMIZE WINDOW                              |         |                     |            |
+| MINIMIZE WINDOW                              |         |          X          |            |
 | MOBILE APP REFRESH SESSIONS                  |         |                     |            |
 | Mod                                          |         |                     |            |
 | Modified                                     |         |                     |            |
@@ -708,12 +729,12 @@ $D commands
 | MODIFY SELECTION                             |         |                     |            |
 | Monitored activity                           |         |                     |            |
 | Month of                                     |         |                     |            |
-| MOUSE POSITION                               |         |                     |            |
+| MOUSE POSITION                               |         |          X          |            |
 | MOVE DOCUMENT                                |         |                     |            |
 | MULTI SORT ARRAY                             |         |                     |            |
 | New collection                               |         |                     |            |
 | New data key                                 |         |                     |            |
-| New list                                     |         |                     |            |
+| New list                                     |         |          X          |            |
 | New log file                                 |         |                     |            |
 | New object                                   |         |                     |            |
 | New process                                  |         |                     |            |
@@ -721,7 +742,7 @@ $D commands
 | New shared object                            |         |                     |            |
 | New signal                                   |         |                     |            |
 | NEXT RECORD                                  |         |                     |            |
-| Next window                                  |         |                     |            |
+| Next window                                  |         |          X          |            |
 | NO DEFAULT TABLE                             |         |                     |            |
 | Not                                          |         |                     |            |
 | NOTIFY RESOURCES FOLDER MODIFICATION         |         |                     |            |
@@ -853,36 +874,36 @@ $D commands
 | On Server Close Connection database method   |         |                     |            |
 | On Server Open Connection database method    |         |                     |            |
 | On Server Shutdown database method           |         |                     |            |
-| On Server Startup database method            |         |                     |            |
+| On Server Startup database method            |    X    |                     |            |
 | On SQL Authentication database method        |         |                     |            |
-| On Startup database method                   |         |                     |            |
+| On Startup database method                   |         |          X          |            |
 | On System Event database method              |         |                     |            |
 | On Web Authentication database method        |         |                     |            |
-| On Web Connection database method            |         |                     |            |
+| On Web Connection database method            |    X    |                     |            |
 | On Web Legacy Close Session database method  |         |                     |            |
 | ONE RECORD SELECT                            |         |                     |            |
-| OPEN ADMINISTRATION WINDOW                   |         |                     |            |
-| OPEN COLOR PICKER                            |         |                     |            |
+| OPEN ADMINISTRATION WINDOW                   |         |          X          |            |
+| OPEN COLOR PICKER                            |         |          X          |            |
 | OPEN DATA FILE                               |         |                     |            |
 | OPEN DATABASE                                |         |                     |            |
 | Open datastore                               |         |                     |            |
 | Open document                                |         |                     |            |
 | OPEN FONT PICKER                             |         |                     |            |
-| Open form window                             |         |                     |            |
+| Open form window                             |         |          X          |            |
 | OPEN PRINTING JOB                            |         |                     |            |
 | Open resource file                           |         |                     |            |
-| OPEN RUNTIME EXPLORER                        |         |                     |            |
-| OPEN SECURITY CENTER                         |         |                     |            |
-| OPEN SETTINGS WINDOW                         |         |                     |            |
-| OPEN URL                                     |         |                     |            |
-| Open window                                  |         |                     |            |
+| OPEN RUNTIME EXPLORER                        |         |          X          |            |
+| OPEN SECURITY CENTER                         |         |          X          |            |
+| OPEN SETTINGS WINDOW                         |         |          X          |            |
+| OPEN URL                                     |    X    |                     |            |
+| Open window                                  |         |          X          |            |
 | ORDER BY                                     |         |                     |            |
 | ORDER BY ATTRIBUTE                           |         |                     |            |
 | ORDER BY FORMULA                             |         |                     |            |
 | Outside call                                 |         |                     |            |
 | PAGE BREAK                                   |         |                     |            |
 | Parse formula                                |         |                     |            |
-| Pasteboard data size                         |         |                     |            |
+| Pasteboard data size                         |         |          X          |            |
 | Path to object                               |         |                     |            |
 | PAUSE INDEXES                                |         |                     |            |
 | PAUSE PROCESS                                |         |                     |            |
@@ -923,52 +944,52 @@ $D commands
 | Process number                               |         |                     |            |
 | Process state                                |         |                     |            |
 | PUSH RECORD                                  |         |                     |            |
-| QR BLOB TO REPORT                            |         |                     |            |
-| QR Count columns                             |         |                     |            |
-| QR DELETE COLUMN                             |         |                     |            |
-| QR DELETE OFFSCREEN AREA                     |         |                     |            |
-| QR EXECUTE COMMAND                           |         |                     |            |
-| QR Find column                               |         |                     |            |
-| QR Get area property                         |         |                     |            |
-| QR GET BORDERS                               |         |                     |            |
-| QR Get command status                        |         |                     |            |
-| QR GET DESTINATION                           |         |                     |            |
-| QR Get document property                     |         |                     |            |
-| QR Get drop column                           |         |                     |            |
-| QR GET HEADER AND FOOTER                     |         |                     |            |
-| QR Get HTML template                         |         |                     |            |
-| QR GET INFO COLUMN                           |         |                     |            |
-| QR Get info row                              |         |                     |            |
-| QR Get report kind                           |         |                     |            |
-| QR Get report table                          |         |                     |            |
-| QR GET SELECTION                             |         |                     |            |
-| QR GET SORTS                                 |         |                     |            |
-| QR Get text property                         |         |                     |            |
-| QR GET TOTALS DATA                           |         |                     |            |
-| QR GET TOTALS SPACING                        |         |                     |            |
-| QR INSERT COLUMN                             |         |                     |            |
-| QR MOVE COLUMN                               |         |                     |            |
-| QR NEW AREA                                  |         |                     |            |
-| QR New offscreen area                        |         |                     |            |
-| QR ON COMMAND                                |         |                     |            |
-| QR REPORT                                    |         |                     |            |
-| QR REPORT TO BLOB                            |         |                     |            |
-| QR RUN                                       |         |                     |            |
-| QR SET AREA PROPERTY                         |         |                     |            |
-| QR SET BORDERS                               |         |                     |            |
-| QR SET DESTINATION                           |         |                     |            |
-| QR SET DOCUMENT PROPERTY                     |         |                     |            |
-| QR SET HEADER AND FOOTER                     |         |                     |            |
-| QR SET HTML TEMPLATE                         |         |                     |            |
-| QR SET INFO COLUMN                           |         |                     |            |
-| QR SET INFO ROW                              |         |                     |            |
-| QR SET REPORT KIND                           |         |                     |            |
-| QR SET REPORT TABLE                          |         |                     |            |
-| QR SET SELECTION                             |         |                     |            |
-| QR SET SORTS                                 |         |                     |            |
-| QR SET TEXT PROPERTY                         |         |                     |            |
-| QR SET TOTALS DATA                           |         |                     |            |
-| QR SET TOTALS SPACING                        |         |                     |            |
+| QR BLOB TO REPORT                            |         |          X          |            |
+| QR Count columns                             |         |          X          |            |
+| QR DELETE COLUMN                             |         |          X          |            |
+| QR DELETE OFFSCREEN AREA                     |         |          X          |            |
+| QR EXECUTE COMMAND                           |         |          X          |            |
+| QR Find column                               |         |          X          |            |
+| QR Get area property                         |         |          X          |            |
+| QR GET BORDERS                               |         |          X          |            |
+| QR Get command status                        |         |          X          |            |
+| QR GET DESTINATION                           |         |          X          |            |
+| QR Get document property                     |         |          X          |            |
+| QR Get drop column                           |         |          X          |            |
+| QR GET HEADER AND FOOTER                     |         |          X          |            |
+| QR Get HTML template                         |         |          X          |            |
+| QR GET INFO COLUMN                           |         |          X          |            |
+| QR Get info row                              |         |          X          |            |
+| QR Get report kind                           |         |          X          |            |
+| QR Get report table                          |         |          X          |            |
+| QR GET SELECTION                             |         |          X          |            |
+| QR GET SORTS                                 |         |          X          |            |
+| QR Get text property                         |         |          X          |            |
+| QR GET TOTALS DATA                           |         |          X          |            |
+| QR GET TOTALS SPACING                        |         |          X          |            |
+| QR INSERT COLUMN                             |         |          X          |            |
+| QR MOVE COLUMN                               |         |          X          |            |
+| QR NEW AREA                                  |         |          X          |            |
+| QR New offscreen area                        |         |          X          |            |
+| QR ON COMMAND                                |         |          X          |            |
+| QR REPORT                                    |         |          X          |            |
+| QR REPORT TO BLOB                            |         |          X          |            |
+| QR RUN                                       |         |          X          |            |
+| QR SET AREA PROPERTY                         |         |          X          |            |
+| QR SET BORDERS                               |         |          X          |            |
+| QR SET DESTINATION                           |         |          X          |            |
+| QR SET DOCUMENT PROPERTY                     |         |          X          |            |
+| QR SET HEADER AND FOOTER                     |         |          X          |            |
+| QR SET HTML TEMPLATE                         |         |          X          |            |
+| QR SET INFO COLUMN                           |         |          X          |            |
+| QR SET INFO ROW                              |         |          X          |            |
+| QR SET REPORT KIND                           |         |          X          |            |
+| QR SET REPORT TABLE                          |         |          X          |            |
+| QR SET SELECTION                             |         |          X          |            |
+| QR SET SORTS                                 |         |          X          |            |
+| QR SET TEXT PROPERTY                         |         |          X          |            |
+| QR SET TOTALS DATA                           |         |          X          |            |
+| QR SET TOTALS SPACING                        |         |          X          |            |
 | QUERY                                        |         |                     |            |
 | QUERY BY ATTRIBUTE                           |         |                     |            |
 | QUERY BY EXAMPLE                             |         |                     |            |
@@ -995,8 +1016,8 @@ $D commands
 | Records in set                               |         |                     |            |
 | Records in table                             |         |                     |            |
 | REDRAW                                       |         |                     |            |
-| REDRAW WINDOW                                |         |                     |            |
-| REDUCE RESTORE WINDOW                        |         |                     |            |
+| REDRAW WINDOW                                |         |          X          |            |
+| REDUCE RESTORE WINDOW                        |         |          X          |            |
 | REDUCE SELECTION                             |         |                     |            |
 | Refresh license                              |         |                     |            |
 | REGENERATE MISSING TABLE                     |         |                     |            |
@@ -1014,8 +1035,8 @@ $D commands
 | REMOVE FROM SET                              |         |                     |            |
 | REMOVE PICTURE FROM LIBRARY                  |         |                     |            |
 | Replace string                               |         |                     |            |
-| Request                                      |         |                     |            |
-| RESIZE FORM WINDOW                           |         |                     |            |
+| Request                                      |    X    |                     |            |
+| RESIZE FORM WINDOW                           |         |          X          |            |
 | RESOLVE ALIAS                                |         |                     |            |
 | RESOLVE POINTER                              |         |                     |            |
 | RESOURCE LIST                                |         |                     |            |
@@ -1026,7 +1047,7 @@ $D commands
 | RESUME INDEXES                               |         |                     |            |
 | RESUME PROCESS                               |         |                     |            |
 | RESUME TRANSACTION                           |         |                     |            |
-| Right click                                  |         |                     |            |
+| Right click                                  |         |          X          |            |
 | Round                                        |         |                     |            |
 | SAVE LIST                                    |         |                     |            |
 | SAVE RECORD                                  |         |                     |            |
@@ -1051,10 +1072,10 @@ $D commands
 | SAX OPEN XML ELEMENT ARRAYS                  |         |                     |            |
 | SAX SET XML DECLARATION                      |         |                     |            |
 | SCAN INDEX                                   |         |                     |            |
-| SCREEN COORDINATES                           |         |                     |            |
-| SCREEN DEPTH                                 |         |                     |            |
-| Screen height                                |         |                     |            |
-| Screen width                                 |         |                     |            |
+| SCREEN COORDINATES                           |         |         X           |            |
+| SCREEN DEPTH                                 |         |         X           |            |
+| Screen height                                |         |         X           |            |
+| Screen width                                 |         |         X           |            |
 | Select document                              |         |                     |            |
 | Select folder                                |         |                     |            |
 | SELECT LIST ITEMS BY POSITION                |         |                     |            |
@@ -1086,7 +1107,7 @@ $D commands
 | SET CACHE SIZE                               |         |                     |            |
 | SET CHANNEL                                  |         |                     |            |
 | SET CURRENT PRINTER                          |         |                     |            |
-| SET CURSOR                                   |         |                     |            |
+| SET CURSOR                                   |         |         X           |            |
 | SET DATABASE LOCALIZATION                    |         |                     |            |
 | SET DATABASE PARAMETER                       |         |                     |            |
 | SET DEFAULT CENTURY                          |         |                     |            |
@@ -1102,25 +1123,25 @@ $D commands
 | SET FILE TO PASTEBOARD                       |         |                     |            |
 | SET GROUP ACCESS                             |         |                     |            |
 | Set group properties                         |         |                     |            |
-| SET HELP MENU                                |         |                     |            |
+| SET HELP MENU                                |         |         X           |            |
 | SET INDEX                                    |         |                     |            |
 | SET INDEX CACHE PRIORITY                     |         |                     |            |
-| SET LIST ITEM                                |         |                     |            |
-| SET LIST ITEM FONT                           |         |                     |            |
-| SET LIST ITEM ICON                           |         |                     |            |
-| SET LIST ITEM PARAMETER                      |         |                     |            |
-| SET LIST ITEM PROPERTIES                     |         |                     |            |
-| SET LIST PROPERTIES                          |         |                     |            |
+| SET LIST ITEM                                |         |         X           |            |
+| SET LIST ITEM FONT                           |         |         X           |            |
+| SET LIST ITEM ICON                           |         |         X           |            |
+| SET LIST ITEM PARAMETER                      |         |         X           |            |
+| SET LIST ITEM PROPERTIES                     |         |         X           |            |
+| SET LIST PROPERTIES                          |         |         X           |            |
 | SET MACRO PARAMETER                          |         |                     |            |
-| SET MENU BAR                                 |         |                     |            |
-| SET MENU ITEM                                |         |                     |            |
-| SET MENU ITEM ICON                           |         |                     |            |
-| SET MENU ITEM MARK                           |         |                     |            |
-| SET MENU ITEM METHOD                         |         |                     |            |
-| SET MENU ITEM PARAMETER                      |         |                     |            |
-| SET MENU ITEM PROPERTY                       |         |                     |            |
-| SET MENU ITEM SHORTCUT                       |         |                     |            |
-| SET MENU ITEM STYLE                          |         |                     |            |
+| SET MENU BAR                                 |         |         X           |            |
+| SET MENU ITEM                                |         |         X           |            |
+| SET MENU ITEM ICON                           |         |         X           |            |
+| SET MENU ITEM MARK                           |         |         X           |            |
+| SET MENU ITEM METHOD                         |         |         X           |            |
+| SET MENU ITEM PARAMETER                      |         |         X           |            |
+| SET MENU ITEM PROPERTY                       |         |         X           |            |
+| SET MENU ITEM SHORTCUT                       |         |         X           |            |
+| SET MENU ITEM STYLE                          |         |         X           |            |
 | SET PICTURE FILE NAME                        |         |                     |            |
 | SET PICTURE METADATA                         |         |                     |            |
 | SET PICTURE TO LIBRARY                       |         |                     |            |
@@ -1144,15 +1165,15 @@ $D commands
 | SET UPDATE FOLDER                            |         |                     |            |
 | SET USER ALIAS                               |         |                     |            |
 | Set user properties                          |         |                     |            |
-| SET WINDOW DOCUMENT ICON-new $D 20 R7        |         |                     |            |
-| SET WINDOW RECT                              |         |                     |            |
-| SET WINDOW TITLE                             |         |                     |            |
-| Shift down                                   |         |                     |            |
-| SHOW MENU BAR                                |         |                     |            |
-| SHOW ON DISK                                 |         |                     |            |
-| SHOW PROCESS                                 |         |                     |            |
-| SHOW TOOL BAR                                |         |                     |            |
-| SHOW WINDOW                                  |         |                     |            |
+| SET WINDOW DOCUMENT ICON-new $D 20 R7        |         |          X          |            |
+| SET WINDOW RECT                              |         |          X          |            |
+| SET WINDOW TITLE                             |         |          X          |            |
+| Shift down                                   |         |          X          |            |
+| SHOW MENU BAR                                |         |          X          |            |
+| SHOW ON DISK                                 |         |          X          |            |
+| SHOW PROCESS                                 |         |          X          |            |
+| SHOW TOOL BAR                                |         |          X          |            |
+| SHOW WINDOW                                  |         |          X          |            |
 | Sin                                          |    X    |                     |            |
 | Size of array                                |         |                     |            |
 | SMTP New transporter                         |         |                     |            |
@@ -1228,7 +1249,7 @@ $D commands
 | Table                                        |         |                     |            |
 | Table fragmentation                          |         |                     |            |
 | Table name                                   |         |                     |            |
-| Tan                                          |    X    |                     |            |
+| Tan                                          |    X    |                     |     X      |
 | Temporary folder                             |         |                     |            |
 | Test path name                               |         |                     |            |
 | Test semaphore                               |         |                     |            |
@@ -1242,17 +1263,17 @@ $D commands
 | Time string                                  |         |                     |            |
 | Timestamp                                    |         |                     |            |
 | Tool bar height                              |         |                     |            |
-| TRACE                                        |    X    |                     |            |
+| TRACE                                        |    X    |                     |     X      |
 | Transaction level                            |         |                     |            |
 | TRANSFORM PICTURE                            |         |                     |            |
 | Trigger event                                |         |                     |            |
 | Trigger level                                |         |                     |            |
 | TRIGGER PROPERTIES                           |         |                     |            |
-| True                                         |    X    |                     |            |
+| True                                         |    X    |                     |     X      |
 | Trunc                                        |         |                     |            |
 | TRUNCATE TABLE                               |         |                     |            |
 | Type                                         |         |                     |            |
-| Undefined                                    |    X    |                     |            |
+| Undefined                                    |    X    |                     |     X      |
 | UNION                                        |         |                     |            |
 | UNLOAD RECORD                                |         |                     |            |
 | UNREGISTER CLIENT                            |         |                     |            |
@@ -1275,33 +1296,33 @@ $D commands
 | Version type                                 |         |                     |            |
 | VOLUME ATTRIBUTES                            |         |                     |            |
 | VOLUME LIST                                  |         |                     |            |
-| WA Back URL available                        |         |                     |            |
-| WA Create URL history menu                   |         |                     |            |
-| WA Evaluate JavaScript                       |         |                     |            |
-| WA EXECUTE JAVASCRIPT FUNCTION               |         |                     |            |
-| WA Forward URL available                     |         |                     |            |
-| WA Get current URL                           |         |                     |            |
-| WA GET EXTERNAL LINKS FILTERS                |         |                     |            |
-| WA Get last filtered URL                     |         |                     |            |
-| WA GET LAST URL ERROR                        |         |                     |            |
-| WA Get page content                          |         |                     |            |
-| WA Get page title                            |         |                     |            |
-| WA GET PREFERENCE                            |         |                     |            |
-| WA GET URL FILTERS                           |         |                     |            |
-| WA GET URL HISTORY                           |         |                     |            |
-| WA OPEN BACK URL                             |         |                     |            |
-| WA OPEN FORWARD URL                          |         |                     |            |
-| WA OPEN URL                                  |         |                     |            |
-| WA OPEN WEB INSPECTOR                        |         |                     |            |
-| WA REFRESH CURRENT URL                       |         |                     |            |
-| WA Run offscreen area                        |         |                     |            |
-| WA SET EXTERNAL LINKS FILTERS                |         |                     |            |
-| WA SET PAGE CONTENT                          |         |                     |            |
-| WA SET PREFERENCE                            |         |                     |            |
-| WA SET URL FILTERS                           |         |                     |            |
-| WA STOP LOADING URL                          |         |                     |            |
-| WA ZOOM IN                                   |         |                     |            |
-| WA ZOOM OUT                                  |         |                     |            |
+| WA Back URL available                        |         |          X          |            |
+| WA Create URL history menu                   |         |          X          |            |
+| WA Evaluate JavaScript                       |         |          X          |            |
+| WA EXECUTE JAVASCRIPT FUNCTION               |         |          X          |            |
+| WA Forward URL available                     |         |          X          |            |
+| WA Get current URL                           |         |          X          |            |
+| WA GET EXTERNAL LINKS FILTERS                |         |         	X          |            |
+| WA Get last filtered URL                     |         |          X          |            |
+| WA GET LAST URL ERROR                        |         |          X          |            |
+| WA Get page content                          |         |          X          |            |
+| WA Get page title                            |         |          X          |            |
+| WA GET PREFERENCE                            |         |          X          |            |
+| WA GET URL FILTERS                           |         |          X          |            |
+| WA GET URL HISTORY                           |         |          X          |            |
+| WA OPEN BACK URL                             |         |          X          |            |
+| WA OPEN FORWARD URL                          |         |          X          |            |
+| WA OPEN URL                                  |         |          X          |            |
+| WA OPEN WEB INSPECTOR                        |         |          X          |            |
+| WA REFRESH CURRENT URL                       |         |          X          |            |
+| WA Run offscreen area                        |         |          X          |            |
+| WA SET EXTERNAL LINKS FILTERS                |         |          X          |            |
+| WA SET PAGE CONTENT                          |         |          X          |            |
+| WA SET PREFERENCE                            |         |          X          |            |
+| WA SET URL FILTERS                           |         |          X          |            |
+| WA STOP LOADING URL                          |         |          X          |            |
+| WA ZOOM IN                                   |         |          X          |            |
+| WA ZOOM OUT                                  |         |          X          |            |
 | WEB GET BODY PART                            |         |                     |            |
 | WEB Get body part count                      |         |                     |            |
 | WEB Get current session ID                   |         |                     |            |
@@ -1332,14 +1353,14 @@ $D commands
 | WEB SET HTTP HEADER                          |         |                     |            |
 | WEB SET OPTION                               |         |                     |            |
 | WEB SET ROOT FOLDER                          |         |                     |            |
-| WEB START SERVER                             |         |                     |            |
+| WEB START SERVER                             |    X    |                     |            |
 | WEB STOP SERVER                              |         |                     |            |
 | WEB Validate digest                          |         |                     |            |
-| Window kind                                  |         |                     |            |
-| WINDOW LIST                                  |         |                     |            |
-| Window process                               |         |                     |            |
-| Windows Alt down                             |         |                     |            |
-| Windows Ctrl down                            |         |                     |            |
+| Window kind                                  |         |          X          |            |
+| WINDOW LIST                                  |         |          X          |            |
+| Window process                               |         |          X          |            |
+| Windows Alt down                             |         |          X          |            |
+| Windows Ctrl down                            |         |          X          |            |
 | WRITE PICTURE FILE                           |         |                     |            |
 | XML DECODE                                   |         |                     |            |
 | XML GET ERROR                                |         |                     |            |
@@ -1348,4 +1369,5 @@ $D commands
 | Year of                                      |         |                     |            |
 | ZIP Create archive                           |         |                     |            |
 | ZIP Read archive                             |         |                     |            |
-
+| -------------------------------------------- | ------- | ------------------- | ---------- |
+|                   1269                       |         |         418         |            |

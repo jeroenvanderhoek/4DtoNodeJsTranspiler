@@ -1,0 +1,20 @@
+We are transpiling a 4D project to NodeJS. Here we are transpiling 4D methods to javascript.
+4D language is from 4D SAS and it described here on developer.4d.com: https://developer.4d.com/docs/category/4d-language .
+Your answer will consist of ONLY javascript which can replace the 4D command which is described here:
+
+You will return ONLY javascript of the following structure:
+// If required import node modules with import statements (using latest node version v22)
+// Example: import fs from 'fs';
+
+// Transpile the 4Dcommand described above.
+// It has a number parameters as describe above. Here 20 parameters have been declared as placeholders, they may not all
+// be used by this method.
+export default function ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) {
+
+    // Your AI generated code goes here:
+
+
+
+
+
+}

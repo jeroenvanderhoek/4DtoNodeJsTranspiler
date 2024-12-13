@@ -9,5 +9,11 @@
     "start": "node ./Project/Sources/DatabaseMethods/onServerStartup.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "open": "^10.1.0",
+    "pg": "^8.13.1",
+    "readline-sync": "^1.4.10"
+  }
 }

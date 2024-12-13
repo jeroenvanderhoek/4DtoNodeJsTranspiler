@@ -1,4 +1,6 @@
 // 4D 20.7 beta commands
+
+// FIXME filter database methods
 export default [
 "ABORT:C156",
 "ABORT PROCESS BY ID:C1634",
@@ -761,26 +763,8 @@ export default [
 "Old:C35",
 "OLD RELATED MANY:C263",
 "OLD RELATED ONE:C44",
-"On Backup Shutdown database method",
-"On Backup Startup database method",
-"On Drop database method",
 "ON ERR CALL:C155",
 "ON EVENT CALL:C190",
-"On Exit database method",
-"On Host Database Event database method",
-"On Mobile App Action database method",
-"On Mobile App Authentication database method",
-"On REST Authentication database method",
-"On Server Close Connection database method",
-"On Server Open Connection database method",
-"On Server Shutdown database method",
-"On Server Startup database method",
-"On SQL Authentication database method",
-"On Startup database method",
-"On System Event database method",
-"On Web Authentication database method",
-"On Web Connection database method",
-"On Web Legacy Close Session database method",
 "ONE RECORD SELECT:C189",
 "OPEN ADMINISTRATION WINDOW:C1047",
 "OPEN COLOR PICKER:C1304",
