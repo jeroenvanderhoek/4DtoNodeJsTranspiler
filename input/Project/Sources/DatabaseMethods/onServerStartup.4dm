@@ -10,7 +10,7 @@ z:=Arctan:C20(x/y)
 LOG EVENT:C667(Into Windows log events:K38:4; "Arctan ("+String:C10(x)+"/"+String:C10(y)+") = "+String:C10(z))
 
 // Ask continu y/n?
-ALERT:C41("Warning, this might blow your mind!"; "Continue")
+//ALERT("Warning, this might blow your mind!"; "Continue")
 
 // Project method without parameters
 Project Method Hello World

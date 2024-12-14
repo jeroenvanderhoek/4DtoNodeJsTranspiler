@@ -51,13 +51,11 @@ Feel free to contribute / fork!
 Contact @ jeroenvanderhoek97@gmail.com
 
 TODO 
-- How to make ARRAYS work? Make a new type of Array class that replaces 4D arrays, because 4D arrays have the last selected element active
+- How to make ARRAYS work? Make a new Array class that replaces 4D arrays, because 4D arrays have the last selected element active
     + replace brackets in $atArray{$vlElem}:=$vlElem
     - test 4D arrays start at i , in Javascript at i-1
     - fix 2D arrays
         - brackets: atArray{8}{5}
-    - maybe create new JS class
-- Pass processState to each function ( Or how else to pass res from On web connetion to WEB SEND TEXT, and how will this work for multiple webrequests?)
 - Start new processes and Get current process name etc? Process ID? process.ppid / worker.id 
     - cluster.fork() 
     - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
@@ -65,12 +63,12 @@ TODO
 - implement ORDA, php, database, pointers, [table]field 
 - create an example with database
 - fix a few more /$Dcommand/-modules, or generate starting points with AI 
-- how to work in javascript: async / synchronous / callbacks
 - rename reserverd words, see reservedWordsInJs.js
+- prevent renaming some things inside strings
 - How does this perform with 10.000 $D methods imported in each process?
-- improve constants.js
+- improve constants.js (replace with constantnames instead of values)
 - import /resources/constants.xlf if present
-- replace cases like
+- replace:
     Case of
         :(vResult=1) ` Test if the number is 1
         ALERT("One.") ` If it is 1, display an alert
@@ -1345,9 +1343,9 @@ $D commands
 | WEB SEND FILE                                |         |                     |            |
 | WEB SEND HTTP REDIRECT                       |         |                     |            |
 | WEB SEND RAW DATA                            |         |                     |            |
-| WEB SEND TEXT                                |         |                     |            |
-| WEB Server                                   |         |                     |            |
-| WEB Server list                              |         |                     |            |
+| WEB SEND TEXT                                |    X    |                     |            |
+| WEB Server                                   |    X    |                     |            |
+| WEB Server list                              |    X    |                     |            |
 | WEB SERVICE AUTHENTICATE                     |         |                     |            |
 | WEB SERVICE CALL                             |         |                     |            |
 | WEB SERVICE Get info                         |         |                     |            |

@@ -3,9 +3,32 @@
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Welcome</title>  
+    <title>Full Window Background Image</title>  
+    <style>  
+        body {  
+            margin: 0;  
+            padding: 0;  
+            height: 100%;  
+            background-image: url('./background.png');  
+            background-size: cover; /* Ensures the image covers the entire background */  
+            background-repeat: no-repeat; /* Prevents repeating the image */  
+            background-position: center center; /* Centers the image */  
+        }  
+        /* Add this to ensure the body takes the full height of the viewport */  
+        html, body {  
+            height: 100%;  
+        }  
+
+        h1 {  
+            color: white;  
+            text-align: center;  
+            margin-top: 40%;  
+            font-size: 50px;  
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>  
 </head>  
-<body  style="background-color: #4781ff;">  
-    <h1>Welcome on your NodeJS webserver.</h1>  
+<body>  
+    <h1>Welcome to our NodeJS webserver</h1>  
 </body>  
-</html>  
+</html> 
