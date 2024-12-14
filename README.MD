@@ -52,11 +52,12 @@ Contact @ jeroenvanderhoek97@gmail.com
 
 TODO 
 - How to make ARRAYS work? Make a new type of Array class that replaces 4D arrays, because 4D arrays have the last selected element active
-    - replace brackets in $aiValues{$vlElem}:=$vlElem
-    - 4D arrays start at 1 instead of 0...
-    + For Loops are replaced by Javascript
-- Fix CASE
-- Pass processObject to each function. In front or behind or as parent? ( Or how else to pass res from On web connetion to WEB SEND TEXT, and how will this work for multiple webrequests?)
+    + replace brackets in $atArray{$vlElem}:=$vlElem
+    - test 4D arrays start at i , in Javascript at i-1
+    - fix 2D arrays
+        - brackets: atArray{8}{5}
+    - maybe create new JS class
+- Pass processState to each function ( Or how else to pass res from On web connetion to WEB SEND TEXT, and how will this work for multiple webrequests?)
 - Start new processes and Get current process name etc? Process ID? process.ppid / worker.id 
     - cluster.fork() 
     - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
@@ -80,6 +81,10 @@ TODO
         Else ` If it is not 1, 2, or 3, display an alert
         ALERT("It was not one, two, or three.")
     End case
+    
+    Repeat...Until 
+    While...End while
+
 
 General idea of transpiling:
 1. Lexical Analysis

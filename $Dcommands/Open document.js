@@ -2,7 +2,7 @@
 
 import open from 'open';
 
-export default function ($1) {
+export default function (processState,$1) {
     
     open($1);
 

@@ -15,5 +15,7 @@ export default {
     "TRACE:C157":"debugger",
     "New collection:C1472":"[]",
     "New shared collection:C1527":"[]",
-    "Null:C1517": "null",
+    "Null:C1517": "null"
 }
+
+// Replace OK with processState.OK

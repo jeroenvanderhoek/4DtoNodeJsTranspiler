@@ -67,7 +67,6 @@ globSync("input/**/*.4dm").forEach((entry) => {
     let newFileName = entry.replace('input'+path.sep,'output'+path.sep).replace('.4dm','.js');
     // console.log("Write ", newFileName,transpiledCode);
     fs.appendFileSync( newFileName, transpiledCode, {encoding: "utf8"});
-
     
 });
 

@@ -1,3 +1,47 @@
 {
-	"editors": []
+	"editors": [
+		{
+			"type": "explorer"
+		},
+		{
+			"type": "method",
+			"id": 2147483643,
+			"codeDescriptor": {
+				"type": 5,
+				"databaseMethod": 2
+			}
+		},
+		{
+			"type": "method",
+			"id": 2147483642,
+			"codeDescriptor": {
+				"type": 1,
+				"methodName": "Test Arrays"
+			}
+		},
+		{
+			"type": "method",
+			"id": 2147483647,
+			"codeDescriptor": {
+				"type": 1,
+				"methodName": "Project Method With Parameter"
+			}
+		},
+		{
+			"type": "method",
+			"id": 2147483645,
+			"codeDescriptor": {
+				"type": 5,
+				"databaseMethod": 6
+			}
+		},
+		{
+			"type": "method",
+			"id": 2147483644,
+			"codeDescriptor": {
+				"type": 5,
+				"databaseMethod": 8
+			}
+		}
+	]
 }

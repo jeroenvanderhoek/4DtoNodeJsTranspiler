@@ -1,10 +1,15 @@
 // $D command: LOG EVENT
-export default function (eventType, eventMessage) {
+/**
+ * 
+ * @param {object} processState 
+ * @param {number} eventType 
+ * @param {string} eventMessage 
+ */
+export default function (processState, eventType, eventMessage) {
 
-    // FIXME this should log to Windows Events or log-files based on the eventType
     console.log(eventMessage);
 
-
+    // FIXME this should log to Windows Events or log-files based on the eventType
     // // Windwos Event Log:
     // const winston = require('winston');
     // const EventLog = require('winston-eventlog');

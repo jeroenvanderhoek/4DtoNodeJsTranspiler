@@ -7,7 +7,7 @@
 
 import readlineSync from 'readline-sync';
 
-export default function ($1,$2) {
+export default function (processState,$1,$2) {
     
     // Prompt user with the question
     if (readlineSync.keyInYN(`${ $1 } ${ $2 !== undefined ? $2 + "?" : ""}`)) {

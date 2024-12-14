@@ -3,7 +3,7 @@
 // Parameter	Type		Description
 // array	Array	→	Array to which an element will be appended
 // value	Expression	→	Value to append
-function (array, value) {
+function apppendToArray (processState,array, value) {
     return array.push(value);
 
 }

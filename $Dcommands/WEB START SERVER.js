@@ -3,12 +3,12 @@ import On_Web_Connection_database_method from '../Sources/DatabaseMethods/onWebC
 
 import express from 'express';
 
-export default function WEB_START_SERVER () {
-
-
+export default function WEB_START_SERVER (processState) {
     
     const webserver = express();
     const port = 80;
+
+    processState.webservers.push(webserver);
 
     webserver.get('/', (req, res) => {
 
@@ -23,14 +23,16 @@ export default function WEB_START_SERVER () {
         // $7	Text	<-	req
         // $8	Text	<-	res
 
-        const headerValue = req.headers['custom-header'];
-        const bodyData = req.body;
         const clientIp = req.ip; // $3
         const serverIp = req.socket.remoteAddress; // $4
 
-        // FIX WEB_SEND_TEXT should res.send() or res.json() the response 
+        // For WEB_SEND_TEXT should res.send() or res.json() the response 
+        delete processState.req;
+        delete processState.res;
+        processState.req = req;
+        processState.res = res;
 
-        return On_Web_Connection_database_method( req.url,req.headers,clientIp,serverIp,req.params.username,req.params.password,req, res);
+        On_Web_Connection_database_method( processState, req.url, req.headers, clientIp, serverIp, req.params.username, req.params.password, req, res);
     
     });
 
@@ -47,16 +49,23 @@ export default function WEB_START_SERVER () {
         // $7	Text	<-	req
         // $8	Text	<-	res
 
-        const headerValue = req.headers['custom-header']; // Example header
-        const bodyData = req.body; // Parsed body data
+        
+        // const headerValue = req.headers['custom-header']; // Example header
+        // const bodyData = req.body; // Parsed body data
         const clientIp = req.ip; // $3
         const serverIp = req.socket.remoteAddress; // $4
+
+        // For WEB_SEND_TEXT should res.send() or res.json() the response 
+        delete processState.req;
+        delete processState.res;
+        processState.req = req;
+        processState.res = res;
 
         // FIX On_Web_Connection_database_method should 
         // - res.send() or 
         // - res.json() the response 
         // - res.sendFile(__dirname + '/index.html');
-        return On_Web_Connection_database_method( req.url,req.headers,clientIp,serverIp,req.params.username,req.params.password,req, res);
+        On_Web_Connection_database_method( processState, req.url,req.headers,clientIp,serverIp,req.params.username,req.params.password,req, res);
         
     });
     
@@ -66,26 +75,20 @@ export default function WEB_START_SERVER () {
     });
 
 
-    let started = false;
-
     try {
 
         webserver.listen(port, () => {
             console.log(`Server listening on port ${ port }`);
         });
     
-        started = 1;
+        processState.OK = true;  
 
     } catch (e) {
+
+        processState.OK = false;
         console.error("Error starting webserver ", e);
+
     }
     
-    // FIXME for $vb__webserverStarted:=(OK=1)
-    return { 
-        webserver: webserver, 
-        OK: started 
-    };
-    
+
 }
-
-

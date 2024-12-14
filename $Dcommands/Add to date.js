@@ -1,5 +1,5 @@
 // $D command: Add to date ( date ; years ; months ; days ) : Date
-function addToDate(date, years, months, days) {
+function addToDate(processState,date, years, months, days) {
     let result = new Date(date);
     // Add years
     result.setFullYear(result.getFullYear() + years);

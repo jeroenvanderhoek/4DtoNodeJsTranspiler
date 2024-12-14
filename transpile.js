@@ -17,16 +17,30 @@ export function transpile (app, code, filename) {
 
     let transpiledCode = '';
 
+    /**
+     * Pass 1 straight forward replacements
+     */
+
     console.log("Transpiling " + filename);
+
+    // Replace OK with processState.OK
+    code = replaceStandaloneWord(code, 'OK', 'processState.OK'); 
+
     // FIXME this should not be replaced in strings / php / sql statements / comments
+
+    // Replace Operator = with ==, but not in :== or :=
+    // "/(?<!:)=(?!:)/g": "==" 
+    code = code.replace(/(?<!:)=(?!:)/g, "==");
 
     // Replace curly braces with square brackets in array indexes
     code = replaceArrays(code);
+
     // Replace $D for loops with JS for loops
     code = replaceForLoops(code);
 
     console.log("Applying simpleReplacements...");
-    // Replace $D commands that can directly be replaced by JS commands
+
+    // Replace $D commands and $d language elements that can directly be replaced by JS commands
     for ( let prop in simpleReplacements ) {
         if (  code.match(new RegExp(`${ prop }`)) ) {
             console.log("- " + prop + " -> " + simpleReplacements[prop]);
@@ -34,10 +48,15 @@ export function transpile (app, code, filename) {
         }
     }
 
+        
+
+    /**
+     * Pass 2 Variable declarations
+     */
+
     let arrayOfLines = [];
  
     code.split('\n').forEach((line) => {
-
 
         /**
          * Transpile declarations like:
@@ -159,7 +178,14 @@ export function transpile (app, code, filename) {
 
     transpiledCode = arrayOfLines.join('\n');
 
-    // FIXME varname can't start with a number or <>
+    /**
+     * Pass 3 More complex replacements concerning project and database methods 
+     * with or without parameters
+     * 
+     * Here as a first parameter the processState is passed to the function
+     * 
+     * These replacements use modules and 
+     */
 
     let importStatements = [];
 
@@ -186,13 +212,13 @@ export function transpile (app, code, filename) {
 
                 // Replace the $D command with the JS command and its parameters
                 // Replace spaces in command names with underscores for javascript
-                transpiledCode = transpiledCode.replace(sourceCmdWithNumber + "(" + paramsStr + ")", cmdName.replace(/ /g,"_") + "(" + params.join(",") + ")");
+                transpiledCode = transpiledCode.replace(sourceCmdWithNumber + "(" + paramsStr + ")", cmdName.replace(/ /g,"_") + "(processState," + params.join(",") + ")");
 
             } else {
 
                 // Replace the $D command with the JS command
                 // Replace spaces in command names with underscores for javascript
-                transpiledCode = transpiledCode.replace(sourceCmdWithNumber,(cmdName+"()").replace(/ /g,"_"));
+                transpiledCode = transpiledCode.replace(sourceCmdWithNumber,(cmdName+"(processState)").replace(/ /g,"_"));
 
             }
 
@@ -240,7 +266,7 @@ export function transpile (app, code, filename) {
         let functionName = filename.split(path.sep).pop().replace('.4dm','').replace(/ /g,"_"); 
 
         // Add parameters to these functions calle $1, $2, $3, untill $15 
-        transpiledCode = `export default function ${functionName}($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n\n${ transpiledCode }\n\n}`;
+        transpiledCode = `export default function ${functionName}(processState,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n\n${ transpiledCode }\n\n}`;
 
     }
 
@@ -255,8 +281,11 @@ export function transpile (app, code, filename) {
         transpiledCode = `
 console.log("RUNNING TRANSPILED PROJECT:");
 console.log("");
-// processObject
-let processObject = {};
+// The processState-object is passed to all functions and contains the state of the process like:
+// selections, active record, webservers, OK, etc.
+let processState = {
+    webservers: []
+};
 ` + transpiledCode;
     }
 
@@ -322,11 +351,12 @@ function replaceMethod (entry,transpiledCode,importStatements) {
 
     // if a command was used in this file add an import statement
     if ( occurencesInFile > 0 ) {
-
         
         if ( folderName === 'DatabaseMethods' ) {
 
             // $D renamed the filenames of the database methods: "On Web Connection database method" -> "onWebConnection"
+
+            // Goes for these methods:
             //     "On Backup Shutdown database method",
             //     "On Backup Startup database method",
             //     "On Drop database method",
@@ -368,7 +398,9 @@ export function replaceArrays ( code ) {
 
     // Replace curly braces with square brackets in array indexes
     const regexBrackets = /(\w+)\{([^}]+)\}/g;
-    const replacementForBrackets = '$1[($2)-1]'; // index in 4D is 1-based, in JS it is 0-based, so -1
+
+    // index in 4D is 1-based, in JS it is 0-based, so -1
+    const replacementForBrackets = '$1[($2)-1]'; 
     code = code.replace(regexBrackets, replacementForBrackets);
 
     // Replace ARRAY TEXT($x,40) and ARRAY BOOLEAN, ARRAY INTEGER, ARRAY REAL, ARRAY BLOB etc. with let array = new Array(size);
@@ -385,7 +417,7 @@ export function replaceArrays ( code ) {
 
 }
 
-
+// Replace 4D for loops with JS for loops
 export function replaceForLoops ( code ) {
 
     // const code = `
@@ -393,18 +425,53 @@ export function replaceForLoops ( code ) {
     // // Do something
     // End for
 
-    // For (j; 5; 20)
-    // // Do something else
-    // End for
-    // `;
-
-    // Replace 4D for loops with JS for loops
-    // const regex = /For\s*\(\$([a-zA-Z0-9]+);\s*(\d+);\s*(\d+)\)\s*(.*?)(End for)/gms;
     const regex = /For\s*\((\$?\w+);\s*(\d+);\s*(\d+)\)\s*([\s\S]*?)\s*End\s*for/g;
     const replacement = 'for (let $1 = $2; $1 <= $3; $1++) { \n $4 \n}';
 
     code = code.replace(regex, replacement);
 
     return code;
+
+}
+  
+// Function to replace standalone words while ignoring those within strings  
+export function replaceStandaloneWord ( source, word, replacement ) {
+
+            // Function to escape special characters in a regex pattern  
+    function escapeRegex(string) {  
+        return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');  
+    }  
+        
+    const wordRegex = new RegExp(`\\b${escapeRegex(word)}\\b`, 'g');  
+    let result = '';  
+    let inString = false;  
+    let stringChar = '';  
+    
+    for (let i = 0; i < source.length; i++) {  
+        let char = source[i];  
+        
+        // Check if we are entering or exiting a string  
+        if (inString) {  
+            if (char === stringChar) {  
+                inString = false;  
+                stringChar = '';  
+            }  
+        } else {  
+            if (char === '"' || char === "'") {  
+                inString = true;  
+                stringChar = char;  
+            }  
+        }  
+        
+        // If not in a string, we check for the word to replace  
+        if (!inString && source.slice(i, i + word.length).match(wordRegex)) {  
+            result += replacement;  
+            i += word.length - 1;  
+        } else {  
+            result += char;  
+        }  
+    }  
+    
+    return result;  
 
 }
