@@ -12,10 +12,12 @@ export default function (processState,$1,$2) {
     // Prompt user with the question
     if (readlineSync.keyInYN(`${ $1 } ${ $2 !== undefined ? $2 + "?" : ""}`)) {
         // User answered "yes", continue the process
-        return;
+
+        processState.OK = true;
     } else {
+        processState.OK = false;
         // Exit the process
-        process.exit(0);
+        // process.exit(0);
     }
     
 };

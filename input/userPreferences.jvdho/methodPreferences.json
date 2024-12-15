@@ -1,56 +1,83 @@
 {
 	"Sources/DatabaseMethods/onServerStartup.4dm": {
-		"startSelection": 58,
-		"endSelection": 58,
-		"firstSelectedLine": 12,
-		"lastSelectedLine": 12,
+		"startSelection": 33,
+		"endSelection": 34,
+		"firstSelectedLine": 7,
+		"lastSelectedLine": 7,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2024-12-14T15:56:10.557Z"
+		"stamp": "2024-12-15T13:28:33.433Z"
 	},
 	"Sources/DatabaseMethods/onWebConnection.4dm": {
 		"startSelection": 0,
 		"endSelection": 0,
-		"firstSelectedLine": 1,
-		"lastSelectedLine": 1,
+		"firstSelectedLine": 2,
+		"lastSelectedLine": 2,
 		"folding": [],
 		"bookmarks": [],
 		"stamp": "2024-12-14T14:03:48.943Z"
 	},
 	"Sources/Methods/Project Method With Parameter.4dm": {
-		"startSelection": 43,
-		"endSelection": 43,
-		"firstSelectedLine": 1,
-		"lastSelectedLine": 1,
+		"startSelection": 28,
+		"endSelection": 28,
+		"firstSelectedLine": 10,
+		"lastSelectedLine": 10,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2024-12-13T12:04:16.220Z"
+		"stamp": "2024-12-15T13:20:05.218Z"
 	},
 	"Sources/DatabaseMethods/onWebAuthentication.4dm": {
-		"startSelection": 0,
-		"endSelection": 13,
+		"startSelection": 28,
+		"endSelection": 28,
 		"firstSelectedLine": 4,
 		"lastSelectedLine": 4,
 		"folding": [],
 		"bookmarks": [],
 		"stamp": "2024-12-14T14:35:07.781Z"
 	},
-	"Sources/Methods/Test Arrays.4dm": {
+	"Sources/Methods/Arrays For loops If Else End if.4dm": {
 		"startSelection": 0,
 		"endSelection": 0,
-		"firstSelectedLine": 1,
-		"lastSelectedLine": 1,
+		"firstSelectedLine": 9,
+		"lastSelectedLine": 9,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2024-12-14T14:40:22.424Z"
+		"stamp": "2024-12-15T13:21:05.744Z"
 	},
-	"Sources/Methods/Project Method Hello World.4dm": {
-		"startSelection": 57,
-		"endSelection": 57,
+	"Sources/Methods/Project method without params.4dm": {
+		"startSelection": 77,
+		"endSelection": 40,
 		"firstSelectedLine": 0,
 		"lastSelectedLine": 0,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2024-12-14T14:07:52.831Z"
+		"stamp": "2024-12-15T11:00:00.385Z"
+	},
+	"Sources/Methods/Test Math.4dm": {
+		"startSelection": 3,
+		"endSelection": 3,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2024-12-15T11:05:24.571Z"
+	},
+	"Sources/Methods/Test Case Else End Case.4dm": {
+		"startSelection": 8,
+		"endSelection": 8,
+		"firstSelectedLine": 1,
+		"lastSelectedLine": 1,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2024-12-15T12:32:44.500Z"
+	},
+	"Sources/Methods/Test Database Operations.4dm": {
+		"startSelection": 39,
+		"endSelection": 39,
+		"firstSelectedLine": 9,
+		"lastSelectedLine": 9,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2024-12-15T14:32:03.034Z"
 	}
 }

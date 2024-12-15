@@ -59,8 +59,6 @@ export default function WEB_START_SERVER (processState) {
 
         const filePath = path.join(webFolderAbsolutePath, req.path);  
 
-        console.log("filePath",filePath);   
-
         // Check if the file exists  
         fs.stat(filePath, (err, stats) => {  
             
@@ -70,6 +68,7 @@ export default function WEB_START_SERVER (processState) {
             }  
 
             if (stats.isFile()) {  
+                console.log("Serving: ",filePath);   
                 // File exists, serve it  
                 return res.sendFile(filePath);  
             }  

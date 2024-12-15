@@ -20,13 +20,14 @@ export function transpile (app, code, filename) {
     /**
      * Pass 1 straight forward replacements
      */
-
     console.log("Transpiling " + filename);
 
     // Replace OK with processState.OK
     code = replaceStandaloneWord(code, 'OK', 'processState.OK'); 
 
     // FIXME this should not be replaced in strings / php / sql statements / comments
+
+    code = replaceBeginSql(code);
 
     // Replace Operator = with ==, but not in :== or :=
     // "/(?<!:)=(?!:)/g": "==" 
@@ -38,6 +39,9 @@ export function transpile (app, code, filename) {
     // Replace $D for loops with JS for loops
     code = replaceForLoops(code);
 
+    // Replace If and If Else with JS if else statements
+    code = replaceIf(code);
+
     console.log("Applying simpleReplacements...");
 
     // Replace $D commands and $d language elements that can directly be replaced by JS commands
@@ -48,12 +52,10 @@ export function transpile (app, code, filename) {
         }
     }
 
-        
 
     /**
      * Pass 2 Variable declarations
      */
-
     let arrayOfLines = [];
  
     code.split('\n').forEach((line) => {
@@ -150,25 +152,34 @@ export function transpile (app, code, filename) {
 
         /**
         * Transpile declarations of parameters with #DECLARE like:
-        * #DECLARE($vt_url : Text; $vt_http_header : Text; $vt_ip_adress_web_client : Text)
+        * #DECLARE($vt_url : Text; $vt_http_header : Text; $vt_ip_adress_web_client : Text) -> $result : Text
+        * 
         */
-        // const regexDeclare = /#DECLARE\(\$(vt_url)\s*:\s*Text;\s*\$(vt_http_header)\s*:\s*Text;\s*\$(vt_ip_adress_web_client)\s*:\s*Text\)/;
-        const regexDeclare = /#DECLARE\((.*?)\)/;
-        const matchDeclare = line.match(regexDeclare);
-
-        if (matchDeclare) {
-
-            const regexVars = /(\$\w+) : (\w+)/;
-            let matchVars = matchDeclare[1].match(regexVars);
-
-            if ( matchVars ) {
-                for ( let i = 1; i < matchVars.length; i++ ) {
-                    arrayOfLines.push(`let ${matchVars[i]};`);
-                }
-            }
-
-            return;
-        }
+        // Define a regex pattern to match the DECLARE statement with and without result variable  
+        const regexDeclare = /#DECLARE\(([^)]+)\)(?:\s*->\s*([^:]+)\s*:\s*\w+)?/;  
+        
+        // Function to replace the DECLARE statement with JavaScript variable declarations  
+        const replaceDeclare = (match, params, result) => {  
+            // Split the parameters  
+            const paramList = params.split(';').map(param => param.trim());  
+        
+            // Construct JavaScript variable declarations  
+            let jsDeclarations = paramList.map((param, index) => {  
+                const [name, type] = param.split(':').map(part => part.trim());  
+                return `var ${name} = $${index + 1};`;  
+            }).join('\n');  
+        
+            // Add the result variable declaration if it exists  
+            if (result) {  
+                const resultVar = result.trim();  
+                jsDeclarations += `\nlet ${resultVar};`;  
+            }  
+        
+            return jsDeclarations;  
+        };  
+        
+        // Perform the replacement  
+        line = line.replace(regexDeclare, replaceDeclare);  
 
         // Handle other 4D constructs or return the original line
         arrayOfLines.push(line);
@@ -198,6 +209,7 @@ export function transpile (app, code, filename) {
         let cmdName = sourceCmdWithNumber.split(':')[0];
 
         let occurencesInFile = transpiledCode.split(sourceCmdWithNumber).length - 1;
+
 
         for ( let i = 0; i < occurencesInFile; i++ ) {
 
@@ -266,7 +278,7 @@ export function transpile (app, code, filename) {
         let functionName = filename.split(path.sep).pop().replace('.4dm','').replace(/ /g,"_"); 
 
         // Add parameters to these functions calle $1, $2, $3, untill $15 
-        transpiledCode = `export default function ${functionName}(processState,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n\n${ transpiledCode }\n\n}`;
+        transpiledCode = `export default function (processState,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {\n\n${ transpiledCode }\n\n}`;
 
     }
 
@@ -286,6 +298,34 @@ console.log("");
 let processState = {
     webservers: []
 };
+
+// Install PostgreSQL and create your db https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+import pg from 'pg'
+const { Pool } = pg;
+
+let dbUsername = process.env.PG_USERNAME_4D || 'postgres';
+let dbPassword = process.env.DB_PASSWORD_4D || 'your-password';
+let dbDatabase = process.env.DB_DATABASE_4D || 'postgres';
+let dbHost = process.env.DB_HOST_4D || 'localhost';
+let dbPort = process.env.DB_PORT_4D || 5432;
+
+processState.pool = new Pool({  
+  user: dbUsername, 
+  password: dbPassword,   
+  host: dbHost,  
+  database: dbDatabase,  
+  port: dbPort,  
+  max: 20,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
+});  
+
+// Optional: Handle pool errors  
+processState.pool.on('error', (err, client) => {  
+  console.error('Could not connect to database: X', err);  
+  process.exit(-1);  
+});  
+
 ` + transpiledCode;
     }
 
@@ -334,7 +374,7 @@ function replaceMethod (entry,transpiledCode,importStatements) {
 
             // Replace the Project Method with the JS command and its parameters
             // Replace spaces in command names with underscores for javascript
-            transpiledCode = transpiledCode.replace(methodName + "(" + paramsStr + ")", jsMethodName.replace(/ /g,"_") + "(" + params.join(",") + ")");
+            transpiledCode = transpiledCode.replace(methodName + "(" + paramsStr + ")", jsMethodName.replace(/ /g,"_") + "(processState, " + params.join(",") + ")");
 
         } else {
 
@@ -343,7 +383,7 @@ function replaceMethod (entry,transpiledCode,importStatements) {
 
             debugger
 
-            transpiledCode = transpiledCode.replace(methodName,(jsMethodName+"()").replace(/ /g,"_"));
+            transpiledCode = transpiledCode.replace(methodName,(jsMethodName+"(processState)").replace(/ /g,"_"));
 
         }
 
@@ -433,6 +473,115 @@ export function replaceForLoops ( code ) {
     return code;
 
 }
+
+// Replace 4D If End if and If Else End if with JS if else statements
+// - nested 
+// - with If Else in strings
+export function replaceIf ( code ) {
+        
+    // Function to process the code and convert 4D If structures to JavaScript if-else  
+    const transformIfElse = (code) => {  
+        const lines = code.split('\n');  
+        let result = [];  
+        let stack = [];  
+        
+        for (let line of lines) {  
+            line = line.trim();  
+            
+            if (line.startsWith("If")) {  
+                // Extract condition, ensuring proper handling of nested parentheses  
+                const conditionMatch = line.match(/If\s*\((.*)\)/);  
+                if (conditionMatch) {  
+                    let condition = conditionMatch[1];  
+                    // condition = condition.replace(/=/g, '==');  
+                    result.push(`if (${condition}) {`);  
+                    stack.push("if");  
+                }  
+            } else if (line.startsWith("Else")) {  
+                if (stack.length > 0 && stack[stack.length - 1] === "if") {  
+                    result.push(`} else {`);  
+                    stack.pop();  
+                    stack.push("else");  
+                }  
+            } else if (line.startsWith("End if")) {  
+                if (stack.length > 0) {  
+                    result.push(`}`);  
+                    stack.pop();  
+                }  
+            } else {  
+                result.push(line);  
+            }  
+        }  
+        
+        return result.join('\n');  
+    };  
+    
+    // Apply the transformation  
+    return transformIfElse(code); 
+
+}
+
+
+// Replace Case, End case and Case, Else, End case with JS switch statements
+// - nested 
+// - with If Else in strings
+export function replaceCase ( code ) {
+
+    // Function to process the code and convert 4D Case structures to JavaScript switch-case  
+    const transformCase = (code) => {  
+        const lines = code.split('\n');  
+        let result = [];  
+        let inCaseBlock = false;  
+        let inElseBlock = false;  
+        let variable = null;  
+    
+        for (let line of lines) {  
+            line = line.trim();  
+    
+            if (line.startsWith("Case of")) {  
+                inCaseBlock = true;  
+                result.push("switch (variable) {");  
+            } else if (line.startsWith(":")) {  
+                if (inCaseBlock) {  
+                    const conditionMatch = line.match(/:\s*\(\$?(\w+)\s*=\s*(.*)\)/);  
+                    if (conditionMatch) {  
+                        variable = conditionMatch[1];  
+                        const caseValue = conditionMatch[2];  
+                        result.push(`    case ${caseValue}:`);  
+                    }  
+                }  
+            } else if (line.startsWith("Else")) {  
+                if (inCaseBlock) {  
+                    inElseBlock = true;  
+                    result.push("    default:");  
+                }  
+            } else if (line.startsWith("End case")) {  
+                if (inCaseBlock) {  
+                    result.push("}");  
+                    inCaseBlock = false;  
+                    inElseBlock = false;  
+                }  
+            } else {  
+                if (inCaseBlock) {  
+                    result.push(`        ${line}`);  
+                    if (!inElseBlock) {  
+                        result.push("        break;");  
+                    }  
+                } else {  
+                    result.push(line);  
+                }  
+            }  
+        }  
+    
+        // Replace the placeholder variable with the actual variable name  
+        return result.join('\n').replace("switch (variable)", `switch (${variable})`);  
+    };  
+    
+    // Apply the transformation  
+    return transformCase(code);;
+
+}
+
   
 // Function to replace standalone words while ignoring those within strings  
 export function replaceStandaloneWord ( source, word, replacement ) {
@@ -473,5 +622,20 @@ export function replaceStandaloneWord ( source, word, replacement ) {
     }  
     
     return result;  
+
+}
+
+
+function replaceBeginSql ( code ) {
+
+    // Regular expression to match everything between Begin SQL and End SQL globally  
+    const regex = /Begin SQL([\s\S]*?)End SQL/g;  
+    
+    // Replace the matched content with the new JavaScript template literal format  
+    return code.replace(regex, (match, p1) => {  
+        // Trim leading and trailing whitespace from the captured group  
+        const sqlContent = p1.trim();  
+        return `Begin SQL(\`${sqlContent}\`)`;  
+    });  
 
 }

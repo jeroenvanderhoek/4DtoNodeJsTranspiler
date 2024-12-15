@@ -60,7 +60,7 @@ TODO
     - cluster.fork() 
     - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
 - implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? How to store active table & selection.
-- implement ORDA, php, database, pointers, [table]field 
+- implement ORDA, php, database, pointers, [Table]field 
 - create an example with database
 - fix a few more /$Dcommand/-modules, or generate starting points with AI 
 - rename reserverd words, see reservedWordsInJs.js
@@ -68,21 +68,12 @@ TODO
 - How does this perform with 10.000 $D methods imported in each process?
 - improve constants.js (replace with constantnames instead of values)
 - import /resources/constants.xlf if present
-- replace:
-    Case of
-        :(vResult=1) ` Test if the number is 1
-        ALERT("One.") ` If it is 1, display an alert
-        :(vResult=2) ` Test if the number is 2
-        ALERT("Two.") ` If it is 2, display an alert
-        :(vResult=3) ` Test if the number is 3
-        ALERT("Three.") ` If it is 3, display an alert
-        Else ` If it is not 1, 2, or 3, display an alert
-        ALERT("It was not one, two, or three.")
-    End case
-    
+- replace:  
     Repeat...Until 
     While...End while
 
+Optimize:
+- replace Length:C16($1) with $1.length
 
 General idea of transpiling:
 1. Lexical Analysis
@@ -156,8 +147,8 @@ $D commands
 | BEEP                                         |         |          X          |            |
 | Before                                       |         |                     |            |
 | Before selection                             |         |                     |            |
-| Begin SQL                                    |         |                     |            |
-| End SQL                                      |         |                     |            |
+| Begin SQL                                    |    X    |                     |            |
+| End SQL                                      |    X    |                     |            |
 | BLOB PROPERTIES                              |         |                     |            |
 | BLOB size                                    |         |                     |            |
 | BLOB TO DOCUMENT                             |         |                     |            |
@@ -600,7 +591,7 @@ $D commands
 | LDAP LOGOUT                                  |         |                     |            |
 | LDAP Search                                  |         |                     |            |
 | LDAP SEARCH ALL                              |         |                     |            |
-| Length                                       |         |                     |            |
+| Length                                       |    x    |                     |            |
 | Level                                        |         |                     |            |
 | License info                                 |         |                     |            |
 | License usage                                |         |                     |            |

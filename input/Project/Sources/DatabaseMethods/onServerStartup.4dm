@@ -1,40 +1,48 @@
-C_LONGINT:C283(x,y)
-C_REAL:C285(z)
-
-// Math
-x:=1
-y:=3
-z:=Arctan:C20(x/y)
-
-// Log
-LOG EVENT:C667(Into Windows log events:K38:4; "Arctan ("+String:C10(x)+"/"+String:C10(y)+") = "+String:C10(z))
-
-// Ask continu y/n?
-//ALERT("Warning, this might blow your mind!"; "Continue")
-
-// Project method without parameters
-Project Method Hello World
-
-// Project method with parameters
-Project Method With Parameter("Project Method With Parameter")
+LOG EVENT:C667(0; "Bonjour world!")
 
 // Debugger
 TRACE:C157
 
-// Test operator: = 
-LOG EVENT:C667(0; "= operator ok: "+String:C10(4=4))
+// Test operators and If End if
+If (4=4)
+	LOG EVENT:C667(0; "if and = operator: ✓")
+End if 
 
-// Test array
-Test Arrays
+// Test length and If Else End if
+If (4=Length:C16("abcd"))
+	LOG EVENT:C667(0; "if else, Length: ✓")
+Else 
+	LOG EVENT:C667(0; "if else, Length: ✗")
+End if 
+
+// Project method without parameters
+Project method without params
+
+// Project method with parameters
+Project Method With Parameter("Project Method With Parameter")
+
+Test Math
+
+Arrays For loops If Else End if
+
+Test Case Else End Case
 
 // Start web server
 WEB START SERVER:C617
 
 // Log OK after starting webserver
-LOG EVENT:C667(0; "OK: "+String:C10(OK)); 
+LOG EVENT:C667(0; "WEB START SERVER OK: "+String:C10(OK)); 
 
 // Open browser to test web server
+LOG EVENT:C667(0; "Open browser with http://localhost")
 OPEN URL:C673("http://localhost")
 
+// Ask continu y/n?
+ALERT:C41("Database interactions require a PostgreSQL database. Please provide in environment variables: PG_USERNAME_4D, PG_PASSWORD_4D, PG_ADRESS_4D, PG_PORT_4D else default values will be used."; "continue")
 
+If (OK=1){
+	// Log OK after alert
+	LOG EVENT:C667(0; "ALERT OK: "+String:C10(OK)); 
+End if 
 
+Test Database Operations

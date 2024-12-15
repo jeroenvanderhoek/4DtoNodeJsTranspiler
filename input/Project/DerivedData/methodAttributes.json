@@ -1,13 +1,22 @@
 {
 	"methods": {
-		"Project Method Hello World": {
-			"timeStamp": "2024-12-14T14:07:52Z"
+		"Arrays For loops If Else End if": {
+			"timeStamp": "2024-12-15T13:21:05Z"
 		},
 		"Project Method With Parameter": {
-			"timeStamp": "2024-12-13T12:04:16Z"
+			"timeStamp": "2024-12-15T13:20:05Z"
 		},
-		"Test Arrays": {
-			"timeStamp": "2024-12-14T14:40:22Z"
+		"Project method without params": {
+			"timeStamp": "2024-12-15T11:00:00Z"
+		},
+		"Test Case Else End Case": {
+			"timeStamp": "2024-12-15T12:32:44Z"
+		},
+		"Test Database Operations": {
+			"timeStamp": "2024-12-15T14:28:44Z"
+		},
+		"Test Math": {
+			"timeStamp": "2024-12-15T11:05:24Z"
 		}
 	}
 }
