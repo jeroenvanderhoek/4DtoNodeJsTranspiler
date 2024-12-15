@@ -59,8 +59,8 @@ TODO
 - Start new processes and Get current process name etc? Process ID? process.ppid / worker.id 
     - cluster.fork() 
     - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
-- implement SQL. SQL 92 like $D? Or MySQL / PostgreSQL? How to store active table & selection.
-- implement ORDA, php, database, pointers, [Table]field 
+- extend database integration. Store active tables & selection. [Table]field 
+- implement ORDA, php, pointers, 
 - create an example with database
 - fix a few more /$Dcommand/-modules, or generate starting points with AI 
 - rename reserverd words, see reservedWordsInJs.js
