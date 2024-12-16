@@ -50,9 +50,9 @@ Feel free to contribute / fork!
 Contact @ jeroenvanderhoek97@gmail.com
 
 TODO 
-- extend database integration. 
+- extend database integration:
     - Store active tables & selection in processState-object
-    - rename [Table]field to something like processState[tableName].field i.e.: processState.customers.name
+    - rename [Table]field to something like processState[tableName].field i.e.: processState.Customers.name
     - QUERY 
     - ADD RECORD
 - test if performance is ok
