@@ -6,9 +6,9 @@ It could work for $D projects which dont use $D clients ($D clients probably wou
 be replaced with webapps which is very complex and different).
 
 The basic included $D project is succesfully transpiled to NodeJS. It contains basic math 
-and "hello world"-functionality, ALERT, project method call and WEB START SERVER. 
-For other functionality a lot of work needs to be done on
-$Dcommands, such as a running a webserver and integrating an SQL database.
+and "hello world"-functionality, ALERT, project methods, database interaction and WEB START SERVER. 
+For other functionality work needs to be done on $Dcommands, such as a running a webserver and 
+integrating an SQL database.
 
 Basic operation:
 - get $D project from /input/-folder
@@ -43,7 +43,7 @@ Prerequisites
 - this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.
 - install Node v22 https://nodejs.org/en/download/package-manager
 - $D project must be as "Project Mode"
-- tested with 4D 20v6
+- tested with $D 20v6
 - $D 20v7 BETA commands imported + 20.6 constants
 
 # Contribute 
@@ -61,11 +61,9 @@ TODO
     - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
 - extend database integration. Store active tables & selection. [Table]field 
 - implement ORDA, php, pointers, 
-- create an example with database
 - fix a few more /$Dcommand/-modules, or generate starting points with AI 
 - rename reserverd words, see reservedWordsInJs.js
 - prevent renaming some things inside strings
-- How does this perform with 10.000 $D methods imported in each process?
 - improve constants.js (replace with constantnames instead of values)
 - import /resources/constants.xlf if present
 - replace:  
