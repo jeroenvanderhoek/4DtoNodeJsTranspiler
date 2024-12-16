@@ -50,16 +50,22 @@ Feel free to contribute / fork!
 Contact @ jeroenvanderhoek97@gmail.com
 
 TODO 
-- How to make ARRAYS work? Make a new Array class that replaces 4D arrays, because 4D arrays have the last selected element active
+- extend database integration. 
+    - Store active tables & selection in processState-object
+    - rename [Table]field to something like processState[tableName].field i.e.: processState.customers.name
+    - QUERY 
+    - ADD RECORD
+- test if performance is ok
+- How to make ARRAYS work? Make a new Array class that replaces 4D arrays? 
+    - fix: array{0} is just weird in $D, array starts at index 1, but 0 can also be assigned a value
     + replace brackets in $atArray{$vlElem}:=$vlElem
-    - test 4D arrays start at i , in Javascript at i-1
+    - 4D arrays start at i , in Javascript at i-1 (test this)
     - fix 2D arrays
         - brackets: atArray{8}{5}
 - Start new processes and Get current process name etc? Process ID? process.ppid / worker.id 
     - cluster.fork() 
     - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
-- extend database integration. Store active tables & selection. [Table]field 
-- implement ORDA, php, pointers, 
+- implement ORDA, php, pointers
 - fix a few more /$Dcommand/-modules, or generate starting points with AI 
 - rename reserverd words, see reservedWordsInJs.js
 - prevent renaming some things inside strings
