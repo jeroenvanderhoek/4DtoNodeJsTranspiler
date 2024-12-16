@@ -7,8 +7,7 @@ be replaced with webapps which is very complex and different).
 
 The basic included $D project is succesfully transpiled to NodeJS. It contains basic math 
 and "hello world"-functionality, ALERT, project methods, database interaction and WEB START SERVER. 
-For other functionality work needs to be done on $Dcommands, such as a running a webserver and 
-integrating an SQL database.
+For other functionality work needs to be done on $Dcommands.
 
 Basic operation:
 - get $D project from /input/-folder
