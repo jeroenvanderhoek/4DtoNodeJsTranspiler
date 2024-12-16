@@ -51,7 +51,7 @@ Contact @ jeroenvanderhoek97@gmail.com
 TODO 
 - extend database integration:
     - Store active tables & selection in processState-object
-    - rename [Table]field to something like processState[tableName].field i.e.: processState.Customers.name
+    - rename [Table] to something like processState[tableName] so it can point to a seleection i.e.: processState.Customers = []
     - QUERY 
     - ADD RECORD
 - test if performance is ok
