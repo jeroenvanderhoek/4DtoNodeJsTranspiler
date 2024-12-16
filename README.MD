@@ -34,9 +34,8 @@ Usage:
 - run: cd output_template | npm install 
 - put your $D project in the /input/-folder (there is allready an example project in there)
 - To transpile start: npm start 
-    - this will start the transpiled project when ready
 - result goes to /output/
-- To run the result: npm test
+- To run the resulting NodeJS project run: npm test
 (or run "npm run starttest" to transpile and test the transpiled code)
 
 Prerequisites
