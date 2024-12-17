@@ -1,5 +1,5 @@
 # Introduction  
-Basic example of how a $D to NodeJS transpiler could work. 
+This is how a $D to NodeJS transpiler could work. 
 
 It's hard to oversee all the use cases, and if it will perform well. 
 It could work for $D projects which dont use $D clients ($D clients probably would need to 
@@ -11,14 +11,25 @@ For other functionality work needs to be done on $Dcommands.
 
 Basic operation:
 - get $D project from /input/-folder
+- the entrypoint is: ./Project/Sources/DatabaseMethods/onServerStartup.js
+    - initialize processState here, this contains pointers:
+        - to the webserver
+        - database
+        - and this could link to table-instances which contain their active selections
+          This still has to be fixed, example: processState.customers_table = { fields: {}, activeSelection: []}
 - transpile methods (*.$dm files) 
-    - convert variable declarations to JS
     - replace constants with constants.js
-    - read all *.$dm files and replace some basic things with using simpleReplacements.js
-    - import more complex $Dcommands from their javascript-modules in /$Dcommands/
-    - the entrypoint is: ./Project/Sources/DatabaseMethods/onServerStartup.js
-    - import Project Methods when used
-    - wrap all methods, so they can be exported
+    - read all *.$dm files and replace various things:
+        - replace Begin SQL txt End SQL withto Begin_SQL(txt)
+        - replace for loops, if else, cases to its javascript counterpart
+        - replace operator = -> ==
+        - replace Arrays ar{i} -> ar[i-1]
+        - replace some basic things with using simpleReplacements.js (True -> true, False -> false)
+        - convert variable declarations to JS
+        - import more complex $Dcommands from their javascript-modules in /$Dcommands/
+        - import Project Methods when used
+        - pass processState to all methods and commands 
+    - wrap all methods in "export default function (processState,$1,$2,...){}", so they can be imported in other methods
 - result in /outpot/-folder
 
 This transpiler uses Node.JS instead of $D, because you can:
@@ -38,11 +49,10 @@ Usage:
 (or run "npm run starttest" to transpile and test the transpiled code)
 
 Prerequisites
-- this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.
-- install Node v22 https://nodejs.org/en/download/package-manager
 - $D project must be as "Project Mode"
-- tested with $D 20v6
-- $D 20v7 BETA commands imported + 20.6 constants
+- this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.
+- tested with Node v22 https://nodejs.org/en/download/package-manager
+- tested with $D 20v6 ($D 20v7 BETA commands imported + 20.6 constants)
 
 # Contribute 
 Feel free to contribute / fork! 
@@ -51,9 +61,12 @@ Contact @ jeroenvanderhoek97@gmail.com
 TODO 
 - extend database integration:
     - Store active tables & selection in processState-object
-    - rename [Table] to something like processState[tableName] so it can point to a seleection i.e.: processState.Customers = []
+    - rename [Table] to something like processState[tableName] so it can point to a table-instance i.e. for Customers: processState.table_Customers, 
+      with an optional active-selection like processState.table_Customers.activeSelection, and processState.table_Customers.activeRecordIndex
+        - processState.table_Customers.fields has a map with fields. With field.name field.table field.number etc
+        - processState.table_Customers.activeSelection[field.name] = the value
     - QUERY 
-    - ADD RECORD
+    - CREATE RECORD
 - test if performance is ok
 - How to make ARRAYS work? Make a new Array class that replaces 4D arrays? 
     - fix: array{0} is just weird in $D, array starts at index 1, but 0 can also be assigned a value
@@ -105,7 +118,7 @@ $D commands
 | Activated                                    |         |          X          |            |
 | Active transaction                           |         |                     |            |
 | ACTIVITY SNAPSHOT                            |         |                     |            |
-| ADD RECORD                                   |         |                     |            |
+| ADD RECORD                                   |         |          X          |            |
 | Add to date                                  |    X    |                     |            |
 | ADD TO SET                                   |         |                     |            |
 | ADJUST BLOBS CACHE PRIORITY                  |         |                     |            |
@@ -1068,10 +1081,10 @@ $D commands
 | SAX OPEN XML ELEMENT ARRAYS                  |         |                     |            |
 | SAX SET XML DECLARATION                      |         |                     |            |
 | SCAN INDEX                                   |         |                     |            |
-| SCREEN COORDINATES                           |         |         X           |            |
-| SCREEN DEPTH                                 |         |         X           |            |
-| Screen height                                |         |         X           |            |
-| Screen width                                 |         |         X           |            |
+| SCREEN COORDINATES                           |         |          X          |            |
+| SCREEN DEPTH                                 |         |          X          |            |
+| Screen height                                |         |          X          |            |
+| Screen width                                 |         |          X          |            |
 | Select document                              |         |                     |            |
 | Select folder                                |         |                     |            |
 | SELECT LIST ITEMS BY POSITION                |         |                     |            |
@@ -1103,7 +1116,7 @@ $D commands
 | SET CACHE SIZE                               |         |                     |            |
 | SET CHANNEL                                  |         |                     |            |
 | SET CURRENT PRINTER                          |         |                     |            |
-| SET CURSOR                                   |         |         X           |            |
+| SET CURSOR                                   |         |          X          |            |
 | SET DATABASE LOCALIZATION                    |         |                     |            |
 | SET DATABASE PARAMETER                       |         |                     |            |
 | SET DEFAULT CENTURY                          |         |                     |            |
@@ -1119,25 +1132,25 @@ $D commands
 | SET FILE TO PASTEBOARD                       |         |                     |            |
 | SET GROUP ACCESS                             |         |                     |            |
 | Set group properties                         |         |                     |            |
-| SET HELP MENU                                |         |         X           |            |
+| SET HELP MENU                                |         |          X          |            |
 | SET INDEX                                    |         |                     |            |
 | SET INDEX CACHE PRIORITY                     |         |                     |            |
-| SET LIST ITEM                                |         |         X           |            |
-| SET LIST ITEM FONT                           |         |         X           |            |
-| SET LIST ITEM ICON                           |         |         X           |            |
-| SET LIST ITEM PARAMETER                      |         |         X           |            |
-| SET LIST ITEM PROPERTIES                     |         |         X           |            |
-| SET LIST PROPERTIES                          |         |         X           |            |
+| SET LIST ITEM                                |         |          X          |            |
+| SET LIST ITEM FONT                           |         |          X          |            |
+| SET LIST ITEM ICON                           |         |          X          |            |
+| SET LIST ITEM PARAMETER                      |         |          X          |            |
+| SET LIST ITEM PROPERTIES                     |         |          X          |            |
+| SET LIST PROPERTIES                          |         |          X          |            |
 | SET MACRO PARAMETER                          |         |                     |            |
-| SET MENU BAR                                 |         |         X           |            |
-| SET MENU ITEM                                |         |         X           |            |
-| SET MENU ITEM ICON                           |         |         X           |            |
-| SET MENU ITEM MARK                           |         |         X           |            |
-| SET MENU ITEM METHOD                         |         |         X           |            |
-| SET MENU ITEM PARAMETER                      |         |         X           |            |
-| SET MENU ITEM PROPERTY                       |         |         X           |            |
-| SET MENU ITEM SHORTCUT                       |         |         X           |            |
-| SET MENU ITEM STYLE                          |         |         X           |            |
+| SET MENU BAR                                 |         |          X          |            |
+| SET MENU ITEM                                |         |          X          |            |
+| SET MENU ITEM ICON                           |         |          X          |            |
+| SET MENU ITEM MARK                           |         |          X          |            |
+| SET MENU ITEM METHOD                         |         |          X          |            |
+| SET MENU ITEM PARAMETER                      |         |          X          |            |
+| SET MENU ITEM PROPERTY                       |         |          X          |            |
+| SET MENU ITEM SHORTCUT                       |         |          X          |            |
+| SET MENU ITEM STYLE                          |         |          X          |            |
 | SET PICTURE FILE NAME                        |         |                     |            |
 | SET PICTURE METADATA                         |         |                     |            |
 | SET PICTURE TO LIBRARY                       |         |                     |            |
