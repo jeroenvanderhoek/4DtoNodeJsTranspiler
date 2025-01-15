@@ -1,0 +1,1 @@
+// 4D command: SPELL GET DICTIONARY LIST

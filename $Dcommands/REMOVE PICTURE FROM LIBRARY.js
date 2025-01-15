@@ -1,1 +1,0 @@
-// $D command: REMOVE PICTURE FROM LIBRARY

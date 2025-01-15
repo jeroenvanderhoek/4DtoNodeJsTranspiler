@@ -1,1 +1,0 @@
-// $D command: SPELL SET CURRENT DICTIONARY

@@ -1,0 +1,1 @@
+// 4D command: STOP MONITORING ACTIVITY

@@ -1,12 +1,12 @@
 import simpleReplacements from './simple4dCommandReplacements.js';
-import $Dcommands from './$Dcommands.js';
+import $Dcommands from './4Dcommands.js';
 import declarations from './declarations.js';
 import constants from './constants.js';
 import { globSync } from 'glob';
 import path from 'path';
 
 /**
- * Transpile a 4dm file to JavaScript and keep track of used $Dcommands.js, 
+ * Transpile a 4dm file to JavaScript and keep track of used 4Dcommands.js, 
  * so they can be imported later on using importStatements.
  * @param {object} app - app object
  * @param {string} code - content of the 4dm file
@@ -36,7 +36,7 @@ export function transpile (app, code, filename) {
     // Replace curly braces with square brackets in array indexes
     code = replaceArrays(code);
 
-    // Replace $D for loops with JS for loops
+    // Replace 4D for loops with JS for loops
     code = replaceForLoops(code);
 
     // Replace If and If Else with JS if else statements
@@ -44,7 +44,7 @@ export function transpile (app, code, filename) {
 
     console.log("Applying simpleReplacements...");
 
-    // Replace $D commands and $d language elements that can directly be replaced by JS commands
+    // Replace 4D commands and 4D language elements that can directly be replaced by JS commands
     for ( let prop in simpleReplacements ) {
         if (  code.match(new RegExp(`${ prop }`)) ) {
             console.log("- " + prop + " -> " + simpleReplacements[prop]);
@@ -200,9 +200,9 @@ export function transpile (app, code, filename) {
 
     let importStatements = [];
 
-    // Replace $D commands with JS functions
+    // Replace 4D commands with JS functions
     // Example "ALERT:C41(msg)" -> "alert(msg)"
-    console.log("Replace $D commands...");
+    console.log("Replace 4D commands...");
     $Dcommands.forEach((sourceCmdWithNumber)=>{
 
         // Get commandname name from sourceCmdWithNumber
@@ -213,22 +213,22 @@ export function transpile (app, code, filename) {
 
         for ( let i = 0; i < occurencesInFile; i++ ) {
 
-            // Get the index of the next occurence of the $D command in the code
+            // Get the index of the next occurence of the 4D command in the code
             let index = transpiledCode.indexOf(sourceCmdWithNumber);
 
-            // Check if the $D command has parameters
+            // Check if the 4D command has parameters
             if ( transpiledCode[index + sourceCmdWithNumber.length] === '(' ) {
 
                 let paramsStr = transpiledCode.substring(index + sourceCmdWithNumber.length + 1, transpiledCode.indexOf(')', index));
                 let params = paramsStr.split(';').map(param => param.trim()); // FIXME dont split on ';' inside strings
 
-                // Replace the $D command with the JS command and its parameters
+                // Replace the 4D command with the JS command and its parameters
                 // Replace spaces in command names with underscores for javascript
                 transpiledCode = transpiledCode.replace(sourceCmdWithNumber + "(" + paramsStr + ")", cmdName.replace(/ /g,"_") + "(processState," + params.join(",") + ")");
 
             } else {
 
-                // Replace the $D command with the JS command
+                // Replace the 4D command with the JS command
                 // Replace spaces in command names with underscores for javascript
                 transpiledCode = transpiledCode.replace(sourceCmdWithNumber,(cmdName+"(processState)").replace(/ /g,"_"));
 
@@ -239,9 +239,9 @@ export function transpile (app, code, filename) {
         // if command was found add an import statement once to importStatements which is used in onStartup.js
         if ( occurencesInFile > 0 ) {
 
-            // Get the JS translation of the $D command
+            // Get the JS translation of the 4D command
             // Replace spaces in command names with underscores for javascript
-            let importStatement = 'import ' + (cmdName).replace(/ /g,"_") + ' from \"../../$Dcommands/' + cmdName + '.js\";';
+            let importStatement = 'import ' + (cmdName).replace(/ /g,"_") + ' from \"../../4Dcommands/' + cmdName + '.js\";';
 
             if ( !importStatements.includes(importStatement) ) {
                 importStatements.push(importStatement);
@@ -394,7 +394,7 @@ function replaceMethod (entry,transpiledCode,importStatements) {
         
         if ( folderName === 'DatabaseMethods' ) {
 
-            // $D renamed the filenames of the database methods: "On Web Connection database method" -> "onWebConnection"
+            // 4D renamed the filenames of the database methods: "On Web Connection database method" -> "onWebConnection"
 
             // Goes for these methods:
             //     "On Backup Shutdown database method",

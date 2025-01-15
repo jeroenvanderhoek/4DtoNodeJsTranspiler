@@ -1,1 +1,0 @@
-// $D command: SET REAL COMPARISON LEVEL

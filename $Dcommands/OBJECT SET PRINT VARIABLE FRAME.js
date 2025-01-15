@@ -1,1 +1,0 @@
-// $D command: OBJECT SET PRINT VARIABLE FRAME

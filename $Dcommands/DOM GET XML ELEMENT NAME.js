@@ -1,1 +1,0 @@
-// $D command: DOM GET XML ELEMENT NAME
