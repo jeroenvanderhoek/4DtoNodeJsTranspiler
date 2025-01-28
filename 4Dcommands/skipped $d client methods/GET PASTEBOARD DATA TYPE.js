@@ -1,1 +1,0 @@
-// 4D command: GET PASTEBOARD DATA TYPE

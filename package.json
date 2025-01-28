@@ -1,7 +1,7 @@
 {
   "name": "4DtoNodeJsTranspiler",
   "version": "1.0.0",
-  "description": "Transpiles 4D source in /input/ to a NodeJS project in /output/",
+  "description": "Transpiles $D source in /input/ to a NodeJS project in /output/",
   "main": "index.js",
   "type": "module",
   "scripts": {

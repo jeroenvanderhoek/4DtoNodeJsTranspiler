@@ -1,1 +1,0 @@
-// 4D command: CREATE SELECTION FROM ARRAY

@@ -1,1 +1,0 @@
-// 4D command: SAX ADD XML COMMENT

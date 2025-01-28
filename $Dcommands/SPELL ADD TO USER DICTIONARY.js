@@ -1,0 +1,1 @@
+// $D command: SPELL ADD TO USER DICTIONARY

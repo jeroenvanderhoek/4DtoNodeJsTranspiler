@@ -1,0 +1,1 @@
+// $D command: CLEAR NAMED SELECTION

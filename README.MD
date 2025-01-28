@@ -1,40 +1,40 @@
 # Introduction  
-This is how a 4D to NodeJS transpiler could work. 
+This is how a $D to NodeJS transpiler could work. 
 
 It's hard to oversee all the use cases, and if it will perform well. 
-It could work for 4D projects which dont use 4D clients (4D clients probably would need to 
+It could work for $D projects which dont use $D clients ($D clients probably would need to 
 be replaced with webapps which is very complex and different).
 
-The basic included 4D project is succesfully transpiled to NodeJS. It contains basic math 
+The basic included $D project is succesfully transpiled to NodeJS. It contains basic math 
 and "hello world"-functionality, ALERT, project methods, database interaction and WEB START SERVER. 
-For other functionality work needs to be done on 4Dcommands.
+For other functionality work needs to be done on $Dcommands.
 
 Basic operation:
-- get 4D project from /input/-folder
+- get $D project from /input/-folder
 - the entrypoint is: ./Project/Sources/DatabaseMethods/onServerStartup.js
     - initialize processState here, this contains pointers:
         - to the webserver
         - database
         - and this could link to table-instances which contain their active selections
           This still has to be fixed, example: processState.customers_table = { fields: {}, activeSelection: []}
-- transpile methods (*.4Dm files) 
+- transpile methods (*.$dm files) 
     - replace constants with constants.js
-    - read all *.4Dm files and replace various things:
+    - read all *.$dm files and replace various things:
         - replace Begin SQL txt End SQL withto Begin_SQL(txt)
         - replace for loops, if else, cases to its javascript counterpart
         - replace operator = -> ==
         - replace Arrays ar{i} -> ar[i-1]
         - replace some basic things with using simpleReplacements.js (True -> true, False -> false)
         - convert variable declarations to JS
-        - import more complex 4Dcommands from their javascript-modules in /4Dcommands/
+        - import more complex $Dcommands from their javascript-modules in /$Dcommands/
         - import Project Methods when used
         - pass processState to all methods and commands 
     - wrap all methods in "export default function (processState,$1,$2,...){}", so they can be imported in other methods
 - result in /outpot/-folder
 
-This transpiler uses Node.JS instead of 4D, because you can:
-- use a JavaScript IDE (for instance Visual Code which also has 4D syntax support)
-- contribute if you dont have a 4D developer license and dont know 4D language
+This transpiler uses Node.JS instead of $D, because you can:
+- use a JavaScript IDE (for instance Visual Code which also has $D syntax support)
+- contribute if you dont have a $D developer license and dont know $D language
 - use a lot of shared packages, see: https://www.npmjs.com/
 - JavaScript has better support from Gemini / Copilot
 
@@ -42,17 +42,17 @@ This transpiler uses Node.JS instead of 4D, because you can:
 Usage:
 - run: npm install
 - run: cd output_template | npm install 
-- put your 4D project in the /input/-folder (there is allready an example project in there)
+- put your $D project in the /input/-folder (there is allready an example project in there)
 - To transpile start: npm start 
 - result goes to /output/
 - To run the resulting NodeJS project run: npm test
 (or run "npm run starttest" to transpile and test the transpiled code)
 
 Prerequisites
-- 4D project must be as "Project Mode"
-- this will only work for 4D projects that use serverside code. So this is usefull for webserver back ends, that dont use 4D clients.
+- $D project must be as "Project Mode"
+- this will only work for $D projects that use serverside code. So this is usefull for webserver back ends, that dont use $D clients.
 - tested with Node v22 https://nodejs.org/en/download/package-manager
-- tested with 4D 20v6 (4D 20v7 BETA commands imported + 20.6 constants)
+- tested with $D 20v6 ($D 20v7 BETA commands imported + 20.6 constants)
 
 # Contribute 
 Feel free to contribute / fork! 
@@ -69,7 +69,7 @@ TODO
     - CREATE RECORD
 - test if performance is ok
 - How to make ARRAYS work? Make a new Array class that replaces 4D arrays? 
-    - fix: array{0} is just weird in 4D, array starts at index 1, but 0 can also be assigned a value
+    - fix: array{0} is just weird in $D, array starts at index 1, but 0 can also be assigned a value
     + replace brackets in $atArray{$vlElem}:=$vlElem
     - 4D arrays start at i , in Javascript at i-1 (test this)
     - fix 2D arrays
@@ -78,7 +78,7 @@ TODO
     - cluster.fork() 
     - or const childProcess = require('child_process').spawn('node', ['child_script.js', 'arg1', 'arg2']);
 - implement ORDA, php, pointers
-- fix a few more /4Dcommand/-modules, or generate starting points with AI 
+- fix a few more /$Dcommand/-modules, or generate starting points with AI 
 - rename reserverd words, see reservedWordsInJs.js
 - prevent renaming some things inside strings
 - improve constants.js (replace with constantnames instead of values)
@@ -92,22 +92,22 @@ Optimize:
 
 General idea of transpiling:
 1. Lexical Analysis
-Tokenization: Break down the 4D source code into tokens. Tokens are the smallest units of meaning, such as 
+Tokenization: Break down the $D source code into tokens. Tokens are the smallest units of meaning, such as 
 keywords, operators, identifiers, and literals.
 2. Parsing
 Abstract Syntax Tree (AST): Convert the tokens into an AST, which represents the hierarchical structure of 
-the source code. This step involves defining the grammar of 4D and using a parser generator to create the AST.
+the source code. This step involves defining the grammar of $D and using a parser generator to create the AST.
 3. Transformation
-AST Transformation: Traverse and transform the AST from 4D syntax to Node.js syntax. This involves mapping 
-4D constructs to their equivalent in Node.js.
+AST Transformation: Traverse and transform the AST from $D syntax to Node.js syntax. This involves mapping 
+$D constructs to their equivalent in Node.js.
 4. Code Generation
 Generate Node.js Code: Convert the transformed AST into Node.js code. This step involves walking through 
 the AST and generating the corresponding Node.js code.
 
 This project is for educational purposes only. No warranties, expressed or implied, are provided. Use at your own risk.
 
-4D commands 
-| 4DCommand                                    | Workable| Skip (4D client etc)|  Accepted  |
+$D commands 
+| $DCommand                                    | Workable| Skip ($D client etc)|  Accepted  |
 | -------------------------------------------- | ------- | ------------------- | ---------- |
 | ABORT                                        |         |                     |            |
 | ABORT PROCESS BY ID                          |         |                     |            |
@@ -431,8 +431,8 @@ This project is for educational purposes only. No warranties, expressed or impli
 | GENERATE ENCRYPTION KEYPAIR                  |         |                     |            |
 | Generate password hash                       |         |                     |            |
 | Generate UUID                                |         |                     |            |
-| Get 4D file                                  |         |                     |            |
-| Get 4D folder                                |         |                     |            |
+| Get $D file                                  |         |                     |            |
+| Get $D folder                                |         |                     |            |
 | Get adjusted blobs cache priority            |         |                     |            |
 | Get adjusted index cache priority            |         |                     |            |
 | Get adjusted table cache priority            |         |                     |            |
@@ -675,7 +675,7 @@ This project is for educational purposes only. No warranties, expressed or impli
 | LISTBOX SET STATIC COLUMNS                   |         |          X          |            |
 | LISTBOX SET TABLE SOURCE                     |         |          X          |            |
 | LISTBOX SORT COLUMNS                         |         |          X          |            |
-| Load 4D View document                        |         |                     |            |
+| Load $D View document                        |         |                     |            |
 | Load list                                    |         |                     |            |
 | LOAD RECORD                                  |         |                     |            |
 | LOAD SET                                     |         |                     |            |
@@ -946,10 +946,10 @@ This project is for educational purposes only. No warranties, expressed or impli
 | Print settings to BLOB                       |         |                     |            |
 | PRINTERS LIST                                |         |                     |            |
 | Printing page                                |         |                     |            |
-| PROCESS 4D TAGS                              |         |                     |            |
+| PROCESS $D TAGS                              |         |                     |            |
 | Process aborted                              |         |                     |            |
-| Process activity-modified 4D 20 R7           |         |                     |            |
-| Process info-new 4D 20 R7                    |         |                     |            |
+| Process activity-modified $D 20 R7           |         |                     |            |
+| Process info-new $D 20 R7                    |         |                     |            |
 | Process number                               |         |                     |            |
 | Process state                                |         |                     |            |
 | PUSH RECORD                                  |         |                     |            |
@@ -1009,7 +1009,7 @@ This project is for educational purposes only. No warranties, expressed or impli
 | QUERY SELECTION BY FORMULA                   |         |                     |            |
 | QUERY SELECTION WITH ARRAY                   |         |                     |            |
 | QUERY WITH ARRAY                             |         |                     |            |
-| QUIT 4D                                      |         |                     |            |
+| QUIT $D                                      |         |                     |            |
 | Random                                       |         |                     |            |
 | READ ONLY                                    |         |                     |            |
 | Read only state                              |         |                     |            |
@@ -1050,7 +1050,7 @@ This project is for educational purposes only. No warranties, expressed or impli
 | RESOLVE POINTER                              |         |                     |            |
 | RESOURCE LIST                                |         |                     |            |
 | RESOURCE TYPE LIST                           |         |                     |            |
-| RESTART 4D                                   |         |                     |            |
+| RESTART $D                                   |         |                     |            |
 | RESTORE                                      |         |                     |            |
 | RESTORE INFO                                 |         |                     |            |
 | RESUME INDEXES                               |         |                     |            |
@@ -1104,7 +1104,7 @@ This project is for educational purposes only. No warranties, expressed or impli
 | SEND VARIABLE                                |         |                     |            |
 | Sequence number                              |         |                     |            |
 | Session                                      |         |                     |            |
-| Session info-new 4D 20 R7                    |         |                     |            |
+| Session info-new $D 20 R7                    |         |                     |            |
 | Session storage                              |         |                     |            |
 | SET ABOUT                                    |         |                     |            |
 | SET ALLOWED METHODS                          |         |                     |            |
@@ -1174,7 +1174,7 @@ This project is for educational purposes only. No warranties, expressed or impli
 | SET UPDATE FOLDER                            |         |                     |            |
 | SET USER ALIAS                               |         |                     |            |
 | Set user properties                          |         |                     |            |
-| SET WINDOW DOCUMENT ICON-new 4D 20 R7        |         |          X          |            |
+| SET WINDOW DOCUMENT ICON-new $D 20 R7        |         |          X          |            |
 | SET WINDOW RECT                              |         |          X          |            |
 | SET WINDOW TITLE                             |         |          X          |            |
 | Shift down                                   |         |          X          |            |

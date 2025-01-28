@@ -28,10 +28,10 @@ if (fs.existsSync("./output")) {
 console.log('Copying output_template...');
 fse.copySync("output_template", "output", { overwrite: true });
 
-// Copy all input files to output dir except .4Dm files
+// Copy all input files to output dir except .$dm files
 const filter = file => {
     const ext = path.extname(file)
-    return ext !== '.4dm'; // return true if the file is not a .4Dm file
+    return ext !== '.4dm'; // return true if the file is not a .$dm file
 }
 fse.copySync("input", "output", { filter });
 
@@ -39,13 +39,13 @@ fse.copySync("input", "output", { filter });
 console.log('Replacing reserved words in JavaScript... FIXME');
 reservedWordsInJs.forEach((word) => {
    // console.log('Replacing ' + word);
-   // Replace in all method-name & /4Dcommands/ & /4Dcommands/ filenames
+   // Replace in all method-name & /$Dcommands/ & /$Dcommands/ filenames
    // FIXME
 });
 
 // Copy template files to output dir (package.json, nodules_modules, etc.)
-console.log('Copying 4Dcommands...');
-fse.copySync("4Dcommands", app.projectRoot + path.sep + "4Dcommands", { overwrite: true });
+console.log('Copying $Dcommands...');
+fse.copySync("$Dcommands", app.projectRoot + path.sep + "$Dcommands", { overwrite: true });
 
 // // Transpile all 4dm files to JavaScript
 // Copy all input files to output dir except 4dm files (should copy directory structure)

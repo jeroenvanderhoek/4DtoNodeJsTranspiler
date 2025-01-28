@@ -1,5 +1,5 @@
 // Contains an 2D array with easy replacements.
-// 4Dcommands which can be replaced with a simple string can also be added here.
+// $Dcommands which can be replaced with a simple string can also be added here.
 
 export default {
     "True:C214":"true",

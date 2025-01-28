@@ -1,0 +1,1 @@
+// $D command: OBJECT SET RESIZING OPTIONS

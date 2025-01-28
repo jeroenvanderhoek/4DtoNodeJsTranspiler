@@ -1,1 +1,0 @@
-// 4D command: ADJUST TABLE CACHE PRIORITY

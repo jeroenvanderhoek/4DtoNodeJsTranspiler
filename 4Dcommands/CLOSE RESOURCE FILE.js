@@ -1,1 +1,0 @@
-// 4D command: CLOSE RESOURCE FILE

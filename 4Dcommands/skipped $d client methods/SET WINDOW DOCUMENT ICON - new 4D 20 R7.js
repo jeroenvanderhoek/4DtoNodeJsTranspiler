@@ -1,1 +1,0 @@
-// 4D command: SET WINDOW DOCUMENT ICON - new 4D 20 R7

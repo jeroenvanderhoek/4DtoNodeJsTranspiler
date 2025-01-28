@@ -1,1 +1,0 @@
-// 4D command: DOM SET XML DECLARATION

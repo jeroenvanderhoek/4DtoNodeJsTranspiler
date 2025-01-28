@@ -1,0 +1,1 @@
+// $D command: LISTBOX MOVED ROW NUMBER

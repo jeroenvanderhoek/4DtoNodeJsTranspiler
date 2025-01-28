@@ -1,1 +1,0 @@
-// 4D command: WA REFRESH CURRENT URL

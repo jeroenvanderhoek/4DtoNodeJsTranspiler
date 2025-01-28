@@ -1,1 +1,0 @@
-// 4D command: SET ENVIRONMENT VARIABLE
