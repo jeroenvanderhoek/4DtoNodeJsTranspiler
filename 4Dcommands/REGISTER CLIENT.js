@@ -1,0 +1,1 @@
+// 4D command: REGISTER CLIENT

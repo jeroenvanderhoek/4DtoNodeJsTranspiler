@@ -1,0 +1,1 @@
+// 4D command: PHP GET FULL RESPONSE

@@ -1,0 +1,1 @@
+// 4D command: VERIFY CURRENT DATA FILE

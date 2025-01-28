@@ -1,1 +1,0 @@
-// $D command: QR DELETE OFFSCREEN AREA

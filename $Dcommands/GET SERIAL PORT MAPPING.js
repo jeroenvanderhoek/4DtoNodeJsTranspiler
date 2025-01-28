@@ -1,1 +1,0 @@
-// $D command: GET SERIAL PORT MAPPING

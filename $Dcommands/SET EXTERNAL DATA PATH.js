@@ -1,1 +1,0 @@
-// $D command: SET EXTERNAL DATA PATH

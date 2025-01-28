@@ -1,0 +1,1 @@
+// 4D command: SEND MESSAGE TO REMOTE USER

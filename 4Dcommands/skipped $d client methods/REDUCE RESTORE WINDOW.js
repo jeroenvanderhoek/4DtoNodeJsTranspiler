@@ -1,0 +1,1 @@
+// 4D command: REDUCE RESTORE WINDOW

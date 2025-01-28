@@ -1,1 +1,0 @@
-// $D command: LONGINT ARRAY FROM SELECTION

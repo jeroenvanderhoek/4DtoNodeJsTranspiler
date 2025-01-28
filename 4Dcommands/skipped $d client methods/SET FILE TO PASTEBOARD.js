@@ -1,0 +1,1 @@
+// 4D command: SET FILE TO PASTEBOARD

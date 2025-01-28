@@ -1,0 +1,1 @@
+// 4D command: DOM GET XML ATTRIBUTE BY NAME

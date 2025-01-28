@@ -1,1 +1,0 @@
-// $D command: MEMORY STATISTICS

@@ -1,0 +1,1 @@
+// 4D command: CLEAR NAMED SELECTION
