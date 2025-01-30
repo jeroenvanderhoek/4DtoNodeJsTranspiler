@@ -1,1 +1,1 @@
-// $D command: DOM Parse XML variable
+// 4D command: DOM Parse XML variable

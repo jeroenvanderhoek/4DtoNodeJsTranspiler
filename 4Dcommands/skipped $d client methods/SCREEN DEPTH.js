@@ -1,1 +1,1 @@
-// $D command: SCREEN DEPTH
+// 4D command: SCREEN DEPTH

@@ -1,1 +1,1 @@
-// $D command: Split string
+// 4D command: Split string

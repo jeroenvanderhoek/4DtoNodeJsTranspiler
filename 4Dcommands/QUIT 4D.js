@@ -1,1 +1,1 @@
-// $D command: QUIT 4D
+// 4D command: QUIT 4D

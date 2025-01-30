@@ -1,1 +1,1 @@
-// $D command: OLD RELATED ONE
+// 4D command: OLD RELATED ONE

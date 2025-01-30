@@ -1,1 +1,1 @@
-// $D command: Get menu item key
+// 4D command: Get menu item key

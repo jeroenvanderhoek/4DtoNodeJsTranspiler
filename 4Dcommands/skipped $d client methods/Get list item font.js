@@ -1,1 +1,1 @@
-// $D command: Get list item font
+// 4D command: Get list item font

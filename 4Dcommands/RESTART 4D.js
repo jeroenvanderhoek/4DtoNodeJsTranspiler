@@ -1,1 +1,1 @@
-// $D command: RESTART 4D
+// 4D command: RESTART 4D

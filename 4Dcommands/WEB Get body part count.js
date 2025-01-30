@@ -1,1 +1,1 @@
-// $D command: WEB Get body part count
+// 4D command: WEB Get body part count

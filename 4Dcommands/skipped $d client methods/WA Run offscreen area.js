@@ -1,1 +1,1 @@
-// $D command: WA Run offscreen area
+// 4D command: WA Run offscreen area

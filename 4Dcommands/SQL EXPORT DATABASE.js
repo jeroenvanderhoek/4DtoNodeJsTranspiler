@@ -1,1 +1,1 @@
-// $D command: SQL EXPORT DATABASE
+// 4D command: SQL EXPORT DATABASE

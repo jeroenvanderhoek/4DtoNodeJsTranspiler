@@ -1,1 +1,1 @@
-// $D command: OPEN SETTINGS WINDOW
+// 4D command: OPEN SETTINGS WINDOW

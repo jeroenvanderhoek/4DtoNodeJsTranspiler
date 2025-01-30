@@ -1,1 +1,1 @@
-// $D command: Print object
+// 4D command: Print object

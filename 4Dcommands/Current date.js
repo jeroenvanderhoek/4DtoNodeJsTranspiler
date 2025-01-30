@@ -1,1 +1,1 @@
-// $D command: Current date
+// 4D command: Current date

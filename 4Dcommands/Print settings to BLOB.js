@@ -1,1 +1,1 @@
-// $D command: Print settings to BLOB
+// 4D command: Print settings to BLOB

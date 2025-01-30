@@ -1,1 +1,1 @@
-// $D command: JSON Validate
+// 4D command: JSON Validate

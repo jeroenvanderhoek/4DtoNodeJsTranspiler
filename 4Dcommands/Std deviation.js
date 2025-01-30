@@ -1,1 +1,1 @@
-// $D command: Std deviation
+// 4D command: Std deviation

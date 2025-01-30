@@ -1,1 +1,1 @@
-// $D command: WA GET PREFERENCE
+// 4D command: WA GET PREFERENCE

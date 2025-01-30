@@ -1,1 +1,1 @@
-// $D command: LISTBOX DELETE COLUMN
+// 4D command: LISTBOX DELETE COLUMN

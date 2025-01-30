@@ -1,1 +1,1 @@
-// $D command: GET PRINT OPTION
+// 4D command: GET PRINT OPTION

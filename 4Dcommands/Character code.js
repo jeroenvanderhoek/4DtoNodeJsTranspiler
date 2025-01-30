@@ -1,1 +1,1 @@
-// $D command: Character code
+// 4D command: Character code

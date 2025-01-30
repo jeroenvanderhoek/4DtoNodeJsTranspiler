@@ -1,1 +1,1 @@
-// $D command: OBJECT SET SUBFORM
+// 4D command: OBJECT SET SUBFORM

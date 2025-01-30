@@ -1,1 +1,1 @@
-// $D command: GET WINDOW RECT
+// 4D command: GET WINDOW RECT

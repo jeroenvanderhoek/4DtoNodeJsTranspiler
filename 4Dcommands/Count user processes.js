@@ -1,1 +1,1 @@
-// $D command: Count user processes
+// 4D command: Count user processes

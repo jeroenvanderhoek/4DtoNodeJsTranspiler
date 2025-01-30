@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET ROW HEIGHT
+// 4D command: LISTBOX SET ROW HEIGHT

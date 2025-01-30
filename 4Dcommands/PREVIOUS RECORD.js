@@ -1,1 +1,1 @@
-// $D command: PREVIOUS RECORD
+// 4D command: PREVIOUS RECORD

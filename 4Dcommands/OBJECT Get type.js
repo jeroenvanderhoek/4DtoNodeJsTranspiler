@@ -1,1 +1,1 @@
-// $D command: OBJECT Get type
+// 4D command: OBJECT Get type

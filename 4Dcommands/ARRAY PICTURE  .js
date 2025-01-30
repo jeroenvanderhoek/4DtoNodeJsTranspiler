@@ -1,2 +1,2 @@
-// $D command: ARRAY PICTURE  
+// 4D command: ARRAY PICTURE  
 // See replaceArrays

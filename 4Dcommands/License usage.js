@@ -1,1 +1,1 @@
-// $D command: License usage
+// 4D command: License usage

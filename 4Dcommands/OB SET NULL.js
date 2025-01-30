@@ -1,1 +1,1 @@
-// $D command: OB SET NULL
+// 4D command: OB SET NULL

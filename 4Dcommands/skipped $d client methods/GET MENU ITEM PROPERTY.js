@@ -1,1 +1,1 @@
-// $D command: GET MENU ITEM PROPERTY
+// 4D command: GET MENU ITEM PROPERTY

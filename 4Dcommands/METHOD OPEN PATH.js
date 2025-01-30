@@ -1,1 +1,1 @@
-// $D command: METHOD OPEN PATH
+// 4D command: METHOD OPEN PATH

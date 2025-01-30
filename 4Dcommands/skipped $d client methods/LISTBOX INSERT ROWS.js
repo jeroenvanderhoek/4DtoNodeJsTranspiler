@@ -1,1 +1,1 @@
-// $D command: LISTBOX INSERT ROWS
+// 4D command: LISTBOX INSERT ROWS

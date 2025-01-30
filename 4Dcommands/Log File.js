@@ -1,1 +1,1 @@
-// $D command: Log File
+// 4D command: Log File

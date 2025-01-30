@@ -1,1 +1,1 @@
-// $D command: CLEAR VARIABLE
+// 4D command: CLEAR VARIABLE

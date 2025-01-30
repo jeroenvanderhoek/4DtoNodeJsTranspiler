@@ -1,1 +1,1 @@
-// $D command: Is editing text
+// 4D command: Is editing text

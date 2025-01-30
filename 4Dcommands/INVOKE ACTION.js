@@ -1,1 +1,1 @@
-// $D command: INVOKE ACTION
+// 4D command: INVOKE ACTION

@@ -1,1 +1,1 @@
-// $D command: PLUGIN LIST
+// 4D command: PLUGIN LIST

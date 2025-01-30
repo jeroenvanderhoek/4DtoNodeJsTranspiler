@@ -1,1 +1,1 @@
-// $D command: Is a list
+// 4D command: Is a list

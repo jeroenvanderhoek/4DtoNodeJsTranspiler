@@ -1,1 +1,1 @@
-// $D command: SET DEFAULT CENTURY
+// 4D command: SET DEFAULT CENTURY

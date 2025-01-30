@@ -1,1 +1,1 @@
-// $D command: CHANGE LICENSES
+// 4D command: CHANGE LICENSES

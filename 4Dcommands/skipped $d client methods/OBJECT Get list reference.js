@@ -1,1 +1,1 @@
-// $D command: OBJECT Get list reference
+// 4D command: OBJECT Get list reference

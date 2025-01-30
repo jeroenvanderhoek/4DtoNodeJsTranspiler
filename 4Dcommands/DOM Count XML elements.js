@@ -1,1 +1,1 @@
-// $D command: DOM Count XML elements
+// 4D command: DOM Count XML elements

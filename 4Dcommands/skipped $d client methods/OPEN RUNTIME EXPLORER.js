@@ -1,1 +1,1 @@
-// $D command: OPEN RUNTIME EXPLORER
+// 4D command: OPEN RUNTIME EXPLORER

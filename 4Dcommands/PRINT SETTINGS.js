@@ -1,1 +1,1 @@
-// $D command: PRINT SETTINGS
+// 4D command: PRINT SETTINGS

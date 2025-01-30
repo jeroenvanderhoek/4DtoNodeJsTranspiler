@@ -1,1 +1,1 @@
-// $D command: User in group
+// 4D command: User in group

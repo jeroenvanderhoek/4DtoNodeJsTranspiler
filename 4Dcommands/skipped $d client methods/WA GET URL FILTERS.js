@@ -1,1 +1,1 @@
-// $D command: WA GET URL FILTERS
+// 4D command: WA GET URL FILTERS

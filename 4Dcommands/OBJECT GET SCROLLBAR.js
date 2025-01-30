@@ -1,1 +1,1 @@
-// $D command: OBJECT GET SCROLLBAR
+// 4D command: OBJECT GET SCROLLBAR

@@ -1,1 +1,1 @@
-// $D command: ABORT
+// 4D command: ABORT

@@ -1,1 +1,1 @@
-// $D command: Command name
+// 4D command: Command name

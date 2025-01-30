@@ -1,1 +1,1 @@
-// $D command: SET PICTURE TO LIBRARY
+// 4D command: SET PICTURE TO LIBRARY

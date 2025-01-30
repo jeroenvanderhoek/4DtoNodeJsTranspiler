@@ -1,1 +1,1 @@
-// $D command: GET USER PROPERTIES
+// 4D command: GET USER PROPERTIES

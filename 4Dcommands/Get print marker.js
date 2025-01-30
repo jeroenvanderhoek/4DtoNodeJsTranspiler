@@ -1,1 +1,1 @@
-// $D command: Get print marker
+// 4D command: Get print marker

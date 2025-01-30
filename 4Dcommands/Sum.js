@@ -1,1 +1,1 @@
-// $D command: Sum
+// 4D command: Sum

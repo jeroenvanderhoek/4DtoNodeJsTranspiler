@@ -1,1 +1,1 @@
-// $D command: WEB SERVICE CALL
+// 4D command: WEB SERVICE CALL

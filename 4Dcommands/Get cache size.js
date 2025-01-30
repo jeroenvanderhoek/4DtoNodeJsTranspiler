@@ -1,1 +1,1 @@
-// $D command: Get cache size
+// 4D command: Get cache size

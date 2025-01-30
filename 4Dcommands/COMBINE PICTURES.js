@@ -1,1 +1,1 @@
-// $D command: COMBINE PICTURES
+// 4D command: COMBINE PICTURES

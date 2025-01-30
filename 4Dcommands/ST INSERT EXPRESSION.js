@@ -1,1 +1,1 @@
-// $D command: ST INSERT EXPRESSION
+// 4D command: ST INSERT EXPRESSION

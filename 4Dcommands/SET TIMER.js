@@ -1,1 +1,1 @@
-// $D command: SET TIMER
+// 4D command: SET TIMER

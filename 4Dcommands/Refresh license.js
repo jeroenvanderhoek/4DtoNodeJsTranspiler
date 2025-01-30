@@ -1,1 +1,1 @@
-// $D command: Refresh license
+// 4D command: Refresh license

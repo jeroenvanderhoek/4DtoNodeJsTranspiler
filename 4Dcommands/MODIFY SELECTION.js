@@ -1,1 +1,1 @@
-// $D command: MODIFY SELECTION
+// 4D command: MODIFY SELECTION

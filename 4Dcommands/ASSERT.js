@@ -1,1 +1,1 @@
-// $D command: ASSERT
+// 4D command: ASSERT

@@ -1,1 +1,1 @@
-// $D command: OBJECT SET EVENTS
+// 4D command: OBJECT SET EVENTS

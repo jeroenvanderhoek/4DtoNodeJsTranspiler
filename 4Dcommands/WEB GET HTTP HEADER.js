@@ -1,1 +1,1 @@
-// $D command: WEB GET HTTP HEADER
+// 4D command: WEB GET HTTP HEADER

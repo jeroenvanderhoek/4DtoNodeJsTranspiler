@@ -1,1 +1,1 @@
-// $D command: Get pointer
+// 4D command: Get pointer

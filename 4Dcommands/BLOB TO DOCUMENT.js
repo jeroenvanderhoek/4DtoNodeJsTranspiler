@@ -1,1 +1,1 @@
-// $D command: BLOB TO DOCUMENT
+// 4D command: BLOB TO DOCUMENT

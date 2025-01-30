@@ -1,1 +1,1 @@
-// $D command: SET MENU ITEM METHOD
+// 4D command: SET MENU ITEM METHOD

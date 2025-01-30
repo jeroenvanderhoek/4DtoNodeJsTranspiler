@@ -1,1 +1,1 @@
-// $D command: Create document
+// 4D command: Create document

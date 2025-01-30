@@ -1,1 +1,1 @@
-// $D command: CLOSE RESOURCE FILE
+// 4D command: CLOSE RESOURCE FILE

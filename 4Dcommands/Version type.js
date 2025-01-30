@@ -1,1 +1,1 @@
-// $D command: Version type
+// 4D command: Version type

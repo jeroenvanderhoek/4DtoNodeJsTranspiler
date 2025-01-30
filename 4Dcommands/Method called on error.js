@@ -1,1 +1,1 @@
-// $D command: Method called on error
+// 4D command: Method called on error

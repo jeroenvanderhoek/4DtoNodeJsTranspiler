@@ -1,1 +1,1 @@
-// $D command: Database measures
+// 4D command: Database measures

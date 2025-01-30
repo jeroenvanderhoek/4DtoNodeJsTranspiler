@@ -1,1 +1,1 @@
-// $D command: OBJECT Get corner radius
+// 4D command: OBJECT Get corner radius

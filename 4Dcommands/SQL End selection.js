@@ -1,1 +1,1 @@
-// $D command: SQL End selection
+// 4D command: SQL End selection

@@ -1,1 +1,1 @@
-// $D command: REAL TO BLOB
+// 4D command: REAL TO BLOB

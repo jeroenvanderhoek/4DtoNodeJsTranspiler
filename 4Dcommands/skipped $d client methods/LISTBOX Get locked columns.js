@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get locked columns
+// 4D command: LISTBOX Get locked columns

@@ -1,1 +1,1 @@
-// $D command: DELETE FROM BLOB
+// 4D command: DELETE FROM BLOB

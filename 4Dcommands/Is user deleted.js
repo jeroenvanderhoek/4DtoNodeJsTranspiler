@@ -1,1 +1,1 @@
-// $D command: Is user deleted
+// 4D command: Is user deleted

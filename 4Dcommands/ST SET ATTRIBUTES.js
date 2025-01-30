@@ -1,1 +1,1 @@
-// $D command: ST SET ATTRIBUTES
+// 4D command: ST SET ATTRIBUTES

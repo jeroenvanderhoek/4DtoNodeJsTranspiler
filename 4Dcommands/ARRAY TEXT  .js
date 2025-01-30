@@ -1,2 +1,2 @@
-// $D command: ARRAY TEXT  
+// 4D command: ARRAY TEXT  
 // See replaceArrays

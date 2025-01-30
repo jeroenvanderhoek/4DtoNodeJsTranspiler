@@ -1,1 +1,1 @@
-// $D command: Get text resource
+// 4D command: Get text resource

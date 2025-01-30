@@ -1,1 +1,1 @@
-// $D command: SAVE RELATED ONE
+// 4D command: SAVE RELATED ONE

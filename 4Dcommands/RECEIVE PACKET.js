@@ -1,1 +1,1 @@
-// $D command: RECEIVE PACKET
+// 4D command: RECEIVE PACKET

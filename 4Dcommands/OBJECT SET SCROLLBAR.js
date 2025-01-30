@@ -1,1 +1,1 @@
-// $D command: OBJECT SET SCROLLBAR
+// 4D command: OBJECT SET SCROLLBAR

@@ -1,1 +1,1 @@
-// $D command: GET PROCESS VARIABLE
+// 4D command: GET PROCESS VARIABLE

@@ -1,1 +1,1 @@
-// $D command: Get text from pasteboard
+// 4D command: Get text from pasteboard

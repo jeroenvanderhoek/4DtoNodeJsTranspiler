@@ -1,1 +1,1 @@
-// $D command: Trunc
+// 4D command: Trunc

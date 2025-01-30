@@ -1,1 +1,1 @@
-// $D command: BLOB size
+// 4D command: BLOB size

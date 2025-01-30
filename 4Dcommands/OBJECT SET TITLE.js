@@ -1,1 +1,1 @@
-// $D command: OBJECT SET TITLE
+// 4D command: OBJECT SET TITLE

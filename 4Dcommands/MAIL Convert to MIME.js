@@ -1,1 +1,1 @@
-// $D command: MAIL Convert to MIME
+// 4D command: MAIL Convert to MIME

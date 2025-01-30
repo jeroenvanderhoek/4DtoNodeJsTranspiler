@@ -1,1 +1,1 @@
-// $D command: IMPORT STRUCTURE
+// 4D command: IMPORT STRUCTURE

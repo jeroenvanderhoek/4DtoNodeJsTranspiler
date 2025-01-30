@@ -1,1 +1,1 @@
-// $D command: METHOD SET CODE
+// 4D command: METHOD SET CODE

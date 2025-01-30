@@ -1,1 +1,1 @@
-// $D command: CONVERT COORDINATES
+// 4D command: CONVERT COORDINATES

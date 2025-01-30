@@ -1,1 +1,1 @@
-// $D command: SHOW TOOL BAR
+// 4D command: SHOW TOOL BAR

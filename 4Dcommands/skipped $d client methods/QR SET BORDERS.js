@@ -1,1 +1,1 @@
-// $D command: QR SET BORDERS
+// 4D command: QR SET BORDERS

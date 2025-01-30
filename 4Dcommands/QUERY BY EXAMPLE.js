@@ -1,1 +1,1 @@
-// $D command: QUERY BY EXAMPLE
+// 4D command: QUERY BY EXAMPLE

@@ -1,1 +1,1 @@
-// $D command: Application file
+// 4D command: Application file

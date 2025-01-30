@@ -1,1 +1,1 @@
-// $D command: CALL FORM
+// 4D command: CALL FORM

@@ -1,1 +1,1 @@
-// $D command: OB Is defined
+// 4D command: OB Is defined

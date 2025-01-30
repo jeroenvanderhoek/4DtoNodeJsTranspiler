@@ -1,1 +1,1 @@
-// $D command: WEB GET BODY PART
+// 4D command: WEB GET BODY PART

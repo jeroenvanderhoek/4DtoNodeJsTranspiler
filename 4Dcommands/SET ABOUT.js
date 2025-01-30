@@ -1,1 +1,1 @@
-// $D command: SET ABOUT
+// 4D command: SET ABOUT

@@ -1,1 +1,1 @@
-// $D command: OB GET PROPERTY NAMES
+// 4D command: OB GET PROPERTY NAMES

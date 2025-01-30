@@ -1,1 +1,1 @@
-// $D command: ST Get plain text
+// 4D command: ST Get plain text

@@ -1,1 +1,1 @@
-// $D command: DOM Get XML document ref
+// 4D command: DOM Get XML document ref

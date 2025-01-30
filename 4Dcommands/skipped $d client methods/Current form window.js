@@ -1,1 +1,1 @@
-// $D command: Current form window
+// 4D command: Current form window

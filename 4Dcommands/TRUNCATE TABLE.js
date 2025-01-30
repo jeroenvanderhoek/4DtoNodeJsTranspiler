@@ -1,1 +1,1 @@
-// $D command: TRUNCATE TABLE
+// 4D command: TRUNCATE TABLE

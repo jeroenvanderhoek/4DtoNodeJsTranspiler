@@ -1,1 +1,1 @@
-// $D command: Get query limit
+// 4D command: Get query limit

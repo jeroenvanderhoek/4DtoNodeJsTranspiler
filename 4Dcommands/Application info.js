@@ -1,1 +1,1 @@
-// $D command: Application info
+// 4D command: Application info

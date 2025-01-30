@@ -1,1 +1,1 @@
-// $D command: QUERY BY ATTRIBUTE
+// 4D command: QUERY BY ATTRIBUTE

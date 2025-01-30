@@ -1,1 +1,1 @@
-// $D command: Locked records info
+// 4D command: Locked records info

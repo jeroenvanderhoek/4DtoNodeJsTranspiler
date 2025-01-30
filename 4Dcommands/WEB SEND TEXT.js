@@ -1,4 +1,4 @@
-// $D command: WEB SEND TEXT
+// 4D command: WEB SEND TEXT
 
 /**
  * 

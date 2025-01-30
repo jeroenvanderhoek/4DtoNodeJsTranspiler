@@ -1,1 +1,1 @@
-// $D command: Field name
+// 4D command: Field name

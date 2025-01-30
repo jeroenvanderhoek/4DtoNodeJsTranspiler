@@ -1,1 +1,1 @@
-// $D command: CREATE DATA FILE
+// 4D command: CREATE DATA FILE

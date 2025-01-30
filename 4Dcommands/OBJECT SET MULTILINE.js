@@ -1,1 +1,1 @@
-// $D command: OBJECT SET MULTILINE
+// 4D command: OBJECT SET MULTILINE

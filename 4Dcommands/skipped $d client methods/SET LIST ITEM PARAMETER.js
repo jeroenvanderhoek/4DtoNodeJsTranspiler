@@ -1,1 +1,1 @@
-// $D command: SET LIST ITEM PARAMETER
+// 4D command: SET LIST ITEM PARAMETER

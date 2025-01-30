@@ -1,1 +1,1 @@
-// $D command: OB Get
+// 4D command: OB Get

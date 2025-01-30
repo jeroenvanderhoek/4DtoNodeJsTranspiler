@@ -1,1 +1,1 @@
-// $D command: COMPRESS BLOB
+// 4D command: COMPRESS BLOB

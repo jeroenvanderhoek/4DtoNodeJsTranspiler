@@ -1,1 +1,1 @@
-// $D command: FORM Convert to dynamic
+// 4D command: FORM Convert to dynamic

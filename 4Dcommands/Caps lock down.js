@@ -1,1 +1,1 @@
-// $D command: Caps lock down
+// 4D command: Caps lock down

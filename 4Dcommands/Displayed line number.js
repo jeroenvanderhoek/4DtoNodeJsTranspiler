@@ -1,1 +1,1 @@
-// $D command: Displayed line number
+// 4D command: Displayed line number

@@ -1,4 +1,4 @@
-// $D command: Length
+// 4D command: Length
 /**
  * 
  * @param {*} processState 

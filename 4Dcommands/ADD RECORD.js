@@ -1,4 +1,4 @@
-// $D command: ADD RECORD
+// 4D command: ADD RECORD
 
 export default async function ADD_RECORD (processState) {
 

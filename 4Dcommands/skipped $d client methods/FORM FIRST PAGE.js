@@ -1,1 +1,1 @@
-// $D command: FORM FIRST PAGE
+// 4D command: FORM FIRST PAGE

@@ -1,1 +1,1 @@
-// $D command: DELETE INDEX
+// 4D command: DELETE INDEX

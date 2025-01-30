@@ -1,2 +1,2 @@
-// $D command: ARRAY DATE 
+// 4D command: ARRAY DATE 
 // See replaceArrays

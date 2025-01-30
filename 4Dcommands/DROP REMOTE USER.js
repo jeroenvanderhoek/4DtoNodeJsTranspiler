@@ -1,1 +1,1 @@
-// $D command: DROP REMOTE USER
+// 4D command: DROP REMOTE USER

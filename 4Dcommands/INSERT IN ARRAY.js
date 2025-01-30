@@ -1,1 +1,1 @@
-// $D command: INSERT IN ARRAY
+// 4D command: INSERT IN ARRAY

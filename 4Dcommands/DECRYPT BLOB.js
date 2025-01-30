@@ -1,1 +1,1 @@
-// $D command: DECRYPT BLOB
+// 4D command: DECRYPT BLOB

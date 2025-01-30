@@ -1,1 +1,1 @@
-// $D command: Lowercase
+// 4D command: Lowercase

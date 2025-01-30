@@ -1,1 +1,1 @@
-// $D command: GET PRINTABLE MARGIN
+// 4D command: GET PRINTABLE MARGIN

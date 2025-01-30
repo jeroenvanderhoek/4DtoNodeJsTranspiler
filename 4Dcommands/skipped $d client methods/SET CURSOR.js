@@ -1,1 +1,1 @@
-// $D command: SET CURSOR
+// 4D command: SET CURSOR

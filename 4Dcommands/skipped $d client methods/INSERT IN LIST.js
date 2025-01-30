@@ -1,1 +1,1 @@
-// $D command: INSERT IN LIST
+// 4D command: INSERT IN LIST

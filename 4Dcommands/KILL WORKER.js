@@ -1,1 +1,1 @@
-// $D command: KILL WORKER
+// 4D command: KILL WORKER

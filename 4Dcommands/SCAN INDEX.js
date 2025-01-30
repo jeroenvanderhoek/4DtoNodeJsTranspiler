@@ -1,1 +1,1 @@
-// $D command: SCAN INDEX
+// 4D command: SCAN INDEX

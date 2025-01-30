@@ -1,1 +1,1 @@
-// $D command: ACCUMULATE
+// 4D command: ACCUMULATE

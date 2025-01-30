@@ -1,1 +1,1 @@
-// $D command: CLEAR LIST
+// 4D command: CLEAR LIST

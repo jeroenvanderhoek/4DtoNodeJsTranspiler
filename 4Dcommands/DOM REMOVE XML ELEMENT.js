@@ -1,1 +1,1 @@
-// $D command: DOM REMOVE XML ELEMENT
+// 4D command: DOM REMOVE XML ELEMENT

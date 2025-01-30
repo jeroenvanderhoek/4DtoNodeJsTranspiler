@@ -1,2 +1,2 @@
-// $D command: ARRAY REAL 
+// 4D command: ARRAY REAL 
 // See replaceArrays

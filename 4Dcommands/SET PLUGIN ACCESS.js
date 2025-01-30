@@ -1,1 +1,1 @@
-// $D command: SET PLUGIN ACCESS
+// 4D command: SET PLUGIN ACCESS

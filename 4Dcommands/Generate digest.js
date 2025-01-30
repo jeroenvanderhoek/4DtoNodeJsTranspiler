@@ -1,1 +1,1 @@
-// $D command: Generate digest
+// 4D command: Generate digest

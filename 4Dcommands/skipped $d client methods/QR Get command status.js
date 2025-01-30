@@ -1,1 +1,1 @@
-// $D command: QR Get command status
+// 4D command: QR Get command status

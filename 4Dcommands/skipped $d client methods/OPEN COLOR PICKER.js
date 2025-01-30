@@ -1,1 +1,1 @@
-// $D command: OPEN COLOR PICKER
+// 4D command: OPEN COLOR PICKER

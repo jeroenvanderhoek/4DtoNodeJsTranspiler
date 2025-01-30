@@ -1,1 +1,1 @@
-// $D command: LIST OF STYLE SHEETS
+// 4D command: LIST OF STYLE SHEETS

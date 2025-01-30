@@ -1,1 +1,1 @@
-// $D command: USE ENTITY SELECTION
+// 4D command: USE ENTITY SELECTION

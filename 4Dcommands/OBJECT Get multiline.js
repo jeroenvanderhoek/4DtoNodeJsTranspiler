@@ -1,1 +1,1 @@
-// $D command: OBJECT Get multiline
+// 4D command: OBJECT Get multiline

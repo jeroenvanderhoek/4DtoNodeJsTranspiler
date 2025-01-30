@@ -1,1 +1,1 @@
-// $D command: CLOSE PRINTING JOB
+// 4D command: CLOSE PRINTING JOB

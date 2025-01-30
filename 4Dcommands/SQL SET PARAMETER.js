@@ -1,1 +1,1 @@
-// $D command: SQL SET PARAMETER
+// 4D command: SQL SET PARAMETER

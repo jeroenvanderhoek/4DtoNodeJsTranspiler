@@ -1,1 +1,1 @@
-// $D command: EXPAND BLOB
+// 4D command: EXPAND BLOB

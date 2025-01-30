@@ -1,1 +1,1 @@
-// $D command: Get application color scheme
+// 4D command: Get application color scheme

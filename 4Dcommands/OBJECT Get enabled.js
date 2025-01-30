@@ -1,1 +1,1 @@
-// $D command: OBJECT Get enabled
+// 4D command: OBJECT Get enabled

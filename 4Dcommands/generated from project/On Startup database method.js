@@ -1,1 +1,1 @@
-// $D command: On Startup database method
+// 4D command: On Startup database method

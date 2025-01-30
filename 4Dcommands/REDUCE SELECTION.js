@@ -1,1 +1,1 @@
-// $D command: REDUCE SELECTION
+// 4D command: REDUCE SELECTION

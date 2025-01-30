@@ -1,1 +1,1 @@
-// $D command: LOG FILE TO JSON
+// 4D command: LOG FILE TO JSON

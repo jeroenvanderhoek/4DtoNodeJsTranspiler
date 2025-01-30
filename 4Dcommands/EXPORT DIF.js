@@ -1,1 +1,1 @@
-// $D command: EXPORT DIF
+// 4D command: EXPORT DIF

@@ -1,1 +1,1 @@
-// $D command: Last query plan
+// 4D command: Last query plan

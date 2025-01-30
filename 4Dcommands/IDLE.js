@@ -1,1 +1,1 @@
-// $D command: IDLE
+// 4D command: IDLE

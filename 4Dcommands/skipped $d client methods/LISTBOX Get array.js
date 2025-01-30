@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get array
+// 4D command: LISTBOX Get array

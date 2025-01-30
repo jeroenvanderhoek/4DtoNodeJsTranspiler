@@ -1,1 +1,1 @@
-// $D command: Decrypt data BLOB
+// 4D command: Decrypt data BLOB

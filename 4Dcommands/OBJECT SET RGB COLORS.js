@@ -1,1 +1,1 @@
-// $D command: OBJECT SET RGB COLORS
+// 4D command: OBJECT SET RGB COLORS

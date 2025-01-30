@@ -1,1 +1,1 @@
-// $D command: OBJECT Get filter
+// 4D command: OBJECT Get filter

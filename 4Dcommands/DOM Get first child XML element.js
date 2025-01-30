@@ -1,1 +1,1 @@
-// $D command: DOM Get first child XML element
+// 4D command: DOM Get first child XML element

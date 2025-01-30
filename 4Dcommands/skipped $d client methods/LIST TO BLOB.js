@@ -1,1 +1,1 @@
-// $D command: LIST TO BLOB
+// 4D command: LIST TO BLOB

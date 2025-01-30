@@ -1,1 +1,1 @@
-// $D command: QUERY BY FORMULA
+// 4D command: QUERY BY FORMULA

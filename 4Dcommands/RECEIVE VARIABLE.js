@@ -1,1 +1,1 @@
-// $D command: RECEIVE VARIABLE
+// 4D command: RECEIVE VARIABLE

@@ -1,1 +1,1 @@
-// $D command: METHOD GET COMMENTS
+// 4D command: METHOD GET COMMENTS

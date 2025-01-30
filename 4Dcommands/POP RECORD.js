@@ -1,1 +1,1 @@
-// $D command: POP RECORD
+// 4D command: POP RECORD

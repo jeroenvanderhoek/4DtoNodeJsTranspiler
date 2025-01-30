@@ -1,1 +1,1 @@
-// $D command: WEB SET ROOT FOLDER
+// 4D command: WEB SET ROOT FOLDER

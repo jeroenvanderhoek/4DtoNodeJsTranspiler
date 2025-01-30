@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get rows height
+// 4D command: LISTBOX Get rows height

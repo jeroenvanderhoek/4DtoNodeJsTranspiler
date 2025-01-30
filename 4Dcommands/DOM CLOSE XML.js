@@ -1,1 +1,1 @@
-// $D command: DOM CLOSE XML
+// 4D command: DOM CLOSE XML

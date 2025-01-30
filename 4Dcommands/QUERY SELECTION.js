@@ -1,1 +1,1 @@
-// $D command: QUERY SELECTION
+// 4D command: QUERY SELECTION

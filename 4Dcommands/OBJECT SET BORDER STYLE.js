@@ -1,1 +1,1 @@
-// $D command: OBJECT SET BORDER STYLE
+// 4D command: OBJECT SET BORDER STYLE

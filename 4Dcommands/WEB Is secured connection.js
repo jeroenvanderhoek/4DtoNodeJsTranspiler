@@ -1,1 +1,1 @@
-// $D command: WEB Is secured connection
+// 4D command: WEB Is secured connection

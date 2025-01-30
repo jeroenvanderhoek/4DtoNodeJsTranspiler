@@ -1,1 +1,1 @@
-// $D command: Is waiting mouse up
+// 4D command: Is waiting mouse up

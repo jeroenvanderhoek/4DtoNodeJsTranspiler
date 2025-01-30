@@ -1,1 +1,1 @@
-// $D command: XML DECODE
+// 4D command: XML DECODE

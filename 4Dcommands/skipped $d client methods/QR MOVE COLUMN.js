@@ -1,1 +1,1 @@
-// $D command: QR MOVE COLUMN
+// 4D command: QR MOVE COLUMN

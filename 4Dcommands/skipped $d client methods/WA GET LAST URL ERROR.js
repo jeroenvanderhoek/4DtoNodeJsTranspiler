@@ -1,1 +1,1 @@
-// $D command: WA GET LAST URL ERROR
+// 4D command: WA GET LAST URL ERROR

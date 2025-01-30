@@ -1,1 +1,1 @@
-// $D command: Find in field
+// 4D command: Find in field

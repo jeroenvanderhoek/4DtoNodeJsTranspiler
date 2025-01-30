@@ -1,1 +1,1 @@
-// $D command: RELATE ONE SELECTION
+// 4D command: RELATE ONE SELECTION

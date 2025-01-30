@@ -1,1 +1,1 @@
-// $D command: Current client authentication
+// 4D command: Current client authentication

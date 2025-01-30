@@ -1,1 +1,1 @@
-// $D command: EXPORT SYLK
+// 4D command: EXPORT SYLK

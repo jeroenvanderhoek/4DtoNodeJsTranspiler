@@ -1,1 +1,1 @@
-// $D command: ZIP Create archive
+// 4D command: ZIP Create archive

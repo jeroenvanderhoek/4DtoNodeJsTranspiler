@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET PROPERTY
+// 4D command: LISTBOX SET PROPERTY

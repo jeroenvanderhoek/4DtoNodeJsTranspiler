@@ -1,1 +1,1 @@
-// $D command: CONFIRM
+// 4D command: CONFIRM

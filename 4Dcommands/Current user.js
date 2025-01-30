@@ -1,1 +1,1 @@
-// $D command: Current user
+// 4D command: Current user

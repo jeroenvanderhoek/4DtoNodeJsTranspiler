@@ -1,1 +1,1 @@
-// $D command: Macintosh command down
+// 4D command: Macintosh command down

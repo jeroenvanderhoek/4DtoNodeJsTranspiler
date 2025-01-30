@@ -1,1 +1,1 @@
-// $D command: SOAP REJECT NEW REQUESTS
+// 4D command: SOAP REJECT NEW REQUESTS

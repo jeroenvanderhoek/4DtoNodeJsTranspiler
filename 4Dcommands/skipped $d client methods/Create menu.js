@@ -1,1 +1,1 @@
-// $D command: Create menu
+// 4D command: Create menu

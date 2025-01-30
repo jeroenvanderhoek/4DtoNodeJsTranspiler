@@ -1,1 +1,1 @@
-// $D command: Copy list
+// 4D command: Copy list

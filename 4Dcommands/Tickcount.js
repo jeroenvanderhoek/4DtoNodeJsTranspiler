@@ -1,1 +1,1 @@
-// $D command: Tickcount
+// 4D command: Tickcount

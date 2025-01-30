@@ -1,1 +1,1 @@
-// $D command: SEND VARIABLE
+// 4D command: SEND VARIABLE

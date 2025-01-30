@@ -1,1 +1,1 @@
-// $D command: CREATE RECORD
+// 4D command: CREATE RECORD

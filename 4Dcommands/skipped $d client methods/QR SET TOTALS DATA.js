@@ -1,1 +1,1 @@
-// $D command: QR SET TOTALS DATA
+// 4D command: QR SET TOTALS DATA

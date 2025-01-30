@@ -1,1 +1,1 @@
-// $D command: Current default table
+// 4D command: Current default table

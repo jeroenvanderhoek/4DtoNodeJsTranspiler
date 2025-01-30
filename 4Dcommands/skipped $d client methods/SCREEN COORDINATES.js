@@ -1,1 +1,1 @@
-// $D command: SCREEN COORDINATES
+// 4D command: SCREEN COORDINATES

@@ -1,1 +1,1 @@
-// $D command: Create deployment license
+// 4D command: Create deployment license

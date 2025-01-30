@@ -1,1 +1,1 @@
-// $D command: LISTBOX GET OBJECTS
+// 4D command: LISTBOX GET OBJECTS

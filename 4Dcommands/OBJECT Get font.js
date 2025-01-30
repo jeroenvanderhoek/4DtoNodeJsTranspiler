@@ -1,1 +1,1 @@
-// $D command: OBJECT Get font
+// 4D command: OBJECT Get font

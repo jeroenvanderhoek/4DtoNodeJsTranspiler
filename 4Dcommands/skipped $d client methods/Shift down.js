@@ -1,1 +1,1 @@
-// $D command: Shift down
+// 4D command: Shift down

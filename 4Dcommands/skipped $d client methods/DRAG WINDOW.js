@@ -1,1 +1,1 @@
-// $D command: DRAG WINDOW
+// 4D command: DRAG WINDOW

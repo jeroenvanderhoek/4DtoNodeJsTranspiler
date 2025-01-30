@@ -1,1 +1,1 @@
-// $D command: DOM SET XML ATTRIBUTE
+// 4D command: DOM SET XML ATTRIBUTE

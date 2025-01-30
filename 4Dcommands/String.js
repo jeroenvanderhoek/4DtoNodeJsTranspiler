@@ -1,4 +1,4 @@
-// $D command: String
+// 4D command: String
 
 // export default String;
 

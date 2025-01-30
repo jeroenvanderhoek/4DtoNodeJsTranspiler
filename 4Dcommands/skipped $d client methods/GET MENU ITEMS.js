@@ -1,1 +1,1 @@
-// $D command: GET MENU ITEMS
+// 4D command: GET MENU ITEMS

@@ -1,1 +1,1 @@
-// $D command: Dec
+// 4D command: Dec

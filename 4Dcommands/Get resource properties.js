@@ -1,1 +1,1 @@
-// $D command: Get resource properties
+// 4D command: Get resource properties

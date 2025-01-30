@@ -1,1 +1,1 @@
-// $D command: SAVE VARIABLES
+// 4D command: SAVE VARIABLES

@@ -1,1 +1,1 @@
-// $D command: Is window reduced
+// 4D command: Is window reduced

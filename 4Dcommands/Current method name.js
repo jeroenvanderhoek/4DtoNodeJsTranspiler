@@ -1,1 +1,1 @@
-// $D command: Current method name
+// 4D command: Current method name

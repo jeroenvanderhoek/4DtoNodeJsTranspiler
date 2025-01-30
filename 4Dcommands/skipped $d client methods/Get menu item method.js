@@ -1,1 +1,1 @@
-// $D command: Get menu item method
+// 4D command: Get menu item method

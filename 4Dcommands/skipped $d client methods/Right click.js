@@ -1,1 +1,1 @@
-// $D command: Right click
+// 4D command: Right click

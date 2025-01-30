@@ -1,1 +1,1 @@
-// $D command: Get menu bar reference
+// 4D command: Get menu bar reference

@@ -1,1 +1,1 @@
-// $D command: Get current printer
+// 4D command: Get current printer

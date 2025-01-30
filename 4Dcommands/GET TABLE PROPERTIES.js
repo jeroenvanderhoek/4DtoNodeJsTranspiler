@@ -1,1 +1,1 @@
-// $D command: GET TABLE PROPERTIES
+// 4D command: GET TABLE PROPERTIES

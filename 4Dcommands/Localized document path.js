@@ -1,1 +1,1 @@
-// $D command: Localized document path
+// 4D command: Localized document path

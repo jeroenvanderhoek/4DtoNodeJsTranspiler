@@ -1,1 +1,1 @@
-// $D command: Load 4D View document
+// 4D command: Load 4D View document

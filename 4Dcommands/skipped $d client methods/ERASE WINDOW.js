@@ -1,1 +1,1 @@
-// $D command: ERASE WINDOW
+// 4D command: ERASE WINDOW

@@ -1,1 +1,1 @@
-// $D command: GET PICTURE FORMATS
+// 4D command: GET PICTURE FORMATS

@@ -1,1 +1,1 @@
-// $D command: SET EXTERNAL DATA PATH
+// 4D command: SET EXTERNAL DATA PATH

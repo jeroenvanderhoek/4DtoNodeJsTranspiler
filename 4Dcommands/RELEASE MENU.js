@@ -1,1 +1,1 @@
-// $D command: RELEASE MENU
+// 4D command: RELEASE MENU

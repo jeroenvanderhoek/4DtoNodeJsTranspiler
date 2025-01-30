@@ -1,1 +1,1 @@
-// $D command: LOAD RECORD
+// 4D command: LOAD RECORD

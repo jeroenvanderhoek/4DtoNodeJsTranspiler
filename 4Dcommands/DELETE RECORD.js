@@ -1,1 +1,1 @@
-// $D command: DELETE RECORD
+// 4D command: DELETE RECORD

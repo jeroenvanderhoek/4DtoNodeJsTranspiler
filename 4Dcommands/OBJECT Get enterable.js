@@ -1,1 +1,1 @@
-// $D command: OBJECT Get enterable
+// 4D command: OBJECT Get enterable

@@ -1,1 +1,1 @@
-// $D command: OB Get type
+// 4D command: OB Get type

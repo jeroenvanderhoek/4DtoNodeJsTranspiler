@@ -1,1 +1,1 @@
-// $D command: METHOD SET COMMENTS
+// 4D command: METHOD SET COMMENTS

@@ -1,1 +1,1 @@
-// $D command: WEB SEND BLOB
+// 4D command: WEB SEND BLOB

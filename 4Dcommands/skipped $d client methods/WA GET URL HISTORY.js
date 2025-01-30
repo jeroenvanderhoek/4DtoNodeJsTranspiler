@@ -1,1 +1,1 @@
-// $D command: WA GET URL HISTORY
+// 4D command: WA GET URL HISTORY

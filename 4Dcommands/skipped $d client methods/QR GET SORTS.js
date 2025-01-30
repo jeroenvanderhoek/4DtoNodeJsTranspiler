@@ -1,1 +1,1 @@
-// $D command: QR GET SORTS
+// 4D command: QR GET SORTS

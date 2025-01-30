@@ -1,1 +1,1 @@
-// $D command: REDUCE RESTORE WINDOW
+// 4D command: REDUCE RESTORE WINDOW

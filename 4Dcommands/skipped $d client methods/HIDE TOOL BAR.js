@@ -1,1 +1,1 @@
-// $D command: HIDE TOOL BAR
+// 4D command: HIDE TOOL BAR

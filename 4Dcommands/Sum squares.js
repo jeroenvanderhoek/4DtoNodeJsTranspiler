@@ -1,1 +1,1 @@
-// $D command: Sum squares
+// 4D command: Sum squares

@@ -1,1 +1,1 @@
-// $D command: OBJECT Get data source
+// 4D command: OBJECT Get data source

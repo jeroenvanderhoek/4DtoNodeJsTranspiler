@@ -1,1 +1,1 @@
-// $D command: SET INDEX CACHE PRIORITY
+// 4D command: SET INDEX CACHE PRIORITY

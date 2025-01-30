@@ -1,1 +1,1 @@
-// $D command: Day of
+// 4D command: Day of

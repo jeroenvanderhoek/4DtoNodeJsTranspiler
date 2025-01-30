@@ -1,1 +1,1 @@
-// $D command: Delete string
+// 4D command: Delete string

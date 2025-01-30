@@ -1,1 +1,1 @@
-// $D command: RESOLVE ALIAS
+// 4D command: RESOLVE ALIAS

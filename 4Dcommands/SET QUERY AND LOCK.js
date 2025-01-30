@@ -1,1 +1,1 @@
-// $D command: SET QUERY AND LOCK
+// 4D command: SET QUERY AND LOCK

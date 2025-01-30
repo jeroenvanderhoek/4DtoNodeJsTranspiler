@@ -1,1 +1,1 @@
-// $D command: MULTI SORT ARRAY
+// 4D command: MULTI SORT ARRAY

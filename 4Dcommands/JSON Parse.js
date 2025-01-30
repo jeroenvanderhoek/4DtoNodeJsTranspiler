@@ -1,4 +1,4 @@
-// $D command: JSON Parse
+// 4D command: JSON Parse
 export default function (jsonString) { // FIXME
 
     return JSON.parse(jsonString);

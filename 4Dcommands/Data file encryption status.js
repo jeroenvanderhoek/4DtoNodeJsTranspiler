@@ -1,1 +1,1 @@
-// $D command: Data file encryption status
+// 4D command: Data file encryption status

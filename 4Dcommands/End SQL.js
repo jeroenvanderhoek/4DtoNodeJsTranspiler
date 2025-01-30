@@ -1,1 +1,1 @@
-// $D command: End SQL
+// 4D command: End SQL

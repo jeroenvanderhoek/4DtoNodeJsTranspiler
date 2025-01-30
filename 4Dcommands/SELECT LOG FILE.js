@@ -1,1 +1,1 @@
-// $D command: SELECT LOG FILE
+// 4D command: SELECT LOG FILE

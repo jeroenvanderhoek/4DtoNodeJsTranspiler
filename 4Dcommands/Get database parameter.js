@@ -1,1 +1,1 @@
-// $D command: Get database parameter
+// 4D command: Get database parameter

@@ -1,1 +1,1 @@
-// $D command: SVG EXPORT TO PICTURE
+// 4D command: SVG EXPORT TO PICTURE

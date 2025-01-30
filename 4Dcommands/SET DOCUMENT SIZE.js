@@ -1,1 +1,1 @@
-// $D command: SET DOCUMENT SIZE
+// 4D command: SET DOCUMENT SIZE

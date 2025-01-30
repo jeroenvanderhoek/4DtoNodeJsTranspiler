@@ -1,1 +1,1 @@
-// $D command: Get adjusted blobs cache priority
+// 4D command: Get adjusted blobs cache priority

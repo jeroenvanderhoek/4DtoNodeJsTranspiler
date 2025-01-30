@@ -1,1 +1,1 @@
-// $D command: OBJECT Get pointer
+// 4D command: OBJECT Get pointer

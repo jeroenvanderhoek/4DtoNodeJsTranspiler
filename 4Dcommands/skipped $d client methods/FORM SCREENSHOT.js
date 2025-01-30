@@ -1,1 +1,1 @@
-// $D command: FORM SCREENSHOT
+// 4D command: FORM SCREENSHOT

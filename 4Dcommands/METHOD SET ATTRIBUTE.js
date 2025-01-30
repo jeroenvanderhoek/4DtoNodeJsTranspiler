@@ -1,1 +1,1 @@
-// $D command: METHOD SET ATTRIBUTE
+// 4D command: METHOD SET ATTRIBUTE

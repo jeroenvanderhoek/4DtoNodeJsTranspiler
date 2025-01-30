@@ -1,1 +1,1 @@
-// $D command: RECEIVE BUFFER
+// 4D command: RECEIVE BUFFER

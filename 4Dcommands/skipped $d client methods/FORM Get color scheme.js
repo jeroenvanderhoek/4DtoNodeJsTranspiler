@@ -1,1 +1,1 @@
-// $D command: FORM Get color scheme
+// 4D command: FORM Get color scheme

@@ -1,1 +1,1 @@
-// $D command: OBJECT Get focus rectangle invisible
+// 4D command: OBJECT Get focus rectangle invisible

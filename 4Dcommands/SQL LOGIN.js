@@ -1,1 +1,1 @@
-// $D command: SQL LOGIN
+// 4D command: SQL LOGIN

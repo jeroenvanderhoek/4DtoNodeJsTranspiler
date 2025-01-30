@@ -1,1 +1,1 @@
-// $D command: Table
+// 4D command: Table

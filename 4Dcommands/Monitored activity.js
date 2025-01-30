@@ -1,1 +1,1 @@
-// $D command: Monitored activity
+// 4D command: Monitored activity

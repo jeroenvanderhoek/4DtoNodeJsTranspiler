@@ -1,1 +1,1 @@
-// $D command: QUERY WITH ARRAY
+// 4D command: QUERY WITH ARRAY

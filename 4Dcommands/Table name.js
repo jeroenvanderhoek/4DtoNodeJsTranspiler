@@ -1,1 +1,1 @@
-// $D command: Table name
+// 4D command: Table name

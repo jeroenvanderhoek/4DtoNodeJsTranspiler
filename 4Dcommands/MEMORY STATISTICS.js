@@ -1,1 +1,1 @@
-// $D command: MEMORY STATISTICS
+// 4D command: MEMORY STATISTICS

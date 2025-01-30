@@ -1,1 +1,1 @@
-// $D command: OBJECT SET FORMAT
+// 4D command: OBJECT SET FORMAT

@@ -1,1 +1,1 @@
-// $D command: GET PASTEBOARD DATA
+// 4D command: GET PASTEBOARD DATA

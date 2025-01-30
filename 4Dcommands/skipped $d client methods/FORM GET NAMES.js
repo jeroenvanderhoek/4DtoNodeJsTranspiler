@@ -1,1 +1,1 @@
-// $D command: FORM GET NAMES
+// 4D command: FORM GET NAMES

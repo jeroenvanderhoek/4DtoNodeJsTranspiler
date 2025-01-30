@@ -1,1 +1,1 @@
-// $D command: Export structure file
+// 4D command: Export structure file

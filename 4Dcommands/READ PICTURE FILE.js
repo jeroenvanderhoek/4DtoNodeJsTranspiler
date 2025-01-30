@@ -1,1 +1,1 @@
-// $D command: READ PICTURE FILE
+// 4D command: READ PICTURE FILE

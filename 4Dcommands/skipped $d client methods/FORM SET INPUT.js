@@ -1,1 +1,1 @@
-// $D command: FORM SET INPUT
+// 4D command: FORM SET INPUT

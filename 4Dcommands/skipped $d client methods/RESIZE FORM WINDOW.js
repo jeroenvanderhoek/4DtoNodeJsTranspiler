@@ -1,1 +1,1 @@
-// $D command: RESIZE FORM WINDOW
+// 4D command: RESIZE FORM WINDOW

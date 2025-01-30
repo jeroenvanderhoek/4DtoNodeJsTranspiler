@@ -1,1 +1,1 @@
-// $D command: QR GET DESTINATION
+// 4D command: QR GET DESTINATION

@@ -1,1 +1,1 @@
-// $D command: Test path name
+// 4D command: Test path name

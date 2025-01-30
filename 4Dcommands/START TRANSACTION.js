@@ -1,1 +1,1 @@
-// $D command: START TRANSACTION
+// 4D command: START TRANSACTION

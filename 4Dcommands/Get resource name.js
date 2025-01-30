@@ -1,1 +1,1 @@
-// $D command: Get resource name
+// 4D command: Get resource name

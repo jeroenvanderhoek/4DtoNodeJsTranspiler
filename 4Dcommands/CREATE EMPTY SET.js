@@ -1,1 +1,1 @@
-// $D command: CREATE EMPTY SET
+// 4D command: CREATE EMPTY SET

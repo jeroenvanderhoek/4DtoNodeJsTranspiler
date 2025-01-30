@@ -1,1 +1,1 @@
-// $D command: PAUSE PROCESS
+// 4D command: PAUSE PROCESS

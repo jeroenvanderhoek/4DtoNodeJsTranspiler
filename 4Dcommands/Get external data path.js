@@ -1,1 +1,1 @@
-// $D command: Get external data path
+// 4D command: Get external data path

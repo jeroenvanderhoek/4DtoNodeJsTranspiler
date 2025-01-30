@@ -1,1 +1,1 @@
-// $D command: TRANSFORM PICTURE
+// 4D command: TRANSFORM PICTURE

@@ -1,1 +1,1 @@
-// $D command: Equal pictures
+// 4D command: Equal pictures

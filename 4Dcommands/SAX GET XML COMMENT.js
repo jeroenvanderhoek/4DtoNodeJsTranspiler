@@ -1,1 +1,1 @@
-// $D command: SAX GET XML COMMENT
+// 4D command: SAX GET XML COMMENT

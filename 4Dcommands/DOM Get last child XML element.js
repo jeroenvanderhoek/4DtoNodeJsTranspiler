@@ -1,1 +1,1 @@
-// $D command: DOM Get last child XML element
+// 4D command: DOM Get last child XML element

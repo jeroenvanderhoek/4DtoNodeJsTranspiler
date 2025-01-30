@@ -1,1 +1,1 @@
-// $D command: SET GROUP ACCESS
+// 4D command: SET GROUP ACCESS

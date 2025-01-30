@@ -1,2 +1,2 @@
-// $D command: ARRAY POINTER  
+// 4D command: ARRAY POINTER  
 // See replaceArrays

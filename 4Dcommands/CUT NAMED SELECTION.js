@@ -1,1 +1,1 @@
-// $D command: CUT NAMED SELECTION
+// 4D command: CUT NAMED SELECTION

@@ -1,1 +1,1 @@
-// $D command: COMPONENT LIST
+// 4D command: COMPONENT LIST

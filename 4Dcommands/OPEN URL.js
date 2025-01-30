@@ -1,4 +1,4 @@
-// $D command: OPEN URL
+// 4D command: OPEN URL
 
 import open from 'open';
 

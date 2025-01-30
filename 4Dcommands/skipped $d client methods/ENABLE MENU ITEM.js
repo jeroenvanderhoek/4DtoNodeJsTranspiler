@@ -1,1 +1,1 @@
-// $D command: ENABLE MENU ITEM
+// 4D command: ENABLE MENU ITEM

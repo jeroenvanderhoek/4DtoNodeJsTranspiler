@@ -1,1 +1,1 @@
-// $D command: OBJECT GET COORDINATES
+// 4D command: OBJECT GET COORDINATES

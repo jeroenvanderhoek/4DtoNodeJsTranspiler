@@ -1,1 +1,1 @@
-// $D command: OLD RELATED MANY
+// 4D command: OLD RELATED MANY

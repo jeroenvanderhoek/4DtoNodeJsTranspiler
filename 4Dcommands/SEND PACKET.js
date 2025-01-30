@@ -1,1 +1,1 @@
-// $D command: SEND PACKET
+// 4D command: SEND PACKET

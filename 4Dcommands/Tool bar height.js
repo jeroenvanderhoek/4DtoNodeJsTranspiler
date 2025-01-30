@@ -1,1 +1,1 @@
-// $D command: Tool bar height
+// 4D command: Tool bar height

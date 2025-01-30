@@ -1,1 +1,1 @@
-// $D command: RESOURCE TYPE LIST
+// 4D command: RESOURCE TYPE LIST

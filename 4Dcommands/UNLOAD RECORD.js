@@ -1,1 +1,1 @@
-// $D command: UNLOAD RECORD
+// 4D command: UNLOAD RECORD

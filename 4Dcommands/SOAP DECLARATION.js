@@ -1,1 +1,1 @@
-// $D command: SOAP DECLARATION
+// 4D command: SOAP DECLARATION

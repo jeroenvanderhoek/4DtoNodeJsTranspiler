@@ -1,1 +1,1 @@
-// $D command: SORT ARRAY
+// 4D command: SORT ARRAY

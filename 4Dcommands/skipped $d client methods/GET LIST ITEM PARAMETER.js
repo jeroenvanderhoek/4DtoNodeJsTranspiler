@@ -1,1 +1,1 @@
-// $D command: GET LIST ITEM PARAMETER
+// 4D command: GET LIST ITEM PARAMETER

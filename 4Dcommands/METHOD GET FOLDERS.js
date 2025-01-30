@@ -1,1 +1,1 @@
-// $D command: METHOD GET FOLDERS
+// 4D command: METHOD GET FOLDERS

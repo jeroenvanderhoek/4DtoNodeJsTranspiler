@@ -1,1 +1,1 @@
-// $D command: Find in array
+// 4D command: Find in array

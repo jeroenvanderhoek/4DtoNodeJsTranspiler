@@ -1,1 +1,1 @@
-// $D command: SVG SET ATTRIBUTE
+// 4D command: SVG SET ATTRIBUTE

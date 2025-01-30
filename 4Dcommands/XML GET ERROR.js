@@ -1,1 +1,1 @@
-// $D command: XML GET ERROR
+// 4D command: XML GET ERROR

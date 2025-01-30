@@ -1,1 +1,1 @@
-// $D command: Get menu item modifiers
+// 4D command: Get menu item modifiers

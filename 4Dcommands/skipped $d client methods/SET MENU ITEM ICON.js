@@ -1,1 +1,1 @@
-// $D command: SET MENU ITEM ICON
+// 4D command: SET MENU ITEM ICON

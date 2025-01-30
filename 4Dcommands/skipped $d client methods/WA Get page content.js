@@ -1,1 +1,1 @@
-// $D command: WA Get page content
+// 4D command: WA Get page content

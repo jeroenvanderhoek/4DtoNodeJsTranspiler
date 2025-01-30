@@ -1,1 +1,1 @@
-// $D command: QR GET SELECTION
+// 4D command: QR GET SELECTION

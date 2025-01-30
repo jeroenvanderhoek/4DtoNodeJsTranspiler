@@ -1,1 +1,1 @@
-// $D command: SET PICTURE FILE NAME
+// 4D command: SET PICTURE FILE NAME

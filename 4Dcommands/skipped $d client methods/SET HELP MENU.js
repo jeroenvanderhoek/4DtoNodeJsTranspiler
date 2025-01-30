@@ -1,1 +1,1 @@
-// $D command: SET HELP MENU
+// 4D command: SET HELP MENU

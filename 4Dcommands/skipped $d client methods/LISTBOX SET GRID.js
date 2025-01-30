@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET GRID
+// 4D command: LISTBOX SET GRID

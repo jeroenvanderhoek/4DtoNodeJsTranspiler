@@ -1,1 +1,1 @@
-// $D command: LDAP Search
+// 4D command: LDAP Search

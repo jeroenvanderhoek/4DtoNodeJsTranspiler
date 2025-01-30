@@ -1,1 +1,1 @@
-// $D command: LOAD VARIABLES
+// 4D command: LOAD VARIABLES

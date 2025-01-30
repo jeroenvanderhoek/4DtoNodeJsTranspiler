@@ -1,1 +1,1 @@
-// $D command: Euro converter
+// 4D command: Euro converter

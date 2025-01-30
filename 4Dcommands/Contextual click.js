@@ -1,1 +1,1 @@
-// $D command: Contextual click
+// 4D command: Contextual click

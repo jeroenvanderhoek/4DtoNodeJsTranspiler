@@ -1,1 +1,1 @@
-// $D command: SAX CLOSE XML ELEMENT
+// 4D command: SAX CLOSE XML ELEMENT

@@ -1,1 +1,1 @@
-// $D command: Structure file
+// 4D command: Structure file

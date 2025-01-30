@@ -1,1 +1,1 @@
-// $D command: OBJECT Get format
+// 4D command: OBJECT Get format

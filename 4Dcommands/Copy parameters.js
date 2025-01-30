@@ -1,1 +1,1 @@
-// $D command: Copy parameters
+// 4D command: Copy parameters

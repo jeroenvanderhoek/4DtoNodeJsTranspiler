@@ -1,1 +1,1 @@
-// $D command: Current process
+// 4D command: Current process

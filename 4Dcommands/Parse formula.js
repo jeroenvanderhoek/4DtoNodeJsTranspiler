@@ -1,1 +1,1 @@
-// $D command: Parse formula
+// 4D command: Parse formula

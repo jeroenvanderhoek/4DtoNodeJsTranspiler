@@ -1,1 +1,1 @@
-// $D command: BACKUP INFO
+// 4D command: BACKUP INFO

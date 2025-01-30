@@ -1,1 +1,1 @@
-// $D command: ST Get content type
+// 4D command: ST Get content type

@@ -1,1 +1,1 @@
-// $D command: Subtotal
+// 4D command: Subtotal

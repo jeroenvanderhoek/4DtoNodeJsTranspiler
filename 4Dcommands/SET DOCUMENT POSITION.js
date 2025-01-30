@@ -1,1 +1,1 @@
-// $D command: SET DOCUMENT POSITION
+// 4D command: SET DOCUMENT POSITION

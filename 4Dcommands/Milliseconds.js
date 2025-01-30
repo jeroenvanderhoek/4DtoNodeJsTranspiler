@@ -1,1 +1,1 @@
-// $D command: Milliseconds
+// 4D command: Milliseconds

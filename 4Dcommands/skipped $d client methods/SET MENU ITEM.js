@@ -1,1 +1,1 @@
-// $D command: SET MENU ITEM
+// 4D command: SET MENU ITEM

@@ -1,1 +1,1 @@
-// $D command: WEB GET VARIABLES
+// 4D command: WEB GET VARIABLES

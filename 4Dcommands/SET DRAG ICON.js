@@ -1,1 +1,1 @@
-// $D command: SET DRAG ICON
+// 4D command: SET DRAG ICON

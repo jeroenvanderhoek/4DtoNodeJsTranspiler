@@ -1,1 +1,1 @@
-// $D command: GET FIELD PROPERTIES
+// 4D command: GET FIELD PROPERTIES

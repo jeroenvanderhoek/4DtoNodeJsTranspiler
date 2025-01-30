@@ -1,4 +1,4 @@
-// $D command: Begin SQL
+// 4D command: Begin SQL
 
 export default async function Begin_SQL (processState,sql) {
 

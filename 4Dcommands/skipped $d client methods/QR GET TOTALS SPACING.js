@@ -1,1 +1,1 @@
-// $D command: QR GET TOTALS SPACING
+// 4D command: QR GET TOTALS SPACING

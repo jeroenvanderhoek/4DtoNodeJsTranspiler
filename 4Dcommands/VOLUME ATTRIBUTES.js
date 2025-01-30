@@ -1,1 +1,1 @@
-// $D command: VOLUME ATTRIBUTES
+// 4D command: VOLUME ATTRIBUTES

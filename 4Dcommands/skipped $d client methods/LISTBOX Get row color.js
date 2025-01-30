@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get row color
+// 4D command: LISTBOX Get row color

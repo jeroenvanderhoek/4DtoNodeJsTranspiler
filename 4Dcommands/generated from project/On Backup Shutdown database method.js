@@ -1,1 +1,1 @@
-// $D command: On Backup Shutdown database method
+// 4D command: On Backup Shutdown database method

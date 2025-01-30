@@ -1,1 +1,1 @@
-// $D command: SET ASSERT ENABLED
+// 4D command: SET ASSERT ENABLED

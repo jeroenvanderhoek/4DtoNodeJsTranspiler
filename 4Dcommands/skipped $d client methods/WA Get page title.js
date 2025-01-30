@@ -1,1 +1,1 @@
-// $D command: WA Get page title
+// 4D command: WA Get page title

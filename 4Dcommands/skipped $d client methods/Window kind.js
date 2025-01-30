@@ -1,1 +1,1 @@
-// $D command: Window kind
+// 4D command: Window kind

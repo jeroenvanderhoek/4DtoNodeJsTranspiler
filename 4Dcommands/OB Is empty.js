@@ -1,1 +1,1 @@
-// $D command: OB Is empty
+// 4D command: OB Is empty

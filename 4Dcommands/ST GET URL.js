@@ -1,1 +1,1 @@
-// $D command: ST GET URL
+// 4D command: ST GET URL

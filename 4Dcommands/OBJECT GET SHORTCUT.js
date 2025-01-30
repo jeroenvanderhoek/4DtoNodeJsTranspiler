@@ -1,1 +1,1 @@
-// $D command: OBJECT GET SHORTCUT
+// 4D command: OBJECT GET SHORTCUT

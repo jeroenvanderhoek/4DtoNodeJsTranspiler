@@ -1,1 +1,1 @@
-// $D command: Sequence number
+// 4D command: Sequence number

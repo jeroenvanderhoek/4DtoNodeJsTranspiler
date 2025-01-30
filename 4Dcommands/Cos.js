@@ -1,1 +1,1 @@
-// $D command: Cos
+// 4D command: Cos

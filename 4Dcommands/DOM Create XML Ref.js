@@ -1,1 +1,1 @@
-// $D command: DOM Create XML Ref
+// 4D command: DOM Create XML Ref

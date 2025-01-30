@@ -1,1 +1,1 @@
-// $D command: SAX Get XML node
+// 4D command: SAX Get XML node

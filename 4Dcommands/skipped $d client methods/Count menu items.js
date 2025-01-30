@@ -1,1 +1,1 @@
-// $D command: Count menu items
+// 4D command: Count menu items

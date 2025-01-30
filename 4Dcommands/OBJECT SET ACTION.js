@@ -1,1 +1,1 @@
-// $D command: OBJECT SET ACTION
+// 4D command: OBJECT SET ACTION

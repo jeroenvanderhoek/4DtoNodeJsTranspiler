@@ -1,1 +1,1 @@
-// $D command: On Server Open Connection database method
+// 4D command: On Server Open Connection database method

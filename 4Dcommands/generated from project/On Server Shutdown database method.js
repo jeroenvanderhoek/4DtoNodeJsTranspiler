@@ -1,1 +1,1 @@
-// $D command: On Server Shutdown database method
+// 4D command: On Server Shutdown database method

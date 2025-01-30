@@ -1,1 +1,1 @@
-// $D command: SPELL Get current dictionary
+// 4D command: SPELL Get current dictionary

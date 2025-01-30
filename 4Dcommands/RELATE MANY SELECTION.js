@@ -1,1 +1,1 @@
-// $D command: RELATE MANY SELECTION
+// 4D command: RELATE MANY SELECTION

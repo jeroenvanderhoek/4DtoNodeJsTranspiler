@@ -1,1 +1,1 @@
-// $D command: VARIABLE TO VARIABLE
+// 4D command: VARIABLE TO VARIABLE

@@ -1,1 +1,1 @@
-// $D command: QR REPORT
+// 4D command: QR REPORT

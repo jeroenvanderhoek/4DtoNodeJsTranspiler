@@ -1,1 +1,1 @@
-// $D command: Discover data key
+// 4D command: Discover data key

@@ -1,1 +1,1 @@
-// $D command: BLOB PROPERTIES
+// 4D command: BLOB PROPERTIES

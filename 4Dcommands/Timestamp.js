@@ -1,1 +1,1 @@
-// $D command: Timestamp
+// 4D command: Timestamp

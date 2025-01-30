@@ -1,1 +1,1 @@
-// $D command: Open form window
+// 4D command: Open form window

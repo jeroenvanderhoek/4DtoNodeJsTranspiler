@@ -1,1 +1,1 @@
-// $D command: DIFFERENCE
+// 4D command: DIFFERENCE

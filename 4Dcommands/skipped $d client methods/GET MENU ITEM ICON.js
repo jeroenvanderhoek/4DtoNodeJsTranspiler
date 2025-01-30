@@ -1,1 +1,1 @@
-// $D command: GET MENU ITEM ICON
+// 4D command: GET MENU ITEM ICON

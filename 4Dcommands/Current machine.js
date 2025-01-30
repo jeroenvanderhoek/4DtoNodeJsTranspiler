@@ -1,1 +1,1 @@
-// $D command: Current machine
+// 4D command: Current machine

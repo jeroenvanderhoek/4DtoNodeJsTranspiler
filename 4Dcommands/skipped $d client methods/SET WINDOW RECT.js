@@ -1,1 +1,1 @@
-// $D command: SET WINDOW RECT
+// 4D command: SET WINDOW RECT

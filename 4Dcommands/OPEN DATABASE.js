@@ -1,1 +1,1 @@
-// $D command: OPEN DATABASE
+// 4D command: OPEN DATABASE

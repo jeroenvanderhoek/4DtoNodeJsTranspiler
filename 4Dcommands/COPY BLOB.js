@@ -1,1 +1,1 @@
-// $D command: COPY BLOB
+// 4D command: COPY BLOB

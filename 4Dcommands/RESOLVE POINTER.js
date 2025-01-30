@@ -1,1 +1,1 @@
-// $D command: RESOLVE POINTER
+// 4D command: RESOLVE POINTER

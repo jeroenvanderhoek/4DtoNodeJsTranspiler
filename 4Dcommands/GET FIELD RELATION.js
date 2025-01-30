@@ -1,1 +1,1 @@
-// $D command: GET FIELD RELATION
+// 4D command: GET FIELD RELATION

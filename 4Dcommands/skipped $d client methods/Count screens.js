@@ -1,1 +1,1 @@
-// $D command: Count screens
+// 4D command: Count screens

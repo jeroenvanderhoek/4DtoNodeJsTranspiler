@@ -1,1 +1,1 @@
-// $D command: RESUME PROCESS
+// 4D command: RESUME PROCESS

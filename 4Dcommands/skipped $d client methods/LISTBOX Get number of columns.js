@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get number of columns
+// 4D command: LISTBOX Get number of columns

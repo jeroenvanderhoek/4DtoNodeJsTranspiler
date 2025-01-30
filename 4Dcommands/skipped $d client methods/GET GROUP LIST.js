@@ -1,1 +1,1 @@
-// $D command: GET GROUP LIST
+// 4D command: GET GROUP LIST

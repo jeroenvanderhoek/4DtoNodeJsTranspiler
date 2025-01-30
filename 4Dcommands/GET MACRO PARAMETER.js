@@ -1,1 +1,1 @@
-// $D command: GET MACRO PARAMETER
+// 4D command: GET MACRO PARAMETER

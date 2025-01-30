@@ -1,1 +1,1 @@
-// $D command: GET SERIAL PORT MAPPING
+// 4D command: GET SERIAL PORT MAPPING

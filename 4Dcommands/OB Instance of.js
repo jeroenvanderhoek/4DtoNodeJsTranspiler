@@ -1,1 +1,1 @@
-// $D command: OB Instance of
+// 4D command: OB Instance of

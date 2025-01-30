@@ -1,1 +1,1 @@
-// $D command: PRINT SELECTION
+// 4D command: PRINT SELECTION

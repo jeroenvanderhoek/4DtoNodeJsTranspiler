@@ -1,1 +1,1 @@
-// $D command: Last field number
+// 4D command: Last field number

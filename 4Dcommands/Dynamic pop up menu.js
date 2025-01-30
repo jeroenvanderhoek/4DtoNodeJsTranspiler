@@ -1,1 +1,1 @@
-// $D command: Dynamic pop up menu
+// 4D command: Dynamic pop up menu

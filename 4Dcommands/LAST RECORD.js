@@ -1,1 +1,1 @@
-// $D command: LAST RECORD
+// 4D command: LAST RECORD

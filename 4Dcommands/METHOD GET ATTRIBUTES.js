@@ -1,1 +1,1 @@
-// $D command: METHOD GET ATTRIBUTES
+// 4D command: METHOD GET ATTRIBUTES

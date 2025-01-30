@@ -1,1 +1,1 @@
-// $D command: LIST TO ARRAY
+// 4D command: LIST TO ARRAY

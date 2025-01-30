@@ -1,1 +1,1 @@
-// $D command: NO DEFAULT TABLE
+// 4D command: NO DEFAULT TABLE

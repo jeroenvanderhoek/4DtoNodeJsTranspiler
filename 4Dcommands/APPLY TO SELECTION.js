@@ -1,2 +1,2 @@
-// $D command: APPLY TO SELECTION
+// 4D command: APPLY TO SELECTION
 

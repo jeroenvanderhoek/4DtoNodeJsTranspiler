@@ -1,1 +1,1 @@
-// $D command: GET MISSING TABLE NAMES
+// 4D command: GET MISSING TABLE NAMES

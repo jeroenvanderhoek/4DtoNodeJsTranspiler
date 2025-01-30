@@ -1,1 +1,1 @@
-// $D command: QR SET REPORT TABLE
+// 4D command: QR SET REPORT TABLE

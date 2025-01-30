@@ -1,1 +1,1 @@
-// $D command: GET LIST ITEM ICON
+// 4D command: GET LIST ITEM ICON

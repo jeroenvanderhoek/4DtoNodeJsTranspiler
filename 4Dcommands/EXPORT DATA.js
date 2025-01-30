@@ -1,1 +1,1 @@
-// $D command: EXPORT DATA
+// 4D command: EXPORT DATA

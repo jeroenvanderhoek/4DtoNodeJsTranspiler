@@ -1,1 +1,1 @@
-// $D command: DOM SET XML ELEMENT NAME
+// 4D command: DOM SET XML ELEMENT NAME

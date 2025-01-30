@@ -1,1 +1,1 @@
-// $D command: Compare strings
+// 4D command: Compare strings

@@ -1,1 +1,1 @@
-// $D command: Records in selection
+// 4D command: Records in selection

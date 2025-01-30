@@ -1,1 +1,1 @@
-// $D command: Trigger event
+// 4D command: Trigger event

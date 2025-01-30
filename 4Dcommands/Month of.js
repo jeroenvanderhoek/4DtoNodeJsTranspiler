@@ -1,1 +1,1 @@
-// $D command: Month of
+// 4D command: Month of

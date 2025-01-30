@@ -1,1 +1,1 @@
-// $D command: SET MACRO PARAMETER
+// 4D command: SET MACRO PARAMETER

@@ -1,1 +1,1 @@
-// $D command: OB GET ARRAY
+// 4D command: OB GET ARRAY

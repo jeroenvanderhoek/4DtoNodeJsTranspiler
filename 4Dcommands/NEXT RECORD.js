@@ -1,1 +1,1 @@
-// $D command: NEXT RECORD
+// 4D command: NEXT RECORD

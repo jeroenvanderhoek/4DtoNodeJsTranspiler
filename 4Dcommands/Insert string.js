@@ -1,1 +1,1 @@
-// $D command: Insert string
+// 4D command: Insert string

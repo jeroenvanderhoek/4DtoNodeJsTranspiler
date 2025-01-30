@@ -1,1 +1,1 @@
-// $D command: SET FIELD VALUE NULL
+// 4D command: SET FIELD VALUE NULL

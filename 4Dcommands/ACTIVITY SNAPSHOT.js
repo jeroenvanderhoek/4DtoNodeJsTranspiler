@@ -1,1 +1,1 @@
-// $D command: ACTIVITY SNAPSHOT
+// 4D command: ACTIVITY SNAPSHOT

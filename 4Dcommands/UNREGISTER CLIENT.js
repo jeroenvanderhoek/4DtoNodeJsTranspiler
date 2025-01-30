@@ -1,1 +1,1 @@
-// $D command: UNREGISTER CLIENT
+// 4D command: UNREGISTER CLIENT

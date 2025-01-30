@@ -1,1 +1,1 @@
-// $D command: Get menu item style
+// 4D command: Get menu item style

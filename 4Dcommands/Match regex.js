@@ -1,1 +1,1 @@
-// $D command: Match regex
+// 4D command: Match regex

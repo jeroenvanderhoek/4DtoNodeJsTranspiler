@@ -1,1 +1,1 @@
-// $D command: OBJECT SET STYLE SHEET
+// 4D command: OBJECT SET STYLE SHEET

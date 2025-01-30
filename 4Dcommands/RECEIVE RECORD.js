@@ -1,1 +1,1 @@
-// $D command: RECEIVE RECORD
+// 4D command: RECEIVE RECORD

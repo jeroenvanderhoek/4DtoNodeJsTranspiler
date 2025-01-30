@@ -1,1 +1,1 @@
-// $D command: QR SET DOCUMENT PROPERTY
+// 4D command: QR SET DOCUMENT PROPERTY

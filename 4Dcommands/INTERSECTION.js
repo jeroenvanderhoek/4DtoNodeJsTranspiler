@@ -1,1 +1,1 @@
-// $D command: INTERSECTION
+// 4D command: INTERSECTION

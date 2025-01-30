@@ -1,1 +1,1 @@
-// $D command: DELETE DOCUMENT
+// 4D command: DELETE DOCUMENT

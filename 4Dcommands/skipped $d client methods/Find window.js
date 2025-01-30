@@ -1,1 +1,1 @@
-// $D command: Find window
+// 4D command: Find window

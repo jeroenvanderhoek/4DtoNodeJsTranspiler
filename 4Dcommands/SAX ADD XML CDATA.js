@@ -1,1 +1,1 @@
-// $D command: SAX ADD XML CDATA
+// 4D command: SAX ADD XML CDATA

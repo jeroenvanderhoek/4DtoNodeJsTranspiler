@@ -1,1 +1,1 @@
-// $D command: Min
+// 4D command: Min

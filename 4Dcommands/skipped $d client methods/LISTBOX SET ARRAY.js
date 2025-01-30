@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET ARRAY
+// 4D command: LISTBOX SET ARRAY

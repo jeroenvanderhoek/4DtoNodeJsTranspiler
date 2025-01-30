@@ -1,1 +1,1 @@
-// $D command: throw
+// 4D command: throw

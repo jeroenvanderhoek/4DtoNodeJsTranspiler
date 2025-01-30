@@ -1,1 +1,1 @@
-// $D command: Last errors
+// 4D command: Last errors

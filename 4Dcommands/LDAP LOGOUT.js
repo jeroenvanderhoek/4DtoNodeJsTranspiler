@@ -1,1 +1,1 @@
-// $D command: LDAP LOGOUT
+// 4D command: LDAP LOGOUT

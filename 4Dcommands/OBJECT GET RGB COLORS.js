@@ -1,1 +1,1 @@
-// $D command: OBJECT GET RGB COLORS
+// 4D command: OBJECT GET RGB COLORS

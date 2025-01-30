@@ -1,1 +1,1 @@
-// $D command: CLEAR SET
+// 4D command: CLEAR SET

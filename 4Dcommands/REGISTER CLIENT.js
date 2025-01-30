@@ -1,1 +1,1 @@
-// $D command: REGISTER CLIENT
+// 4D command: REGISTER CLIENT

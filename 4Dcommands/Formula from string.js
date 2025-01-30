@@ -1,1 +1,1 @@
-// $D command: Formula from string
+// 4D command: Formula from string

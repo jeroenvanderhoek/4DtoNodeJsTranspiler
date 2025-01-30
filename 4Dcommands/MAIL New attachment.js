@@ -1,1 +1,1 @@
-// $D command: MAIL New attachment
+// 4D command: MAIL New attachment

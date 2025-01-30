@@ -1,1 +1,1 @@
-// $D command: MINIMIZE WINDOW
+// 4D command: MINIMIZE WINDOW

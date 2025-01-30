@@ -1,1 +1,1 @@
-// $D command: BUILD APPLICATION
+// 4D command: BUILD APPLICATION

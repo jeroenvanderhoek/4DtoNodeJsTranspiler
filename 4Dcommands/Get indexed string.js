@@ -1,1 +1,1 @@
-// $D command: Get indexed string
+// 4D command: Get indexed string

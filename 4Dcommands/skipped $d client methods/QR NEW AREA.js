@@ -1,1 +1,1 @@
-// $D command: QR NEW AREA
+// 4D command: QR NEW AREA

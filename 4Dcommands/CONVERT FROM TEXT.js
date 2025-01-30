@@ -1,1 +1,1 @@
-// $D command: CONVERT FROM TEXT
+// 4D command: CONVERT FROM TEXT

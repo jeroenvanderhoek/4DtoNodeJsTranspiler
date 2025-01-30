@@ -1,1 +1,1 @@
-// $D command: JSON Resolve pointers
+// 4D command: JSON Resolve pointers

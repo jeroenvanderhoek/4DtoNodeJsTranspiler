@@ -1,1 +1,1 @@
-// $D command: Selected list items
+// 4D command: Selected list items

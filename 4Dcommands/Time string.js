@@ -1,1 +1,1 @@
-// $D command: Time string
+// 4D command: Time string

@@ -1,1 +1,1 @@
-// $D command: Get last update log path
+// 4D command: Get last update log path

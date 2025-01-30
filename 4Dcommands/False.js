@@ -1,2 +1,2 @@
-// $D command: False
+// 4D command: False
 // See simple4dCommandReplacements.js

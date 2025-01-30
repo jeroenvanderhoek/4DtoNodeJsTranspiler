@@ -1,1 +1,1 @@
-// $D command: FORM GOTO PAGE
+// 4D command: FORM GOTO PAGE

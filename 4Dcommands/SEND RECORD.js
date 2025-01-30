@@ -1,1 +1,1 @@
-// $D command: SEND RECORD
+// 4D command: SEND RECORD

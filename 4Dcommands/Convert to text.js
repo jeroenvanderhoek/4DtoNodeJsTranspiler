@@ -1,1 +1,1 @@
-// $D command: Convert to text
+// 4D command: Convert to text

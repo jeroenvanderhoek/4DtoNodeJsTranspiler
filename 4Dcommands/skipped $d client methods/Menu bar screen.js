@@ -1,1 +1,1 @@
-// $D command: Menu bar screen
+// 4D command: Menu bar screen

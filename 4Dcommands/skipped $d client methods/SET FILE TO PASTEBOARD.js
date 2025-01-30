@@ -1,1 +1,1 @@
-// $D command: SET FILE TO PASTEBOARD
+// 4D command: SET FILE TO PASTEBOARD

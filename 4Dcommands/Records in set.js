@@ -1,1 +1,1 @@
-// $D command: Records in set
+// 4D command: Records in set

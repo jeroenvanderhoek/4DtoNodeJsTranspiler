@@ -1,1 +1,1 @@
-// $D command: OBJECT SET COORDINATES
+// 4D command: OBJECT SET COORDINATES

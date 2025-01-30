@@ -1,1 +1,1 @@
-// $D command: CREATE INDEX
+// 4D command: CREATE INDEX

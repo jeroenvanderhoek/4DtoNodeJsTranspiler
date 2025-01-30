@@ -1,1 +1,1 @@
-// $D command: SQL Get current data source
+// 4D command: SQL Get current data source

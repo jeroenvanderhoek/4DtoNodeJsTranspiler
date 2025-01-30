@@ -1,1 +1,1 @@
-// $D command: MAXIMIZE WINDOW
+// 4D command: MAXIMIZE WINDOW

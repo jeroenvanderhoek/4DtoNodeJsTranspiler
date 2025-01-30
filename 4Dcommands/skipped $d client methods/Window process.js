@@ -1,1 +1,1 @@
-// $D command: Window process
+// 4D command: Window process

@@ -1,1 +1,1 @@
-// $D command: GET FIELD TITLES
+// 4D command: GET FIELD TITLES

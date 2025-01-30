@@ -1,1 +1,1 @@
-// $D command: Bool
+// 4D command: Bool

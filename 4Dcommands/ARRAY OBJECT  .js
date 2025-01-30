@@ -1,2 +1,2 @@
-// $D command: ARRAY OBJECT  
+// 4D command: ARRAY OBJECT  
 // See replaceArrays

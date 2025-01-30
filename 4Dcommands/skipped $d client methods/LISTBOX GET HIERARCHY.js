@@ -1,1 +1,1 @@
-// $D command: LISTBOX GET HIERARCHY
+// 4D command: LISTBOX GET HIERARCHY

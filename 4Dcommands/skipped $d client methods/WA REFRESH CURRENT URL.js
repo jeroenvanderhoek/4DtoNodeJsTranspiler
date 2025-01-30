@@ -1,1 +1,1 @@
-// $D command: WA REFRESH CURRENT URL
+// 4D command: WA REFRESH CURRENT URL

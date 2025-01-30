@@ -1,1 +1,1 @@
-// $D command: WA ZOOM OUT
+// 4D command: WA ZOOM OUT

@@ -1,1 +1,1 @@
-// $D command: SET FIELD RELATION
+// 4D command: SET FIELD RELATION

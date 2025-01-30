@@ -1,2 +1,2 @@
-// $D command: Null
+// 4D command: Null
 // see simpleReplacement.js

@@ -1,1 +1,1 @@
-// $D command: Verify password hash
+// 4D command: Verify password hash

@@ -1,1 +1,1 @@
-// $D command: GOTO OBJECT
+// 4D command: GOTO OBJECT

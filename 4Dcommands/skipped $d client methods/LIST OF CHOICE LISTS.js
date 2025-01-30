@@ -1,1 +1,1 @@
-// $D command: LIST OF CHOICE LISTS
+// 4D command: LIST OF CHOICE LISTS

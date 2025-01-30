@@ -1,1 +1,1 @@
-// $D command: WEB Validate digest
+// 4D command: WEB Validate digest

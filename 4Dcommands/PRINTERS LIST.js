@@ -1,1 +1,1 @@
-// $D command: PRINTERS LIST
+// 4D command: PRINTERS LIST

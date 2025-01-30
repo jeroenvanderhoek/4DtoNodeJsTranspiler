@@ -1,1 +1,1 @@
-// $D command: Compile project
+// 4D command: Compile project

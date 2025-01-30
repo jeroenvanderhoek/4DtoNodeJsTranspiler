@@ -1,1 +1,1 @@
-// $D command: Get edited text
+// 4D command: Get edited text

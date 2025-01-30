@@ -1,1 +1,1 @@
-// $D command: DELAY PROCESS
+// 4D command: DELAY PROCESS

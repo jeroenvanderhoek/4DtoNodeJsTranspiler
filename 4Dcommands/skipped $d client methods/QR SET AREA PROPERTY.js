@@ -1,1 +1,1 @@
-// $D command: QR SET AREA PROPERTY
+// 4D command: QR SET AREA PROPERTY

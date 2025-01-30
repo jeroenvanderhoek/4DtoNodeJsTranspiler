@@ -1,1 +1,1 @@
-// $D command: MOUSE POSITION
+// 4D command: MOUSE POSITION

@@ -1,1 +1,1 @@
-// $D command: XML SET OPTIONS
+// 4D command: XML SET OPTIONS

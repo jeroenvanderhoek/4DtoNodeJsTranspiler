@@ -1,1 +1,1 @@
-// $D command: Pasteboard data size
+// 4D command: Pasteboard data size

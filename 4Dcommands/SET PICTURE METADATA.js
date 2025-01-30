@@ -1,1 +1,1 @@
-// $D command: SET PICTURE METADATA
+// 4D command: SET PICTURE METADATA

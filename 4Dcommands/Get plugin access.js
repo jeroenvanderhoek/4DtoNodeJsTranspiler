@@ -1,1 +1,1 @@
-// $D command: Get plugin access
+// 4D command: Get plugin access

@@ -1,1 +1,1 @@
-// $D command: HIGHLIGHT TEXT
+// 4D command: HIGHLIGHT TEXT

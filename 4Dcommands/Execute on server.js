@@ -1,1 +1,1 @@
-// $D command: Execute on server
+// 4D command: Execute on server

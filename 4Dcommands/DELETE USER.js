@@ -1,1 +1,1 @@
-// $D command: DELETE USER
+// 4D command: DELETE USER

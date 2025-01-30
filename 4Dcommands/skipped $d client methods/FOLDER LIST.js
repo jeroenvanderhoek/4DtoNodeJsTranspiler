@@ -1,1 +1,1 @@
-// $D command: FOLDER LIST
+// 4D command: FOLDER LIST

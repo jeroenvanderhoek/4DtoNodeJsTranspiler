@@ -1,1 +1,1 @@
-// $D command: BLOB TO VARIABLE
+// 4D command: BLOB TO VARIABLE

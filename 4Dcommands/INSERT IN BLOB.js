@@ -1,1 +1,1 @@
-// $D command: INSERT IN BLOB
+// 4D command: INSERT IN BLOB

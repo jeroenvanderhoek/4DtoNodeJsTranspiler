@@ -1,1 +1,1 @@
-// $D command: XML GET OPTIONS
+// 4D command: XML GET OPTIONS

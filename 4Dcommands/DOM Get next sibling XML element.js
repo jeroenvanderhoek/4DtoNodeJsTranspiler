@@ -1,1 +1,1 @@
-// $D command: DOM Get next sibling XML element
+// 4D command: DOM Get next sibling XML element

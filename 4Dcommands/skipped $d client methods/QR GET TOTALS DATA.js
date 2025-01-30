@@ -1,1 +1,1 @@
-// $D command: QR GET TOTALS DATA
+// 4D command: QR GET TOTALS DATA

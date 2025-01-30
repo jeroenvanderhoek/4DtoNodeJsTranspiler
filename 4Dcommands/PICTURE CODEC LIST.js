@@ -1,1 +1,1 @@
-// $D command: PICTURE CODEC LIST
+// 4D command: PICTURE CODEC LIST

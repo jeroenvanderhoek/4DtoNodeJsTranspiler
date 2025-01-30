@@ -1,1 +1,1 @@
-// $D command: Frontmost window
+// 4D command: Frontmost window

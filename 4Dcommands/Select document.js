@@ -1,1 +1,1 @@
-// $D command: Select document
+// 4D command: Select document

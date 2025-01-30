@@ -1,1 +1,1 @@
-// $D command: PICTURE LIBRARY LIST
+// 4D command: PICTURE LIBRARY LIST

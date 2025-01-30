@@ -1,1 +1,1 @@
-// $D command: OBJECT Get value
+// 4D command: OBJECT Get value

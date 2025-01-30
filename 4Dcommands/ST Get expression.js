@@ -1,1 +1,1 @@
-// $D command: ST Get expression
+// 4D command: ST Get expression

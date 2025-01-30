@@ -1,1 +1,1 @@
-// $D command: SPELL CHECKING
+// 4D command: SPELL CHECKING

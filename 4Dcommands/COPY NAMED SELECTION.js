@@ -1,1 +1,1 @@
-// $D command: COPY NAMED SELECTION
+// 4D command: COPY NAMED SELECTION

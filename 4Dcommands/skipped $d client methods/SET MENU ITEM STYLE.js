@@ -1,1 +1,1 @@
-// $D command: SET MENU ITEM STYLE
+// 4D command: SET MENU ITEM STYLE

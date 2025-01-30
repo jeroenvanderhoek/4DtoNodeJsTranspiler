@@ -1,1 +1,1 @@
-// $D command: QR REPORT TO BLOB
+// 4D command: QR REPORT TO BLOB

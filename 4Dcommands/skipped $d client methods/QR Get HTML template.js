@@ -1,1 +1,1 @@
-// $D command: QR Get HTML template
+// 4D command: QR Get HTML template

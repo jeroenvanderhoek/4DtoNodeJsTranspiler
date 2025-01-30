@@ -1,1 +1,1 @@
-// $D command: ZIP Read archive
+// 4D command: ZIP Read archive

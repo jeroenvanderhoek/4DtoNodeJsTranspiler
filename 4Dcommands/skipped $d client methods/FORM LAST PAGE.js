@@ -1,1 +1,1 @@
-// $D command: FORM LAST PAGE
+// 4D command: FORM LAST PAGE

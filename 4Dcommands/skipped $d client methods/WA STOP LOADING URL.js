@@ -1,1 +1,1 @@
-// $D command: WA STOP LOADING URL
+// 4D command: WA STOP LOADING URL

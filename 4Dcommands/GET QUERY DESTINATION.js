@@ -1,1 +1,1 @@
-// $D command: GET QUERY DESTINATION
+// 4D command: GET QUERY DESTINATION

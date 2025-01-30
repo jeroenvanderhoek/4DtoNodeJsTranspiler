@@ -1,1 +1,1 @@
-// $D command: OBJECT SET VISIBLE
+// 4D command: OBJECT SET VISIBLE

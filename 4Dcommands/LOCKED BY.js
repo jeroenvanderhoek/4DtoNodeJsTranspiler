@@ -1,1 +1,1 @@
-// $D command: LOCKED BY
+// 4D command: LOCKED BY

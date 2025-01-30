@@ -1,1 +1,1 @@
-// $D command: QR Count columns
+// 4D command: QR Count columns

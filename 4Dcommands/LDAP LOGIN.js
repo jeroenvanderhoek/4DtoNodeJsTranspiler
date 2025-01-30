@@ -1,1 +1,1 @@
-// $D command: LDAP LOGIN
+// 4D command: LDAP LOGIN

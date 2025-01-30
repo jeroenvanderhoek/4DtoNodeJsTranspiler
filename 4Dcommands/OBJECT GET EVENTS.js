@@ -1,1 +1,1 @@
-// $D command: OBJECT GET EVENTS
+// 4D command: OBJECT GET EVENTS

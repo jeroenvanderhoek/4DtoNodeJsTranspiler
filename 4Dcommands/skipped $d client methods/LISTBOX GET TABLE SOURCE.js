@@ -1,1 +1,1 @@
-// $D command: LISTBOX GET TABLE SOURCE
+// 4D command: LISTBOX GET TABLE SOURCE

@@ -1,1 +1,1 @@
-// $D command: WA Create URL history menu
+// 4D command: WA Create URL history menu

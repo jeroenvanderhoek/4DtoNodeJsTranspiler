@@ -1,1 +1,1 @@
-// $D command: QR Get text property
+// 4D command: QR Get text property

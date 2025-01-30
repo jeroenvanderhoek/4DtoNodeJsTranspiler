@@ -1,1 +1,1 @@
-// $D command: Before selection
+// 4D command: Before selection

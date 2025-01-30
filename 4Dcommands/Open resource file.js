@@ -1,4 +1,4 @@
-// $D command: Open resource file
+// 4D command: Open resource file
 
 import open from 'open';
 

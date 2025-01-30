@@ -1,1 +1,1 @@
-// $D command: QR Get drop column
+// 4D command: QR Get drop column

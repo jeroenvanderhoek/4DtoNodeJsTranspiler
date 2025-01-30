@@ -1,1 +1,1 @@
-// $D command: SET CHANNEL
+// 4D command: SET CHANNEL

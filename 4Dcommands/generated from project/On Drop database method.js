@@ -1,1 +1,1 @@
-// $D command: On Drop database method
+// 4D command: On Drop database method

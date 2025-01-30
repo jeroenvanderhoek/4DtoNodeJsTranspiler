@@ -1,1 +1,1 @@
-// $D command: OB SET ARRAY
+// 4D command: OB SET ARRAY

@@ -1,4 +1,4 @@
-// $D command: APPEND TO ARRAY
+// 4D command: APPEND TO ARRAY
 // APPEND TO ARRAY ( array ; value )
 // Parameter	Type		Description
 // array	Array	→	Array to which an element will be appended

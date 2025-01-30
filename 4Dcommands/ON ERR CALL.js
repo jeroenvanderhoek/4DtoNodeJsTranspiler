@@ -1,1 +1,1 @@
-// $D command: ON ERR CALL
+// 4D command: ON ERR CALL

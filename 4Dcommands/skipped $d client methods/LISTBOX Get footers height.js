@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get footers height
+// 4D command: LISTBOX Get footers height

@@ -1,1 +1,1 @@
-// $D command: WEB SERVICE GET RESULT
+// 4D command: WEB SERVICE GET RESULT

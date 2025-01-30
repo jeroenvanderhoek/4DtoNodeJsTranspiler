@@ -1,1 +1,1 @@
-// $D command: Register data key
+// 4D command: Register data key

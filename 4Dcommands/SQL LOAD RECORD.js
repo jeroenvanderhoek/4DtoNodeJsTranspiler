@@ -1,1 +1,1 @@
-// $D command: SQL LOAD RECORD
+// 4D command: SQL LOAD RECORD

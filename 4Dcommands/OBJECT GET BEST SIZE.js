@@ -1,1 +1,1 @@
-// $D command: OBJECT GET BEST SIZE
+// 4D command: OBJECT GET BEST SIZE

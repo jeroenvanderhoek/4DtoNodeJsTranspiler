@@ -1,1 +1,1 @@
-// $D command: BLOB to integer
+// 4D command: BLOB to integer

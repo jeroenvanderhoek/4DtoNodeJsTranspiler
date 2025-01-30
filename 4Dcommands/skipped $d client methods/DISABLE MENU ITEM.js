@@ -1,1 +1,1 @@
-// $D command: DISABLE MENU ITEM
+// 4D command: DISABLE MENU ITEM

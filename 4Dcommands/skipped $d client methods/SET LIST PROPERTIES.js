@@ -1,1 +1,1 @@
-// $D command: SET LIST PROPERTIES
+// 4D command: SET LIST PROPERTIES

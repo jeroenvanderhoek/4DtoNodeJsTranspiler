@@ -1,1 +1,1 @@
-// $D command: Create entity selection
+// 4D command: Create entity selection

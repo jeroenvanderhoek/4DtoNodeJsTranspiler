@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET HIERARCHY
+// 4D command: LISTBOX SET HIERARCHY

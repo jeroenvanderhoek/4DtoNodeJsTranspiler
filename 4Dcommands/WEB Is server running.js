@@ -1,1 +1,1 @@
-// $D command: WEB Is server running
+// 4D command: WEB Is server running

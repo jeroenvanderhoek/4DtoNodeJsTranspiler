@@ -1,1 +1,1 @@
-// $D command: WA SET PAGE CONTENT
+// 4D command: WA SET PAGE CONTENT

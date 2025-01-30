@@ -1,1 +1,1 @@
-// $D command: Get default user
+// 4D command: Get default user

@@ -1,1 +1,1 @@
-// $D command: QR Get area property
+// 4D command: QR Get area property

@@ -1,1 +1,1 @@
-// $D command: SQL SET OPTION
+// 4D command: SQL SET OPTION

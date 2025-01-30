@@ -1,1 +1,1 @@
-// $D command: LISTBOX COLLAPSE
+// 4D command: LISTBOX COLLAPSE

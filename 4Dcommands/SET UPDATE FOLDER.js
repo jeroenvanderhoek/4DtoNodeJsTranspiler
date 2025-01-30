@@ -1,1 +1,1 @@
-// $D command: SET UPDATE FOLDER
+// 4D command: SET UPDATE FOLDER

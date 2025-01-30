@@ -1,1 +1,1 @@
-// $D command: Size of array
+// 4D command: Size of array

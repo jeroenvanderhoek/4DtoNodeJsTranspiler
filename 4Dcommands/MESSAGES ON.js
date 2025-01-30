@@ -1,1 +1,1 @@
-// $D command: MESSAGES ON
+// 4D command: MESSAGES ON

@@ -1,1 +1,1 @@
-// $D command: HTTP Get certificates folder
+// 4D command: HTTP Get certificates folder

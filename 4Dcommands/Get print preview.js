@@ -1,1 +1,1 @@
-// $D command: Get print preview
+// 4D command: Get print preview

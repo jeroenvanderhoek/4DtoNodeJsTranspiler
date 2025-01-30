@@ -1,1 +1,1 @@
-// $D command: GET PICTURE RESOURCE
+// 4D command: GET PICTURE RESOURCE

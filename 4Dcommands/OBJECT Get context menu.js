@@ -1,1 +1,1 @@
-// $D command: OBJECT Get context menu
+// 4D command: OBJECT Get context menu

@@ -1,2 +1,2 @@
-// $D command: ARRAY TIME 
+// 4D command: ARRAY TIME 
 // See replaceArrays

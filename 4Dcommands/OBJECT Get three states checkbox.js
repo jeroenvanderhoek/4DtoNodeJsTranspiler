@@ -1,1 +1,1 @@
-// $D command: OBJECT Get three states checkbox
+// 4D command: OBJECT Get three states checkbox

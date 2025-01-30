@@ -1,1 +1,1 @@
-// $D command: SORT LIST
+// 4D command: SORT LIST

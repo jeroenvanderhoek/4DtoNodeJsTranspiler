@@ -1,1 +1,1 @@
-// $D command: BOOLEAN ARRAY FROM SET
+// 4D command: BOOLEAN ARRAY FROM SET

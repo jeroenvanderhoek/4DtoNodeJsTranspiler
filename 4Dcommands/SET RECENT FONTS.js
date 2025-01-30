@@ -1,1 +1,1 @@
-// $D command: SET RECENT FONTS
+// 4D command: SET RECENT FONTS

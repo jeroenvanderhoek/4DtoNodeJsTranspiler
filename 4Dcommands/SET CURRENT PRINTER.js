@@ -1,1 +1,1 @@
-// $D command: SET CURRENT PRINTER
+// 4D command: SET CURRENT PRINTER

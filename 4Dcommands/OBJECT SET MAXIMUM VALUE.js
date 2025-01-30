@@ -1,1 +1,1 @@
-// $D command: OBJECT SET MAXIMUM VALUE
+// 4D command: OBJECT SET MAXIMUM VALUE

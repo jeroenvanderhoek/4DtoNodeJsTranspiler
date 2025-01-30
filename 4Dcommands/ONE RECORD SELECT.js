@@ -1,1 +1,1 @@
-// $D command: ONE RECORD SELECT
+// 4D command: ONE RECORD SELECT

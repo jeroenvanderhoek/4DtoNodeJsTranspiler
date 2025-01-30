@@ -1,1 +1,1 @@
-// $D command: OPEN FONT PICKER
+// 4D command: OPEN FONT PICKER

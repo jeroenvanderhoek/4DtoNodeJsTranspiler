@@ -1,1 +1,1 @@
-// $D command: SQL GET OPTION
+// 4D command: SQL GET OPTION

@@ -1,1 +1,1 @@
-// $D command: Generate password hash
+// 4D command: Generate password hash

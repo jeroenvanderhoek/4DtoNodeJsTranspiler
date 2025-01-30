@@ -1,1 +1,1 @@
-// $D command: Sin
+// 4D command: Sin

@@ -1,1 +1,1 @@
-// $D command: Is window maximized
+// 4D command: Is window maximized

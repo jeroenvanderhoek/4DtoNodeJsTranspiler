@@ -1,1 +1,1 @@
-// $D command: Count parameters
+// 4D command: Count parameters

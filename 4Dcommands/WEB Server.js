@@ -1,4 +1,4 @@
-// $D command: WEB Server list
+// 4D command: WEB Server list
 export default function WEB_Server(processState) {
 
     // Web server database	1	

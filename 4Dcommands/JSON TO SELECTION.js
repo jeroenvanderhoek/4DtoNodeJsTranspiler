@@ -1,1 +1,1 @@
-// $D command: JSON TO SELECTION
+// 4D command: JSON TO SELECTION

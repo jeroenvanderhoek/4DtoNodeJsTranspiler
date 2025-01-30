@@ -1,1 +1,1 @@
-// $D command: BASE64 DECODE
+// 4D command: BASE64 DECODE

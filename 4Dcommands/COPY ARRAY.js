@@ -1,1 +1,1 @@
-// $D command: COPY ARRAY
+// 4D command: COPY ARRAY

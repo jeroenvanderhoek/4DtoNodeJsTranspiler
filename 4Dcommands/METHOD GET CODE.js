@@ -1,1 +1,1 @@
-// $D command: METHOD GET CODE
+// 4D command: METHOD GET CODE

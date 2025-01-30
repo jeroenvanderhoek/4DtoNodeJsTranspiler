@@ -1,1 +1,1 @@
-// $D command: End selection
+// 4D command: End selection

@@ -1,1 +1,1 @@
-// $D command: WA Get last filtered URL
+// 4D command: WA Get last filtered URL

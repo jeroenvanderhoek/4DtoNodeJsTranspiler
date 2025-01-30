@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET ROW FONT STYLE
+// 4D command: LISTBOX SET ROW FONT STYLE

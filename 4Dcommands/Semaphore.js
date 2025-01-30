@@ -1,1 +1,1 @@
-// $D command: Semaphore
+// 4D command: Semaphore

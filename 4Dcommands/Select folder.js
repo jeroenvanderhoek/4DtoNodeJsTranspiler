@@ -1,1 +1,1 @@
-// $D command: Select folder
+// 4D command: Select folder

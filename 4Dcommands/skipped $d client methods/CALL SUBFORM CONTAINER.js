@@ -1,1 +1,1 @@
-// $D command: CALL SUBFORM CONTAINER
+// 4D command: CALL SUBFORM CONTAINER

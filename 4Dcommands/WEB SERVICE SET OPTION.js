@@ -1,1 +1,1 @@
-// $D command: WEB SERVICE SET OPTION
+// 4D command: WEB SERVICE SET OPTION

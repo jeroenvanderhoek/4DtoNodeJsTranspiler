@@ -1,1 +1,1 @@
-// $D command: Convert path system to POSIX
+// 4D command: Convert path system to POSIX

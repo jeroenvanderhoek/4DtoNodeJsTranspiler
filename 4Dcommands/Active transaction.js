@@ -1,1 +1,1 @@
-// $D command: Active transaction
+// 4D command: Active transaction

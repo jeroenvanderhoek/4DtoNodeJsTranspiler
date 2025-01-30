@@ -1,1 +1,1 @@
-// $D command: FILTER EVENT
+// 4D command: FILTER EVENT

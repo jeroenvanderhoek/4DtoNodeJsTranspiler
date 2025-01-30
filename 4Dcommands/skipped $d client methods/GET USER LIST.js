@@ -1,1 +1,1 @@
-// $D command: GET USER LIST
+// 4D command: GET USER LIST

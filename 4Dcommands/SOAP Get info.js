@@ -1,1 +1,1 @@
-// $D command: SOAP Get info
+// 4D command: SOAP Get info

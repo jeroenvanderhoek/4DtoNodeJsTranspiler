@@ -1,1 +1,1 @@
-// $D command: FORM EDIT
+// 4D command: FORM EDIT

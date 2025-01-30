@@ -1,1 +1,1 @@
-// $D command: QR GET INFO COLUMN
+// 4D command: QR GET INFO COLUMN

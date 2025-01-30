@@ -1,1 +1,1 @@
-// $D command: FORM SET SIZE
+// 4D command: FORM SET SIZE

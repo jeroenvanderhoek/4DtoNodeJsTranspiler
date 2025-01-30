@@ -1,1 +1,1 @@
-// $D command: New signal
+// 4D command: New signal

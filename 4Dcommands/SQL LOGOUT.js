@@ -1,1 +1,1 @@
-// $D command: SQL LOGOUT
+// 4D command: SQL LOGOUT

@@ -1,1 +1,1 @@
-// $D command: SHOW WINDOW
+// 4D command: SHOW WINDOW

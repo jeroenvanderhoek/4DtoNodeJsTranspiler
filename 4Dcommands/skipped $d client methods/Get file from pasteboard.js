@@ -1,1 +1,1 @@
-// $D command: Get file from pasteboard
+// 4D command: Get file from pasteboard

@@ -1,1 +1,1 @@
-// $D command: Set user properties
+// 4D command: Set user properties

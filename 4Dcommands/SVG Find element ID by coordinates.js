@@ -1,1 +1,1 @@
-// $D command: SVG Find element ID by coordinates
+// 4D command: SVG Find element ID by coordinates

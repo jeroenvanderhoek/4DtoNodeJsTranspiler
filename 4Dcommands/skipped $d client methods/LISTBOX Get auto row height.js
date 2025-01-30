@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get auto row height
+// 4D command: LISTBOX Get auto row height

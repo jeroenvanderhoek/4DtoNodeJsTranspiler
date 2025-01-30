@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get footer calculation
+// 4D command: LISTBOX Get footer calculation

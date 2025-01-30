@@ -1,4 +1,4 @@
-// $D command: Add to date ( date ; years ; months ; days ) : Date
+// 4D command: Add to date ( date ; years ; months ; days ) : Date
 function addToDate(processState,date, years, months, days) {
     let result = new Date(date);
     // Add years

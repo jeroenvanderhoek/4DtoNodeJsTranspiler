@@ -1,1 +1,1 @@
-// $D command: GOTO RECORD
+// 4D command: GOTO RECORD

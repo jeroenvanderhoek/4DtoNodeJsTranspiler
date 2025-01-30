@@ -1,1 +1,1 @@
-// $D command: REMOVE FROM SET
+// 4D command: REMOVE FROM SET

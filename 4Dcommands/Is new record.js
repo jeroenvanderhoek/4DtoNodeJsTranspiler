@@ -1,1 +1,1 @@
-// $D command: Is new record
+// 4D command: Is new record

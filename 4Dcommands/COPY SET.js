@@ -1,1 +1,1 @@
-// $D command: COPY SET
+// 4D command: COPY SET

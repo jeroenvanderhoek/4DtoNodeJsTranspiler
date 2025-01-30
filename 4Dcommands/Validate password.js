@@ -1,1 +1,1 @@
-// $D command: Validate password
+// 4D command: Validate password

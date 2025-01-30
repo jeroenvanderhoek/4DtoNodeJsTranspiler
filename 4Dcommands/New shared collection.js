@@ -1,1 +1,1 @@
-// $D command: New shared collection
+// 4D command: New shared collection

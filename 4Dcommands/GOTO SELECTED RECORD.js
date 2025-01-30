@@ -1,1 +1,1 @@
-// $D command: GOTO SELECTED RECORD
+// 4D command: GOTO SELECTED RECORD

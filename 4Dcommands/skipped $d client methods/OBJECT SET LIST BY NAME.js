@@ -1,1 +1,1 @@
-// $D command: OBJECT SET LIST BY NAME
+// 4D command: OBJECT SET LIST BY NAME

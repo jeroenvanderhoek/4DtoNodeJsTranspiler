@@ -1,1 +1,1 @@
-// $D command: METHOD RESOLVE PATH
+// 4D command: METHOD RESOLVE PATH

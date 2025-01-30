@@ -1,1 +1,1 @@
-// $D command: OBJECT DUPLICATE
+// 4D command: OBJECT DUPLICATE

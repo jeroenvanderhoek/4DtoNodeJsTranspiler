@@ -1,1 +1,1 @@
-// $D command: Modified record
+// 4D command: Modified record

@@ -1,1 +1,1 @@
-// $D command: DOM Get Root XML element
+// 4D command: DOM Get Root XML element

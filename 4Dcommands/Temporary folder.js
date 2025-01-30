@@ -1,1 +1,1 @@
-// $D command: Temporary folder
+// 4D command: Temporary folder

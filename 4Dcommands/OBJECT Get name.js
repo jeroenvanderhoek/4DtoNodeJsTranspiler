@@ -1,1 +1,1 @@
-// $D command: OBJECT Get name
+// 4D command: OBJECT Get name

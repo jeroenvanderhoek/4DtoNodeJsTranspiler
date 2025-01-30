@@ -1,1 +1,1 @@
-// $D command: SET MENU ITEM SHORTCUT
+// 4D command: SET MENU ITEM SHORTCUT

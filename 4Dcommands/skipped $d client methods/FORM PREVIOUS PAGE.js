@@ -1,1 +1,1 @@
-// $D command: FORM PREVIOUS PAGE
+// 4D command: FORM PREVIOUS PAGE

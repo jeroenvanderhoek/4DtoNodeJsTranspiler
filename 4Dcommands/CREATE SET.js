@@ -1,1 +1,1 @@
-// $D command: CREATE SET
+// 4D command: CREATE SET

@@ -1,1 +1,1 @@
-// $D command: WINDOW LIST
+// 4D command: WINDOW LIST

@@ -1,1 +1,1 @@
-// $D command: FORM SET OUTPUT
+// 4D command: FORM SET OUTPUT

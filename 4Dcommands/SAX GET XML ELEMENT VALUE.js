@@ -1,1 +1,1 @@
-// $D command: SAX GET XML ELEMENT VALUE
+// 4D command: SAX GET XML ELEMENT VALUE

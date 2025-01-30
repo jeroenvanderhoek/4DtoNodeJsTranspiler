@@ -1,1 +1,1 @@
-// $D command: ST COMPUTE EXPRESSIONS
+// 4D command: ST COMPUTE EXPRESSIONS

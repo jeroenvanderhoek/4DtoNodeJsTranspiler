@@ -1,1 +1,1 @@
-// $D command: PHP SET OPTION
+// 4D command: PHP SET OPTION

@@ -1,1 +1,1 @@
-// $D command: RESUME INDEXES
+// 4D command: RESUME INDEXES

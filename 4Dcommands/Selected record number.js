@@ -1,1 +1,1 @@
-// $D command: Selected record number
+// 4D command: Selected record number

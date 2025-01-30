@@ -1,1 +1,1 @@
-// $D command: OPEN SECURITY CENTER
+// 4D command: OPEN SECURITY CENTER

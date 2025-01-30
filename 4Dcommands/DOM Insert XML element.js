@@ -1,1 +1,1 @@
-// $D command: DOM Insert XML element
+// 4D command: DOM Insert XML element

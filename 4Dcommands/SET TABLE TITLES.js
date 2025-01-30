@@ -1,1 +1,1 @@
-// $D command: SET TABLE TITLES
+// 4D command: SET TABLE TITLES

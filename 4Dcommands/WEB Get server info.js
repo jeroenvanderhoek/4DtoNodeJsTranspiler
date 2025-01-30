@@ -1,1 +1,1 @@
-// $D command: WEB Get server info
+// 4D command: WEB Get server info

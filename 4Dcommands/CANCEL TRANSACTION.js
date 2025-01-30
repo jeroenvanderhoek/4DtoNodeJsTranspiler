@@ -1,1 +1,1 @@
-// $D command: CANCEL TRANSACTION
+// 4D command: CANCEL TRANSACTION

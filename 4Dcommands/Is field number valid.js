@@ -1,1 +1,1 @@
-// $D command: Is field number valid
+// 4D command: Is field number valid

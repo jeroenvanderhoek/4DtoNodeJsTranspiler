@@ -1,1 +1,1 @@
-// $D command: WA Get current URL
+// 4D command: WA Get current URL

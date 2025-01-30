@@ -1,1 +1,1 @@
-// $D command: DUPLICATE RECORD
+// 4D command: DUPLICATE RECORD

@@ -1,1 +1,1 @@
-// $D command: FONT STYLE LIST
+// 4D command: FONT STYLE LIST

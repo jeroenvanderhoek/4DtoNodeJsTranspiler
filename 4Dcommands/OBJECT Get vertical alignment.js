@@ -1,1 +1,1 @@
-// $D command: OBJECT Get vertical alignment
+// 4D command: OBJECT Get vertical alignment

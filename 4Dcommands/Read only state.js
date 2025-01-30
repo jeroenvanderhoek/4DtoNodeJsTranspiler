@@ -1,1 +1,1 @@
-// $D command: Read only state
+// 4D command: Read only state

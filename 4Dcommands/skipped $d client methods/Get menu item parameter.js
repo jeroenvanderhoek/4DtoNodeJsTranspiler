@@ -1,1 +1,1 @@
-// $D command: Get menu item parameter
+// 4D command: Get menu item parameter

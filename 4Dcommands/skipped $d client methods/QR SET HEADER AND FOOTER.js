@@ -1,1 +1,1 @@
-// $D command: QR SET HEADER AND FOOTER
+// 4D command: QR SET HEADER AND FOOTER

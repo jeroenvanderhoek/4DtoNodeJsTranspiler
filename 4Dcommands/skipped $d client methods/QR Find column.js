@@ -1,1 +1,1 @@
-// $D command: QR Find column
+// 4D command: QR Find column

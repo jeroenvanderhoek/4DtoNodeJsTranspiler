@@ -1,1 +1,1 @@
-// $D command: System info
+// 4D command: System info

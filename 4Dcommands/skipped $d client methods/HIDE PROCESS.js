@@ -1,1 +1,1 @@
-// $D command: HIDE PROCESS
+// 4D command: HIDE PROCESS

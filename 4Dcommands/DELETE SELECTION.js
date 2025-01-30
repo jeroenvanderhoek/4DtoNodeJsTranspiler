@@ -1,1 +1,1 @@
-// $D command: DELETE SELECTION
+// 4D command: DELETE SELECTION

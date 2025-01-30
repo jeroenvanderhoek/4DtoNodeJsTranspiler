@@ -1,1 +1,1 @@
-// $D command: OBJECT Get font size
+// 4D command: OBJECT Get font size

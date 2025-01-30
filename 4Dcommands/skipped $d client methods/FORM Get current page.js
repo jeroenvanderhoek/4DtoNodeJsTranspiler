@@ -1,1 +1,1 @@
-// $D command: FORM Get current page
+// 4D command: FORM Get current page

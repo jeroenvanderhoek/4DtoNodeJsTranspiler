@@ -1,1 +1,1 @@
-// $D command: DISTINCT VALUES
+// 4D command: DISTINCT VALUES

@@ -1,1 +1,1 @@
-// $D command: Session storage
+// 4D command: Session storage

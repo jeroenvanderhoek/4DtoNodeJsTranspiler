@@ -1,1 +1,1 @@
-// $D command: POST EVENT
+// 4D command: POST EVENT

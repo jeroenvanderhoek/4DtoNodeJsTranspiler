@@ -1,1 +1,1 @@
-// $D command: Get group access
+// 4D command: Get group access

@@ -1,1 +1,1 @@
-// $D command: JSON PARSE ARRAY
+// 4D command: JSON PARSE ARRAY

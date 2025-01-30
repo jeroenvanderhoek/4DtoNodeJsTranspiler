@@ -1,1 +1,1 @@
-// $D command: GET RESOURCE
+// 4D command: GET RESOURCE

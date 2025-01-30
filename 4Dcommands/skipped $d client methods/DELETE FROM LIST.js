@@ -1,1 +1,1 @@
-// $D command: DELETE FROM LIST
+// 4D command: DELETE FROM LIST

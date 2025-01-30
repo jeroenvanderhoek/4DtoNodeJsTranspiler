@@ -1,1 +1,1 @@
-// $D command: GET TABLE TITLES
+// 4D command: GET TABLE TITLES

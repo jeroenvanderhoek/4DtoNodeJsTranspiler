@@ -1,1 +1,1 @@
-// $D command: Windows Ctrl down
+// 4D command: Windows Ctrl down

@@ -1,1 +1,1 @@
-// $D command: Is picture file
+// 4D command: Is picture file

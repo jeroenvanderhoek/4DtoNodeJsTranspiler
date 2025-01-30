@@ -1,1 +1,1 @@
-// $D command: APPEND TO LIST
+// 4D command: APPEND TO LIST

@@ -1,1 +1,1 @@
-// $D command: GET PICTURE KEYWORDS
+// 4D command: GET PICTURE KEYWORDS

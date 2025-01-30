@@ -1,1 +1,1 @@
-// $D command: OBJECT SET ENTERABLE
+// 4D command: OBJECT SET ENTERABLE

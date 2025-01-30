@@ -1,1 +1,1 @@
-// $D command: CLEAR SEMAPHORE
+// 4D command: CLEAR SEMAPHORE

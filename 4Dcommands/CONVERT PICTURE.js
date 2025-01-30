@@ -1,1 +1,1 @@
-// $D command: CONVERT PICTURE
+// 4D command: CONVERT PICTURE

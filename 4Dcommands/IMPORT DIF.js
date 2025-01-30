@@ -1,1 +1,1 @@
-// $D command: IMPORT DIF
+// 4D command: IMPORT DIF

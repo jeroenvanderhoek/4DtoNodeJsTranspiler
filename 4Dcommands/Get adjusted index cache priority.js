@@ -1,1 +1,1 @@
-// $D command: Get adjusted index cache priority
+// 4D command: Get adjusted index cache priority

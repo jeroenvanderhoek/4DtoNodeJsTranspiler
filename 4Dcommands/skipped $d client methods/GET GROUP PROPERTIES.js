@@ -1,1 +1,1 @@
-// $D command: GET GROUP PROPERTIES
+// 4D command: GET GROUP PROPERTIES

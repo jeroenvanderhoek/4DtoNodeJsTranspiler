@@ -1,1 +1,1 @@
-// $D command: PROCESS 4D TAGS
+// 4D command: PROCESS 4D TAGS

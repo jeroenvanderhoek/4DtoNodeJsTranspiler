@@ -1,1 +1,1 @@
-// $D command: TEXT TO ARRAY
+// 4D command: TEXT TO ARRAY

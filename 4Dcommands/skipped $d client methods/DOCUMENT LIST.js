@@ -1,1 +1,1 @@
-// $D command: DOCUMENT LIST
+// 4D command: DOCUMENT LIST

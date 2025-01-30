@@ -1,1 +1,1 @@
-// $D command: OB REMOVE
+// 4D command: OB REMOVE

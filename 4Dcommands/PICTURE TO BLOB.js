@@ -1,1 +1,1 @@
-// $D command: PICTURE TO BLOB
+// 4D command: PICTURE TO BLOB

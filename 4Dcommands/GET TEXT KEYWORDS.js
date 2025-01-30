@@ -1,1 +1,1 @@
-// $D command: GET TEXT KEYWORDS
+// 4D command: GET TEXT KEYWORDS

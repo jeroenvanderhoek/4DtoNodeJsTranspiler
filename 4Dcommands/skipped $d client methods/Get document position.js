@@ -1,1 +1,1 @@
-// $D command: Get document position
+// 4D command: Get document position

@@ -1,1 +1,1 @@
-// $D command: EXPORT STRUCTURE
+// 4D command: EXPORT STRUCTURE

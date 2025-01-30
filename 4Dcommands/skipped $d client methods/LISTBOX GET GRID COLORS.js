@@ -1,1 +1,1 @@
-// $D command: LISTBOX GET GRID COLORS
+// 4D command: LISTBOX GET GRID COLORS

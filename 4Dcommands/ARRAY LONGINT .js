@@ -1,2 +1,2 @@
-// $D command: ARRAY LONGINT 
+// 4D command: ARRAY LONGINT 
 // See replaceArrays

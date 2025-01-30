@@ -1,1 +1,1 @@
-// $D command: DISPLAY RECORD
+// 4D command: DISPLAY RECORD

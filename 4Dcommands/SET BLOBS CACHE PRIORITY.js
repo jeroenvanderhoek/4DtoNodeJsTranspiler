@@ -1,1 +1,1 @@
-// $D command: SET BLOBS CACHE PRIORITY
+// 4D command: SET BLOBS CACHE PRIORITY

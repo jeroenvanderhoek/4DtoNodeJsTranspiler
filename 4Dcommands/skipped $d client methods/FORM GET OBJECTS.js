@@ -1,1 +1,1 @@
-// $D command: FORM GET OBJECTS
+// 4D command: FORM GET OBJECTS

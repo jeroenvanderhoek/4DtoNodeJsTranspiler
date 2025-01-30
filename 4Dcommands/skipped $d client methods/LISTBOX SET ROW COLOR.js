@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET ROW COLOR
+// 4D command: LISTBOX SET ROW COLOR

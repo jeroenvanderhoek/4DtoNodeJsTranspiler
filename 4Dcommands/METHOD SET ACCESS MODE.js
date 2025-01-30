@@ -1,1 +1,1 @@
-// $D command: METHOD SET ACCESS MODE
+// 4D command: METHOD SET ACCESS MODE

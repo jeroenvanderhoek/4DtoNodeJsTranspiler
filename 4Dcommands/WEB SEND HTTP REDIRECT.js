@@ -1,1 +1,1 @@
-// $D command: WEB SEND HTTP REDIRECT
+// 4D command: WEB SEND HTTP REDIRECT

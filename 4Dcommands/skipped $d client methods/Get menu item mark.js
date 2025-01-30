@@ -1,1 +1,1 @@
-// $D command: Get menu item mark
+// 4D command: Get menu item mark

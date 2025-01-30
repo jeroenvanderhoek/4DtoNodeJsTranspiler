@@ -1,1 +1,1 @@
-// $D command: QR Get info row
+// 4D command: QR Get info row

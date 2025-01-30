@@ -1,1 +1,1 @@
-// $D command: IMPORT TEXT
+// 4D command: IMPORT TEXT

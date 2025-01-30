@@ -1,1 +1,1 @@
-// $D command: QR Get report table
+// 4D command: QR Get report table

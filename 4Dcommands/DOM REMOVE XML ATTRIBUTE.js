@@ -1,1 +1,1 @@
-// $D command: DOM REMOVE XML ATTRIBUTE
+// 4D command: DOM REMOVE XML ATTRIBUTE

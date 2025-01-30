@@ -1,1 +1,1 @@
-// $D command: IMPORT SYLK
+// 4D command: IMPORT SYLK

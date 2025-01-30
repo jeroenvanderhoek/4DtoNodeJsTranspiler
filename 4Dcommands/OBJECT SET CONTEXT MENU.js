@@ -1,1 +1,1 @@
-// $D command: OBJECT SET CONTEXT MENU
+// 4D command: OBJECT SET CONTEXT MENU

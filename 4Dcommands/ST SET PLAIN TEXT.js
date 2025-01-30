@@ -1,1 +1,1 @@
-// $D command: ST SET PLAIN TEXT
+// 4D command: ST SET PLAIN TEXT

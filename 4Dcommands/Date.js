@@ -1,1 +1,1 @@
-// $D command: Date
+// 4D command: Date

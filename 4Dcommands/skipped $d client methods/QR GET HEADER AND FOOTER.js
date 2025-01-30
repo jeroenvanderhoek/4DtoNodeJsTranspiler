@@ -1,1 +1,1 @@
-// $D command: QR GET HEADER AND FOOTER
+// 4D command: QR GET HEADER AND FOOTER

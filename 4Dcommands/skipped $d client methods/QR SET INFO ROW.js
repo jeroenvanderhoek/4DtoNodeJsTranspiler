@@ -1,1 +1,1 @@
-// $D command: QR SET INFO ROW
+// 4D command: QR SET INFO ROW

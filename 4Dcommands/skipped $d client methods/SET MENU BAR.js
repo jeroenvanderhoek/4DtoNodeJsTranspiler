@@ -1,1 +1,1 @@
-// $D command: SET MENU BAR
+// 4D command: SET MENU BAR

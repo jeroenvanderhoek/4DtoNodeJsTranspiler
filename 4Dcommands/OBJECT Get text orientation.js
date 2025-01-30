@@ -1,1 +1,1 @@
-// $D command: OBJECT Get text orientation
+// 4D command: OBJECT Get text orientation

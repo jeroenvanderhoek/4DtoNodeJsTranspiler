@@ -1,3 +1,3 @@
-// $D command: ARRAY BLOB 
+// 4D command: ARRAY BLOB 
 
 // See replaceArrays

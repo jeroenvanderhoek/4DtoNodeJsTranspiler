@@ -1,1 +1,1 @@
-// $D command: Deactivated
+// 4D command: Deactivated

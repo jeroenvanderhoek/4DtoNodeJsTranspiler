@@ -1,1 +1,1 @@
-// $D command: Screen width
+// 4D command: Screen width

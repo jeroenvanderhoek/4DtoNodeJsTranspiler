@@ -1,1 +1,1 @@
-// $D command: Random
+// 4D command: Random

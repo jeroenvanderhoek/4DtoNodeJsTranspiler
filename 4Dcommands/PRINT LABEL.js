@@ -1,1 +1,1 @@
-// $D command: PRINT LABEL
+// 4D command: PRINT LABEL

@@ -1,1 +1,1 @@
-// $D command: OBJECT Get subform container value
+// 4D command: OBJECT Get subform container value

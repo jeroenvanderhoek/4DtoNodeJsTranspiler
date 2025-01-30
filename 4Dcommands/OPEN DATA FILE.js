@@ -1,1 +1,1 @@
-// $D command: OPEN DATA FILE
+// 4D command: OPEN DATA FILE

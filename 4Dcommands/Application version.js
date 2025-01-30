@@ -1,1 +1,1 @@
-// $D command: Application version
+// 4D command: Application version

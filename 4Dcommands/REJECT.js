@@ -1,1 +1,1 @@
-// $D command: REJECT
+// 4D command: REJECT

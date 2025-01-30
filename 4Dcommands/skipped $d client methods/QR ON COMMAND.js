@@ -1,1 +1,1 @@
-// $D command: QR ON COMMAND
+// 4D command: QR ON COMMAND

@@ -1,1 +1,1 @@
-// $D command: DIALOG
+// 4D command: DIALOG

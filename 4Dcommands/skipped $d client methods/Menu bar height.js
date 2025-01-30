@@ -1,1 +1,1 @@
-// $D command: Menu bar height
+// 4D command: Menu bar height

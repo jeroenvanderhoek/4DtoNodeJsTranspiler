@@ -1,1 +1,1 @@
-// $D command: MODIFY RECORD
+// 4D command: MODIFY RECORD

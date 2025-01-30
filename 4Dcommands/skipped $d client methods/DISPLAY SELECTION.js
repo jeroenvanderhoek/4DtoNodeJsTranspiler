@@ -1,1 +1,1 @@
-// $D command: DISPLAY SELECTION
+// 4D command: DISPLAY SELECTION

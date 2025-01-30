@@ -1,1 +1,1 @@
-// $D command: Count list items
+// 4D command: Count list items

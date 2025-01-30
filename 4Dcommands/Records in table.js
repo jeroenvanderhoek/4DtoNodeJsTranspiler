@@ -1,1 +1,1 @@
-// $D command: Records in table
+// 4D command: Records in table

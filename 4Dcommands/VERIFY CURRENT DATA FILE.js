@@ -1,1 +1,1 @@
-// $D command: VERIFY CURRENT DATA FILE
+// 4D command: VERIFY CURRENT DATA FILE

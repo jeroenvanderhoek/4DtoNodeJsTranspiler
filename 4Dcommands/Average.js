@@ -1,4 +1,4 @@
-// $D command: Average
+// 4D command: Average
 // ( series {; attributePath} ) : Real = () => { }
 
 // Average ( series {; attributePath} ) : Real

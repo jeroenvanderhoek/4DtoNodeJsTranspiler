@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get number of rows
+// 4D command: LISTBOX Get number of rows

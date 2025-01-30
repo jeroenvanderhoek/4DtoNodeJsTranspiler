@@ -1,1 +1,1 @@
-// $D command: Current form table
+// 4D command: Current form table

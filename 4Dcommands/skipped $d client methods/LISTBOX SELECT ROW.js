@@ -1,1 +1,1 @@
-// $D command: LISTBOX SELECT ROW
+// 4D command: LISTBOX SELECT ROW

@@ -1,1 +1,1 @@
-// $D command: Picture size
+// 4D command: Picture size

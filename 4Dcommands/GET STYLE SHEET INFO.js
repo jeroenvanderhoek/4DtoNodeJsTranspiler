@@ -1,1 +1,1 @@
-// $D command: GET STYLE SHEET INFO
+// 4D command: GET STYLE SHEET INFO

@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get column width
+// 4D command: LISTBOX Get column width

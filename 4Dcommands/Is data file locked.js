@@ -1,1 +1,1 @@
-// $D command: Is data file locked
+// 4D command: Is data file locked

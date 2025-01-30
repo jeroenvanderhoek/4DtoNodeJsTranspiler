@@ -1,1 +1,1 @@
-// $D command: FORM GET PROPERTIES
+// 4D command: FORM GET PROPERTIES

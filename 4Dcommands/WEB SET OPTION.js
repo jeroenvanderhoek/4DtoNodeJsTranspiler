@@ -1,1 +1,1 @@
-// $D command: WEB SET OPTION
+// 4D command: WEB SET OPTION

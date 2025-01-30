@@ -1,1 +1,1 @@
-// $D command: Object to path
+// 4D command: Object to path

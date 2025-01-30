@@ -1,1 +1,1 @@
-// $D command: LISTBOX SORT COLUMNS
+// 4D command: LISTBOX SORT COLUMNS

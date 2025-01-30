@@ -1,1 +1,1 @@
-// $D command: Is field value Null
+// 4D command: Is field value Null

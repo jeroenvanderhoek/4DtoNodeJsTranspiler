@@ -1,1 +1,1 @@
-// $D command: Localized string
+// 4D command: Localized string

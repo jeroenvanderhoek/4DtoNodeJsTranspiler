@@ -1,1 +1,1 @@
-// $D command: Set group properties
+// 4D command: Set group properties

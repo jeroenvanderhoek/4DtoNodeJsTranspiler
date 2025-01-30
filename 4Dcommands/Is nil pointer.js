@@ -1,1 +1,1 @@
-// $D command: Is nil pointer
+// 4D command: Is nil pointer

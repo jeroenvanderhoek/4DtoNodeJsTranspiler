@@ -1,1 +1,1 @@
-// $D command: Application type
+// 4D command: Application type

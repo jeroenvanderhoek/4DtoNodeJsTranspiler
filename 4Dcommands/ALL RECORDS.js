@@ -1,4 +1,4 @@
-// $D command: ALL RECORDS
+// 4D command: ALL RECORDS
 // ALL RECORDS {( aTable )}
 // Parameter	Type		Description
 // aTable	Table	→	Table for which to select all records, or Default table, if omitted FIXME WHATS THE DEFAULT TABLE???

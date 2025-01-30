@@ -1,1 +1,1 @@
-// $D command: New object
+// 4D command: New object

@@ -1,1 +1,1 @@
-// $D command: ORDER BY ATTRIBUTE
+// 4D command: ORDER BY ATTRIBUTE

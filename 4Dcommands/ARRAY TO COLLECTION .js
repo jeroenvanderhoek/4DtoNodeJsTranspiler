@@ -1,1 +1,1 @@
-// $D command: ARRAY TO COLLECTION 
+// 4D command: ARRAY TO COLLECTION 

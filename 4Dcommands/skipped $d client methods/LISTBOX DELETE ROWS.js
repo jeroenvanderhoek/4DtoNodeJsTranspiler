@@ -1,1 +1,1 @@
-// $D command: LISTBOX DELETE ROWS
+// 4D command: LISTBOX DELETE ROWS

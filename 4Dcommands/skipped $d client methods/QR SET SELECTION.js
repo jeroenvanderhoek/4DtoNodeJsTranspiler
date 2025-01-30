@@ -1,1 +1,1 @@
-// $D command: QR SET SELECTION
+// 4D command: QR SET SELECTION

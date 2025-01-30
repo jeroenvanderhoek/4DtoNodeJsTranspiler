@@ -1,1 +1,1 @@
-// $D command: Get picture file name
+// 4D command: Get picture file name

@@ -1,1 +1,1 @@
-// $D command: GET PICTURE FROM LIBRARY
+// 4D command: GET PICTURE FROM LIBRARY

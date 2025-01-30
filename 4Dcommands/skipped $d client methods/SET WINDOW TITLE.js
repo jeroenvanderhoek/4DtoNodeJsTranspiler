@@ -1,1 +1,1 @@
-// $D command: SET WINDOW TITLE
+// 4D command: SET WINDOW TITLE

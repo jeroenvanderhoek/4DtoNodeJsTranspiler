@@ -1,1 +1,1 @@
-// $D command: SHOW ON DISK
+// 4D command: SHOW ON DISK

@@ -1,1 +1,1 @@
-// $D command: DOM EXPORT TO FILE
+// 4D command: DOM EXPORT TO FILE

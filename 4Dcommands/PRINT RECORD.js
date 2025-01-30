@@ -1,1 +1,1 @@
-// $D command: PRINT RECORD
+// 4D command: PRINT RECORD

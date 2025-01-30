@@ -1,1 +1,1 @@
-// $D command: READ ONLY
+// 4D command: READ ONLY

@@ -1,1 +1,1 @@
-// $D command: Current time
+// 4D command: Current time

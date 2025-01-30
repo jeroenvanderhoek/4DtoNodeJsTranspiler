@@ -1,1 +1,1 @@
-// $D command: QR New offscreen area
+// 4D command: QR New offscreen area

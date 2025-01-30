@@ -1,1 +1,1 @@
-// $D command: Is in print preview
+// 4D command: Is in print preview

@@ -1,1 +1,1 @@
-// $D command: Trigger level
+// 4D command: Trigger level

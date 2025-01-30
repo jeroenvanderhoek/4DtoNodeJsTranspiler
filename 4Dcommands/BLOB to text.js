@@ -1,1 +1,1 @@
-// $D command: BLOB to text
+// 4D command: BLOB to text

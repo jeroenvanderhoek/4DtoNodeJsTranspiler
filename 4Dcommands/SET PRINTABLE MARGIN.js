@@ -1,1 +1,1 @@
-// $D command: SET PRINTABLE MARGIN
+// 4D command: SET PRINTABLE MARGIN

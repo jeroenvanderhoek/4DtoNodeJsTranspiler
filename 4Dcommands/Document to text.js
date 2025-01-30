@@ -1,1 +1,1 @@
-// $D command: Document to text
+// 4D command: Document to text

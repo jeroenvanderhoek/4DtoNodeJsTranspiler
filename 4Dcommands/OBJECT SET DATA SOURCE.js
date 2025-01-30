@@ -1,1 +1,1 @@
-// $D command: OBJECT SET DATA SOURCE
+// 4D command: OBJECT SET DATA SOURCE

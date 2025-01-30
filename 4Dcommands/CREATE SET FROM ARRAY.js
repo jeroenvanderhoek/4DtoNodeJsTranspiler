@@ -1,1 +1,1 @@
-// $D command: CREATE SET FROM ARRAY
+// 4D command: CREATE SET FROM ARRAY

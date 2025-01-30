@@ -1,1 +1,1 @@
-// $D command: STOP SQL SERVER
+// 4D command: STOP SQL SERVER

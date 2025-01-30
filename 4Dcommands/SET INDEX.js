@@ -1,1 +1,1 @@
-// $D command: SET INDEX
+// 4D command: SET INDEX

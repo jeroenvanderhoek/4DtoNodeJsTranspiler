@@ -1,1 +1,1 @@
-// $D command: LISTBOX EXPAND
+// 4D command: LISTBOX EXPAND

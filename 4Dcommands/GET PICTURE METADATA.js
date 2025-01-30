@@ -1,1 +1,1 @@
-// $D command: GET PICTURE METADATA
+// 4D command: GET PICTURE METADATA

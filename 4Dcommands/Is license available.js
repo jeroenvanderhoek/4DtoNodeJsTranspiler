@@ -1,1 +1,1 @@
-// $D command: Is license available
+// 4D command: Is license available

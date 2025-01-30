@@ -1,1 +1,1 @@
-// $D command: QR GET BORDERS
+// 4D command: QR GET BORDERS

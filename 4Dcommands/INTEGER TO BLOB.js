@@ -1,1 +1,1 @@
-// $D command: INTEGER TO BLOB
+// 4D command: INTEGER TO BLOB

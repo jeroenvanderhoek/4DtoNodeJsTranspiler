@@ -1,1 +1,1 @@
-// $D command: CREATE ALIAS
+// 4D command: CREATE ALIAS

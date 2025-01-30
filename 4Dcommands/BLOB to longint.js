@@ -1,1 +1,1 @@
-// $D command: BLOB to longint
+// 4D command: BLOB to longint

@@ -1,1 +1,1 @@
-// $D command: BLOB to list
+// 4D command: BLOB to list

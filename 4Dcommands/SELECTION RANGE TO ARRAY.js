@@ -1,1 +1,1 @@
-// $D command: SELECTION RANGE TO ARRAY
+// 4D command: SELECTION RANGE TO ARRAY

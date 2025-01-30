@@ -1,1 +1,1 @@
-// $D command: JSON Stringify array
+// 4D command: JSON Stringify array

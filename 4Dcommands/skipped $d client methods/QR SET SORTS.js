@@ -1,1 +1,1 @@
-// $D command: QR SET SORTS
+// 4D command: QR SET SORTS

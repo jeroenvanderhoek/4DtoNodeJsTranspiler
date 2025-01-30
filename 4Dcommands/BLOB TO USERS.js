@@ -1,1 +1,1 @@
-// $D command: BLOB TO USERS
+// 4D command: BLOB TO USERS

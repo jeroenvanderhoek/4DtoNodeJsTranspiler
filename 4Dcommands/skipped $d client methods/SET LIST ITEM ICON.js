@@ -1,1 +1,1 @@
-// $D command: SET LIST ITEM ICON
+// 4D command: SET LIST ITEM ICON

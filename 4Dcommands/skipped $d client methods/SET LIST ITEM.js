@@ -1,1 +1,1 @@
-// $D command: SET LIST ITEM
+// 4D command: SET LIST ITEM

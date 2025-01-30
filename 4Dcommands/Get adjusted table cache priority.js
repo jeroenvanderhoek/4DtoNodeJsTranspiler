@@ -1,1 +1,1 @@
-// $D command: Get adjusted table cache priority
+// 4D command: Get adjusted table cache priority

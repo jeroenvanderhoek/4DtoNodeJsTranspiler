@@ -1,1 +1,1 @@
-// $D command: FLUSH CACHE
+// 4D command: FLUSH CACHE

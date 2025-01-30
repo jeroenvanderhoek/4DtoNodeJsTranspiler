@@ -1,1 +1,1 @@
-// $D command: CHANGE PASSWORD
+// 4D command: CHANGE PASSWORD

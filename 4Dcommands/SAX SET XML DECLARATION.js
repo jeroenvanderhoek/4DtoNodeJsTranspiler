@@ -1,1 +1,1 @@
-// $D command: SAX SET XML DECLARATION
+// 4D command: SAX SET XML DECLARATION

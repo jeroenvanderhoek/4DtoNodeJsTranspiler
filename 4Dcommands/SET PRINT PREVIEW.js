@@ -1,1 +1,1 @@
-// $D command: SET PRINT PREVIEW
+// 4D command: SET PRINT PREVIEW

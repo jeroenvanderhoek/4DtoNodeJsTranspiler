@@ -1,1 +1,1 @@
-// $D command: FIRST RECORD
+// 4D command: FIRST RECORD

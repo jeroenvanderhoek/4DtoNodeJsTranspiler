@@ -1,1 +1,1 @@
-// $D command: WEB GET OPTION
+// 4D command: WEB GET OPTION

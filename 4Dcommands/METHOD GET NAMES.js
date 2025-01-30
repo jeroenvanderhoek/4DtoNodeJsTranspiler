@@ -1,1 +1,1 @@
-// $D command: METHOD GET NAMES
+// 4D command: METHOD GET NAMES

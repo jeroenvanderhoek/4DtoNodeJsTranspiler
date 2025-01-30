@@ -1,1 +1,1 @@
-// $D command: RELOAD EXTERNAL DATA
+// 4D command: RELOAD EXTERNAL DATA

@@ -1,1 +1,1 @@
-// $D command: GET LIST PROPERTIES
+// 4D command: GET LIST PROPERTIES

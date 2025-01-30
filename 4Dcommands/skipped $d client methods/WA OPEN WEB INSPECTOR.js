@@ -1,1 +1,1 @@
-// $D command: WA OPEN WEB INSPECTOR
+// 4D command: WA OPEN WEB INSPECTOR

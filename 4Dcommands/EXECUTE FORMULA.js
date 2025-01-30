@@ -1,1 +1,1 @@
-// $D command: EXECUTE FORMULA
+// 4D command: EXECUTE FORMULA

@@ -1,1 +1,1 @@
-// $D command: SAX ADD XML DOCTYPE
+// 4D command: SAX ADD XML DOCTYPE

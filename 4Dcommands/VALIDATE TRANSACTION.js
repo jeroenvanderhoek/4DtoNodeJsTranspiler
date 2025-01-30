@@ -1,1 +1,1 @@
-// $D command: VALIDATE TRANSACTION
+// 4D command: VALIDATE TRANSACTION

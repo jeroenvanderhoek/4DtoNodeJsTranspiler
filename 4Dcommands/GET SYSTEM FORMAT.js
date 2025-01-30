@@ -1,1 +1,1 @@
-// $D command: GET SYSTEM FORMAT
+// 4D command: GET SYSTEM FORMAT

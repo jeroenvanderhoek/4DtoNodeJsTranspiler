@@ -1,1 +1,1 @@
-// $D command: PICTURE PROPERTIES
+// 4D command: PICTURE PROPERTIES

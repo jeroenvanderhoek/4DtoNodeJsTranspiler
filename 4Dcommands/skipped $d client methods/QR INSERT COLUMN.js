@@ -1,1 +1,1 @@
-// $D command: QR INSERT COLUMN
+// 4D command: QR INSERT COLUMN

@@ -1,1 +1,1 @@
-// $D command: SAX OPEN XML ELEMENT
+// 4D command: SAX OPEN XML ELEMENT

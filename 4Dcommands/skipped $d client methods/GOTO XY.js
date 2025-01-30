@@ -1,1 +1,1 @@
-// $D command: GOTO XY
+// 4D command: GOTO XY

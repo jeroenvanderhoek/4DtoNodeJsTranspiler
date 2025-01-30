@@ -1,1 +1,1 @@
-// $D command: Is table number valid
+// 4D command: Is table number valid

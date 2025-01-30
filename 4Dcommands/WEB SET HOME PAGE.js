@@ -1,1 +1,1 @@
-// $D command: WEB SET HOME PAGE
+// 4D command: WEB SET HOME PAGE

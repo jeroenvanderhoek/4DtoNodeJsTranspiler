@@ -1,1 +1,1 @@
-// $D command: DISPLAY NOTIFICATION
+// 4D command: DISPLAY NOTIFICATION

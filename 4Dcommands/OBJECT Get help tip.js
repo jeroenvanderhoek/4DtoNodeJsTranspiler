@@ -1,1 +1,1 @@
-// $D command: OBJECT Get help tip
+// 4D command: OBJECT Get help tip

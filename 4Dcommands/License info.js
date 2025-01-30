@@ -1,1 +1,1 @@
-// $D command: License info
+// 4D command: License info

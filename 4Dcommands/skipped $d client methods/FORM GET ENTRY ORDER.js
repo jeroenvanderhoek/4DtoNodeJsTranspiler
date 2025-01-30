@@ -1,1 +1,1 @@
-// $D command: FORM GET ENTRY ORDER
+// 4D command: FORM GET ENTRY ORDER

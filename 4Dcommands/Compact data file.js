@@ -1,1 +1,1 @@
-// $D command: Compact data file
+// 4D command: Compact data file

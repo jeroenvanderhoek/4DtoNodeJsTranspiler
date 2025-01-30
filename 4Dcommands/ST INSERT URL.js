@@ -1,1 +1,1 @@
-// $D command: ST INSERT URL
+// 4D command: ST INSERT URL

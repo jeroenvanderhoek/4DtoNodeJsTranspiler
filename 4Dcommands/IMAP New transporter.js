@@ -1,1 +1,1 @@
-// $D command: IMAP New transporter
+// 4D command: IMAP New transporter

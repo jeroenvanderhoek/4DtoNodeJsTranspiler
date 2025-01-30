@@ -1,1 +1,1 @@
-// $D command: OBJECT GET MAXIMUM VALUE
+// 4D command: OBJECT GET MAXIMUM VALUE

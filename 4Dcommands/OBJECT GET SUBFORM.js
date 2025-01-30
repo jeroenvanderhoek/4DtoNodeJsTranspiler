@@ -1,1 +1,1 @@
-// $D command: OBJECT GET SUBFORM
+// 4D command: OBJECT GET SUBFORM

@@ -1,1 +1,1 @@
-// $D command: QR DELETE COLUMN
+// 4D command: QR DELETE COLUMN

@@ -1,1 +1,1 @@
-// $D command: PAUSE INDEXES
+// 4D command: PAUSE INDEXES

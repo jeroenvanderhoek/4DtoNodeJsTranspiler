@@ -1,1 +1,1 @@
-// $D command: FORM LOAD
+// 4D command: FORM LOAD

@@ -1,1 +1,1 @@
-// $D command: OBJECT SET ENABLED
+// 4D command: OBJECT SET ENABLED

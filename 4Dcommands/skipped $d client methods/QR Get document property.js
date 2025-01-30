@@ -1,1 +1,1 @@
-// $D command: QR Get document property
+// 4D command: QR Get document property

@@ -1,1 +1,1 @@
-// $D command: REDRAW WINDOW
+// 4D command: REDRAW WINDOW

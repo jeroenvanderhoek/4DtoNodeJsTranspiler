@@ -1,1 +1,1 @@
-// $D command: SET LIST ITEM FONT
+// 4D command: SET LIST ITEM FONT

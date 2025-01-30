@@ -1,1 +1,1 @@
-// $D command: SET QUERY LIMIT
+// 4D command: SET QUERY LIMIT

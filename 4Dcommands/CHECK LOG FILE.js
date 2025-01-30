@@ -1,1 +1,1 @@
-// $D command: CHECK LOG FILE
+// 4D command: CHECK LOG FILE

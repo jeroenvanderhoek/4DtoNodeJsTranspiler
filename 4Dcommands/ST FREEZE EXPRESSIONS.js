@@ -1,1 +1,1 @@
-// $D command: ST FREEZE EXPRESSIONS
+// 4D command: ST FREEZE EXPRESSIONS

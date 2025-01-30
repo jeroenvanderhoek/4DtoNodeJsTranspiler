@@ -1,2 +1,2 @@
-// $D command: ARRAY INTEGER 
+// 4D command: ARRAY INTEGER 
 // See replaceArrays

@@ -1,1 +1,1 @@
-// $D command: WA OPEN BACK URL
+// 4D command: WA OPEN BACK URL

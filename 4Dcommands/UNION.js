@@ -1,1 +1,1 @@
-// $D command: UNION
+// 4D command: UNION

@@ -1,1 +1,1 @@
-// $D command: SAVE RECORD
+// 4D command: SAVE RECORD

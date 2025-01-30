@@ -1,1 +1,1 @@
-// $D command: MOVE DOCUMENT
+// 4D command: MOVE DOCUMENT

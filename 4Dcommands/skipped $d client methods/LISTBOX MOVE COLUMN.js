@@ -1,1 +1,1 @@
-// $D command: LISTBOX MOVE COLUMN
+// 4D command: LISTBOX MOVE COLUMN

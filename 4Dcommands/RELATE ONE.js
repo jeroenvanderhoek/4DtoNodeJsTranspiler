@@ -1,1 +1,1 @@
-// $D command: RELATE ONE
+// 4D command: RELATE ONE

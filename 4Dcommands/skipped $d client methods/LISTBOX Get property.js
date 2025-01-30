@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get property
+// 4D command: LISTBOX Get property

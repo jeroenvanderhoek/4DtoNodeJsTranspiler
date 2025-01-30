@@ -1,1 +1,1 @@
-// $D command: Open window
+// 4D command: Open window

@@ -1,1 +1,1 @@
-// $D command: DOM EXPORT TO VAR
+// 4D command: DOM EXPORT TO VAR

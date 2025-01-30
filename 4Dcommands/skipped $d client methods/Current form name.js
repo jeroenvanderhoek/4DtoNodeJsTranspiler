@@ -1,1 +1,1 @@
-// $D command: Current form name
+// 4D command: Current form name

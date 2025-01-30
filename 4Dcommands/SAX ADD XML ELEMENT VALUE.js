@@ -1,1 +1,1 @@
-// $D command: SAX ADD XML ELEMENT VALUE
+// 4D command: SAX ADD XML ELEMENT VALUE

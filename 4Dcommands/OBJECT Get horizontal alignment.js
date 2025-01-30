@@ -1,1 +1,1 @@
-// $D command: OBJECT Get horizontal alignment
+// 4D command: OBJECT Get horizontal alignment

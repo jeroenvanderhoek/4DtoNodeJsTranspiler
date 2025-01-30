@@ -1,1 +1,1 @@
-// $D command: ST SET TEXT
+// 4D command: ST SET TEXT

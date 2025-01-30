@@ -1,1 +1,1 @@
-// $D command: DELETE FROM ARRAY
+// 4D command: DELETE FROM ARRAY

@@ -1,1 +1,1 @@
-// $D command: Append document
+// 4D command: Append document

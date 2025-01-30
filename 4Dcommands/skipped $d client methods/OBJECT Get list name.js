@@ -1,1 +1,1 @@
-// $D command: OBJECT Get list name
+// 4D command: OBJECT Get list name

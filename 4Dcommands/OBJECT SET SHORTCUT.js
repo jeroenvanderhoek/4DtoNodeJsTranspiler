@@ -1,1 +1,1 @@
-// $D command: OBJECT SET SHORTCUT
+// 4D command: OBJECT SET SHORTCUT

@@ -1,4 +1,4 @@
-// $D command: Open document
+// 4D command: Open document
 
 import open from 'open';
 

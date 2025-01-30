@@ -1,1 +1,1 @@
-// $D command: TRIGGER PROPERTIES
+// 4D command: TRIGGER PROPERTIES

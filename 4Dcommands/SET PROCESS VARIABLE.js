@@ -1,1 +1,1 @@
-// $D command: SET PROCESS VARIABLE
+// 4D command: SET PROCESS VARIABLE

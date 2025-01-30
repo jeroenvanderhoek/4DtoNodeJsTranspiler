@@ -1,1 +1,1 @@
-// $D command: CREATE RELATED ONE
+// 4D command: CREATE RELATED ONE

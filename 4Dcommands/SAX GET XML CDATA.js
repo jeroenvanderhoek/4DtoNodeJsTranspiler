@@ -1,1 +1,1 @@
-// $D command: SAX GET XML CDATA
+// 4D command: SAX GET XML CDATA

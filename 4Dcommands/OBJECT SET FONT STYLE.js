@@ -1,1 +1,1 @@
-// $D command: OBJECT SET FONT STYLE
+// 4D command: OBJECT SET FONT STYLE

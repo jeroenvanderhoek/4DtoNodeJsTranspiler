@@ -1,4 +1,4 @@
-// $D command: WEB SEND FILE
+// 4D command: WEB SEND FILE
 
 import fs from 'fs';
 

@@ -1,4 +1,4 @@
-// $D command: LOG EVENT
+// 4D command: LOG EVENT
 /**
  * 
  * @param {object} processState 

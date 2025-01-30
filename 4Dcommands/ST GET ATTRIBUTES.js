@@ -1,1 +1,1 @@
-// $D command: ST GET ATTRIBUTES
+// 4D command: ST GET ATTRIBUTES

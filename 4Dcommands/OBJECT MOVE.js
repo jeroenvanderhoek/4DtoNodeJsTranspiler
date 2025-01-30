@@ -1,1 +1,1 @@
-// $D command: OBJECT MOVE
+// 4D command: OBJECT MOVE

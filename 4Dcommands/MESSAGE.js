@@ -1,1 +1,1 @@
-// $D command: MESSAGE
+// 4D command: MESSAGE

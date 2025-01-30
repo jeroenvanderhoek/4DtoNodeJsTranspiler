@@ -1,1 +1,1 @@
-// $D command: USE CHARACTER SET
+// 4D command: USE CHARACTER SET

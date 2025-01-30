@@ -1,1 +1,1 @@
-// $D command: RELATE MANY
+// 4D command: RELATE MANY

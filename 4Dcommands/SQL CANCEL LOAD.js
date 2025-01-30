@@ -1,1 +1,1 @@
-// $D command: SQL CANCEL LOAD
+// 4D command: SQL CANCEL LOAD

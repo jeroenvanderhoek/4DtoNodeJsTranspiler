@@ -1,1 +1,1 @@
-// $D command: WA Back URL available
+// 4D command: WA Back URL available

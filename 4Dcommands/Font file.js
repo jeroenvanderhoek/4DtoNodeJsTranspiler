@@ -1,1 +1,1 @@
-// $D command: Font file
+// 4D command: Font file

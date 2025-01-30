@@ -1,1 +1,1 @@
-// $D command: OBJECT SET CORNER RADIUS
+// 4D command: OBJECT SET CORNER RADIUS

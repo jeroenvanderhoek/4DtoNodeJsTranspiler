@@ -1,1 +1,1 @@
-// $D command: On System Event database method
+// 4D command: On System Event database method

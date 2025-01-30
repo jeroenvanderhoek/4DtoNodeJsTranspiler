@@ -1,1 +1,1 @@
-// $D command: Get menu title
+// 4D command: Get menu title

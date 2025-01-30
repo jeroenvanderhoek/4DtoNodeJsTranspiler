@@ -1,1 +1,1 @@
-// $D command: OBJECT SET FONT SIZE
+// 4D command: OBJECT SET FONT SIZE

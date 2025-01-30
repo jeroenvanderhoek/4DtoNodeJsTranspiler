@@ -1,1 +1,1 @@
-// $D command: ST GET OPTIONS
+// 4D command: ST GET OPTIONS

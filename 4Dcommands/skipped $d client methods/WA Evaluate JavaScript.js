@@ -1,1 +1,1 @@
-// $D command: WA Evaluate JavaScript
+// 4D command: WA Evaluate JavaScript

@@ -1,1 +1,1 @@
-// $D command: GET LIST ITEM
+// 4D command: GET LIST ITEM

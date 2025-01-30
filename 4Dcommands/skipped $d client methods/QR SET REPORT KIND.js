@@ -1,1 +1,1 @@
-// $D command: QR SET REPORT KIND
+// 4D command: QR SET REPORT KIND

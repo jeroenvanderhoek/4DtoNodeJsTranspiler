@@ -1,1 +1,1 @@
-// $D command: Get printed height
+// 4D command: Get printed height

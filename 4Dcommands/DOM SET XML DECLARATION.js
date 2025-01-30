@@ -1,1 +1,1 @@
-// $D command: DOM SET XML DECLARATION
+// 4D command: DOM SET XML DECLARATION

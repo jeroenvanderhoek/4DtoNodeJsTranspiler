@@ -1,1 +1,1 @@
-// $D command: Change string
+// 4D command: Change string

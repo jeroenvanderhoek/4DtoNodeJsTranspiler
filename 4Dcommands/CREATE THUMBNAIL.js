@@ -1,1 +1,1 @@
-// $D command: CREATE THUMBNAIL
+// 4D command: CREATE THUMBNAIL

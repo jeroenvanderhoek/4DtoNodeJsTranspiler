@@ -1,1 +1,1 @@
-// $D command: DOM Find XML element by ID
+// 4D command: DOM Find XML element by ID

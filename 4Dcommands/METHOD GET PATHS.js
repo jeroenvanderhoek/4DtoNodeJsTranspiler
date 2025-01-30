@@ -1,1 +1,1 @@
-// $D command: METHOD GET PATHS
+// 4D command: METHOD GET PATHS

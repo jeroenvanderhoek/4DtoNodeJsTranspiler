@@ -1,1 +1,1 @@
-// $D command: Count in array
+// 4D command: Count in array

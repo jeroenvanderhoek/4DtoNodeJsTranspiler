@@ -1,1 +1,1 @@
-// $D command: On SQL Authentication database method
+// 4D command: On SQL Authentication database method

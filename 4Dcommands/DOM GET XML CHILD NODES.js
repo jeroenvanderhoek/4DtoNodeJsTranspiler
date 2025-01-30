@@ -1,1 +1,1 @@
-// $D command: DOM GET XML CHILD NODES
+// 4D command: DOM GET XML CHILD NODES

@@ -1,1 +1,1 @@
-// $D command: Get window title
+// 4D command: Get window title

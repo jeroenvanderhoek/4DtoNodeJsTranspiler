@@ -1,1 +1,1 @@
-// $D command: SET MENU ITEM PARAMETER
+// 4D command: SET MENU ITEM PARAMETER

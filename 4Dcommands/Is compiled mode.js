@@ -1,1 +1,1 @@
-// $D command: Is compiled mode
+// 4D command: Is compiled mode

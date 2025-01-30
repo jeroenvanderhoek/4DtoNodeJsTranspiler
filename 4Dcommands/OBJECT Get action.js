@@ -1,1 +1,1 @@
-// $D command: OBJECT Get action
+// 4D command: OBJECT Get action

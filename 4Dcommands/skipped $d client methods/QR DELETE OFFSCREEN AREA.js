@@ -1,1 +1,1 @@
-// $D command: QR DELETE OFFSCREEN AREA
+// 4D command: QR DELETE OFFSCREEN AREA

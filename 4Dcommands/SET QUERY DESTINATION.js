@@ -1,1 +1,1 @@
-// $D command: SET QUERY DESTINATION
+// 4D command: SET QUERY DESTINATION

@@ -1,1 +1,1 @@
-// $D command: SET PRINT MARKER
+// 4D command: SET PRINT MARKER

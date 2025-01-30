@@ -1,1 +1,1 @@
-// $D command: EDIT ITEM
+// 4D command: EDIT ITEM

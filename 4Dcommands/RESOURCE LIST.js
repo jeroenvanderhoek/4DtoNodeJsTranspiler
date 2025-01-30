@@ -1,1 +1,1 @@
-// $D command: RESOURCE LIST
+// 4D command: RESOURCE LIST

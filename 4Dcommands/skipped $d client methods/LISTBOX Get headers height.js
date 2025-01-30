@@ -1,1 +1,1 @@
-// $D command: LISTBOX Get headers height
+// 4D command: LISTBOX Get headers height

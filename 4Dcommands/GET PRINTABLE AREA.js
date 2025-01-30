@@ -1,1 +1,1 @@
-// $D command: GET PRINTABLE AREA
+// 4D command: GET PRINTABLE AREA

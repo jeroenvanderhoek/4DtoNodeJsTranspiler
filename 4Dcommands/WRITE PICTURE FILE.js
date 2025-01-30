@@ -1,1 +1,1 @@
-// $D command: WRITE PICTURE FILE
+// 4D command: WRITE PICTURE FILE

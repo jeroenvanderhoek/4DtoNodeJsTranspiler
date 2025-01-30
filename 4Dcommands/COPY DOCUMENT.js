@@ -1,1 +1,1 @@
-// $D command: COPY DOCUMENT
+// 4D command: COPY DOCUMENT

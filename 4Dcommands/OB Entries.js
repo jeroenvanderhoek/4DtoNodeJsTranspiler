@@ -1,1 +1,1 @@
-// $D command: OB Entries
+// 4D command: OB Entries

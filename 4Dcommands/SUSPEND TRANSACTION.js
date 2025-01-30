@@ -1,1 +1,1 @@
-// $D command: SUSPEND TRANSACTION
+// 4D command: SUSPEND TRANSACTION

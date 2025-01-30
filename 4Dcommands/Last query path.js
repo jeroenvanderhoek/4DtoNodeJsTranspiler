@@ -1,1 +1,1 @@
-// $D command: Last query path
+// 4D command: Last query path

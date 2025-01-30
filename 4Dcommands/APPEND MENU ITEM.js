@@ -1,1 +1,1 @@
-// $D command: APPEND MENU ITEM
+// 4D command: APPEND MENU ITEM

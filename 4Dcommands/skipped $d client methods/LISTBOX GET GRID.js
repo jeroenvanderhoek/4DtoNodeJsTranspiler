@@ -1,1 +1,1 @@
-// $D command: LISTBOX GET GRID
+// 4D command: LISTBOX GET GRID

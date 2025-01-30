@@ -1,1 +1,1 @@
-// $D command: New collection
+// 4D command: New collection

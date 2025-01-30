@@ -1,1 +1,1 @@
-// $D command: PRINT OPTION VALUES
+// 4D command: PRINT OPTION VALUES

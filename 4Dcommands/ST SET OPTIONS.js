@@ -1,1 +1,1 @@
-// $D command: ST SET OPTIONS
+// 4D command: ST SET OPTIONS

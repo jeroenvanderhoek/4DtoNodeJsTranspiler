@@ -1,1 +1,1 @@
-// $D command: DELETE MENU ITEM
+// 4D command: DELETE MENU ITEM

@@ -1,1 +1,1 @@
-// $D command: QR Get report kind
+// 4D command: QR Get report kind

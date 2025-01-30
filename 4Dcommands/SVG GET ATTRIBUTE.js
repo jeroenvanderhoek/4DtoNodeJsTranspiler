@@ -1,1 +1,1 @@
-// $D command: SVG GET ATTRIBUTE
+// 4D command: SVG GET ATTRIBUTE

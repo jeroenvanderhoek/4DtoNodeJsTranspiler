@@ -1,1 +1,1 @@
-// $D command: SET TIMEOUT
+// 4D command: SET TIMEOUT

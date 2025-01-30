@@ -1,1 +1,1 @@
-// $D command: CLEAR NAMED SELECTION
+// 4D command: CLEAR NAMED SELECTION

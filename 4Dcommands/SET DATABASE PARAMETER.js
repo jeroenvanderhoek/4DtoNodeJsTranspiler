@@ -1,1 +1,1 @@
-// $D command: SET DATABASE PARAMETER
+// 4D command: SET DATABASE PARAMETER

@@ -1,1 +1,1 @@
-// $D command: CLEAR PASTEBOARD
+// 4D command: CLEAR PASTEBOARD

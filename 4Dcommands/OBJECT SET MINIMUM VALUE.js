@@ -1,1 +1,1 @@
-// $D command: OBJECT SET MINIMUM VALUE
+// 4D command: OBJECT SET MINIMUM VALUE

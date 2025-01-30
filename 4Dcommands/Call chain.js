@@ -1,1 +1,1 @@
-// $D command: Call chain
+// 4D command: Call chain

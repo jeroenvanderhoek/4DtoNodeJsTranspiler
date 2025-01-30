@@ -1,1 +1,1 @@
-// $D command: INSERT MENU ITEM
+// 4D command: INSERT MENU ITEM

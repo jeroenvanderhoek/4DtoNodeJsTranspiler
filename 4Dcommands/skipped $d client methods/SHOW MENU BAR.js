@@ -1,1 +1,1 @@
-// $D command: SHOW MENU BAR
+// 4D command: SHOW MENU BAR

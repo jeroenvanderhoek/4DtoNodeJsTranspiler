@@ -1,1 +1,1 @@
-// $D command: HIDE MENU BAR
+// 4D command: HIDE MENU BAR

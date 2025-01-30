@@ -1,1 +1,1 @@
-// $D command: SET TABLE CACHE PRIORITY
+// 4D command: SET TABLE CACHE PRIORITY

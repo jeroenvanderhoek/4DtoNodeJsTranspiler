@@ -1,1 +1,1 @@
-// $D command: On Exit database method
+// 4D command: On Exit database method

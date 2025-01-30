@@ -1,1 +1,1 @@
-// $D command: On REST Authentication database method
+// 4D command: On REST Authentication database method

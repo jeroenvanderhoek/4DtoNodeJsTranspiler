@@ -1,1 +1,1 @@
-// $D command: HIGHLIGHT RECORDS
+// 4D command: HIGHLIGHT RECORDS

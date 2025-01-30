@@ -1,1 +1,1 @@
-// $D command: GET HIGHLIGHT
+// 4D command: GET HIGHLIGHT

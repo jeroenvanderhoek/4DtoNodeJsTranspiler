@@ -1,1 +1,1 @@
-// $D command: SMTP New transporter
+// 4D command: SMTP New transporter

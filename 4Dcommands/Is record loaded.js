@@ -1,1 +1,1 @@
-// $D command: Is record loaded
+// 4D command: Is record loaded

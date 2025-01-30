@@ -1,1 +1,1 @@
-// $D command: USE NAMED SELECTION
+// 4D command: USE NAMED SELECTION

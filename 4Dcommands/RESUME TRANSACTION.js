@@ -1,1 +1,1 @@
-// $D command: RESUME TRANSACTION
+// 4D command: RESUME TRANSACTION

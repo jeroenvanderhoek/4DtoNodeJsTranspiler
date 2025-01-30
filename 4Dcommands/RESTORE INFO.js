@@ -1,1 +1,1 @@
-// $D command: RESTORE INFO
+// 4D command: RESTORE INFO

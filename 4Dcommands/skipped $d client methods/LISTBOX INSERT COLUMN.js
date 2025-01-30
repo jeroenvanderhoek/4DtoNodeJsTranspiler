@@ -1,1 +1,1 @@
-// $D command: LISTBOX INSERT COLUMN
+// 4D command: LISTBOX INSERT COLUMN

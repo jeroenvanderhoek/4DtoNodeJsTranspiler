@@ -1,1 +1,1 @@
-// $D command: Get assert enabled
+// 4D command: Get assert enabled

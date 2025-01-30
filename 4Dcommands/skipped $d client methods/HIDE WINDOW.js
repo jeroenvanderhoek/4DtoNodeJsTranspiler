@@ -1,1 +1,1 @@
-// $D command: HIDE WINDOW
+// 4D command: HIDE WINDOW

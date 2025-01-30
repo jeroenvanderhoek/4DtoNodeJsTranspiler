@@ -1,1 +1,1 @@
-// $D command: New shared object
+// 4D command: New shared object

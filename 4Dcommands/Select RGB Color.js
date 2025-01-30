@@ -1,1 +1,1 @@
-// $D command: Select RGB Color
+// 4D command: Select RGB Color

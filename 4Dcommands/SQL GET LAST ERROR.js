@@ -1,1 +1,1 @@
-// $D command: SQL GET LAST ERROR
+// 4D command: SQL GET LAST ERROR

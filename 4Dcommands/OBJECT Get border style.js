@@ -1,1 +1,1 @@
-// $D command: OBJECT Get border style
+// 4D command: OBJECT Get border style

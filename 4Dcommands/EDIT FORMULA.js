@@ -1,1 +1,1 @@
-// $D command: EDIT FORMULA
+// 4D command: EDIT FORMULA

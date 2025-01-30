@@ -1,1 +1,1 @@
-// $D command: On Host Database Event database method
+// 4D command: On Host Database Event database method

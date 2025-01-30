@@ -1,1 +1,1 @@
-// $D command: Last table number
+// 4D command: Last table number

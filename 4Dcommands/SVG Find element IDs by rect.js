@@ -1,1 +1,1 @@
-// $D command: SVG Find element IDs by rect
+// 4D command: SVG Find element IDs by rect

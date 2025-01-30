@@ -1,1 +1,1 @@
-// $D command: OB Is shared
+// 4D command: OB Is shared

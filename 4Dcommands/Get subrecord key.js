@@ -1,1 +1,1 @@
-// $D command: Get subrecord key
+// 4D command: Get subrecord key

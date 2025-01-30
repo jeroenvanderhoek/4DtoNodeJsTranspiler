@@ -1,1 +1,1 @@
-// $D command: Generate UUID
+// 4D command: Generate UUID

@@ -1,1 +1,1 @@
-// $D command: SPELL CHECK TEXT
+// 4D command: SPELL CHECK TEXT

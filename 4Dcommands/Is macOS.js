@@ -1,1 +1,1 @@
-// $D command: Is macOS
+// 4D command: Is macOS

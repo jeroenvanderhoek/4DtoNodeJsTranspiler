@@ -1,1 +1,1 @@
-// $D command: Get document size
+// 4D command: Get document size

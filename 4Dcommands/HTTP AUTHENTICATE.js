@@ -1,1 +1,1 @@
-// $D command: HTTP AUTHENTICATE
+// 4D command: HTTP AUTHENTICATE

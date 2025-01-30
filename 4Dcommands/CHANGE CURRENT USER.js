@@ -1,1 +1,1 @@
-// $D command: CHANGE CURRENT USER
+// 4D command: CHANGE CURRENT USER

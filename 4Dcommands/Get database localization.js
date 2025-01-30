@@ -1,1 +1,1 @@
-// $D command: Get database localization
+// 4D command: Get database localization

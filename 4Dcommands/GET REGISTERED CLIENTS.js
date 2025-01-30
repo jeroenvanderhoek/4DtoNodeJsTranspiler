@@ -1,1 +1,1 @@
-// $D command: GET REGISTERED CLIENTS
+// 4D command: GET REGISTERED CLIENTS

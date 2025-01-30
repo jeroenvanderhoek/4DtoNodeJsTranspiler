@@ -1,1 +1,1 @@
-// $D command: Frontmost process
+// 4D command: Frontmost process

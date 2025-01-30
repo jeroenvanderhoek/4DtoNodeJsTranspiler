@@ -1,1 +1,1 @@
-// $D command: PHP GET OPTION
+// 4D command: PHP GET OPTION

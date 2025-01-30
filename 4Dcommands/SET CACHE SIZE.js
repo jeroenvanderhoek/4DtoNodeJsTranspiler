@@ -1,1 +1,1 @@
-// $D command: SET CACHE SIZE
+// 4D command: SET CACHE SIZE

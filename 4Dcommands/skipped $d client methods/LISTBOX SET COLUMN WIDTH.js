@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET COLUMN WIDTH
+// 4D command: LISTBOX SET COLUMN WIDTH

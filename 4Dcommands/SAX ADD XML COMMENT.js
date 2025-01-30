@@ -1,1 +1,1 @@
-// $D command: SAX ADD XML COMMENT
+// 4D command: SAX ADD XML COMMENT

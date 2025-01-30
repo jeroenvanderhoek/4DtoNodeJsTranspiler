@@ -1,1 +1,1 @@
-// $D command: OPEN PRINTING JOB
+// 4D command: OPEN PRINTING JOB

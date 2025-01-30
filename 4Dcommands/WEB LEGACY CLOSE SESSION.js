@@ -1,1 +1,1 @@
-// $D command: WEB LEGACY CLOSE SESSION
+// 4D command: WEB LEGACY CLOSE SESSION

@@ -1,1 +1,1 @@
-// $D command: GET DOCUMENT ICON
+// 4D command: GET DOCUMENT ICON

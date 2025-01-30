@@ -1,1 +1,1 @@
-// $D command: LISTBOX MOVED ROW NUMBER
+// 4D command: LISTBOX MOVED ROW NUMBER

@@ -1,1 +1,1 @@
-// $D command: On Web Legacy Close Session database method
+// 4D command: On Web Legacy Close Session database method

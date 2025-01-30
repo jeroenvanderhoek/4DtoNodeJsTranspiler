@@ -1,1 +1,1 @@
-// $D command: Macintosh option down
+// 4D command: Macintosh option down

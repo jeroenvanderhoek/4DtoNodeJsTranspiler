@@ -1,1 +1,1 @@
-// $D command: OBJECT SET FILTER
+// 4D command: OBJECT SET FILTER

@@ -1,1 +1,1 @@
-// $D command: CALL WORKER
+// 4D command: CALL WORKER

@@ -1,1 +1,1 @@
-// $D command: GET ALLOWED METHODS
+// 4D command: GET ALLOWED METHODS

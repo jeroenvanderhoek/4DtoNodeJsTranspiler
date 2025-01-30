@@ -1,1 +1,1 @@
-// $D command: Windows Alt down
+// 4D command: Windows Alt down

@@ -1,1 +1,1 @@
-// $D command: Clickcount
+// 4D command: Clickcount

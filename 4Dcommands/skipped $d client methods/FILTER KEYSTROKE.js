@@ -1,1 +1,1 @@
-// $D command: FILTER KEYSTROKE
+// 4D command: FILTER KEYSTROKE

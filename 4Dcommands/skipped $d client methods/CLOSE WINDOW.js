@@ -1,1 +1,1 @@
-// $D command: CLOSE WINDOW
+// 4D command: CLOSE WINDOW

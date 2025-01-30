@@ -1,1 +1,1 @@
-// $D command: LISTBOX SET GRID COLOR
+// 4D command: LISTBOX SET GRID COLOR

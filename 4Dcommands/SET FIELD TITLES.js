@@ -1,1 +1,1 @@
-// $D command: SET FIELD TITLES
+// 4D command: SET FIELD TITLES

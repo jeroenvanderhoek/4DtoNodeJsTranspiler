@@ -1,4 +1,4 @@
-// $D command: Request
+// 4D command: Request
 
 /*
 Request ( message {; defaultResponse {; OKButtonTitle {; CancelButtonTitle}}} ) : Text

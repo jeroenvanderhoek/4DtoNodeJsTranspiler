@@ -1,1 +1,1 @@
-// $D command: Focus object
+// 4D command: Focus object

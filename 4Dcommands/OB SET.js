@@ -1,1 +1,1 @@
-// $D command: OB SET
+// 4D command: OB SET

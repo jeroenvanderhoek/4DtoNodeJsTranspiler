@@ -1,1 +1,1 @@
-// $D command: Test semaphore
+// 4D command: Test semaphore

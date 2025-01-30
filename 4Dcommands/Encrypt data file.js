@@ -1,1 +1,1 @@
-// $D command: Encrypt data file
+// 4D command: Encrypt data file

@@ -1,1 +1,1 @@
-// $D command: SQL EXECUTE
+// 4D command: SQL EXECUTE

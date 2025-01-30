@@ -1,1 +1,1 @@
-// $D command: DOM GET XML ELEMENT NAME
+// 4D command: DOM GET XML ELEMENT NAME

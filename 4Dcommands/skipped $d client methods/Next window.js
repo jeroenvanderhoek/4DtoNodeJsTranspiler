@@ -1,1 +1,1 @@
-// $D command: Next window
+// 4D command: Next window

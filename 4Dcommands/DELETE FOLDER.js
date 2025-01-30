@@ -1,1 +1,1 @@
-// $D command: DELETE FOLDER
+// 4D command: DELETE FOLDER

@@ -1,1 +1,1 @@
-// $D command: SQL EXPORT SELECTION
+// 4D command: SQL EXPORT SELECTION

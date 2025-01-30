@@ -1,1 +1,1 @@
-// $D command: SHOW PROCESS
+// 4D command: SHOW PROCESS

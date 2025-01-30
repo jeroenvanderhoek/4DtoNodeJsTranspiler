@@ -1,1 +1,1 @@
-// $D command: Open datastore
+// 4D command: Open datastore

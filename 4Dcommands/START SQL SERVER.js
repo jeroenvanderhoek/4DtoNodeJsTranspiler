@@ -1,1 +1,1 @@
-// $D command: START SQL SERVER
+// 4D command: START SQL SERVER

@@ -1,1 +1,1 @@
-// $D command: WEB GET STATISTICS
+// 4D command: WEB GET STATISTICS
