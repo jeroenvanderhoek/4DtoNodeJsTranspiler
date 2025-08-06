@@ -46,7 +46,7 @@ export class SimpleTranspiler {
      * Transpile a 4D project
      */
     async transpileProject(inputDir, outputDir) {
-        console.log(`\n🚀 Simple 4D to Node.js Transpiler`);
+        console.log(`\n🚀 4D to Node.js Transpiler`);
         console.log(`=====================================\n`);
 
         // Clean output directory
@@ -122,26 +122,32 @@ export class SimpleTranspiler {
     transpileCode(source, filename) {
         let code = source;
         
-        // Transform method calls FIRST (before basic syntax changes method names)
+        // STEP 1: Replace OK with processState.OK (must be first)
+        code = code.replace(/\bOK\b/g, 'processState.OK');
+        
+        // STEP 2: Replace Begin SQL blocks (must be early to avoid interference)
+        code = this.replaceBeginSql(code);
+        
+        // STEP 3: Transform method calls (before basic syntax changes method names)
         const methodResult = this.transformMethodCalls(code, filename);
         const methodImports = methodResult.imports;
         code = methodResult.code;
         
-        // Basic transformations
+        // STEP 4: Basic transformations (excluding Begin SQL which was done above)
         code = this.transformBasicSyntax(code);
         
-        // Transform commands and get import statements
+        // STEP 5: Transform commands and get import statements
         const commandResult = this.transformCommands(code, filename);
         const commandImports = commandResult.imports;
         code = commandResult.code;
         
-        // Transform 4D command syntax to JavaScript function calls after command replacement
+        // STEP 6: Transform 4D command syntax to JavaScript function calls after command replacement
         code = this.transformCommandSyntax(code);
         
-        // Wrap in function
+        // STEP 7: Wrap in function
         code = this.wrapInFunction(code, filename);
         
-        // Add import statements at the top of the file
+        // STEP 8: Add import statements at the top of the file
         const allImports = [...methodImports, ...commandImports];
         if (allImports.length > 0) {
             // Use a Map to ensure unique imports by import name
@@ -188,6 +194,12 @@ export class SimpleTranspiler {
         code = code.replace(/\bFalse\b/g, 'false');
         code = code.replace(/\bNull\b/g, 'null');
         
+        // Transform 4D variable declarations like C_LONGINT:C283(x,y) to let x, y = 0;
+        code = code.replace(/C_\w+:C\d+\(([^)]+)\)/g, (match, variables) => {
+            const varList = variables.split(',').map(v => v.trim()).join(', ');
+            return `let ${varList} = 0;`;
+        });
+        
         // Transform arrays - handle both numeric and variable indices
         code = code.replace(/(\w+)\{([^}]+)\}/g, (match, arrayName, index) => {
             if (/^\d+$/.test(index)) {
@@ -229,8 +241,42 @@ export class SimpleTranspiler {
             return vars.join(';\n') + '\n\n';
         });
         
-        // Transform SQL blocks using the replaceBeginSql function
-        code = this.replaceBeginSql(code);
+        // Add missing semicolons to statements (but not to function calls or control structures)
+        code = code.replace(/^(\s*)([a-zA-Z_$][a-zA-Z0-9_$]*\s*=\s*[^;]+)(\s*)$/gm, (match, spaces, statement, trailing) => {
+            // Don't add semicolon if the statement already ends with one or is a control structure
+            if (statement.trim().endsWith(';') || statement.includes('if') || statement.includes('for') || statement.includes('while')) {
+                return match;
+            }
+            return `${spaces}${statement};${trailing}`;
+        });
+        
+        // Add semicolons to simple assignments that are missing them
+        code = code.replace(/^(\s*)([a-zA-Z_$][a-zA-Z0-9_$]*\s*=\s*[^;]+)(\s*)$/gm, (match, spaces, statement, trailing) => {
+            const trimmed = statement.trim();
+            if (!trimmed.endsWith(';') && !trimmed.includes('(') && !trimmed.includes('{')) {
+                return `${spaces}${trimmed};${trailing}`;
+            }
+            return match;
+        });
+        
+        // Add semicolons to assignment statements that are missing them (more specific)
+        code = code.replace(/^(\s*)([a-zA-Z_$][a-zA-Z0-9_$]*\s*=\s*[^;{}\n]+)(\s*)$/gm, (match, spaces, statement, trailing) => {
+            const trimmed = statement.trim();
+            // Only add semicolon if it's a simple assignment and doesn't already have one
+            if (!trimmed.endsWith(';') && !trimmed.includes('(') && !trimmed.includes('{') && !trimmed.includes('}')) {
+                return `${spaces}${trimmed};${trailing}`;
+            }
+            return match;
+        });
+        
+        // Add semicolons to function assignments that are missing them
+        code = code.replace(/^(\s*)([a-zA-Z_$][a-zA-Z0-9_$]*\s*=\s*[A-Z_]+\([^)]+\))(\s*)$/gm, (match, spaces, statement, trailing) => {
+            const trimmed = statement.trim();
+            if (!trimmed.endsWith(';')) {
+                return `${spaces}${trimmed};${trailing}`;
+            }
+            return match;
+        });
         
         return code;
     }
@@ -336,6 +382,16 @@ export class SimpleTranspiler {
             return `${sanitizedName}(processState, ${number})`;
         });
         
+        // Transform function calls that are missing processState parameter
+        // Like ARCTAN(x/y) to ARCTAN(processState, x/y)
+        code = code.replace(/\b(ARCTAN|STRING|LOG_EVENT)\(([^)]+)\)/g, (match, funcName, args) => {
+            // Check if processState is already the first argument
+            if (args.trim().startsWith('processState')) {
+                return match; // Already has processState
+            }
+            return `${funcName}(processState, ${args})`;
+        });
+        
         // Transform variable declarations
         code = code.replace(/let\(([^)]+)\)/g, (match, variables) => {
             const varList = variables.split(',').map(v => v.trim()).join(', ');
@@ -354,7 +410,7 @@ export class SimpleTranspiler {
             "True:C214": "true",
             "False:C215": "false",
             "Abs:C99": "Math.abs",
-            "Arctan:C20": "Math.atan",
+            "Arctan:C20": "ARCTAN",
             "Sin:C17": "Math.sin",
             "Tan:C19": "Math.tan",
             "Cos:C18": "Math.cos",
@@ -365,7 +421,8 @@ export class SimpleTranspiler {
             "Null:C1517": "null",
             "Into system standard outputs:K38:9": "6",
             "C_LONGINT:C283": "let",
-            "C_REAL:C285": "let"
+            "C_REAL:C285": "let",
+            "String:C10": "STRING"
         };
         
         for (const [from, to] of Object.entries(simpleReplacements)) {
