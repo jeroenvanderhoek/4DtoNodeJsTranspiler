@@ -45,7 +45,7 @@ reservedWordsInJs.forEach((word) => {
 
 // Copy template files to output dir (package.json, nodules_modules, etc.)
 console.log('Copying $Dcommands...');
-fse.copySync("$Dcommands", app.projectRoot + path.sep + "$Dcommands", { overwrite: true });
+fse.copySync("4Dcommands", app.projectRoot + path.sep + "$Dcommands", { overwrite: true });
 
 // // Transpile all 4dm files to JavaScript
 // Copy all input files to output dir except 4dm files (should copy directory structure)

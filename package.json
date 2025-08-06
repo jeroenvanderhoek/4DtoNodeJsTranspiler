@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
+    "improved": "node improved-index.js",
     "test": "cd output && npm start",
-    "starttest": "node index.js && cd output && npm start"
+    "starttest": "node index.js && cd output && npm start",
+    "improved-test": "node improved-index.js && cd output && npm start"
   },
   "author": "4D community",
   "license": "MIT",

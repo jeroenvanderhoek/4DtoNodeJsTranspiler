@@ -1,0 +1,57 @@
+{
+  "database": {
+    "type": "postgresql",
+    "connection": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "postgres",
+      "user": "postgres",
+      "password": "your-password"
+    },
+    "pool": {
+      "max": 20,
+      "idleTimeoutMillis": 30000,
+      "connectionTimeoutMillis": 2000
+    },
+    "environment": {
+      "hostVar": "DB_HOST_4D",
+      "portVar": "DB_PORT_4D",
+      "databaseVar": "DB_DATABASE_4D",
+      "userVar": "PG_USERNAME_4D",
+      "passwordVar": "DB_PASSWORD_4D"
+    }
+  },
+  "output": {
+    "target": "nodejs",
+    "format": "es6",
+    "sourceMaps": true,
+    "minify": false,
+    "generateTypes": false
+  },
+  "commands": {
+    "strict": false,
+    "generateStubs": true,
+    "autoImplement": false,
+    "skipClientOnly": true
+  },
+  "transpilation": {
+    "preserveComments": true,
+    "contextAware": true,
+    "errorRecovery": true,
+    "parallelProcessing": true,
+    "maxWorkers": 4
+  },
+  "web": {
+    "framework": "express",
+    "port": 80,
+    "staticPath": "WebFolder",
+    "cors": true,
+    "compression": false
+  },
+  "logging": {
+    "level": "info",
+    "file": null,
+    "console": true,
+    "detailed": true
+  }
+} 
