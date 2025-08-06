@@ -7,7 +7,7 @@ be replaced with webapps which is very complex and different).
 
 The basic included 4D project is succesfully transpiled to NodeJS. It contains basic math 
 and "hello world"-functionality, ALERT, project methods, database interaction and WEB START SERVER. 
-For other functionality work needs to be done on $Dcommands.
+For other functionality work needs to be done on 4Dcommands.
 
 Basic operation:
 - get 4D project from /input/-folder
@@ -26,7 +26,7 @@ Basic operation:
         - replace Arrays ar{i} -> ar[i-1]
         - replace some basic things with using simpleReplacements.js (True -> true, False -> false)
         - convert variable declarations to JS
-        - import more complex $Dcommands from their javascript-modules in /$Dcommands/
+        - import more complex 4Dcommands from their javascript-modules in /4Dcommands/
         - import Project Methods when used
         - pass processState to all methods and commands 
     - wrap all methods in "export default function (processState,$1,$2,...){}", so they can be imported in other methods

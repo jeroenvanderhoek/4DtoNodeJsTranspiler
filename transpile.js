@@ -1,12 +1,12 @@
 import simpleReplacements from './simple4dCommandReplacements.js';
-import $Dcommands from './$Dcommands.js';
+import 4Dcommands from './4Dcommands.js';
 import declarations from './declarations.js';
 import constants from './constants.js';
 import { globSync } from 'glob';
 import path from 'path';
 
 /**
- * Transpile a 4dm file to JavaScript and keep track of used $Dcommands.js, 
+ * Transpile a 4dm file to JavaScript and keep track of used 4Dcommands.js, 
  * so they can be imported later on using importStatements.
  * @param {object} app - app object
  * @param {string} code - content of the 4dm file
@@ -203,7 +203,7 @@ export function transpile (app, code, filename) {
     // Replace 4D commands with JS functions
     // Example "ALERT:C41(msg)" -> "alert(msg)"
     console.log("Replace 4D commands...");
-    $Dcommands.forEach((sourceCmdWithNumber)=>{
+    4Dcommands.forEach((sourceCmdWithNumber)=>{
 
         // Get commandname name from sourceCmdWithNumber
         let cmdName = sourceCmdWithNumber.split(':')[0];
@@ -241,7 +241,7 @@ export function transpile (app, code, filename) {
 
             // Get the JS translation of the 4D command
             // Replace spaces in command names with underscores for javascript
-            let importStatement = 'import ' + (cmdName).replace(/ /g,"_") + ' from \"../../$Dcommands/' + cmdName + '.js\";';
+            let importStatement = 'import ' + (cmdName).replace(/ /g,"_") + ' from \"../../4Dcommands/' + cmdName + '.js\";';
 
             if ( !importStatements.includes(importStatement) ) {
                 importStatements.push(importStatement);

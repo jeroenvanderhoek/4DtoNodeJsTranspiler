@@ -20,7 +20,7 @@ Now let me check the output structure and examine the project template:
 Ran tool
 Read file: output_template/package.json
 Read file: transpile.js
-Read file: $Dcommands.js
+Read file: 4Dcommands.js
 Let me run the transpiler to see the output and check if there are any existing transpiled files:
 Ran tool
 ```bash
@@ -30,9 +30,9 @@ Let me try running the command differently and then examine the generated output
 ```bash
 node index.js
 ```
-I see there's an error with the $Dcommands directory. Let me check if it exists with the correct name:
+I see there's an error with the 4Dcommands directory. Let me check if it exists with the correct name:
 Ran tool
-I see the issue! The directory is named `4Dcommands` but the code is trying to access `$Dcommands`. Let me fix this:
+I see the issue! The directory is named `4Dcommands` but the code is trying to access `4Dcommands`. Let me fix this:
 Ran tool
 Now let's run the transpiler again:
 ```bash
@@ -105,7 +105,7 @@ graph TD
   3. Command mappings (4D commands → Node.js implementations)
   4. Import resolution and method linking
 
-#### **2. 4D Command Implementations (`4Dcommands/` → `$Dcommands/`)**
+#### **2. 4D Command Implementations (`4Dcommands/` → `4Dcommands/`)**
 - **917 command files**: Each 4D command has a JavaScript equivalent
 - **Examples analyzed**:
   - `ALERT.js`: Uses `readline-sync` for user interaction
@@ -126,7 +126,7 @@ output/
 │   │   ├── DatabaseMethods/
 │   │   │   └── onServerStartup.js    # Main entry point
 │   │   └── Methods/                  # Project methods
-│   └── $Dcommands/                   # 4D command implementations
+│   └── 4Dcommands/                   # 4D command implementations
 ├── WebFolder/                        # Static web assets
 └── package.json                      # Node.js dependencies
 ```
