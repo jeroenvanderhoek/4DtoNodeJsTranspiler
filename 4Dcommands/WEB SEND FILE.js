@@ -1,46 +1,119 @@
 // 4D command: WEB SEND FILE
+// Sends an HTML page or web file to the browser from a specified path
+// Based on 4D v20 documentation: Sends files to web clients with proper MIME type detection
+// WEB SEND FILE ( htmlFile )
+// Parameter		Type		Description
+// htmlFile		Text		Path to the HTML file or web document to send
 
 import fs from 'fs';
+import path from 'path';
+import mime from 'mime-types';
 
-/**
- * Description   
-    The WEB SEND FILE command sends, to the Web browser, the HTML page or the Web file stored in the document whose pathname you pass in htmlFile.
-
-    By default, 4D looks for the HTML document within the root folder, defined in the Database Settings.
-
-    This command accepts as a parameter either pathnames in Posix syntax (names of directories or folders are separated with a slash "/") or in the system syntax.
-    Specifying an invalid pathname generates an error related to file management for your operating system. You can intercept this error using a method installed by the ON ERR CALL command. If the method displays a warning or message dialog box, it will appear on the browser machine.
-
-    Once WEB SEND FILE is executed, the OK system variable is updated: if the file to be sent exists and if the timeout has not run out, OK is equal to 1. Otherwise, it is equal to 0.
-
-    Note: If you call WEB SEND FILE from within a process that is not a Web process, the command does nothing and returns no error; the call is simply ignored.
-
-    The references to 4D variables and 4DSCRIPT type tags found on the page are parsed when the document type allows for it (document based on text).
-
-    Example  
-    The HTML root folder of the database is the WebDocs folder. It contains the following elements:
-
-    ..\WebDocs\HTM\MyPage.HTM
-    Sending the Web page "MyPage.HTM" must be carried out in the following manner :
-
-    WEB SEND FILE("HTM/MyPage.HTM")
-    System variables and sets  
-    If the file to be sent exists and if the timeout has not run out, OK is set to 1. Otherwise, it is equal to 0.
- * 
- * 
- * @param {object} processState 
- * @param {string} $1 HTML Pathname to HTML file or empty string for terminating SEND HTML FILE	
- */
-export default function WEB_SEND_FILE (processState,$1) {
-
-    if ( fs.existsSync($1) ) {
-        processState.OK = 1;
-
-        let file = fs.readFileSync($1);
-        processState.res.sendFile(file);
-
-    } else {
+export default function WEB_SEND_FILE(processState, htmlFile) {
+    // Validate input parameters
+    if (!processState.res) {
+        console.warn('WEB SEND FILE: No HTTP response context available');
         processState.OK = 0;
+        return;
     }
-
+    
+    if (!htmlFile || typeof htmlFile !== 'string') {
+        console.warn('WEB SEND FILE: Invalid file path provided');
+        processState.OK = 0;
+        return;
+    }
+    
+    try {
+        // Resolve the file path
+        let filePath;
+        
+        // Check if it's an absolute path
+        if (path.isAbsolute(htmlFile)) {
+            filePath = htmlFile;
+        } else {
+            // Relative path - look in web folder or current directory
+            const webFolder = processState.webFolder || process.cwd();
+            filePath = path.join(webFolder, htmlFile);
+        }
+        
+        // Resolve and normalize the path
+        filePath = path.resolve(filePath);
+        
+        // Check if file exists and is accessible
+        if (!fs.existsSync(filePath)) {
+            console.warn(`WEB SEND FILE: File not found: ${filePath}`);
+            processState.OK = 0;
+            
+            // Send 404 error
+            if (processState.res && !processState.res.headersSent) {
+                processState.res.status(404).send('File Not Found');
+            }
+            return;
+        }
+        
+        // Get file stats
+        const stats = fs.statSync(filePath);
+        
+        if (!stats.isFile()) {
+            console.warn(`WEB SEND FILE: Path is not a file: ${filePath}`);
+            processState.OK = 0;
+            
+            if (processState.res && !processState.res.headersSent) {
+                processState.res.status(400).send('Bad Request');
+            }
+            return;
+        }
+        
+        // Determine MIME type
+        const mimeType = mime.lookup(filePath) || 'application/octet-stream';
+        
+        // Set response headers
+        processState.res.setHeader('Content-Type', mimeType);
+        processState.res.setHeader('Content-Length', stats.size);
+        processState.res.setHeader('Last-Modified', stats.mtime.toUTCString());
+        
+        // Add caching headers for static files
+        const ext = path.extname(filePath).toLowerCase();
+        if (['.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.ico', '.woff', '.woff2'].includes(ext)) {
+            processState.res.setHeader('Cache-Control', 'public, max-age=3600');
+        } else {
+            processState.res.setHeader('Cache-Control', 'no-cache');
+        }
+        
+        // Send the file using Express.js sendFile method
+        processState.res.sendFile(filePath, (error) => {
+            if (error) {
+                console.error('WEB SEND FILE error:', error.message);
+                processState.OK = 0;
+                
+                // Send error response if headers haven't been sent
+                if (processState.res && !processState.res.headersSent) {
+                    processState.res.status(500).send('Internal Server Error');
+                }
+            } else {
+                processState.OK = 1;
+                
+                // Log successful file send
+                if (processState.logEvents) {
+                    processState.logEvents.push({
+                        timestamp: new Date().toISOString(),
+                        type: 1, // Info level
+                        typeName: 'INFO',
+                        message: `WEB SEND FILE: Sent file '${htmlFile}' (${stats.size} bytes, ${mimeType})`
+                    });
+                }
+                
+                console.log(`WEB SEND FILE: Sent file '${htmlFile}' (${stats.size} bytes, ${mimeType})`);
+            }
+        });
+        
+    } catch (error) {
+        console.error('WEB SEND FILE error:', error.message);
+        processState.OK = 0;
+        
+        // Send error response if headers haven't been sent
+        if (processState.res && !processState.res.headersSent) {
+            processState.res.status(500).send('Internal Server Error');
+        }
+    }
 }

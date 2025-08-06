@@ -1,2 +1,8 @@
 // 4D command: Undefined
-modules.exports = function ( $1 ) { return $1 == undefined }
+// Returns the undefined value
+// Undefined -> Function result
+// Function result		Undefined		Undefined value
+
+export default function Undefined(processState) {
+    return undefined;
+}

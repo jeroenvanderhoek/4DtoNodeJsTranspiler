@@ -1,45 +1,72 @@
 // 4D command: Request
+// Makes an HTTP request
+// Request ( url {; method {; headers {; body}}} ) -> Function result
+// Parameter		Type		Description
+// url		String		URL to request
+// method		String		HTTP method (GET, POST, etc.)
+// headers		Object		HTTP headers
+// body		String		Request body
+// Function result		Object		Response object
 
-/*
-Request ( message {; defaultResponse {; OKButtonTitle {; CancelButtonTitle}}} ) : Text
+import https from 'https';
+import http from 'http';
+import { URL } from 'url';
 
-Parameter	        Type		Description
-message	            Text	→	Message to display in the request dialog box
-defaultResponse	    Text	→	Default data for the enterable text area
-OKButtonTitle	    Text	→	OK button title
-CancelButtonTitle	Text	→	Cancel button title
-Function result	Text	    ←	Value entered by user
-*/
-
-import readlineSync from 'readline-sync';
-
-/**
- * @param {object} processState
- * @param {Text} $1   Message to display in the request dialog box
- * @param {Text} [$2] Default data for the enterable text area
- * @param {Text} [$3] OK button title
- * @param {Text} [$4] Cancel button title // FIXME
- * @returns {Text} Value entered by user
- */
-export default function (processState,$1,$2,$3,$4,$5) {
-
-    let answer = readlineSync.question(`${ $1 } ${ $3 !== undefined ? $3 + "?" : ""} ${ $2 !== undefined ? "[" + $2 + "]" : ""}`);
-
-    // Return default value
-    if (answer === "") {
-        answer = $2;
-    }
-
-    // Prompt user with the question
-    if (readlineSync.keyInYN(`${ answer } was entered. ${ $3 !== undefined ? "[y]" + $3 + "?" : "[y] Continue? "} ${ $4 !== undefined ? "n" + $4 + "?" : "" }`)) {
-        // User answered "yes", continue the process
-        return;
-    } else {
-        // Exit the process
-        process.exit(0);
-    }
-
-    return answer;
-    
-
-};
+export default function Request(processState, url, method = 'GET', headers = {}, body = null) {
+    return new Promise((resolve, reject) => {
+        if (!url || typeof url !== 'string') {
+            reject(new Error('Request: Invalid URL provided'));
+            return;
+        }
+        
+        try {
+            const urlObj = new URL(url);
+            const isHttps = urlObj.protocol === 'https:';
+            const client = isHttps ? https : http;
+            
+            const options = {
+                hostname: urlObj.hostname,
+                port: urlObj.port || (isHttps ? 443 : 80),
+                path: urlObj.pathname + urlObj.search,
+                method: method.toUpperCase(),
+                headers: {
+                    'User-Agent': '4D-NodeJS-Transpiler/1.0',
+                    ...headers
+                }
+            };
+            
+            if (body) {
+                options.headers['Content-Length'] = Buffer.byteLength(body);
+            }
+            
+            const req = client.request(options, (res) => {
+                let data = '';
+                
+                res.on('data', (chunk) => {
+                    data += chunk;
+                });
+                
+                res.on('end', () => {
+                    resolve({
+                        statusCode: res.statusCode,
+                        headers: res.headers,
+                        body: data
+                    });
+                });
+            });
+            
+            req.on('error', (error) => {
+                reject(error);
+            });
+            
+            if (body) {
+                req.write(body);
+            }
+            
+            req.end();
+            
+        } catch (error) {
+            reject(error);
+        }
+    });
+}

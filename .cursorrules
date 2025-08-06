@@ -1,0 +1,82 @@
+# Cursor Rules for 4D to Node.js Transpilation Project
+
+## Overview
+This .cursorrules file provides guidelines and rules for improving the 4D to Node.js transpilation process. The goal is to systematically implement, test, and refine JavaScript equivalents of 4D commands, ensuring they are robust, follow official 4D documentation (version 20, English), and integrate well with Node.js. Focus on backend server functionality, using popular npm modules where applicable. Always prioritize alphabetical order for command implementation unless specified otherwise.
+
+## General Guidelines
+- **Independence**: Bias against asking the user for clarification; use tools to gather information and solve problems independently.
+- **Tool Usage**: Prefer parallel tool calls for efficiency. Use `codebase_search` for semantic understanding, `grep` for exact matches, `read_file` for specific file contents, and `run_terminal_cmd` for testing (use `cmd /c` for commands).
+- **Documentation Reference**: For every 4D command, reference the official 4D v20 documentation at https://developer.4d.com/docs/20/Concepts/commands. Rewrite descriptions in your own words in comments, but ensure implementations match the documented behavior, parameters, and return values.
+- **Memory Management**: Update or delete memories if contradicted. Cite memories when used (e.g., [[memory:ID]]).
+- **User Interaction**: Do not ask for reviews or confirmations unless absolutely necessary. Continue systematically without waiting.
+
+## Transpilation Rules
+- **Command Implementation**:
+  - Implement commands in `/4Dcommands/` as JavaScript functions that take `processState` as the first parameter.
+  - Use robust error handling with try-catch, logging to `processState.logs`.
+  - Incorporate popular Node.js modules (e.g., `axios` for HTTP, `uuid` for UUIDs, `pg` for database interactions).
+  - Handle 4D-specific behaviors like `OK` variable, current selection, and record locking.
+  - For commands involving UI, simulate behavior in Node.js (e.g., console prompts or automatic acceptance for testing).
+- **Transpiler Adjustments**:
+  - Modify `src/simple-transpiler.js` only when necessary to handle new syntax or edge cases.
+  - Ensure multi-word commands (e.g., "ADD TO SET") are handled without splitting.
+  - Generate correct imports and function calls, preserving 4D semantics.
+- **File Handling**:
+  - Transpile `.4dm` files from `input/Project/Sources/` to `.js` in `output/Project/Sources/`.
+  - Copy templates and 4Dcommands to output.
+  - Run `npm start` in root to transpile, then `cd output && npm start` to test.
+
+## Testing Procedures
+- **Integration Testing**:
+  - Add tests to `input/Project/Sources/DatabaseMethods/onServerStartup.4dm` for each command.
+  - Call the command in various ways (e.g., with/without parameters, edge cases).
+  - Transpile and run the output to verify results match 4D expectations.
+- **Unit Testing**:
+  - Add Mocha/Chai tests to `tests/4Dcommands.test.js` for comprehensive coverage (normal cases, errors, edge cases).
+  - Aim for 90%+ test success rate.
+- **Marking Complete**:
+  - After successful testing, add `// This 4D command is fixed and tested.` to the top of the command's JS file.
+- **Debugging**:
+  - If errors occur (e.g., ReferenceError), inspect transpiled files, fix transpiler logic, and re-test.
+  - Use `list_dir` and `read_file` to verify file presence and contents.
+
+## Command-Specific Standards
+- **Backend Focus**: Prioritize commands in root `/4Dcommands/` (e.g., database, web server, system info). Skip client-only (UI-heavy) commands unless relevant.
+- **State Management**: Use `processState` for global state (e.g., `OK`, `logs`, `database` for tables/records).
+- **Edge Cases**: Test with invalid inputs, negative values, large datasets. Ensure thread-safety where applicable (though most are not thread-safe per docs).
+- **Documentation Integration**: For each command, include rewritten description, parameters, and return values in comments. Reference official docs for accuracy.
+
+## Error Handling and Logging
+- All commands should log to `processState.logs` with timestamp, level (INFO/ERROR), source, message, and data.
+- Set `processState.OK` appropriately (1 for success, 0 for failure/cancel).
+- Handle cancellations (e.g., for ADD RECORD) by not saving changes.
+
+## Project Expansion
+- Expand `input` project with working 4D examples from docs, projects, or training materials to test more commands.
+- Ensure transpiler handles new methods/files correctly.
+
+## Performance and Optimization
+- Limit memory usage (e.g., keep only recent logs/snapshots).
+- Use efficient Node.js patterns (e.g., async/await for I/O).
+
+## Workflow Steps
+- 1. TESTING
+  - Test transpilation by running `npm start` in project root via `cmd.exe`.
+  - Test transpiled output by running `npm start` in `output` folder via `cmd.exe`.
+  - Automatically detect prompt end using pattern `^C:\\Users\\jvdho\\dev\\4DtoNodeJsTranspiler> ` to avoid manual Return.
+
+- 2. ADD WORKING 4D COMMANDS TO INPUT PROJECT
+  - Focus on files in root of `/4Dcommands/` folder only.
+  - For each command starting alphabetically at 'A':
+    1. Add a test invocation in `onServerStartup.4dm`.
+    2. Transpile and run; if dependencies missing, skip command by adding `// Skipped` at top of its JS file.
+    3. If working, mark command file with `// This 4D command is fixed and tested.` and commit tests.
+
+- 3. IMPROVE TRANSPILER
+  - Generate JS variants for all 4D commands once, alphabetically.
+  - Ensure multi-word commands and skip markers are handled.
+  - No waiting for user input: detect prompt termination programmatically.
+
+(Added per user instructions to streamline workflow and skip commands as needed.)
+
+Follow these rules to ensure consistent, high-quality transpilation. Update this file if new patterns emerge.

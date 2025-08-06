@@ -7,10 +7,12 @@ import fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
 import fse from 'fs-extra';
+import reservedWordsInJs from '../reservedWordsInJs.js';
 
 export class SimpleTranspiler {
     constructor() {
         this.commands = new Map();
+        this.reservedWords = new Set(reservedWordsInJs);
         this.loadCommands();
     }
 
@@ -33,6 +35,14 @@ export class SimpleTranspiler {
                     // Also add the sanitized version for matching
                     const sanitizedName = this.sanitizeFunctionName(commandName);
                     this.commands.set(sanitizedName, {
+                        path: path.join(commandsDir, file),
+                        name: commandName
+                    });
+                    
+                    // Also add the original command name with spaces for reverse lookup
+                    // This helps when the 4D code uses "ARRAY TO COLLECTION" but the file is "ARRAY_TO_COLLECTION.js"
+                    const originalCommandName = commandName.replace(/_/g, ' ');
+                    this.commands.set(originalCommandName, {
                         path: path.join(commandsDir, file),
                         name: commandName
                     });
@@ -117,6 +127,48 @@ export class SimpleTranspiler {
     }
 
     /**
+     * Handle JavaScript reserved words by prefixing them with underscore
+     */
+    handleReservedWords(code) {
+        // Create a mapping of reserved words to their safe versions
+        const reservedWordMap = new Map();
+        
+        // Find all variable names, function names, and method names that are reserved words
+        const patterns = [
+            // Variable declarations: let x, y = 0; or var x, y;
+            /(?:let|var|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g,
+            // Assignment: variableName = ...
+            /([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=/g,
+            // Array access: arrayName[index]
+            /([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\[/g
+        ];
+        
+        patterns.forEach(pattern => {
+            code = code.replace(pattern, (match, word) => {
+                if (this.reservedWords.has(word)) {
+                    const safeWord = `_${word}`;
+                    reservedWordMap.set(word, safeWord);
+                    return match.replace(word, safeWord);
+                }
+                return match;
+            });
+        });
+        
+        // Also handle any remaining reserved words in the code, but be more selective
+        this.reservedWords.forEach(word => {
+            // Only replace if it's not part of a function call (which will be imported)
+            const regex = new RegExp(`\\b${word}\\b(?!\\s*\\()`, 'g');
+            if (regex.test(code)) {
+                const safeWord = `_${word}`;
+                reservedWordMap.set(word, safeWord);
+                code = code.replace(regex, safeWord);
+            }
+        });
+        
+        return code;
+    }
+
+    /**
      * Transpile 4D code to JavaScript
      */
     transpileCode(source, filename) {
@@ -133,37 +185,85 @@ export class SimpleTranspiler {
         const methodImports = methodResult.imports;
         code = methodResult.code;
         
+        // Debug: Check right after method transformation
+        if (code.includes('TEST_DATABASE_OPERATIONS')) {
+            const afterMethod = code.split('\n').find(line => line.includes('TEST_DATABASE_OPERATIONS'));
+            console.log(`After method transformation: "${afterMethod}"`);
+        }
+        
         // STEP 4: Basic transformations (excluding Begin SQL which was done above)
         code = this.transformBasicSyntax(code);
         
-        // STEP 5: Transform commands and get import statements
+        // Debug: Check for TEST_DATABASE_OPERATIONS
+        if (code.includes('TEST_DATABASE_OPERATIONS')) {
+            const lines = code.split('\n');
+            lines.forEach((line, i) => {
+                if (line.includes('TEST_DATABASE_OPERATIONS')) {
+                    console.log(`Line ${i}: "${line}"`);
+                }
+            });
+        }
+        
+        // STEP 5: Transform 4D command syntax to JavaScript function calls
+        const syntaxResult = this.transformCommandSyntax(code);
+        code = syntaxResult.code;
+        const usedCommands = syntaxResult.usedCommands;
+        
+        // STEP 6: Transform commands and get import statements after syntax transformation
         const commandResult = this.transformCommands(code, filename);
-        const commandImports = commandResult.imports;
+
         code = commandResult.code;
         
-        // STEP 6: Transform 4D command syntax to JavaScript function calls after command replacement
-        code = this.transformCommandSyntax(code);
+        // Generate command imports from usedCommands
+        const commandImports = [];
+        for (const sanitizedName of usedCommands) {
+            const actualFileName = this.findActualCommandFileName(sanitizedName);
+            const importPath = this.getImportPath(filename, actualFileName);
+            commandImports.push(`import ${sanitizedName} from "${importPath}";`);
+        }
         
-        // STEP 7: Wrap in function
+        // STEP 7: Restore SQL blocks (convert markers back to Begin_SQL calls)
+        code = code.replace(/__BEGIN_SQL_BLOCK__`(.*?)`__END_SQL_BLOCK__/gs, (match, sqlContent) => {
+            usedCommands.add('Begin_SQL');
+            return `Begin_SQL(processState, \`${sqlContent}\`)`;
+        });
+        
+        // Add Begin_SQL import if it was used
+        if (code.includes('Begin_SQL(')) {
+            const actualFileName = this.findActualCommandFileName('Begin_SQL');
+            const importPath = this.getImportPath(filename, actualFileName);
+            commandImports.push(`import Begin_SQL from "${importPath}";`);
+        }
+        
+        // STEP 8: Handle JavaScript reserved words (after all transformations)
+        code = this.handleReservedWords(code);
+        
+        // Add semicolons to method/function calls that don't have them
+        // This needs to run BEFORE wrapping in function to fix syntax
+        code = code.split('\n').map(line => {
+            // Check if line is a method/function call without semicolon
+            if (/^\s*[A-Z_]+\(processState[^)]*\)\s*$/.test(line)) {
+                console.log(`Adding semicolon to line: "${line.trim()}"`);
+                return line.trim() + ';';
+            }
+            return line;
+        }).join('\n');
+        
+        // STEP 9: Wrap in function
         code = this.wrapInFunction(code, filename);
         
-        // STEP 8: Add import statements at the top of the file
+        // STEP 10: Add import statements at the top of the file
         const allImports = [...methodImports, ...commandImports];
         if (allImports.length > 0) {
             // Use a Map to ensure unique imports by import name
-            const uniqueImportsMap = new Map();
-            for (const importStatement of allImports) {
-                const match = importStatement.match(/import (\w+) from "([^"]+)"/);
-                if (match) {
-                    const [, importName, importPath] = match;
-                    // Only add if the import name is actually used in the code
-                    if (code.includes(importName)) {
-                        uniqueImportsMap.set(importName, importStatement);
-                    }
+            const uniqueImports = new Map();
+            allImports.forEach(imp => {
+                const importName = imp.match(/import\s+(\w+)/)[1];
+                if (!uniqueImports.has(importName)) {
+                    uniqueImports.set(importName, imp);
                 }
-            }
-            const uniqueImports = Array.from(uniqueImportsMap.values());
-            code = uniqueImports.join('\n') + '\n\n' + code;
+            });
+            code = `${Array.from(uniqueImports.values()).join('\n')}\n\n${code}`;
         }
         
         return code;
@@ -177,8 +277,9 @@ export class SimpleTranspiler {
         return code.replace(/Begin\s+SQL\s*\n(.*?)\nEnd\s+SQL/gs, (match, sqlContent) => {
             // Clean up the SQL content (remove leading/trailing whitespace and normalize)
             const cleanSql = sqlContent.trim().replace(/\n\s*/g, '\n');
-            // Return the Begin SQL command call with the SQL content as a template literal
-            return `Begin_SQL(processState, \`${cleanSql}\`)`;
+            // Mark the SQL content to prevent further transformation
+            // Use a unique marker that won't be transformed
+            return `__BEGIN_SQL_BLOCK__\`${cleanSql}\`__END_SQL_BLOCK__`;
         });
     }
 
@@ -186,18 +287,51 @@ export class SimpleTranspiler {
      * Transform basic 4D syntax to JavaScript
      */
     transformBasicSyntax(code) {
-        // Replace 4D operators
-        code = code.replace(/\bOK\b/g, 'processState.OK');
+        // Debug: Check at start
+        if (code.includes('TEST_DATABASE_OPERATIONS')) {
+            const lines = code.split('\n');
+            const lineNum = lines.findIndex(line => line.includes('TEST_DATABASE_OPERATIONS'));
+            if (lineNum >= 0) {
+                console.log(`Start of transformBasicSyntax line ${lineNum}: "${lines[lineNum]}"`);
+                if (lineNum + 1 < lines.length) {
+                    console.log(`Next line: "${lines[lineNum + 1]}"`);
+                }
+            }
+        }
+        
+        // Replace 4D operators (excluding OK which is handled in transpileCode)
         code = code.replace(/(?<!:)=(?!:)/g, '==');
         code = code.replace(/:=/g, '=');
         code = code.replace(/\bTrue\b/g, 'true');
         code = code.replace(/\bFalse\b/g, 'false');
         code = code.replace(/\bNull\b/g, 'null');
         
+        // Transform 4D variable assignments ($var:=value to let $var = value)
+        // But NOT for numbered parameters like $1, $2, etc.
+        code = code.replace(/^(\s*)(\$[a-zA-Z]\w*)=(.+)$/gm, (match, indent, varName, value) => {
+            // Check if this variable was already declared
+            const varNameClean = varName.replace('$', '_');
+            return `${indent}let ${varNameClean} = ${value}`;
+        });
+        
+        // Replace $variable references with _variable (but keep $1, $2, etc as is)
+        code = code.replace(/\$([a-zA-Z]\w*)/g, '_$1');
+        
         // Transform 4D variable declarations like C_LONGINT:C283(x,y) to let x, y = 0;
         code = code.replace(/C_\w+:C\d+\(([^)]+)\)/g, (match, variables) => {
             const varList = variables.split(',').map(v => v.trim()).join(', ');
             return `let ${varList} = 0;`;
+        });
+        
+        // Transform 4D ARRAY declarations like ARRAY TEXT:C222($asValues; 50) to let $asValues = new Array(50); // TEXT
+        code = code.replace(/ARRAY\s+(\w+):C\d+\(([^)]+)\)/g, (match, arrayType, args) => {
+            const parts = args.split(';').map(arg => arg.trim());
+            if (parts.length === 2) {
+                const varName = parts[0];
+                const size = parts[1];
+                return `let ${varName} = new Array(${size}); // ${arrayType}`;
+            }
+            return match; // Fallback if format doesn't match
         });
         
         // Transform arrays - handle both numeric and variable indices
@@ -212,8 +346,9 @@ export class SimpleTranspiler {
             }
         });
         
-        // Transform control flow
-        code = code.replace(/If\s*\((.*?)\)\s*\n(.*?)\nEnd\s+if/gs, (match, condition, body) => {
+        // Transform control flow - handle If/End if blocks
+        // This regex needs to be more careful to match properly paired If/End if
+        code = code.replace(/\bIf\s*\((.*?)\)\s*{?\s*\n(.*?)\nEnd\s+if\b/gs, (match, condition, body) => {
             return `if (${condition}) {\n${body}\n}`;
         });
         
@@ -224,8 +359,34 @@ export class SimpleTranspiler {
         
         // Transform remaining If statements
         code = code.replace(/\bIf\b/g, 'if');
+        
+        // Debug: Check before End if replacement
+        if (code.includes('TEST_DATABASE_OPERATIONS')) {
+            const beforeEndIf = code.split('\n').find(line => line.includes('TEST_DATABASE_OPERATIONS'));
+            console.log(`Before End if replacement: "${beforeEndIf}"`);
+        }
+        
         code = code.replace(/\bEnd\s+if\b/g, '}');
+        
+        // Debug: Check after End if replacement
+        if (code.includes('TEST_DATABASE_OPERATIONS')) {
+            const afterEndIf = code.split('\n').find(line => line.includes('TEST_DATABASE_OPERATIONS'));
+            console.log(`After End if replacement: "${afterEndIf}"`);
+        }
+        
+        // Debug: Check before Else replacement
+        if (code.includes('TEST_DATABASE_OPERATIONS')) {
+            const beforeElse = code.split('\n').find(line => line.includes('TEST_DATABASE_OPERATIONS'));
+            console.log(`Before Else replacement: "${beforeElse}"`);
+        }
+        
         code = code.replace(/\bElse\b/g, '} else {');
+        
+        // Debug: Check after Else replacement
+        if (code.includes('TEST_DATABASE_OPERATIONS')) {
+            const afterElse = code.split('\n').find(line => line.includes('TEST_DATABASE_OPERATIONS'));
+            console.log(`After Else replacement: "${afterElse}"`);
+        }
         
         // Transform 4D variable declarations
         code = code.replace(/#DECLARE\s*\(([^)]+)\)/g, (match, declarations) => {
@@ -285,48 +446,56 @@ export class SimpleTranspiler {
      * Transform 4D commands to JavaScript imports and calls
      */
     transformCommands(code, filename) {
-        const importStatements = [];
+        const importStatements = new Set();
+        
+        // Temporarily remove SQL blocks to prevent transformation
+        const sqlBlocks = [];
+        let sqlBlockIndex = 0;
+        code = code.replace(/__BEGIN_SQL_BLOCK__`(.*?)`__END_SQL_BLOCK__/gs, (match, sqlContent) => {
+            sqlBlocks.push(sqlContent);
+            return `__SQL_BLOCK_PLACEHOLDER_${sqlBlockIndex++}__`;
+        });
         
         // Find all command calls (basic pattern matching)
         // Sort commands by length (longest first) to avoid partial matches
         const sortedCommands = Array.from(this.commands.entries()).sort((a, b) => b[0].length - a[0].length);
         
         for (const [commandName, commandInfo] of sortedCommands) {
-            // Only process original command names (not sanitized ones)
-            if (commandName === this.sanitizeFunctionName(commandName)) {
-                continue;
-            }
-            
-            const pattern = new RegExp(`\\b${commandName}\\b`, 'g');
-            if (pattern.test(code)) {
-                const importPath = this.getImportPath(filename, commandName);
-                importStatements.push(`import ${this.sanitizeFunctionName(commandName)} from "${importPath}";`);
+            const pattern = new RegExp(`\\b${commandName}\\b(?=\\s*\\()`, 'g'); // Lookahead for '(' to match function calls
+            let match;
+            while ((match = pattern.exec(code)) !== null) {
+                const offset = match.index;
+                const afterMatch = code.substring(offset + match[0].length);
                 
-                // Replace command calls with proper function calls, but only if they don't have :C syntax
-                // Commands with :C syntax will be handled by transformCommandSyntax
-                code = code.replace(pattern, (match, offset) => {
-                    // Check if this command is followed by :C syntax
-                    const afterMatch = code.substring(offset + match.length);
-                    if (afterMatch.trim().startsWith(':C')) {
-                        // Don't replace, let transformCommandSyntax handle it
-                        return match;
-                    } else {
-                        // Replace with function call
-                        return `${this.sanitizeFunctionName(commandName)}(processState)`;
-                    }
-                });
+                // Skip if already transformed (followed by (processState)
+                if (afterMatch.startsWith('(processState')) {
+                    continue;
+                }
+                
+                // Add import if not already added
+                const sanitizedName = this.sanitizeFunctionName(commandName);
+                const importPath = this.getImportPath(filename, commandName);
+                importStatements.add(`import ${sanitizedName} from "${importPath}";`);
+                
+                // Replace with function call only if not already a function call
+                // But since we're after syntax transform, most should be handled
             }
         }
         
-        // Handle Begin_SQL import specifically since it's created by replaceBeginSql
-        if (code.includes('Begin_SQL(')) {
+        // Restore SQL blocks
+        code = code.replace(/__SQL_BLOCK_PLACEHOLDER_(\d+)__/g, (match, index) => {
+            return `__BEGIN_SQL_BLOCK__\`${sqlBlocks[parseInt(index)]}\`__END_SQL_BLOCK__`;
+        });
+        
+        // Handle Begin_SQL import specifically
+        if (code.includes('Begin_SQL(') || code.includes('__BEGIN_SQL_BLOCK__')) {
             const importPath = this.getImportPath(filename, 'Begin SQL');
-            importStatements.push(`import Begin_SQL from "${importPath}";`);
+            importStatements.add(`import Begin_SQL from "${importPath}";`);
         }
         
         return {
-            imports: importStatements,
-            code: code
+            imports: Array.from(importStatements),
+            code: code // No replacement needed here since syntax is already transformed
         };
     }
 
@@ -334,18 +503,26 @@ export class SimpleTranspiler {
      * Transform 4D command syntax to JavaScript function calls
      */
     transformCommandSyntax(code) {
+        const usedCommands = new Set();
+        
+        // Temporarily remove SQL blocks to prevent transformation
+        const sqlBlocks = [];
+        let sqlBlockIndex = 0;
+        code = code.replace(/__BEGIN_SQL_BLOCK__`(.*?)`__END_SQL_BLOCK__/gs, (match, sqlContent) => {
+            sqlBlocks.push(sqlContent);
+            return `__SQL_BLOCK_PLACEHOLDER_${sqlBlockIndex++}__`;
+        });
+        
         // First, apply simple replacements (like TRACE:C157 -> debugger)
         code = this.applySimpleReplacements(code);
         
         // Transform 4D command calls like LOG EVENT:C667(0; "text") to LOG_EVENT(processState, 0, "text")
-        code = code.replace(/([A-Za-z\s]+):C\d+\(([^)]+)\)/g, (match, command, args) => {
-            // Trim whitespace from command name
+        // Use [^ ] instead of \s to avoid matching newlines
+        code = code.replace(/([A-Za-z][A-Za-z0-9 ]*?):C\d+\(([^)]+)\)/gm, (match, command, args) => {
             const trimmedCommand = command.trim();
-            // Split arguments by semicolon and clean them up
-            const argList = args.split(';').map(arg => arg.trim());
-            // Use sanitized function name
             const sanitizedName = this.sanitizeFunctionName(trimmedCommand);
-            // Preserve the whitespace before the command
+            usedCommands.add(sanitizedName);
+            const argList = args.split(';').map(arg => arg.trim());
             const beforeCommand = match.substring(0, match.indexOf(command.trim()));
             return `${beforeCommand}${sanitizedName}(processState, ${argList.join(', ')})`;
         });
@@ -353,34 +530,37 @@ export class SimpleTranspiler {
         // Transform 4D command calls that have already been partially transformed
         // Like LOG_EVENT(processState):C667(0; "text") to LOG_EVENT(processState, 0, "text")
         code = code.replace(/(\w+)\(processState\):C\d+\(([^)]+)\)/g, (match, command, args) => {
-            // Split arguments by semicolon and clean them up
-            const argList = args.split(';').map(arg => arg.trim());
-            // Use sanitized function name
             const sanitizedName = this.sanitizeFunctionName(command);
+            usedCommands.add(sanitizedName);
+            const argList = args.split(';').map(arg => arg.trim());
             return `${sanitizedName}(processState, ${argList.join(', ')})`;
         });
         
         // Transform 4D command calls with nested parentheses like STRING:C10(processState.OK) to STRING(processState, processState.OK)
-        code = code.replace(/([A-Za-z\s]+):C(\d+)\(([^)]+)\)/g, (match, command, number, args) => {
-            // Trim whitespace from command name
-            const trimmedCommand = command.trim();
-            // Use sanitized function name
-            const sanitizedName = this.sanitizeFunctionName(trimmedCommand);
-            // For STRING command, just pass the argument directly
-            if (trimmedCommand === 'STRING') {
-                return `${sanitizedName}(processState, ${args})`;
-            }
-            return `${sanitizedName}(processState, ${number}, ${args})`;
-        });
-        
-        // Transform simple command calls like TRACE:C157 to TRACE(processState, 157)
-        code = code.replace(/([A-Za-z\s]+):C(\d+)/g, (match, command, number) => {
-            // Trim whitespace from command name
-            const trimmedCommand = command.trim();
-            // Use sanitized function name
-            const sanitizedName = this.sanitizeFunctionName(trimmedCommand);
-            return `${sanitizedName}(processState, ${number})`;
-        });
+        // Process line by line to avoid matching across line boundaries
+        const lines = code.split('\n');
+        code = lines.map(line => {
+            // First handle commands with parentheses
+            line = line.replace(/([A-Za-z][A-Za-z0-9 ]*?):C(\d+)\(([^)]+)\)/g, (match, command, number, args) => {
+                const trimmedCommand = command.trim();
+                const sanitizedName = this.sanitizeFunctionName(trimmedCommand);
+                usedCommands.add(sanitizedName);
+                if (trimmedCommand === 'STRING') {
+                    return `${sanitizedName}(processState, ${args})`;
+                }
+                return `${sanitizedName}(processState, ${number}, ${args})`;
+            });
+            
+            // Then handle simple command calls like TRACE:C157
+            line = line.replace(/([A-Za-z][A-Za-z0-9 ]*?):C(\d+)/g, (match, command, number) => {
+                const trimmedCommand = command.trim();
+                const sanitizedName = this.sanitizeFunctionName(trimmedCommand);
+                usedCommands.add(sanitizedName);
+                return `${sanitizedName}(processState, ${number})`;
+            });
+            
+            return line;
+        }).join('\n');
         
         // Transform function calls that are missing processState parameter
         // Like ARCTAN(x/y) to ARCTAN(processState, x/y)
@@ -389,6 +569,8 @@ export class SimpleTranspiler {
             if (args.trim().startsWith('processState')) {
                 return match; // Already has processState
             }
+            // Add to usedCommands so it gets imported
+            usedCommands.add(funcName);
             return `${funcName}(processState, ${args})`;
         });
         
@@ -398,7 +580,25 @@ export class SimpleTranspiler {
             return `let ${varList}`;
         });
         
-        return code;
+        // New: Handle plain command names without :C that are in commands map
+        // Sort by length longest first
+        const sortedCommands = Array.from(this.commands.keys()).sort((a, b) => b.length - a.length);
+        for (const commandName of sortedCommands) {
+            // Don't match if already followed by parentheses (already transformed)
+            const pattern = new RegExp(`\\b${commandName}\\b(?!\\s*:C)(?!\\s*\\()`, 'g');
+            code = code.replace(pattern, (match) => {
+                const sanitizedName = this.sanitizeFunctionName(match);
+                usedCommands.add(sanitizedName);
+                return `${sanitizedName}(processState)`;
+            });
+        }
+        
+        // Restore SQL blocks
+        code = code.replace(/__SQL_BLOCK_PLACEHOLDER_(\d+)__/g, (match, index) => {
+            return `__BEGIN_SQL_BLOCK__\`${sqlBlocks[parseInt(index)]}\`__END_SQL_BLOCK__`;
+        });
+        
+        return { code, usedCommands };
     }
 
     /**
@@ -409,11 +609,10 @@ export class SimpleTranspiler {
             "TRACE:C157": "debugger",
             "True:C214": "true",
             "False:C215": "false",
-            "Abs:C99": "Math.abs",
             "Arctan:C20": "ARCTAN",
-            "Sin:C17": "Math.sin",
-            "Tan:C19": "Math.tan",
-            "Cos:C18": "Math.cos",
+            "Sin:C17": "SIN",
+            "Tan:C19": "TAN",
+            "Cos:C18": "COS",
             "Is Windows:C1573": "(process.platform === 'win32')",
             "Is macOS:C1572": "(process.platform === 'darwin')",
             "New collection:C1472": "[]",
@@ -428,6 +627,12 @@ export class SimpleTranspiler {
         for (const [from, to] of Object.entries(simpleReplacements)) {
             code = code.replace(new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), to);
         }
+        
+        // Fix CHOOSE function calls - convert semicolons to commas within CHOOSE calls
+        code = code.replace(/CHOOSE\(([^)]+)\)/g, (match, params) => {
+            const fixedParams = params.replace(/;/g, ',');
+            return `CHOOSE(${fixedParams})`;
+        });
         
         return code;
     }
@@ -471,7 +676,14 @@ export class SimpleTranspiler {
                 const currentFileName = path.basename(filename, '.4dm');
                 if (transformation.from === currentFileName) {
                     // Don't create import for self, just transform the call
-                    code = code.replace(regexWithParams, `${transformation.to}($1)`);
+                    code = code.replace(regexWithParams, (match, params) => {
+                        const trimmedParams = params.trim();
+                        if (trimmedParams) {
+                            return `${transformation.to}(processState, ${params})`;
+                        } else {
+                            return `${transformation.to}(processState)`;
+                        }
+                    });
                 } else {
                     // Generate import statement for the method
                     const methodImportPath = this.getMethodImportPath(filename, transformation.to);
@@ -479,7 +691,13 @@ export class SimpleTranspiler {
                     
                     // Transform the method call with parameters - preserve the original parameter content
                     code = code.replace(regexWithParams, (match, params) => {
-                        return `${transformation.to}(${params})`;
+                        // If params is empty or just whitespace, don't add the comma
+                        const trimmedParams = params.trim();
+                        if (trimmedParams) {
+                            return `${transformation.to}(processState, ${params})`;
+                        } else {
+                            return `${transformation.to}(processState)`;
+                        }
                     });
                 }
             }
@@ -493,14 +711,14 @@ export class SimpleTranspiler {
                 const currentFileName = path.basename(filename, '.4dm');
                 if (transformation.from === currentFileName) {
                     // Don't create import for self, just transform the call
-                    code = code.replace(regex, `${transformation.to}()`);
+                    code = code.replace(regex, `${transformation.to}(processState)`);
                 } else {
                     // Generate import statement for the method
                     const methodImportPath = this.getMethodImportPath(filename, transformation.to);
                     methodImports.push(`import ${transformation.to} from "${methodImportPath}";`);
                     
                     // Transform the method call without parameters
-                    code = code.replace(regex, `${transformation.to}()`);
+                    code = code.replace(regex, `${transformation.to}(processState)`);
                 }
             }
         }
@@ -564,6 +782,22 @@ export class SimpleTranspiler {
                     const fileCommandName = path.basename(file, '.js');
                     // Check if the sanitized version matches
                     if (this.sanitizeFunctionName(fileCommandName) === commandName) {
+                        return fileCommandName;
+                    }
+                    // Also check if the sanitized version of the command name matches the file name
+                    if (this.sanitizeFunctionName(commandName) === fileCommandName) {
+                        return fileCommandName;
+                    }
+                    // Also check if the command name with spaces matches the file name with underscores
+                    if (commandName.replace(/ /g, '_') === fileCommandName) {
+                        return fileCommandName;
+                    }
+                    // Special case: Begin_SQL -> Begin SQL
+                    if (commandName === 'Begin_SQL' && fileCommandName === 'Begin SQL') {
+                        return fileCommandName;
+                    }
+                    // Check if underscore version matches space version
+                    if (commandName.replace(/_/g, ' ') === fileCommandName) {
                         return fileCommandName;
                     }
                 }
