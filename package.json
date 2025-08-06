@@ -5,9 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "test": "cd output && npm start",
-    "starttest": "node index.js && cd output && npm start"
+    "start": "node simple-index.js && cd output && npm start",
+    "test": "node simple-index.js && cd output && npm start"
   },
   "author": "4D community",
   "license": "MIT",

@@ -2,11 +2,11 @@
   "name": "output",
   "version": "1.0.0",
   "description": "This is the generated javascript",
-  "main": "./Project/Sources/DatabaseMethods/onServerStartup.js",
+  "main": "./main.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./Project/Sources/DatabaseMethods/onServerStartup.js"
+    "start": "node ./main.js"
   },
   "author": "",
   "license": "ISC",

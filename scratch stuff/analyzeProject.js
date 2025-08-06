@@ -1341,4 +1341,4 @@ counts.forEach((cmdObject) => {
 `;
 });
 
-fs.writeFileSync("AnalyzedProject$DcommandsUsedCount.md", table);
+fs.writeFileSync("AnalyzedProject4DcommandsUsedCount.md", table);

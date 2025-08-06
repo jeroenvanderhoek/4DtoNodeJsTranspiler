@@ -1290,6 +1290,6 @@ cmds.forEach((cmd) => {
 `;
 });
 
-fs.writeFileSync("$Dcommandstable.md", table);
+fs.writeFileSync("4Dcommandstable.md", table);
 
 

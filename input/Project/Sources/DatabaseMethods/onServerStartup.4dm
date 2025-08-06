@@ -38,7 +38,7 @@ LOG EVENT:C667(0; "Open browser with http://localhost")
 OPEN URL:C673("http://localhost")
 
 // Ask continu y/n?
-ALERT:C41("Database interactions require a PostgreSQL database. Please provide in environment variables: PG_USERNAME_4D, PG_PASSWORD_4D, PG_ADRESS_4D, PG_PORT_4D else default values will be used."; "continue")
+// ALERT:C41("Database interactions require a PostgreSQL database. Please provide in environment variables: PG_USERNAME_4D, PG_PASSWORD_4D, PG_ADRESS_4D, PG_PORT_4D else default values will be used."; "continue")
 
 If (OK=1){
 	// Log OK after alert
